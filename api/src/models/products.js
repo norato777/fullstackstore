@@ -10,15 +10,11 @@ const ProductsSchema = new Schema({
     coments:Array,
     category:Array    
 })
-// const UsersSchema = new Schema({
-//     email:String,
-//     password:String,
-//     username:String
-// })
+
 
 
 const ProductsModel = mongoose.model("products", ProductsSchema)
-// const UsersModels = mongoose.model("users", UsersSchema)
+
 
 
 module.exports = ProductsModel
