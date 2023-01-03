@@ -1,7 +1,15 @@
-const express = require("express");
+const express = require("express")
+const path = require("path")
 
-const app = express();
 
-app.use(express.json());
+const app = express()
 
-module.exports = app;
+// ROUTES
+const routes = require("./routes/index.routes")
+app.use(routes)
+
+
+
+app.listen(3000, ()=>{
+    console.log("Servidor a la espera de conecciones")
+})
