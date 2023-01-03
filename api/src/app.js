@@ -1,15 +1,12 @@
-const express = require("express")
-const path = require("path")
+const express = require("express");
+const path = require("path");
 
-
-const app = express()
+const app = express();
 
 // ROUTES
-const routes = require("./routes/index.routes")
-app.use(routes)
+const routes = require("./routes/index.routes");
+app.use(routes);
 
-
-
-app.listen(3000, ()=>{
-    console.log("Servidor a la espera de conecciones")
-})
+app.listen(3001, () => {
+  console.log("Servidor a la espera de conecciones");
+});
