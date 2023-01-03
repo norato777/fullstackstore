@@ -1,6 +1,6 @@
 const controllers = {};
 const connection = require("../DB_connect/connect");
-const ProductsModel = require("../models/products");
+const ProductsModel = require("../models/Products");
 
 controllers.index = async (req, res) => {
   try {
@@ -12,4 +12,5 @@ controllers.index = async (req, res) => {
     console.log(error);
   }
 };
+
 module.exports = controllers;
