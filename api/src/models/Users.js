@@ -12,6 +12,9 @@ const UserSchema = new Schema({
       required: true,
       unique: true
     },
+    direccion: {
+      type: Array,
+    },
     password: {
       type: String,
       required: true
@@ -22,6 +25,9 @@ const UserSchema = new Schema({
     admin: {
       type: Boolean
     },
+    favoritos: {
+      type: Array,
+    }
   });
   const UserModel = mongoose.model("User", UserSchema);
 
