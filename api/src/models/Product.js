@@ -9,22 +9,31 @@ const ProductsSchema = new Schema({
   image: {
     type: String,
   },
-  detail: {
+  description: {
+    type: String,
+  },  
+  brand: {
     type: String,
   },
   price: {
     type: Number,
   },
-  number: {
+  quantity: {
+    type: Number,
+  },
+  compatible: {
     type: Number,
   },
   favorites: {
     type: Array,
   },
+  calification: {
+    type: Array,
+  },
   coments: {
     type: Array,
   },
-  category: {
+  categories: {
     type: Array,
   },
 });
