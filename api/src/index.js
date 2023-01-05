@@ -1,14 +1,16 @@
+
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose")
 const PORT = process.env.PORT || 3001;
 const userRoutes= require("./routes/users");
+const produscRoutes= require("./routes/Products");
 const app = express();
 
 mongoose.set('strictQuery', true);
 //midware
 app.use(express.json());
-app.use('/api', userRoutes )
+app.use('/api', userRoutes,  produscRoutes)
 
 
 //Routes
