@@ -5,8 +5,6 @@ const UserModel = require("../models/Users")
 const CartModel = require("../models/Cart"); 
 
 
-
-
 controllers.index = async (req, res) => {
   try {
     await connection();

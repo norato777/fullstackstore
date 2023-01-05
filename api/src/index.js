@@ -11,13 +11,7 @@ mongoose.set('strictQuery', true);
 app.use(express.json());
 app.use('/api', userRoutes )
 app.use('/', controller.index )
-
-
-//Routes
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
+app.use('/api', userRoutes )
 
 
 // Connect to MongoDB
