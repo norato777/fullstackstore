@@ -4,11 +4,13 @@ const mongoose = require("mongoose")
 const PORT = process.env.PORT || 3001;
 const userRoutes= require("./routes/users");
 const app = express();
+const controller = require("./constrollers/index.controllers");
 
 mongoose.set('strictQuery', true);
 //midware
 app.use(express.json());
 app.use('/api', userRoutes )
+app.use('/', controller.index )
 
 
 //Routes
