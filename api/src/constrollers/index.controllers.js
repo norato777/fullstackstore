@@ -1,12 +1,11 @@
 const controllers = {};
 const connection = require("../DB_connect/connect");
 const ProductsModel = require("../models/Product");
-<<<<<<< HEAD
 const UserModel = require("../models/Users")
+const CartModel = require("../models/Cart"); 
 
-=======
-const UserModel = require("../models/Users");
->>>>>>> f2c34ad62df6b196f7ac803973500350a12a7d06
+
+
 
 controllers.index = async (req, res) => {
   try {
@@ -17,6 +16,8 @@ controllers.index = async (req, res) => {
     // Query the User model to get all users
     const allUsers = await UserModel.find();
     console.log(allUsers);
+    const allCart = await CartModel.find();
+    console.log(allCart);
 
     res.send({ allProducts, allUsers }); // send both the products and users in the response
   } catch (error) {
