@@ -1,64 +1,51 @@
-const express = require("express");
-const router = express.Router();
+const { Router } = require("express");
+const cartSchema = require("../models/Cart");
+const {
+  postCart,
+  deleteProductCart,
+} = require("../constrollers/cartController");
 
-//get cart data
+const router = Router();
 
-router.get("/cart", async (req, res) => {
+// trae todos los cart (es al pedo pero queria probar)
+router.get("/", (req, res) => {
+  cartSchema
+    .find()
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ mesagge: error }));
+});
+// trae todos los cart (es al pedo pero queria probar)
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+  cartSchema
+    .findById(id)
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ mesagge: error }));
+});
+
+router.post("/", async (req, res) => {
   try {
-    const cart = await getCart();
-    res.status(200).json(cart);
-    return;
+    // Obtén los valores de user_id y product_id del cuerpo de la solicitud
+    const cart = req.body;
+    // Llamar a la función postCart y proporcionar los argumentos user_id y product_id
+    await postCart(cart);
+    res.json({ message: "Producto agregado al carrito con éxito" });
   } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
-    return;
+    res.send(error.message);
   }
 });
 
-//add cart data
-router.post("/cart", async (req, res) => {
+router.delete("/:id/:productId", async (req, res) => {
   try {
-    const cart = await addCart(req.body);
-    res.status(200).json(cart);
-    return;
+    // Obtén los valores de user_id y product_id de los parámetros de la ruta
+    const cart = req.params;
+    // // Llamar a la función deleteProductCart y proporcionar los argumentos en cart
+    console.log(cart);
+    await deleteProductCart(cart);
+    res.json({ message: "Producto eliminado del carrito con éxito" });
   } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
-    return;
-    }
-});
-// update cart data
-router.put("/cart", async (req, res) => {
-  try {
-    const cart = await updateCart(req.body);
-    res.status(200).json(cart);
-    return;
-  } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
-    return;
-    }
-});
-// delete cart data
-router.delete("/cart", async (req, res) => {
-  try {
-    const cart = await deleteCart(req.body);
-    res.status(200).json(cart);
-    return;
-  } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
-    return;
+    res.send(error.message);
   }
-
 });
-
- // IF USER ID EXISTS ADD PRODUCT TO CART, IF USER ID DOES NOT EXIST CREATE CART AND ADD PRODUCT TO CART
- 
-
-
-
-
-
 
 module.exports = router;
