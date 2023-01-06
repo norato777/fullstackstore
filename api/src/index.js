@@ -6,17 +6,18 @@ const PORT = process.env.PORT || 3001;
 const userRoutes= require("./routes/users");
 const produscRoutes= require("./routes/Products");
 const app = express();
+const controller = require("./constrollers/index.controllers");
 
 mongoose.set('strictQuery', true);
 //midware
 app.use(express.json());
 app.use('/api', userRoutes,  produscRoutes)
+app.use('/api', userRoutes )
+app.use('/', controller.index )
 
 
 //Routes
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+
 
 
 
