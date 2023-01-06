@@ -6,7 +6,7 @@ export default function NavbarHeader() {
     <>
       <Nav className="justify-content-end" activeKey="/home">
         <Nav.Item>
-          <Nav.Link href="/login">Active</Nav.Link>
+          <Nav.Link href="/login">Ingresar</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link href="/favorites">Favoritos</Nav.Link>
