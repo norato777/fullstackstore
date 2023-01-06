@@ -3,8 +3,10 @@ import Promobar from "../Promobar/Promobar";
 import Header from "../Header/Header";
 import NavbarMain from "../NavbarMain/NavbarMain";
 import CardBest from "../CardBest/CardBest";
-import AccountCheck from "../AccountCheck/AccountCheck";
+import CardAccountCheck from "../CardAccountCheck/CardAccountCheck";
 import Carousel from "../Carousel/Carousel";
+import CardConfigPC from "../CardConfigPC/CardConfigPC";
+import CardJobs from "../CardJobs/CardJobs";
 
 export default function Homepage() {
   return (
@@ -13,8 +15,10 @@ export default function Homepage() {
       <Header />
       <NavbarMain />
       <CardBest />
-      <AccountCheck />
+      <CardAccountCheck />
       <Carousel />
+      <CardConfigPC />
+      <CardJobs />
     </>
   );
 }
