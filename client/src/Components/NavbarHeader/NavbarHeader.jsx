@@ -1,13 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Nav from "react-bootstrap/Nav";
 
 export default function NavbarHeader() {
   return (
     <>
-      <Link to="/login">Ingresar</Link>
-      <Link to="/favorites">Favoritos</Link>
-      <Link to="/compare">Comparar</Link>
-      <Link to="/about">Compañia</Link>
+      <Nav className="justify-content-end" activeKey="/home">
+        <Nav.Item>
+          <Nav.Link href="/login">Active</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/favorites">Favoritos</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/compare">Comparar</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/about">Compañia</Nav.Link>
+        </Nav.Item>
+      </Nav>
     </>
   );
 }

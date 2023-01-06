@@ -5,7 +5,11 @@ export default function CarouselMain() {
   return (
     <Carousel fade>
       <Carousel.Item>
-        <img className="d-block w-100" src="../" alt="First slide" />
+        <img
+          className="d-block w-100"
+          src="../../Image/NVIDIA-BANNER-1660Ti.jpg"
+          alt="First slide"
+        />
         <Carousel.Caption>
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -14,7 +18,7 @@ export default function CarouselMain() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=282c34"
+          src="../../Image/GR8-II-banner-2000x720.jpg"
           alt="Second slide"
         />
 
@@ -26,7 +30,7 @@ export default function CarouselMain() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=20232a"
+          src="../../Image/MPG-Trident-A-Series.png"
           alt="Third slide"
         />
 
