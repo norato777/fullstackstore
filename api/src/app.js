@@ -4,10 +4,12 @@ const path = require("path");
 const morgan = require("morgan");
 const passport = require("passport");
 const session = require("express-session");
+const routes = require("./routes/index.routes");
+const userRoutes = require("../src/routes/users");
 
 // initializaciones
 const app = express();
-require("./DB_connect/connect");
+require("../database");
 require("./passport/local-auth");
 
 // settings
@@ -30,7 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // routes
-const routes = require("./routes/index.routes");
 app.use(routes);
+app.use("/api", userRoutes);
 
 module.exports = app;

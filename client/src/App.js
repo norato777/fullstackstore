@@ -1,9 +1,10 @@
 import "./App.css";
+import Homepage from "./Components/Homepage/Homepage";
 
 function App() {
   return (
     <div className="App">
-      <h1>The Fullstack Store</h1>
+      <Homepage />
     </div>
   );
 }

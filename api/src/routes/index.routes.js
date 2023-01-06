@@ -6,7 +6,6 @@ const logOut = require("./logOut.routes");
 const google = require("./google.routes");
 const auth = require("../middleware/auth");
 require("../middleware/google.js");
-const passport = require("passport");
 const router = express.Router();
 
 router.get("/", controller.index);
