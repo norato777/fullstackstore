@@ -10,14 +10,12 @@ controllers.index = async (req, res) => {
     await connection();
     const allProducts = await ProductsModel.find();
     console.log(allProducts);
-
-    // Query the User model to get all users
     const allUsers = await UserModel.find();
     console.log(allUsers);
     const allCart = await CartModel.find();
     console.log(allCart);
 
-    res.send({ allProducts, allUsers }); // send both the products and users in the response
+    res.send({ allProducts, allUsers, allCart}); 
   } catch (error) {
     console.log(error);
   }

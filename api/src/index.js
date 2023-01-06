@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose")
 const PORT = process.env.PORT || 3001;
 const userRoutes= require("./routes/users");
+const cartRoutes= require("./routes/cart");
 const app = express();
 const controller = require("./constrollers/index.controllers");
 
@@ -11,7 +12,7 @@ mongoose.set('strictQuery', true);
 app.use(express.json());
 app.use('/api', userRoutes )
 app.use('/', controller.index )
-app.use('/api', userRoutes )
+app.use('/api', cartRoutes )
 
 
 // Connect to MongoDB
