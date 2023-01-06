@@ -7,12 +7,9 @@ const CartModel = require("../models/Cart");
 controllers.index = async (req, res) => {
   try {
     const allProducts = await ProductsModel.find();
-
-    // Query the User model to get all users
     const allUsers = await UserModel.find();
     const allCart = await CartModel.find();
-
-    res.send({ allProducts, allUsers }); // send both the products and users in the response
+    res.send({ allProducts, allUsers, allCart });
   } catch (error) {
     console.log(error);
   }
