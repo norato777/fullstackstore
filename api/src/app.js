@@ -2,11 +2,11 @@ const express = require("express");
 const engine = require("ejs-mate");
 const morgan = require("morgan");
 const session = require("express-session");
+const cors = require("cors");
 const path = require("path");
 const passport = require("passport");
 const routes = require("./routes/index.routes");
 const userRoutes = require("../src/routes/users");
-const cors = require("cors");
 const bodyParser = require("body-parser");
 
 // initializations
