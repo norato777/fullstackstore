@@ -6,6 +6,7 @@ import CardBest from "../CardBest/CardBest";
 import CardAccountCheck from "../CardAccountCheck/CardAccountCheck";
 import Carousel from "../Carousel/Carousel";
 import CardConfigPC from "../CardConfigPC/CardConfigPC";
+import CardJobs from "../CardJobs/CardJobs";
 
 export default function Homepage() {
   return (
@@ -17,6 +18,7 @@ export default function Homepage() {
       <CardAccountCheck />
       <Carousel />
       <CardConfigPC />
+      <CardJobs />
     </>
   );
 }
