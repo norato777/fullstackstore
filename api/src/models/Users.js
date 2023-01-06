@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt-nodejs");
+var findOrCreate = require('mongoose-findorcreate')
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({
   name: {
     type: String,
-    required: true,
   },
   email: {
     type: String,
@@ -29,6 +30,16 @@ const UserSchema = new Schema({
   },
 });
 
-const UserModel = mongoose.model("User", UserSchema);
+UserSchema.methods.encryptPassword = (password) => {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+};
+
+UserSchema.methods.comparePassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
+};
+
+UserSchema.plugin(findOrCreate)
+
+const UserModel = mongoose.model("Users", UserSchema);
 
 module.exports = UserModel;

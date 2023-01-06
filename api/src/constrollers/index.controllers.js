@@ -1,10 +1,9 @@
 const controllers = {};
-const connection = require("../DB_connect/connect");
-const ProductsModel = require("../models/Products");
+const ProductsModel = require("../models/Product");
+const UserModel = require("../models/Users.js")
 
 controllers.index = async (req, res) => {
   try {
-    await connection();
     const allProducts = await ProductsModel.find();
     console.log(allProducts);
 
@@ -19,4 +18,3 @@ controllers.index = async (req, res) => {
 };
 
 module.exports = controllers;
-
