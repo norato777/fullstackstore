@@ -17,6 +17,14 @@ router.get("/:id", (req, res) => {
     .catch((error) => res.json({ message: error }));
 });
 
+router.post("/", (req,res) =>{
+  const product = productSchema(req.body);
+  product
+  .save()
+  .then((data)=> res.json(data))
+  .catch((error)=> res.json({message: error.message}))
+})
+
 router.put("/:id", (req, res) => {
   const id = req.params.id;
   const product = req.body;
