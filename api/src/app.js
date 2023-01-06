@@ -6,6 +6,8 @@ const passport = require("passport");
 const session = require("express-session");
 const routes = require("./routes/index.routes");
 const userRoutes = require("../src/routes/users");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
 // initializaciones
 const app = express();
@@ -20,7 +22,8 @@ app.use(express.json());
 
 // middlewares
 app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
+app.use(bodyParser.json({ limit: '50mb' }));
 app.use(
   session({
     secret: "mysecretsession",
@@ -32,7 +35,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // routes
-app.use(routes);
+app.use(cors());
+app.use('/', routes);
 app.use("/api", userRoutes);
 
 module.exports = app;
