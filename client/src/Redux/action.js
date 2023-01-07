@@ -3,8 +3,7 @@ import axios from 'axios';
 export function getProducts(){
     return async function(dispatch){
         const response = await axios.get('http://localhost:3001/products');
-        return dispatch({type: "GET_PRODUCTS", payload: response.data})
-        
+        return dispatch({type: "GET_PRODUCTS", payload: response.data})       
         
     }
 }
@@ -80,4 +79,17 @@ export function getNameProduct(payload){
         return dispatch({type: "GET_NAME_PRODUCT", payload: response.data})
     }
 }
+export function filterProductsCategory(payload){
+    return {
+        type: "FILTER_CATEGORY",
+        payload
+    }
+}
+export function filterProductsBrand(payload){
+    return {
+        type: "FILTER_BRAND",
+        payload
+    }
+}
+
 
