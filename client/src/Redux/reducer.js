@@ -86,8 +86,8 @@ export default function rootReducer(state = initialState, action) {
           products: state.allProducts,
         };
       } else {
-        let filtrados = state.allProducts.filter((e) =>
-          e.brand === action.payload
+        let filtrados = state.allProducts.filter(
+          (e) => e.brand === action.payload
         );
         return {
           ...state,
