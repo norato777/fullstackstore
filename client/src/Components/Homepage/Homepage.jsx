@@ -14,36 +14,39 @@ import Footer from "../Footer/Footer";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../../Redux/action";
+import stl from "./Homepage.module.css";
 
 export default function Homepage() {
-  const Products = useSelector((state)=>state.products)
+  const Products = useSelector((state) => state.products);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-
-  useEffect( () => {
-    !Products.length &&
-    dispatch(getProducts());
+  useEffect(() => {
+    !Products.length && dispatch(getProducts());
   }, [dispatch, Products]);
 
   return (
     <>
-    {!Products.length ? (<h1>Cargando productos</h1>) : (
-       <>
-      <Promobar />
-      <Header />
-      <NavbarMain />
-      <CardBest />
-      <CardAccountCheck />
-      <Carousel />
-      <CardConfigPC />
-      <CardJobs />
-      <FeaturedProducts />
-      <OurBrands />
-      <FeaturedCategories />
-      <Footer />
-      </>
-    )}
+      {!Products.length ? (
+        <h1>Cargando productos</h1>
+      ) : (
+        <>
+          <div className={stl.container}>
+            <Promobar />
+            <Header />
+            <NavbarMain />
+            <CardBest />
+            <CardAccountCheck />
+            <Carousel />
+            <CardConfigPC />
+            <CardJobs />
+            <FeaturedProducts />
+            <OurBrands />
+            <FeaturedCategories />
+            <Footer />
+          </div>
+        </>
+      )}
     </>
-  )
+  );
 }

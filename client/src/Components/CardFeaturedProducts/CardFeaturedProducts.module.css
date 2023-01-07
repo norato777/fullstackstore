@@ -1,0 +1,10 @@
+.container {
+  margin: 21px;
+}
+.image {
+  margin: 14px;
+}
+.cardTitle {
+  font-weight: 700;
+  color: orangered;
+}
