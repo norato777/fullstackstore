@@ -32,5 +32,12 @@ router.put("/:id", (req, res) => {
     .then((product) => res.json(product))
     .catch((error) => res.json({ message: error }));
 });
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  productSchema
+    .remove({ _id: id })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ mesagge: error }));
+});
 
 module.exports = router;
