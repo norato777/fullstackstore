@@ -11,10 +11,25 @@ import FeaturedProducts from "../FeaturedProducts/FeaturedProducts";
 import OurBrands from "../OurBrands/OurBrands";
 import FeaturedCategories from "../FeaturedCategories/FeaturedCategories";
 import Footer from "../Footer/Footer";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "../../Redux/action";
 
 export default function Homepage() {
+  const Products = useSelector((state)=>state.products)
+
+  const dispatch = useDispatch()
+
+
+  useEffect( () => {
+    !Products.length &&
+    dispatch(getProducts());
+  }, [dispatch, Products]);
+
   return (
     <>
+    {!Products.length ? (<h1>Cargando productos</h1>) : (
+       <>
       <Promobar />
       <Header />
       <NavbarMain />
@@ -27,6 +42,8 @@ export default function Homepage() {
       <OurBrands />
       <FeaturedCategories />
       <Footer />
+      </>
+    )}
     </>
-  );
+  )
 }

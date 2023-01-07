@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export async function getProducts(){
+export function getProducts(){
     return async function(dispatch){
         const response = await axios.get('http://localhost:3001/products');
         return dispatch({type: "GET_PRODUCTS", payload: response.data})
