@@ -9,7 +9,7 @@ export default function CardAccountCheck() {
         <Card.Text>* Mas de 40000 productos.</Card.Text>
         <Card.Text>* Compras y envios seguros.</Card.Text>
         <Card.Text>* Comparte y revisa opiniones.</Card.Text>
-        <Card.Link href="#">Conocer más</Card.Link>
+        <Card.Link href="#">Registrate</Card.Link>
       </Card.Body>
     </Card>
   );

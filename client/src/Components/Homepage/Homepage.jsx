@@ -7,6 +7,8 @@ import CardAccountCheck from "../CardAccountCheck/CardAccountCheck";
 import Carousel from "../Carousel/Carousel";
 import CardConfigPC from "../CardConfigPC/CardConfigPC";
 import CardJobs from "../CardJobs/CardJobs";
+import FeaturedProducts from "../FeaturedProducts/FeaturedProducts";
+import OurBrands from "../OurBrands/OurBrands";
 
 export default function Homepage() {
   return (
@@ -19,6 +21,8 @@ export default function Homepage() {
       <Carousel />
       <CardConfigPC />
       <CardJobs />
+      <FeaturedProducts />
+      <OurBrands />
     </>
   );
 }
