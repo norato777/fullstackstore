@@ -11,22 +11,25 @@ import FeaturedProducts from "../FeaturedProducts/FeaturedProducts";
 import OurBrands from "../OurBrands/OurBrands";
 import FeaturedCategories from "../FeaturedCategories/FeaturedCategories";
 import Footer from "../Footer/Footer";
+import stl from "./Homepage.module.css";
 
 export default function Homepage() {
   return (
     <>
-      <Promobar />
-      <Header />
-      <NavbarMain />
-      <CardBest />
-      <CardAccountCheck />
-      <Carousel />
-      <CardConfigPC />
-      <CardJobs />
-      <FeaturedProducts />
-      <OurBrands />
-      <FeaturedCategories />
-      <Footer />
+      <div className={stl.container}>
+        <Promobar />
+        <Header />
+        <NavbarMain />
+        <CardBest />
+        <CardAccountCheck />
+        <Carousel />
+        <CardConfigPC />
+        <CardJobs />
+        <FeaturedProducts />
+        <OurBrands />
+        <FeaturedCategories />
+        <Footer />
+      </div>
     </>
   );
 }

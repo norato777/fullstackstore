@@ -6,6 +6,10 @@ export default function FeaturedProducts() {
     <>
       <div>Productos destacados de hoy</div>
       <CardFeaturedProducts />
+      <CardFeaturedProducts />
+      <CardFeaturedProducts />
+      <CardFeaturedProducts />
+      <CardFeaturedProducts />
     </>
   );
 }
