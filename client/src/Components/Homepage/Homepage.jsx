@@ -11,25 +11,39 @@ import FeaturedProducts from "../FeaturedProducts/FeaturedProducts";
 import OurBrands from "../OurBrands/OurBrands";
 import FeaturedCategories from "../FeaturedCategories/FeaturedCategories";
 import Footer from "../Footer/Footer";
-import stl from "./Homepage.module.css";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "../../Redux/action";
 
 export default function Homepage() {
+  const Products = useSelector((state) => state.products);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    !Products.length && dispatch(getProducts());
+  }, [dispatch, Products]);
+
   return (
     <>
-      <div className={stl.container}>
-        <Promobar />
-        <Header />
-        <NavbarMain />
-        <CardBest />
-        <CardAccountCheck />
-        <Carousel />
-        <CardConfigPC />
-        <CardJobs />
-        <FeaturedProducts />
-        <OurBrands />
-        <FeaturedCategories />
-        <Footer />
-      </div>
+      {!Products.length ? (
+        <h1>Cargando productos</h1>
+      ) : (
+        <>
+          <Promobar />
+          <Header />
+          <NavbarMain />
+          <CardBest />
+          <CardAccountCheck />
+          <Carousel />
+          <CardConfigPC />
+          <CardJobs />
+          <FeaturedProducts />
+          <OurBrands />
+          <FeaturedCategories />
+          <Footer />
+        </>
+      )}
     </>
   );
 }
