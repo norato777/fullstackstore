@@ -9,6 +9,8 @@ import CardConfigPC from "../CardConfigPC/CardConfigPC";
 import CardJobs from "../CardJobs/CardJobs";
 import FeaturedProducts from "../FeaturedProducts/FeaturedProducts";
 import OurBrands from "../OurBrands/OurBrands";
+import FeaturedCategories from "../FeaturedCategories/FeaturedCategories";
+import Footer from "../Footer/Footer";
 
 export default function Homepage() {
   return (
@@ -23,6 +25,8 @@ export default function Homepage() {
       <CardJobs />
       <FeaturedProducts />
       <OurBrands />
+      <FeaturedCategories />
+      <Footer />
     </>
   );
 }
