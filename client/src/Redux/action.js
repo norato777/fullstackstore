@@ -65,6 +65,18 @@ export function postProduct(payload) {
     return dispatch({ type: "POST_PRODUCT", payload: response.data });
   };
 }
+export function filterProductsCategory(payload) {
+  return {
+    type: "FILTER_CATEGORY",
+    payload,
+  };
+}
+export function filterProductsBrand(payload) {
+  return {
+    type: "FILTER_BRAND",
+    payload,
+  };
+}
 
 export function postCategory(payload) {
   return async function (dispatch) {
