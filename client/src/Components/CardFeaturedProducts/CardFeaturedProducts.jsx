@@ -15,14 +15,14 @@ export default function CardFeaturedProducts({ num }) {
 
   return (
     <>
-      <div className={stl.container}>
-        <Card style={{ width: "21rem" }}>
+      <div>
+        <Card style={{ width: "329px", height: "700px", margin: "0" }}>
           <Card.Subtitle className="mb-2 text-muted">-7%</Card.Subtitle>
-          <div className={stl.image}>
+          <div>
             <Card.Img variant="top" src={oneProduct.image} />
           </div>
           <Card.Body>
-            <Card.Title className={stl.cardTitle}>{oneProduct.name}</Card.Title>
+            <Card.Title>{oneProduct.name.slice(0, 100)}</Card.Title>
             <Card.Text>{oneProduct.description.slice(0, 100)}...</Card.Text>
             <Row>
               <Col>ID o SKU</Col>
