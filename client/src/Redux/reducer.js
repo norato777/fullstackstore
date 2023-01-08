@@ -94,6 +94,12 @@ export default function rootReducer(state = initialState, action) {
           products: filtrados,
         };
       }
+      case "SEARCH_BAR":
+        let busqueda = state.allProducts.filter((e)=>e.name.toLowerCase().includes(action.payload.toLowerCase()))
+        return {
+          ...state,
+          products: busqueda
+        };
 
     default:
       return state;
