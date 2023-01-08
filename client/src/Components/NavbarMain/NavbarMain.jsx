@@ -28,7 +28,7 @@ export default function NavbarHeader() {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link className={stl.colors} href="/">
-            Impresion y copiad
+            Impresion y copiado
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
