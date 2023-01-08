@@ -1,11 +1,16 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 
 export default function SearchBarMain() {
   return (
     <>
       <form>
-        <input type="text" placeholder="¿Que estas buscando hoy?" />
-        <button type="submit">Buscar</button>
+        <InputGroup className="mb-3">
+          <Form.Control placeholder="¿Que estas buscando hoy?" />
+          <Button type="submit">Buscar</Button>
+        </InputGroup>
       </form>
     </>
   );

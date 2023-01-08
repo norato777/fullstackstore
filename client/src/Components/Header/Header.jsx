@@ -15,10 +15,10 @@ export default function Header() {
           </Link>
         </div>
         <div className={stl.containerBars}>
-          <div className={stl.searchbar}>
+          <div className={stl.auxContainer}>
             <SearchBarMain />
           </div>
-          <div className={stl.userbar}>
+          <div className={stl.auxContainer}>
             <NavbarHeader />
           </div>
         </div>
