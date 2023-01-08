@@ -13,6 +13,8 @@ function PageProducts() {
   const [filtrados, setFiltrados] = useState();
   const [category, setCategory] = useState();
   const [brand, setBrand] = useState();
+  const [next, setNext] = useState(0)
+   const [prev, setPrev] = useState(20)
 
   const getBrand = () => {
     const marcas = AllProducts.map((e) => e.brand);
@@ -31,7 +33,7 @@ function PageProducts() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    !Products.length && dispatch(getProducts());
+    if(!Products.length) dispatch(getProducts());
     setFiltrados(Products);
     getCategories();
     getBrand();
@@ -43,7 +45,24 @@ function PageProducts() {
   const handleChangeBrand = (e) => {
     dispatch(filterProductsBrand(e.target.value));
   };
-
+  const handlePrev =()=>{
+    if(next==0 && prev<=20) {
+      return next,prev
+    }else{
+      setNext(next-20)
+      setPrev(prev-20)
+    }
+   }
+    const handleNext =()=>{
+      const divicion = Math.trunc(filtrados.length/20)
+      if(next>= divicion*20) {
+        return next,prev
+      }else{
+        setNext(next+20)
+        setPrev(prev+20)
+      }
+      console.log(next,prev)
+   }
   return (
     <>
       {!Products.length ? (
@@ -62,9 +81,10 @@ function PageProducts() {
               <option key={i}>{e}</option>
             ))}
           </select>
-
-          {filtrados.length &&
-            filtrados.map((e) => (
+          <button className='btn btn-primary' onClick={handlePrev}> prev</button>
+          <button className='btn btn-primary'onClick={handleNext}> next</button>
+          {
+            filtrados?.slice(next,prev).map((e) => (
               <div key={e._id}>
                 <h5>{e.name}</h5>
                 <span>{e.brand}</span>
