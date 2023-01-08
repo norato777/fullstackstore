@@ -1,7 +1,8 @@
 .container {
   height: 112px;
   position: relative;
-  background-color: rgb(49, 49, 49);
+  background: linear-gradient(rgb(255, 255, 255), #ffffff, #979797);
+  z-index: 1;
 }
 .containerLogo {
   position: absolute;
@@ -13,11 +14,19 @@
 }
 .containerBars {
   position: absolute;
-  right: 3.5%;
+  right: 14%;
   width: 490px;
 }
 .auxContainer {
   height: 56px;
   margin-top: 20px;
   margin-bottom: -35px;
+}
+.containerShopCart {
+  position: absolute;
+  right: 3.5%;
+}
+.carrito {
+  height: 56px;
+  margin-top: 25px;
 }
