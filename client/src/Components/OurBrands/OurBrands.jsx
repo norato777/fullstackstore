@@ -1,25 +1,44 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
+import stl from "./OurBrands.module.css";
 
 export default function OurBrands() {
   return (
     <>
-      <div>¡En Fullstack Store encuentra las mejores marcas!</div>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="./image/samsung.png" />
-      </Card>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="./image/gigabyte.webp" />
-      </Card>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="./image/kingston.webp" />
-      </Card>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="./image/nvidia.jpeg" />
-      </Card>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="./image/xpglogo2.webp" />
-      </Card>
+      <h1>¡En Fullstack Store encuentra las mejores marcas!</h1>
+      <div className={stl.container}>
+        <Link className={stl.format}>
+          <Card style={{ width: "18rem" }}>
+            <Card.Img variant="top" src="./image/New Project.png" />
+          </Card>
+        </Link>
+        <Link className={stl.format}>
+          <Card style={{ width: "18rem" }}>
+            <Card.Img variant="top" src="./image/New Project1.png" />
+          </Card>
+        </Link>
+        <Link className={stl.format}>
+          <Card style={{ width: "18rem" }}>
+            <Card.Img variant="top" src="./image/New Project2.png" />
+          </Card>
+        </Link>
+        <Link className={stl.format}>
+          <Card style={{ width: "18rem" }}>
+            <Card.Img variant="top" src="./image/New Project3.png" />
+          </Card>
+        </Link>
+        <Link className={stl.format}>
+          <Card style={{ width: "18rem" }}>
+            <Card.Img variant="top" src="./image/New Project4.png" />
+          </Card>
+        </Link>
+        <Link className={stl.format}>
+          <Card style={{ width: "18rem" }}>
+            <Card.Img variant="top" src="./image/New Project5.png" />
+          </Card>
+        </Link>
+      </div>
     </>
   );
 }

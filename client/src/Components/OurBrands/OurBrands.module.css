@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 1732.25px;
+  margin: 21px;
+}
+.format {
+  width: 350px;
+  margin: 7px;
+}

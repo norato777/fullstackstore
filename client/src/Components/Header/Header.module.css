@@ -1,0 +1,23 @@
+.container {
+  height: 112px;
+  position: relative;
+  background-color: rgb(49, 49, 49);
+}
+.containerLogo {
+  position: absolute;
+  width: 350px;
+  margin-top: 14px;
+}
+.logo {
+  width: 280px;
+}
+.containerBars {
+  position: absolute;
+  right: 3.5%;
+  width: 490px;
+}
+.auxContainer {
+  height: 56px;
+  margin-top: 20px;
+  margin-bottom: -35px;
+}
