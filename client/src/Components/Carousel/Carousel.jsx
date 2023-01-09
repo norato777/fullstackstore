@@ -18,7 +18,7 @@ export default function CarouselMain() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="./image/MPG-Trident-A-Series.png"
+          src="./image/GR8-II-banner-2000x720.jpg"
           alt="Second slide"
         />
 
@@ -30,7 +30,7 @@ export default function CarouselMain() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="./image/NVIDIA-BANNER-1660Ti.jpg"
+          src="./image/GR8-II-banner-2000x720.jpg"
           alt="Third slide"
         />
 

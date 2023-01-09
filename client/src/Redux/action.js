@@ -65,6 +65,18 @@ export function postProduct(payload) {
     return dispatch({ type: "POST_PRODUCT", payload: response.data });
   };
 }
+export function filterProductsCategory(payload) {
+  return {
+    type: "FILTER_CATEGORY",
+    payload,
+  };
+}
+export function filterProductsBrand(payload) {
+  return {
+    type: "FILTER_BRAND",
+    payload,
+  };
+}
 
 export function postCategory(payload) {
   return async function (dispatch) {
@@ -88,34 +100,27 @@ export function getNameProduct(payload) {
 // login - authentication
 
 export const signUp = (payload) => {
-  return async function (dispatch) {
+  return async function () {
     try {
       const res = await axios.post("http://localhost:3001/signup", payload);
-      return dispatch({ type: "SIGN_UP", payload: res.data });
+      res.data.message !== undefined
+        ? alert(res.data.message)
+        : alert("Usuario creado correctamente");
+      console.log(res);
     } catch (error) {
       return { error: error.message };
     }
   };
 };
 
-export const signIp = (payload) => {
+export const signIn = (payload) => {
   return async function (dispatch) {
     try {
       const res = await axios.post("http://localhost:3001/signin", payload);
-      return dispatch({ type: "SIGN_IN", payload: res.data });
+      alert(res.data.message);
+      return dispatch({ type: "SIGN_IN", payload });
     } catch (error) {
-      return { error: error.message };
-    }
-  };
-};
-
-export const google = () => {
-  return async function (dispatch) {
-    try {
-      const res = await axios.get("http://localhost:3001/auth/google");
-      return dispatch({ type: "SIGN_IN", payload: res.data });
-    } catch (error) {
-      return { error: error.message };
+      alert("Usuario incorrecto");
     }
   };
 };

@@ -6,9 +6,7 @@
 .containerLogo {
   position: absolute;
   width: 350px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-top: 14px;
 }
 .logo {
   width: 280px;
@@ -16,16 +14,10 @@
 .containerBars {
   position: absolute;
   right: 3.5%;
-  top: 10%;
   width: 490px;
 }
-.searchbar {
-  margin: 2%;
-  display: flex;
-  justify-content: flex-end;
-}
-.userbar {
-  margin: 2%;
-  display: flex;
-  justify-content: flex-end;
+.auxContainer {
+  height: 56px;
+  margin-top: 20px;
+  margin-bottom: -35px;
 }

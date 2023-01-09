@@ -3,7 +3,7 @@ const initialState = {
   allProducts: [],
   detail: {},
   cart: [],
-  user: {},
+  user: [],
   order: {},
   orders: [],
   reviews: [],
@@ -53,7 +53,6 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: state.products.filter((p) => p.id !== action.payload),
       };
-
     case "GET_USER":
       return {
         ...state,
@@ -64,7 +63,52 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: action.payload,
       };
-
+    case "FILTER_CATEGORY":
+      if (action.payload === "Category") {
+        return {
+          ...state,
+          products: state.allProducts,
+        };
+      } else {
+        let filtrados = state.allProducts.filter((e) =>
+          e.categories.includes(action.payload)
+        );
+        return {
+          ...state,
+          products: filtrados,
+        };
+      }
+    case "FILTER_BRAND":
+      if (action.payload === "Brand") {
+        return {
+          ...state,
+          products: state.allProducts,
+        };
+      } else {
+        let filtrados = state.allProducts.filter(
+          (e) => e.brand === action.payload
+        );
+        return {
+          ...state,
+          products: filtrados,
+        };
+      }
+    // case login
+    case "SIGN_UP":
+      return {
+        ...state,
+      };
+    case "SIGN_IN":
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case "LOG_OUT":
+      return {
+        ...state,
+        user: [],
+      };
+    //
     default:
       return state;
   }
