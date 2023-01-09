@@ -3,7 +3,7 @@ const initialState = {
   allProducts: [],
   detail: {},
   cart: [],
-  user: {},
+  user: [],
   order: {},
   orders: [],
   reviews: [],
@@ -53,7 +53,6 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: state.products.filter((p) => p.id !== action.payload),
       };
-
     case "GET_USER":
       return {
         ...state,
@@ -71,11 +70,11 @@ export default function rootReducer(state = initialState, action) {
           products: state.products,
         };
       } else {
-        console.log(action.payload)
+        console.log(action.payload);
         let filtrados = state.products.filter((e) =>
           e.categories.includes(action.payload)
         );
-        console.log(filtrados)
+        console.log(filtrados);
         return {
           ...state,
           products: filtrados,
@@ -96,18 +95,35 @@ export default function rootReducer(state = initialState, action) {
           products: filtrados,
         };
       }
-      case "SEARCH_BAR":
-        let busqueda = state.allProducts.filter((e)=>e.name.toLowerCase().includes(action.payload.toLowerCase()))
-        return {
-          ...state,
-          products: busqueda
-        };
-        case "CLEAN_FILTER":          
-          return {
-            ...state,
-            products: state.allProducts
-          };
-
+    // case login
+    case "SIGN_UP":
+      return {
+        ...state,
+      };
+    case "SIGN_IN":
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case "LOG_OUT":
+      return {
+        ...state,
+        user: [],
+      };
+    //
+    case "SEARCH_BAR":
+      let busqueda = state.allProducts.filter((e) =>
+        e.name.toLowerCase().includes(action.payload.toLowerCase())
+      );
+      return {
+        ...state,
+        products: busqueda,
+      };
+    case "CLEAN_FILTER":
+      return {
+        ...state,
+        products: state.allProducts,
+      };
     default:
       return state;
   }
