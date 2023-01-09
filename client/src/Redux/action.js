@@ -108,3 +108,42 @@ export function cleanFilter(payload) {
     payload,
   };
 }
+
+// login - authentication
+
+export const signUp = (payload) => {
+  return async function () {
+    try {
+      const res = await axios.post("http://localhost:3001/signup", payload);
+      res.data.message !== undefined
+        ? alert(res.data.message)
+        : alert("Usuario creado correctamente");
+      console.log(res);
+    } catch (error) {
+      return { error: error.message };
+    }
+  };
+};
+
+export const signIn = (payload) => {
+  return async function (dispatch) {
+    try {
+      const res = await axios.post("http://localhost:3001/signin", payload);
+      alert(res.data.message);
+      return dispatch({ type: "SIGN_IN", payload });
+    } catch (error) {
+      alert("Usuario incorrecto");
+    }
+  };
+};
+
+export const logOut = () => {
+  return async function (dispatch) {
+    try {
+      const res = await axios.get("http://localhost:3001/logout");
+      return dispatch({ type: "LOG_OUT", payload: res.data });
+    } catch (error) {
+      return { error: error.message };
+    }
+  };
+};
