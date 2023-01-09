@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 
 export default function CardConfigPC() {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem", height: "210px" }}>
       <Card.Body>
         <Card.Title>Arma el PC Gamer de tus sueños con nuestro</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">

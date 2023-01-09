@@ -17,12 +17,27 @@ router.get("/:id", (req, res) => {
     .catch((error) => res.json({ message: error }));
 });
 
+router.post("/", (req, res) => {
+  const product = productSchema(req.body);
+  product
+    .save()
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error.message }));
+});
+
 router.put("/:id", (req, res) => {
   const id = req.params.id;
   const product = req.body;
   putProduct(id, product)
     .then((product) => res.json(product))
     .catch((error) => res.json({ message: error }));
+});
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  productSchema
+    .remove({ _id: id })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ mesagge: error }));
 });
 
 module.exports = router;

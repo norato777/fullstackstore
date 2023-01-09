@@ -4,17 +4,15 @@ import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./Redux/store";
-import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    {/* provider viene de redux-thunk */}
-    <Provider store={store}>
+  <Provider store={store}>
+    <React.StrictMode>
       <App />
-    </Provider>
-  </BrowserRouter>
+    </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
