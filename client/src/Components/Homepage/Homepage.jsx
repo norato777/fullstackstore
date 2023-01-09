@@ -12,7 +12,6 @@ export default function Homepage() {
   return (
     <>
       <Promobar />
-      
       <Header />
       <NavbarMain />
       <CardBest />

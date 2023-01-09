@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export async function getProducts(){
     return async function(dispatch){
-        const response = await axios.get('http://localhost:3001/api/product');
+        const response = await axios.get('http://localhost:3001/products');
         return dispatch({type: "GET_PRODUCTS", payload: response.data})
         
         
@@ -25,7 +25,7 @@ export function orderProducts(payload){
 
 export function getDetail(id){
     return async function(dispatch){
-        const response = await axios.get(`http://localhost:3001/api/product/${id}`);
+        const response = await axios.get(`http://localhost:3001/products/${id}`);
         return dispatch({type: "GET_DETAIL", payload: response.data})
     }
 }
@@ -47,28 +47,29 @@ export function removeProduct(payload){
 
 export function getUser(){
     return async function(dispatch){
-        const response = await axios.get('http://localhost:3001/api/users/');
+        const response = await axios.get('http://localhost:3001/users/');
         return dispatch({type: "GET_USER", payload: response.data})
     }
 }
 
 export function postUser(payload){
     return async function(dispatch){
-        const response = await axios.post('http://localhost:3001/api/users/', payload);
+        const response = await axios.post('http://localhost:3001/users', payload);
         return dispatch({type: "POST_USER", payload: response.data})
     }
 }
 
 export function postProduct(payload){
     return async function(dispatch){
-        const response = await axios.post('http://localhost:3001/api/product/', payload);
+        const response = await axios.post('http://localhost:3001/products', payload);
         return dispatch({type: "POST_PRODUCT", payload: response.data})
+        
     }
 }
 
 export function postCategory(payload){
     return async function(dispatch){
-        const response = await axios.post('http://localhost:3001/api/category/', payload);
+        const response = await axios.post('http://localhost:3001/category', payload);
         return dispatch({type: "POST_CATEGORY", payload: response.data})
     }
 }
@@ -76,7 +77,7 @@ export function postCategory(payload){
 
 export function getNameProduct(payload){
     return async function(dispatch){
-        const response = await axios.get(`http://localhost:3001/api/product/name/${payload}`);
+        const response = await axios.get(`http://localhost:3001/products/name/${payload}`);
         return dispatch({type: "GET_NAME_PRODUCT", payload: response.data})
     }
 }
