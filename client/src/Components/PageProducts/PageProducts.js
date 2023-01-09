@@ -22,7 +22,10 @@ function PageProducts() {
   const [prev, setPrev] = useState(20);
 
   const getBrand = () => {
-    const marcas = AllProducts.map((e) => e.brand);
+    const marcas = AllProducts.map((e) => e.brand).sort(function (a, b) {
+      if (a < b) return -1;
+      else return 1;
+    });
     const uniqueBrands = [...new Set(marcas)];
     setBrand(uniqueBrands);
   };
