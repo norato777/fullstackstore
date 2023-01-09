@@ -88,11 +88,23 @@ export function postCategory(payload) {
   };
 }
 
-export function getNameProduct(payload) {
-  return async function (dispatch) {
-    const response = await axios.get(
-      `http://localhost:3001/products/name/${payload}`
-    );
-    return dispatch({ type: "GET_NAME_PRODUCT", payload: response.data });
+// export function getNameProduct(payload) {
+//   return async function (dispatch) {
+//     const response = await axios.get(
+//       `http://localhost:3001/products/name/${payload}`
+//     );
+//     return dispatch({ type: "GET_NAME_PRODUCT", payload: response.data });
+//   };
+// }
+export default function searchBarName(payload) {
+  return {
+    type: "SEARCH_BAR",
+    payload,
+  };
+}
+export function cleanFilter(payload) {
+  return {
+    type: "CLEAN_FILTER",
+    payload,
   };
 }
