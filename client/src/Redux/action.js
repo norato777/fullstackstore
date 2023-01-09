@@ -102,3 +102,9 @@ export default function searchBarName(payload) {
     payload,
   };
 }
+export function cleanFilter(payload) {
+  return {
+    type: "CLEAN_FILTER",
+    payload,
+  };
+}
