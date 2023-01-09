@@ -12,6 +12,7 @@ specifiers:
   '@testing-library/react': ^13.4.0
   '@testing-library/user-event': ^13.5.0
   axios: ^1.2.2
+  boostrap: ^2.0.0
   nodemon: ^2.0.20
   react: ^18.2.0
   react-bootstrap: ^2.7.0
@@ -36,6 +37,7 @@ dependencies:
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/user-event': 13.5.0_ua4wuun3fnehcjqtqj2e2ldgpe
   axios: 1.2.2
+  boostrap: 2.0.0
   nodemon: 2.0.20
   react: 18.2.0
   react-bootstrap: 2.7.0_biqbaboplfbrettd7655fr4n2y
@@ -3727,6 +3729,11 @@ packages:
 
   /boolbase/1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
+    dev: false
+
+  /boostrap/2.0.0:
+    resolution: {integrity: sha512-JEeFMOweKeGXEM9rt95eaVISOkluG9aKcl0jQCETOVH9jynCZxuBZe2oWgcWJpj5wqYWZl625SnW7OgHT2Ineg==}
+    deprecated: Package no longer supported. Contact support@npmjs.com for more info.
     dev: false
 
   /brace-expansion/1.1.11:

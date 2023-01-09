@@ -19,4 +19,4 @@ export default function Paginado ({Products,allProducts , paginado, CurrentPage}
             </ul>
         </nav>
     )
-}
+};

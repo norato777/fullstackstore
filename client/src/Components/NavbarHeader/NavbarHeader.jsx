@@ -1,16 +1,23 @@
 import React from "react";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
+import Nav from "react-bootstrap/Nav";
 
 export default function NavbarHeader() {
   return (
     <>
-      <ButtonGroup variant="text" aria-label="text button group">
-        <Button href="/login">Ingresar</Button>
-        <Button href="/favorites">Favoritos</Button>
-        <Button href="/compare">Comparar</Button>
-        <Button href="/about">Compañia</Button>
-      </ButtonGroup>
+      <Nav className="justify-content-end" activeKey="/home">
+        <Nav.Item>
+          <Nav.Link href="/login">Ingresar</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/favorites">Favoritos</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/compare">Comparar</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/about">Compañia</Nav.Link>
+        </Nav.Item>
+      </Nav>
     </>
   );
 }
