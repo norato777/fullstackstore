@@ -3,15 +3,14 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getProducts } from "../../Redux/action";
+import { useState  } from "react";
+import { useSelector  } from "react-redux";
 import stl from "./CardFeaturedProducts.module.css";
 
 export default function CardFeaturedProducts({ num }) {
-  const Products = useSelector((state) => state.products);
+  const Products = useSelector((state) => state.allProducts);
   const [oneProduct, setOneProduct] = useState(Products[num]);
-  const dispatch = useDispatch();
+
 
   return (
     <>
