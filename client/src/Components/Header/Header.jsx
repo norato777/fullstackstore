@@ -9,25 +9,27 @@ export default function Header() {
   return (
     <>
       <div className={stl.container}>
-        <div className={stl.containerLogo}>
-          <Link to={"/"}>
-            <img src={Logo} alt="logo" className={stl.logo} />
-          </Link>
-        </div>
-        <div className={stl.containerBars}>
-          <div className={stl.auxContainer}>
-            <SearchBarMain />
+        <div className={stl.containerAux}>
+          <div className={stl.containerLogo}>
+            <Link to={"/"}>
+              <img src={Logo} alt="logo" className={stl.logo} />
+            </Link>
           </div>
-          <div className={stl.auxContainer}>
-            <NavbarHeader />
+          <div className={stl.containerBars}>
+            <div className={stl.auxContainer}>
+              <SearchBarMain />
+            </div>
+            <div className={stl.auxContainer}>
+              <NavbarHeader />
+            </div>
           </div>
-        </div>
-        <div className={stl.containerShopCart}>
-          <img
-            src="./image/shopping-cart.svg"
-            alt="Carrito de compras"
-            className={stl.carrito}
-          />
+          <div className={stl.containerShopCart}>
+            <img
+              src="./image/shopping-cart.svg"
+              alt="Carrito de compras"
+              className={stl.carrito}
+            />
+          </div>
         </div>
       </div>
     </>
