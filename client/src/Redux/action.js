@@ -59,10 +59,10 @@ export function postUser(payload) {
 }
 
 export function getUser(){
-    return async function(dispatch){
-        const response = await axios.get('http://localhost:3001/api/users/');
-        return dispatch({type: "GET_USER", payload: response.data})
-    }
+  return async function(dispatch){
+      const response = await axios.get('http://localhost:3001/api/users/');
+      return dispatch({type: "GET_USER", payload: response.data})
+  }
 }
 
 export function postUser(payload){
@@ -85,7 +85,7 @@ export function postCategory(payload){
         return dispatch({type: "POST_CATEGORY", payload: response.data})
     }
   };
-};
+
 
 export const signIn = (payload) => {
   return async function (dispatch) {
@@ -106,4 +106,3 @@ export function getNameProduct(payload){
         return dispatch({type: "GET_NAME_PRODUCT", payload: response.data})
     }
   };
-};
