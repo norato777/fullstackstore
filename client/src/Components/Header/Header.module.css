@@ -1,0 +1,36 @@
+.container {
+  height: 112px;
+  background: linear-gradient(rgb(255, 255, 255), #ffffff, #979797);
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.containerAux {
+  width: 77%;
+  display: flex;
+  justify-content: space-between;
+}
+.containerLogo {
+  width: 350px;
+  margin-top: 14px;
+}
+.logo {
+  width: 280px;
+}
+.containerBars {
+  right: 14%;
+  width: 490px;
+}
+.auxContainer {
+  height: 56px;
+  margin-top: 20px;
+  margin-bottom: -35px;
+}
+.containerShopCart {
+  justify-content: end;
+}
+.carrito {
+  height: 56px;
+  margin-top: 25px;
+}

@@ -12,14 +12,22 @@ specifiers:
   '@testing-library/react': ^13.4.0
   '@testing-library/user-event': ^13.5.0
   axios: ^1.2.2
+  boostrap: ^2.0.0
+  cloudinary-react: ^1.8.1
+  gapi-script: ^1.2.0
+  lodash: '>=4.0'
   nodemon: ^2.0.20
   react: ^18.2.0
   react-bootstrap: ^2.7.0
   react-dom: ^18.2.0
+  react-google-button: ^0.7.2
+  react-google-login: ^5.2.2
+  react-hook-form: ^7.41.5
   react-redux: ^8.0.5
   react-router-dom: ^6.6.1
   react-scripts: 5.0.1
   redux: ^4.2.0
+  redux-devtools-extension: ^2.13.9
   redux-thunk: ^2.4.2
   typescript: ^3.2.1 || ^4
   web-vitals: ^2.1.4
@@ -36,14 +44,22 @@ dependencies:
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/user-event': 13.5.0_ua4wuun3fnehcjqtqj2e2ldgpe
   axios: 1.2.2
+  boostrap: 2.0.0
+  cloudinary-react: 1.8.1_zrp62gez7omnrwllyfdlincg3a
+  gapi-script: 1.2.0
+  lodash: 4.17.21
   nodemon: 2.0.20
   react: 18.2.0
   react-bootstrap: 2.7.0_biqbaboplfbrettd7655fr4n2y
   react-dom: 18.2.0_react@18.2.0
+  react-google-button: 0.7.2_react@18.2.0
+  react-google-login: 5.2.2_biqbaboplfbrettd7655fr4n2y
+  react-hook-form: 7.41.5_react@18.2.0
   react-redux: 8.0.5_e42enmjmqb4imi3q3iaq2rrebm
   react-router-dom: 6.6.1_biqbaboplfbrettd7655fr4n2y
   react-scripts: 5.0.1_suhoixrbctjhyfojppfjnc4z4y
   redux: 4.2.0
+  redux-devtools-extension: 2.13.9_redux@4.2.0
   redux-thunk: 2.4.2_redux@4.2.0
   typescript: 4.9.4
   web-vitals: 2.1.4
@@ -3729,6 +3745,11 @@ packages:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
     dev: false
 
+  /boostrap/2.0.0:
+    resolution: {integrity: sha512-JEeFMOweKeGXEM9rt95eaVISOkluG9aKcl0jQCETOVH9jynCZxuBZe2oWgcWJpj5wqYWZl625SnW7OgHT2Ineg==}
+    deprecated: Package no longer supported. Contact support@npmjs.com for more info.
+    dev: false
+
   /brace-expansion/1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
     dependencies:
@@ -3926,6 +3947,27 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
+    dev: false
+
+  /cloudinary-core/2.13.0_lodash@4.17.21:
+    resolution: {integrity: sha512-Nt0Q5I2FtenmJghtC4YZ3MZZbGg1wLm84SsxcuVwZ83OyJqG9CNIGp86CiI6iDv3QobaqBUpOT7vg+HqY5HxEA==}
+    peerDependencies:
+      lodash: '>=4.0'
+    dependencies:
+      lodash: 4.17.21
+    dev: false
+
+  /cloudinary-react/1.8.1_zrp62gez7omnrwllyfdlincg3a:
+    resolution: {integrity: sha512-90LHbUPfB8Uj5tKY08+ladN8ONyfak8zjnlAgVc39vlxKCx3b9G0/+I5C1QQGDwBRqHKzxyXterfugbWUrCQhA==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16.3.3 || ^17.0.0 || ^18.0.0
+    dependencies:
+      cloudinary-core: 2.13.0_lodash@4.17.21
+      prop-types: 15.8.1
+      react: 18.2.0
+    transitivePeerDependencies:
+      - lodash
     dev: false
 
   /clsx/1.2.1:
@@ -5573,6 +5615,10 @@ packages:
 
   /functions-have-names/1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
+    dev: false
+
+  /gapi-script/1.2.0:
+    resolution: {integrity: sha512-NKTVKiIwFdkO1j1EzcrWu/Pz7gsl1GmBmgh+qhuV2Ytls04W/Eg5aiBL91SCiBM9lU0PMu7p1hTVxhh1rPT5Lw==}
     dev: false
 
   /gensync/1.0.0-beta.2:
@@ -8784,6 +8830,37 @@ packages:
     resolution: {integrity: sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==}
     dev: false
 
+  /react-google-button/0.7.2_react@18.2.0:
+    resolution: {integrity: sha512-LPIqU2hIlc212kqks8MtKjRstquVkP3SIjxlK5B1nIfg2R7YqSusJAxZUkJA5dv/z6QeSuGyI9ujwV/VWMTyAA==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
+  /react-google-login/5.2.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-JUngfvaSMcOuV0lFff7+SzJ2qviuNMQdqlsDJkUM145xkGPVIfqWXq9Ui+2Dr6jdJWH5KYdynz9+4CzKjI5u6g==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+    peerDependencies:
+      react: ^16 || ^17
+      react-dom: ^16 || ^17
+    dependencies:
+      '@types/react': 18.0.26
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /react-hook-form/7.41.5_react@18.2.0:
+    resolution: {integrity: sha512-DAKjSJ7X9f16oQrP3TW2/eD9N6HOgrmIahP4LOdFphEWVfGZ2LulFd6f6AQ/YS/0cx/5oc4j8a1PXxuaurWp/Q==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
@@ -9024,6 +9101,15 @@ packages:
     dependencies:
       indent-string: 4.0.0
       strip-indent: 3.0.0
+    dev: false
+
+  /redux-devtools-extension/2.13.9_redux@4.2.0:
+    resolution: {integrity: sha512-cNJ8Q/EtjhQaZ71c8I9+BPySIBVEKssbPpskBfsXqb8HJ002A3KRVHfeRzwRo6mGPqsm7XuHTqNSNeS1Khig0A==}
+    deprecated: Package moved to @redux-devtools/extension.
+    peerDependencies:
+      redux: ^3.1.0 || ^4.0.0
+    dependencies:
+      redux: 4.2.0
     dev: false
 
   /redux-thunk/2.4.2_redux@4.2.0:
