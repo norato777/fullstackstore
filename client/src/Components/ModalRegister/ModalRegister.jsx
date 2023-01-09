@@ -56,7 +56,7 @@ const ModalRegister = ({ show, handleClose }) => {
                             </Form.Label>
                         </div>
                         <Form.Label>
-                            Password
+                            Contraseña
                             <Form.Control
                                 type="password"
                                 {...register("password", { required: true })}

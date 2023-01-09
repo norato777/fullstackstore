@@ -67,12 +67,14 @@ export default function rootReducer(state = initialState, action) {
       if (action.payload === "Category") {
         return {
           ...state,
-          products: state.allProducts,
+          products: state.products,
         };
       } else {
-        let filtrados = state.allProducts.filter((e) =>
+        console.log(action.payload);
+        let filtrados = state.products.filter((e) =>
           e.categories.includes(action.payload)
         );
+        console.log(filtrados);
         return {
           ...state,
           products: filtrados,
@@ -82,10 +84,10 @@ export default function rootReducer(state = initialState, action) {
       if (action.payload === "Brand") {
         return {
           ...state,
-          products: state.allProducts,
+          products: state.products,
         };
       } else {
-        let filtrados = state.allProducts.filter(
+        let filtrados = state.products.filter(
           (e) => e.brand === action.payload
         );
         return {
@@ -109,6 +111,19 @@ export default function rootReducer(state = initialState, action) {
         user: [],
       };
     //
+    case "SEARCH_BAR":
+      let busqueda = state.allProducts.filter((e) =>
+        e.name.toLowerCase().includes(action.payload.toLowerCase())
+      );
+      return {
+        ...state,
+        products: busqueda,
+      };
+    case "CLEAN_FILTER":
+      return {
+        ...state,
+        products: state.allProducts,
+      };
     default:
       return state;
   }

@@ -4,8 +4,8 @@ import Header from "../Header/Header";
 import NavbarMain from "../NavbarMain/NavbarMain";
 import PromoArea from "../PromoArea/PromoArea";
 import FeaturedProducts from "../FeaturedProducts/FeaturedProducts";
-import OurBrands from "../OurBrands/OurBrands";
 import FeaturedCategories from "../FeaturedCategories/FeaturedCategories";
+import OurBrands from "../OurBrands/OurBrands";
 import Footer from "../Footer/Footer";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -27,14 +27,16 @@ export default function Homepage() {
         <h1>Cargando productos</h1>
       ) : (
         <>
-          <div className={stl.container}>
+          <div>
             <Promobar />
             <Header />
             <NavbarMain />
-            <PromoArea />
-            <FeaturedProducts />
-            <OurBrands />
-            <FeaturedCategories />
+            <div className={stl.containerBody}>
+              <PromoArea />
+              <FeaturedProducts />
+              <OurBrands />
+              <FeaturedCategories />
+            </div>
             <Footer />
           </div>
         </>

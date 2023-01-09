@@ -3,24 +3,31 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getProducts } from "../../Redux/action";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { getDetail } from "../../Redux/action";
 import stl from "./CardFeaturedProducts.module.css";
 
 export default function CardFeaturedProducts({ num }) {
-  const Products = useSelector((state) => state.products);
+  const dispatch = useDispatch()
+  const Products = useSelector((state) => state.allProducts);
   const [oneProduct, setOneProduct] = useState(Products[num]);
-  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(getDetail(oneProduct._id))
+  }
 
   return (
     <>
       <div className={stl.container}>
         <Card style={{ width: "21rem" }}>
           <Card.Subtitle className="mb-2 text-muted">-7%</Card.Subtitle>
-          <div className={stl.image}>
-            <Card.Img variant="top" src={oneProduct.image} />
-          </div>
+          <Link to={`/product/${oneProduct._id}`} onClick={handleClick}>
+            <div className={stl.image}>
+              <Card.Img variant="top" src={oneProduct.image} />
+            </div>
+          </Link>
           <Card.Body>
             <Card.Title className={stl.cardTitle}>{oneProduct.name}</Card.Title>
             <Card.Text>{oneProduct.description.slice(0, 100)}...</Card.Text>
