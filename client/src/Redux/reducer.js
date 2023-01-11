@@ -4,11 +4,12 @@ const initialState = {
   detail: {},
   cart: [],
   user: [],
+  users: [],
   order: {},
   orders: [],
   reviews: [],
-  categories: [],
-  category: {},
+  category: [],
+  brand:[],
   loading: false,
   error: null,
   success: false,
@@ -23,10 +24,23 @@ const initialState = {
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case "GET_PRODUCTS":
+      const categories = state.allProducts.reduce((acc, product) => {
+        acc[product.categories] = true;
+        return acc;
+      }, {});
+      const uniqueCategories = Object.keys(categories);
+      const marcas = state.allProducts.map((e) => e.brand).sort(function (a, b) {
+        if (a < b) return -1;
+        else return 1;
+      });
+      const uniqueBrands = [...new Set(marcas)];
+
       return {
         ...state,
         products: action.payload,
         allProducts: action.payload,
+        brand:uniqueBrands,
+        category: uniqueCategories
       };
     case "FILTER_PRODUCTS":
       return {
@@ -53,10 +67,10 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: state.products.filter((p) => p.id !== action.payload),
       };
-    case "GET_USER":
+    case "GET_USERS":
       return {
         ...state,
-        user: action.payload,
+        users: action.payload,
       };
     case "GET_NAME_PRODUCT":
       return {
@@ -101,10 +115,20 @@ export default function rootReducer(state = initialState, action) {
         ...state,
       };
     case "SIGN_IN":
-      return {
-        ...state,
-        user: action.payload,
-      };
+      const userEmail = state.users.find(
+        (u) => u.email === action.payload.email
+      );
+      if (!userEmail) {
+        return {
+          ...state,
+          user: [],
+        };
+      } else {
+        return {
+          ...state,
+          user: action.payload,
+        };
+      }
     case "LOG_OUT":
       return {
         ...state,
