@@ -1,26 +1,29 @@
 .container {
   height: 112px;
-  background: linear-gradient(rgb(255, 255, 255), #ffffff, #979797);
-  z-index: 1;
+  margin: 21px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  background: var(--clr-2);
+  border-radius: 14px;
+  box-shadow: rgb(0 0 0 / 63%) 0px 20px 30px;
+  border-right: 2.1px solid var(--clr-0-025);
+  border-bottom: 2.1px solid var(--clr-0-025);
+  backdrop-filter: blur(1.4px);
 }
 .containerAux {
-  width: 77%;
+  width: 95%;
   display: flex;
   justify-content: space-between;
 }
 .containerLogo {
-  width: 350px;
   margin-top: 14px;
 }
 .logo {
   width: 280px;
 }
 .containerBars {
-  right: 14%;
-  width: 490px;
+  width: 50%;
 }
 .auxContainer {
   height: 56px;

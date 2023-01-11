@@ -1,11 +1,11 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import searchBarName from "../../Redux/action";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import stl from "./SearchBarMain.module.css";
 
 export default function SearchBarMain() {
   const dispatch = useDispatch();
@@ -33,7 +33,9 @@ export default function SearchBarMain() {
             onChange={handleChange}
             placeholder="¿Que estas buscando hoy?"
           />
-          <Button onClick={handleClick}>Buscar</Button>
+          <button className={stl.boton} onClick={handleClick}>
+            Buscar
+          </button>
         </InputGroup>
       </form>
     </>
