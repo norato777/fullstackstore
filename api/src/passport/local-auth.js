@@ -49,7 +49,7 @@ passport.use(
     async (req, email, password, done) => {
       const user = await User.findOne({ email: email });
       if (!user) {
-        return done(null, false, req.flash("signinMessage", "No user found."));
+        return done(null, false, console.log("No user found."));
       }
       if (!user.comparePassword(password)) {
         return done(
