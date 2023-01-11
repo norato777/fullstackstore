@@ -6,154 +6,157 @@ import {
   getProducts,
   filterProductsBrand,
   cleanFilter,
+  filterProductsPrice,
 } from "../../Redux/action";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import stl from "./PageProducts.module.css";
+import Productos from "../Products/Productos";
+
+
 
 function PageProducts() {
   const Products = useSelector((state) => state.products);
-  const { division, brand, category } = useSelector((state) => state);
   const AllProducts = useSelector((state) => state.allProducts);
   const [filtrados, setFiltrados] = useState();
+  const [category, setCategory] = useState();
   const [selectedCategory, setSelectedCategory] = useState("Categoria");
   const [selectedBrand, setSelectedBrand] = useState("Marca");
-  const [next, setNext] = useState(0);
-  const [prev, setPrev] = useState(20);
-  const [numPage, setNumPage] = useState();
+  const [brand, setBrand] = useState();
+//filtro por precio usando filterProductsPrice de action.js
+  const handleChangePrice = (value) => {
+    setSelectedPrice(value);
+    dispatch(filterProductsPrice(value));
+  };
+  const [selectedPrice, setSelectedPrice] = useState("Price");
+  const [price, setPrice] = useState();
+
+  const getBrand = () => {
+    const marcas = AllProducts.map((e) => e.brand).sort(function (a, b) {
+      if (a < b) return -1;
+      else return 1;
+    });
+    const uniqueBrands = [...new Set(marcas)];
+    setBrand(uniqueBrands);
+  };
+
+  const getCategories = () => {
+    const categories = AllProducts.reduce((acc, product) => {
+      acc[product.categories] = true;
+      return acc;
+    }, {});
+    const uniqueCategories = Object.keys(categories);
+    setCategory(uniqueCategories);
+  };
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!AllProducts.length) dispatch(getProducts());
     setFiltrados(Products);
-    setNumPage(Array.from({ length: filtrados?.length / 20 }, (_, i) => i + 1));
-  }, [dispatch, Products, filtrados]);
+    getCategories();
+    getBrand();
+  }, [dispatch, Products]);
 
   const handleChangeCategory = (value) => {
     setSelectedCategory(value);
     dispatch(filterProductsCategory(value));
-    setNext(0);
-    setPrev(20);
   };
-  const handleChangeBrand = async (value) => {
+  const handleChangeBrand = (value) => {
     setSelectedBrand(value);
     dispatch(filterProductsBrand(value));
-    setNext(0);
-    setPrev(20);
   };
-  const handlePrev = () => {
-    if (next === 0 && prev <= 20) {
-      return next, prev;
-    } else {
-      setNext(next - 20);
-      setPrev(prev - 20);
-    }
-  };
-  const handleNext = () => {
-    if (next >= division * 20 || next > filtrados.length - 20) {
-      return next, prev;
-    } else {
-      setNext(next + 20);
-      setPrev(prev + 20);
-    }
-    console.log(next, prev);
-  };
-  const handleNumPage = (e) => {
-    console.log(e);
-    setNext(20 * e.target.value - 20);
-    setPrev(20 * e.target.value);
-
-    console.log(next, prev);
-  };
-  const limpiarFiltro = () => {
-    setSelectedBrand("Marca");
+  
+  const handleCleanFilter = () => {
     setSelectedCategory("Categoria");
+    setSelectedBrand("Marca");
     dispatch(cleanFilter());
   };
-  return (
-    <>
-      <Header />
-      {filtrados !== undefined && !filtrados.length ? (
-        <div>
-          <h1>No hay productos con este Filtro</h1>
-          <button onClick={limpiarFiltro} className="btn btn-primary m-1">
-            Limpiar filtro
-          </button>
-        </div>
-      ) : (
-        <div className={stl.container}>
-          <div className={stl.filtros}>
-            <select
-              value={selectedCategory}
-              onChange={(e) => handleChangeCategory(e.target.value)}
-              style={{ width: "140px", height: "35px", border: "1px solid" }}
-            >
-              <option>Categoria</option>
-              {category?.map((e, i) => (
-                <option key={i}>{e}</option>
-              ))}
-            </select>
-            <select
-              value={selectedBrand}
-              onChange={(e) => handleChangeBrand(e.target.value)}
-              style={{ width: "140px", height: "35px", border: "1px solid" }}
-            >
-              <option>Marca</option>
-              {brand?.map((e, i) => (
-                <option key={i}>{e}</option>
-              ))}
-            </select>
-            <button onClick={limpiarFiltro} className="btn btn-primary m-1">
-              Limpiar filtro
-            </button>
-          </div>
-          <button onClick={handlePrev} className="btn btn-primary m-1">
-            prev
-          </button>
-          {numPage?.map((e, i) => (
-            <button
-              className="btn btn-primary m-1"
-              key={i}
-              value={e}
-              onClick={handleNumPage}
-            >
-              {e}
-            </button>
-          ))}
-          <button onClick={handleNext} className="btn btn-primary m-1">
-            next
-          </button>
 
-          {filtrados?.slice(next, prev).map((e) => (
-            <div key={e._id}>
-              <div className={stl.contDetails}>
-                <div>
-                  <img className={stl.imageCont} src={e.image} alt="product" />
+  return (
+    <div>
+      <Header />
+      <div className="container">
+        <div className="row">
+          <div className="col-3">
+            <div className="card">
+              <div className="card-header">
+                <h5>Filtros</h5>
+              </div>
+              <div className="card-body">
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlSelect1">Categoria</label>
+                  <select
+                    className="form-control"
+                    id="exampleFormControlSelect1"
+                    value={selectedCategory}
+                    onChange={(e) => handleChangeCategory(e.target.value)}
+                  >
+                    <option>Categoria</option>
+                    {category && category.map((e) => <option>{e}</option>)}
+                  </select>
                 </div>
-                <div className={stl.contSpecs}>
-                  <div className={stl.title}>{e.name}</div>
-                  <div className={stl.brand}>{e.brand}</div>
-                  <div className={stl.price}> $ {e.price}</div>
-                  <div className={stl.details}>
-                    {e.description.slice(0, 210)}
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlSelect1">Marca</label>
+                  <select
+                    className="form-control"
+                    id="exampleFormControlSelect1"
+                    value={selectedBrand}
+                    onChange={(e) => handleChangeBrand(e.target.value)}
+                  >
+                    <option>Marca</option>
+                    {brand && brand.map((e) => <option>{e}</option>)}
+                  </select>
                 </div>
-                <div className={stl.section3}>
-                  <img
-                    src="./image/shopping-cart.svg"
-                    alt="Carrito de compras"
-                    className={stl.carrito}
-                  />
-                  <button className={stl.addProd}>Agregar al carrito</button>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlSelect1">Precio</label>
+                  <select
+                    className="form-control"
+                    id="exampleFormControlSelect1"
+                    value={selectedPrice}
+                    onChange={(e) => handleChangePrice(e.target.value)}
+                  >
+                    <option>Price</option>
+                    <option>Menor a mayor</option>
+                    <option>Mayor a menor</option>
+                  </select>
                 </div>
+              
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleCleanFilter()}
+                >
+                  Limpiar filtros
+                </button>
               </div>
             </div>
-          ))}
+          </div>
+          <div className="col-9">
+            <div className="row">
+             <Productos products={filtrados} />
+            </div>
+          </div>
         </div>
-      )}
+      </div>
       <Footer />
-    </>
+    </div>
   );
+
 }
 
 export default PageProducts;
+
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+
+
+
