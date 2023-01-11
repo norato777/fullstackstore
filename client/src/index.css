@@ -43,4 +43,17 @@ code {
   --clr-8-025: rgba(52, 58, 64, 0.25);
   --clr-9-025: rgba(33, 37, 41, 0.25);
   --clr-10-025: rgba(7, 7, 7, 0.25);
+
+  /* solid red */
+  --clr-0-R: #ffc800;
+  --clr-1-R: #ffb400;
+  --clr-2-R: #ffa000;
+  --clr-3-R: #ff8c00;
+  --clr-4-R: #ff7800;
+  --clr-5-R: #ff6400;
+  --clr-6-R: #ff5000;
+  --clr-7-R: #ff3c00;
+  --clr-8-R: #ff2800;
+  --clr-9-R: #ff1400;
+  --clr-10-R: #ff0000;
 }
