@@ -124,6 +124,23 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: state.allProducts,
       };
+    case "FILTER_PRICE":
+      if (action.payload === "Price") {
+        return {
+          ...state,
+          products: state.products,
+        };
+      } else {
+        let filtrados = state.products.filter((e) => e.price < action.payload);
+        return {
+          ...state,
+          products: filtrados,
+        };
+      }
+      
+
+
+
     default:
       return state;
   }

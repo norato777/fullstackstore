@@ -8,11 +8,13 @@ export default function FeaturedProducts() {
     <>
       <h1>Productos destacados de hoy</h1>
       <div className={stl.container}>
+        {/* productos destacados de hoy */}
         <CardFeaturedProducts num={num} />
         <CardFeaturedProducts num={num + 14} />
         <CardFeaturedProducts num={num + 35} />
         <CardFeaturedProducts num={num + 63} />
-        <CardFeaturedProducts num={num + 70} />
+    
+       
       </div>
     </>
   );
