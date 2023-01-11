@@ -3,20 +3,24 @@ import Nav from "react-bootstrap/Nav";
 import stl from "./NavbarHeader.module.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { logOut } from "../../Redux/action";
+import { logOut, getUsers } from "../../Redux/action";
 import ModalLogin from "../ModalLogin/ModalLogin";
 import ModalRegister from "../ModalRegister/ModalRegister";
+import { useEffect } from "react";
 
 export default function NavbarHeader() {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
   const user = useSelector(state => state.user)
-
   const handleClose = () => setShow(false);
   const handleClose2 = () => setShow2(false);
   const handleShow = () => setShow(true);
   const handleShow2 = () => setShow2(true);
+
+  useEffect(() => {
+    dispatch(getUsers())
+  }, [])
 
   const signOut = () => {
     dispatch(logOut())
