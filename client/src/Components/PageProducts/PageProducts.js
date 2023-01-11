@@ -9,6 +9,7 @@ import {
 } from "../../Redux/action";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import stl from "./PageProducts.module.css";
 
 function PageProducts() {
   const Products = useSelector((state) => state.products);
@@ -22,7 +23,10 @@ function PageProducts() {
   const [prev, setPrev] = useState(20);
 
   const getBrand = () => {
-    const marcas = AllProducts.map((e) => e.brand);
+    const marcas = AllProducts.map((e) => e.brand).sort(function (a, b) {
+      if (a < b) return -1;
+      else return 1;
+    });
     const uniqueBrands = [...new Set(marcas)];
     setBrand(uniqueBrands);
   };
@@ -81,41 +85,71 @@ function PageProducts() {
       {!AllProducts.length ? (
         <h1>Cargando...</h1>
       ) : (
-        <div>
-          <select
-            value={selectedCategory}
-            onChange={(e) => handleChangeCategory(e.target.value)}
-          >
-            <option>Categoria</option>
-            {category?.map((e, i) => (
-              <option key={i}>{e}</option>
-            ))}
-          </select>
-          <select
-            value={selectedBrand}
-            onChange={(e) => handleChangeBrand(e.target.value)}
-          >
-            <option>Marca</option>
-            {brand?.map((e, i) => (
-              <option key={i}>{e}</option>
-            ))}
-          </select>
-          <button onClick={limpiarFiltro}>Limpiar filtro</button>
-          <button className="btn btn-primary" onClick={handlePrev}>
-            {" "}
-            prev
-          </button>
-          <button className="btn btn-primary" onClick={handleNext}>
-            {" "}
-            next
-          </button>
+        <div className={stl.container}>
+          <div className={stl.filtros}>
+            <select
+              value={selectedCategory}
+              onChange={(e) => handleChangeCategory(e.target.value)}
+              style={{ width: "140px", height: "35px", border: "1px solid" }}
+            >
+              <option>Categoria</option>
+              {category?.map((e, i) => (
+                <option key={i}>{e}</option>
+              ))}
+            </select>
+            <select
+              value={selectedBrand}
+              onChange={(e) => handleChangeBrand(e.target.value)}
+              style={{ width: "140px", height: "35px", border: "1px solid" }}
+            >
+              <option>Marca</option>
+              {brand?.map((e, i) => (
+                <option key={i}>{e}</option>
+              ))}
+            </select>
+            <button
+              onClick={limpiarFiltro}
+              style={{ width: "105px", height: "35px", border: "1px solid" }}
+            >
+              Limpiar filtro
+            </button>
+            <button
+              onClick={handlePrev}
+              style={{ width: "105px", height: "35px", border: "1px solid" }}
+            >
+              prev
+            </button>
+            <button
+              onClick={handleNext}
+              style={{ width: "105px", height: "35px", border: "1px solid" }}
+            >
+              next
+            </button>
+          </div>
+
           {filtrados?.slice(next, prev).map((e) => (
             <div key={e._id}>
-              <h5>{e.name}</h5>
-              <span>{e.brand}</span>
-              <span> $ {e.price}</span>
-              <p>{e.description}</p>
-              <img src={e.image} alt="not found" />
+              <div className={stl.contDetails}>
+                <div>
+                  <img className={stl.imageCont} src={e.image} alt="product" />
+                </div>
+                <div className={stl.contSpecs}>
+                  <div className={stl.title}>{e.name}</div>
+                  <div className={stl.brand}>{e.brand}</div>
+                  <div className={stl.price}> $ {e.price}</div>
+                  <div className={stl.details}>
+                    {e.description.slice(0, 210)}
+                  </div>
+                </div>
+                <div className={stl.section3}>
+                  <img
+                    src="./image/shopping-cart.svg"
+                    alt="Carrito de compras"
+                    className={stl.carrito}
+                  />
+                  <button className={stl.addProd}>Agregar al carrito</button>
+                </div>
+              </div>
             </div>
           ))}
         </div>
