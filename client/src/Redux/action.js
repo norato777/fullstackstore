@@ -179,3 +179,15 @@ export const logOut = () => {
     }
   };
 };
+
+//filtro por precio maximo y minimo en el front
+
+export function filterProductsPrice(payload) {
+  return {
+    type: "FILTER_PRICE",
+    payload,
+  };
+}
+
+
+

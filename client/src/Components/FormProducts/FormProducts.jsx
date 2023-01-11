@@ -118,7 +118,12 @@ export default function MyForm() {
             </div>
           </Form.Group>
         </div>
-        <Button type="submit">Submit</Button>
+        <div className={stl.button}>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </div>
+        
       </Form>
       <Footer />
     </>
