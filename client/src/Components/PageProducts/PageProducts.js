@@ -12,7 +12,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Productos from "../Products/Productos";
 
-//page products tomar productos de import Productos from "../Products/Productos"; y mostrarlos con filtros de categorias usando filterProductsCategory y filterProductsBrand de action.js
+
 
 function PageProducts() {
   const Products = useSelector((state) => state.products);
@@ -143,20 +143,3 @@ function PageProducts() {
 }
 
 export default PageProducts;
-
-
-
-
-
-
-
-                  
-
-
-
-
-
-
-
-
-
