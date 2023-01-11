@@ -7,8 +7,8 @@ const initialState = {
   order: {},
   orders: [],
   reviews: [],
-  categories: [],
-  category: {},
+  category: [],
+  brand:[],
   loading: false,
   error: null,
   success: false,
@@ -23,10 +23,23 @@ const initialState = {
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case "GET_PRODUCTS":
+      const categories = state.allProducts.reduce((acc, product) => {
+        acc[product.categories] = true;
+        return acc;
+      }, {});
+      const uniqueCategories = Object.keys(categories);
+      const marcas = state.allProducts.map((e) => e.brand).sort(function (a, b) {
+        if (a < b) return -1;
+        else return 1;
+      });
+      const uniqueBrands = [...new Set(marcas)];
+
       return {
         ...state,
         products: action.payload,
         allProducts: action.payload,
+        brand:uniqueBrands,
+        category: uniqueCategories
       };
     case "FILTER_PRODUCTS":
       return {

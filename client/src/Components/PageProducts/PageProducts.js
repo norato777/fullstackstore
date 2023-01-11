@@ -13,48 +13,33 @@ import stl from "./PageProducts.module.css";
 
 function PageProducts() {
   const Products = useSelector((state) => state.products);
+  const { division, brand, category } = useSelector((state) => state);
   const AllProducts = useSelector((state) => state.allProducts);
   const [filtrados, setFiltrados] = useState();
-  const [category, setCategory] = useState();
   const [selectedCategory, setSelectedCategory] = useState("Categoria");
   const [selectedBrand, setSelectedBrand] = useState("Marca");
-  const [brand, setBrand] = useState();
   const [next, setNext] = useState(0);
   const [prev, setPrev] = useState(20);
-
-  const getBrand = () => {
-    const marcas = AllProducts.map((e) => e.brand).sort(function (a, b) {
-      if (a < b) return -1;
-      else return 1;
-    });
-    const uniqueBrands = [...new Set(marcas)];
-    setBrand(uniqueBrands);
-  };
-
-  const getCategories = () => {
-    const categories = AllProducts.reduce((acc, product) => {
-      acc[product.categories] = true;
-      return acc;
-    }, {});
-    const uniqueCategories = Object.keys(categories);
-    setCategory(uniqueCategories);
-  };
+  const [numPage, setNumPage] = useState();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!AllProducts.length) dispatch(getProducts());
     setFiltrados(Products);
-    getCategories();
-    getBrand();
-  }, [dispatch, Products]);
+    setNumPage(Array.from({ length: filtrados?.length / 20 }, (_, i) => i + 1));
+  }, [dispatch, Products, filtrados]);
 
   const handleChangeCategory = (value) => {
     setSelectedCategory(value);
     dispatch(filterProductsCategory(value));
+    setNext(0);
+    setPrev(20);
   };
-  const handleChangeBrand = (value) => {
+  const handleChangeBrand = async (value) => {
     setSelectedBrand(value);
     dispatch(filterProductsBrand(value));
+    setNext(0);
+    setPrev(20);
   };
   const handlePrev = () => {
     if (next === 0 && prev <= 20) {
@@ -65,13 +50,19 @@ function PageProducts() {
     }
   };
   const handleNext = () => {
-    const divicion = Math.trunc(filtrados.length / 20);
-    if (next >= divicion * 20) {
+    if (next >= division * 20 || next > filtrados.length - 20) {
       return next, prev;
     } else {
       setNext(next + 20);
       setPrev(prev + 20);
     }
+    console.log(next, prev);
+  };
+  const handleNumPage = (e) => {
+    console.log(e);
+    setNext(20 * e.target.value - 20);
+    setPrev(20 * e.target.value);
+
     console.log(next, prev);
   };
   const limpiarFiltro = () => {
@@ -82,8 +73,13 @@ function PageProducts() {
   return (
     <>
       <Header />
-      {!AllProducts.length ? (
-        <h1>Cargando...</h1>
+      {filtrados !== undefined && !filtrados.length ? (
+        <div>
+          <h1>No hay productos con este Filtro</h1>
+          <button onClick={limpiarFiltro} className="btn btn-primary m-1">
+            Limpiar filtro
+          </button>
+        </div>
       ) : (
         <div className={stl.container}>
           <div className={stl.filtros}>
@@ -107,25 +103,26 @@ function PageProducts() {
                 <option key={i}>{e}</option>
               ))}
             </select>
-            <button
-              onClick={limpiarFiltro}
-              style={{ width: "105px", height: "35px", border: "1px solid" }}
-            >
+            <button onClick={limpiarFiltro} className="btn btn-primary m-1">
               Limpiar filtro
             </button>
-            <button
-              onClick={handlePrev}
-              style={{ width: "105px", height: "35px", border: "1px solid" }}
-            >
-              prev
-            </button>
-            <button
-              onClick={handleNext}
-              style={{ width: "105px", height: "35px", border: "1px solid" }}
-            >
-              next
-            </button>
           </div>
+          <button onClick={handlePrev} className="btn btn-primary m-1">
+            prev
+          </button>
+          {numPage?.map((e, i) => (
+            <button
+              className="btn btn-primary m-1"
+              key={i}
+              value={e}
+              onClick={handleNumPage}
+            >
+              {e}
+            </button>
+          ))}
+          <button onClick={handleNext} className="btn btn-primary m-1">
+            next
+          </button>
 
           {filtrados?.slice(next, prev).map((e) => (
             <div key={e._id}>
