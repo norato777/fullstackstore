@@ -1,12 +1,16 @@
 .container {
   height: 49px;
-  width: 100%;
+  margin: 21px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: aliceblue;
-  text-decoration: none;
   object-fit: contain;
-  margin: 0px auto;
-  background-color: rgb(16, 30, 59);
+  background: var(--clr-10-05);
+  border-radius: 14px;
+  box-shadow: rgb(0 0 0 / 63%) 0px 20px 30px;
+}
+.title {
+  font-size: 21px;
+  color: var(--clr-3);
+  text-decoration: none;
 }
