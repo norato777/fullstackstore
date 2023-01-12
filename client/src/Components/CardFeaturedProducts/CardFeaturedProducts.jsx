@@ -23,10 +23,8 @@ export default function CardFeaturedProducts2({ num }) {
             <img src={oneProduct.image} className={stl.prodImg} />
           </Link>
         </div>
-        <div className={stl.item3}>{oneProduct.name.slice(0, 70)}</div>
-        <div className={stl.item4}>
-          {oneProduct.description.slice(0, 105)}...
-        </div>
+        <div className={stl.item3}>{oneProduct.name.slice(0, 70)}...</div>
+
         <div className={stl.item5}>sku: XXX-XXXXXX</div>
         <div className={stl.item6}>${oneProduct.price}</div>
         <div className={stl.item7}>

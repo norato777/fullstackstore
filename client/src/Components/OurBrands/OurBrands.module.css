@@ -1,19 +1,20 @@
 .container {
+  height: 105px;
   display: flex;
   flex-direction: row;
-  width: 100%;
   margin-top: 21px;
   margin-bottom: 21px;
-  width: 100%;
-  justify-content: space-between;
-  margin-left: 0;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--clr-0);
+  border-radius: 14px;
+  box-shadow: rgb(0 0 0 / 63%) 0px 20px 30px;
+  border-right: 2.1px solid var(--clr-0-025);
+  border-bottom: 2.1px solid var(--clr-0-025);
 }
 
-
-
 .format {
-  width: 100%;
-  height: 100%;
+  aspect-ratio: initial;
 }
 
 .format img:hover {
@@ -25,7 +26,7 @@
   transform: scale(1.1);
   transition: 0.5s;
 }
-
+/* 
 @media (max-width: 768px) {
   .container {
     width: 100%;
@@ -79,6 +80,4 @@
     justify-content: space-between;
     margin-left: 0;
   }
-}
-
-
+} */
