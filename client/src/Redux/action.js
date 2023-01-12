@@ -188,6 +188,15 @@ export function filterProductsPrice(payload) {
     payload,
   };
 }
-
+export function putCalificationRating(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(`http://localhost:3001/products/rating/${payload._id}`,payload);
+      return dispatch({ type: "PUT_RATING", payload: response.data });
+    } catch (error) {
+    console.log(error.message)      
+    }
+  };
+}
 
 
