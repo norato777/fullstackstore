@@ -1,16 +1,22 @@
 import * as React from "react";
-import Card from "react-bootstrap/Card";
+import stl from "./CardAccountCheck.module.css";
 
 export default function CardAccountCheck() {
   return (
-    <Card style={{ width: "18rem", height: "210px" }}>
-      <Card.Body>
-        <Card.Title>¿Ya tienes cuenta?</Card.Title>
-        <Card.Text>* Mas de 40000 productos.</Card.Text>
-        <Card.Text>* Compras y envios seguros.</Card.Text>
-        <Card.Text>* Comparte y revisa opiniones.</Card.Text>
-        <Card.Link href="#">Registrate</Card.Link>
-      </Card.Body>
-    </Card>
+    <>
+      <div className={stl.container}>
+        <div className={stl.title}>¿Ya tienes cuenta?</div>
+        <div className={stl.content}>
+          <div className={stl.text}>* Crea listas de favoritos.</div>
+          <div className={stl.text}>
+            * Envios faciles con tu libreta de direcciones.
+          </div>
+          <div className={stl.text}>
+            * Escribe preguntas y opiniones de productos.
+          </div>
+        </div>
+        <button className={stl.button}>Registrarme</button>
+      </div>
+    </>
   );
 }

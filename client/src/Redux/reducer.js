@@ -3,12 +3,13 @@ const initialState = {
   allProducts: [],
   detail: {},
   cart: [],
-  user: {},
+  user: [],
+  users: [],
   order: {},
   orders: [],
   reviews: [],
-  categories: [],
-  category: {},
+  category: [],
+  brand:[],
   loading: false,
   error: null,
   success: false,
@@ -23,10 +24,23 @@ const initialState = {
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case "GET_PRODUCTS":
+      const categories = state.allProducts.reduce((acc, product) => {
+        acc[product.categories] = true;
+        return acc;
+      }, {});
+      const uniqueCategories = Object.keys(categories);
+      const marcas = state.allProducts.map((e) => e.brand).sort(function (a, b) {
+        if (a < b) return -1;
+        else return 1;
+      });
+      const uniqueBrands = [...new Set(marcas)];
+
       return {
         ...state,
         products: action.payload,
         allProducts: action.payload,
+        brand:uniqueBrands,
+        category: uniqueCategories
       };
     case "FILTER_PRODUCTS":
       return {
@@ -53,11 +67,10 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: state.products.filter((p) => p.id !== action.payload),
       };
-
-    case "GET_USER":
+    case "GET_USERS":
       return {
         ...state,
-        user: action.payload,
+        users: action.payload,
       };
     case "GET_NAME_PRODUCT":
       return {
@@ -71,11 +84,11 @@ export default function rootReducer(state = initialState, action) {
           products: state.products,
         };
       } else {
-        console.log(action.payload)
+        console.log(action.payload);
         let filtrados = state.products.filter((e) =>
           e.categories.includes(action.payload)
         );
-        console.log(filtrados)
+        console.log(filtrados);
         return {
           ...state,
           products: filtrados,
@@ -96,17 +109,61 @@ export default function rootReducer(state = initialState, action) {
           products: filtrados,
         };
       }
-      case "SEARCH_BAR":
-        let busqueda = state.allProducts.filter((e)=>e.name.toLowerCase().includes(action.payload.toLowerCase()))
+    // case login
+    case "SIGN_UP":
+      return {
+        ...state,
+      };
+    case "SIGN_IN":
+      const userEmail = state.users.find(
+        (u) => u.email === action.payload.email
+      );
+      if (!userEmail) {
         return {
           ...state,
-          products: busqueda
+          user: [],
         };
-        case "CLEAN_FILTER":          
-          return {
-            ...state,
-            products: state.allProducts
-          };
+      } else {
+        return {
+          ...state,
+          user: action.payload,
+        };
+      }
+    case "LOG_OUT":
+      return {
+        ...state,
+        user: [],
+      };
+    //
+    case "SEARCH_BAR":
+      let busqueda = state.allProducts.filter((e) =>
+        e.name.toLowerCase().includes(action.payload.toLowerCase())
+      );
+      return {
+        ...state,
+        products: busqueda,
+      };
+    case "CLEAN_FILTER":
+      return {
+        ...state,
+        products: state.allProducts,
+      };
+    case "FILTER_PRICE":
+      if (action.payload === "Price") {
+        return {
+          ...state,
+          products: state.products,
+        };
+      } else {
+        let filtrados = state.products.filter((e) => e.price < action.payload);
+        return {
+          ...state,
+          products: filtrados,
+        };
+      }
+      
+
+
 
     default:
       return state;

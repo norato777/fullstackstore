@@ -1,15 +1,15 @@
 const express = require("express");
 const engine = require("ejs-mate");
-const path = require("path");
 const morgan = require("morgan");
-const passport = require("passport");
 const session = require("express-session");
+const cors = require("cors");
+const path = require("path");
+const passport = require("passport");
 const routes = require("./routes/index.routes");
 const userRoutes = require("../src/routes/users");
-const cors = require("cors");
 const bodyParser = require("body-parser");
 
-// initializaciones
+// initializations
 const app = express();
 require("../database");
 require("./passport/local-auth");

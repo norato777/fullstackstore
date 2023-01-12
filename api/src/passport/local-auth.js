@@ -1,6 +1,5 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-
 const User = require("../models/Users");
 
 passport.serializeUser((user, done) => {
@@ -26,7 +25,7 @@ passport.use(
         return done(
           null,
           false,
-          req.flash("signupMessage", "The email is already taken.")
+          console.log("The email is already taken.")
         );
       } else {
         const newUser = new User();
@@ -50,13 +49,13 @@ passport.use(
     async (req, email, password, done) => {
       const user = await User.findOne({ email: email });
       if (!user) {
-        return done(null, false, req.flash("signinMessage", "No user found."));
+        return done(null, false, console.log("No user found."));
       }
       if (!user.comparePassword(password)) {
         return done(
           null,
           false,
-          req.flash("signinMessage", "Incorrect password.")
+          console.log("Incorrect password.")
         );
       }
       done(null, user);
