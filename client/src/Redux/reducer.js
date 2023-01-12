@@ -134,7 +134,6 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         user: [],
       };
-    //
     case "SEARCH_BAR":
       let busqueda = state.allProducts.filter((e) =>
         e.name.toLowerCase().includes(action.payload.toLowerCase())
@@ -161,10 +160,10 @@ export default function rootReducer(state = initialState, action) {
           products: filtrados,
         };
       }
-      
-
-
-
+      case "PUT_RATING":
+        return {
+          ...state,
+        };
     default:
       return state;
   }

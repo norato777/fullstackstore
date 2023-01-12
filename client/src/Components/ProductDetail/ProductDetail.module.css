@@ -15,3 +15,7 @@
     margin: 0 auto;
     margin-bottom: 10px;
 }
+.div{
+    display: flex;
+    justify-content: center;
+}

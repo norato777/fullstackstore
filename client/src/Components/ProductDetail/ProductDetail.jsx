@@ -5,6 +5,7 @@ import NavbarMain from "../NavbarMain/NavbarMain";
 import Footer from "../Footer/Footer";
 import { useSelector } from "react-redux";
 import s from "./ProductDetail.module.css";
+import Rating_Coments from "../Rating_Coments/Rating_Coments";
 
 const ProductDetail = () => {
   const details = useSelector((state) => state.detail);
