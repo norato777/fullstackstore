@@ -3,14 +3,15 @@ import Card from 'react-bootstrap/Card';
 import Header from "../Header/Header";
 import { useSelector } from "react-redux";
 import s from "./ProductDetail.module.css";
+import Paypal from "../Paypal/Papypal";
 
 const ProductDetail = () => {
     const details = useSelector(state => state.detail)
-    console.log(details)
 
     return (
         <>
-        <Header />
+            <Header />
+            <Paypal />
             {details &&
                 <>
                     <Card className={s.card}>
@@ -32,7 +33,6 @@ const ProductDetail = () => {
                     </Card>
                 </>
             }
-
         </>
     )
 }
