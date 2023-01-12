@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import stl from "./FormProducts.module.css";
+import UploadImages from "../UploadImages/UploadImages";
 
 export default function MyForm() {
   const dispatch = useDispatch();
@@ -40,14 +41,15 @@ export default function MyForm() {
               </Form.Label>
             </div>
             <div className={stl.item}>
-              <Form.Label>
+              <UploadImages />
+              {/* <Form.Label>
                 Image:
                 <Form.Control
                   type="text"
                   {...register("image", { required: true })}
                 />
                 {errors.image?.type === "required" && <p>image is required </p>}
-              </Form.Label>
+              </Form.Label> */}
             </div>
             <div className={stl.item}>
               <Form.Label>
@@ -116,7 +118,12 @@ export default function MyForm() {
             </div>
           </Form.Group>
         </div>
-        <Button type="submit">Submit</Button>
+        <div className={stl.button}>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </div>
+        
       </Form>
       <Footer />
     </>

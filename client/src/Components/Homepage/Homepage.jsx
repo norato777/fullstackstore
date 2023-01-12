@@ -23,8 +23,11 @@ export default function Homepage() {
 
   return (
     <>
-      {!Products.length ? (
-        <h1>Cargando productos</h1>
+      {/* simbolo de carga mientras carga la pagina bootstrap  */}
+      {!Products.length ? ( 
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
       ) : (
         <>
           <div>

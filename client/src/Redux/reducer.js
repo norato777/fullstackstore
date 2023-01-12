@@ -4,6 +4,7 @@ const initialState = {
   detail: {},
   cart: [],
   user: [],
+  users: [],
   order: {},
   orders: [],
   reviews: [],
@@ -66,10 +67,10 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: state.products.filter((p) => p.id !== action.payload),
       };
-    case "GET_USER":
+    case "GET_USERS":
       return {
         ...state,
-        user: action.payload,
+        users: action.payload,
       };
     case "GET_NAME_PRODUCT":
       return {
@@ -114,10 +115,20 @@ export default function rootReducer(state = initialState, action) {
         ...state,
       };
     case "SIGN_IN":
-      return {
-        ...state,
-        user: action.payload,
-      };
+      const userEmail = state.users.find(
+        (u) => u.email === action.payload.email
+      );
+      if (!userEmail) {
+        return {
+          ...state,
+          user: [],
+        };
+      } else {
+        return {
+          ...state,
+          user: action.payload,
+        };
+      }
     case "LOG_OUT":
       return {
         ...state,
@@ -136,10 +147,23 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: state.allProducts,
       };
-    case "PUT_RATING":
-      return {
-        ...state,
-      };
+    case "FILTER_PRICE":
+      if (action.payload === "Price") {
+        return {
+          ...state,
+          products: state.products,
+        };
+      } else {
+        let filtrados = state.products.filter((e) => e.price < action.payload);
+        return {
+          ...state,
+          products: filtrados,
+        };
+      }
+      case "PUT_RATING":
+        return {
+          ...state,
+        };
     default:
       return state;
   }

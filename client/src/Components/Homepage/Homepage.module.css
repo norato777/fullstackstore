@@ -2,9 +2,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Consolas;
+}
+body {
+  background: var(--clr-2);
 }
 .containerBody {
+  margin-right: 210px;
+  margin-left: 210px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* background: var(--clr-2);
+  box-shadow: rgb(0 0 0 / 63%) 0px 20px 30px; */
 }
