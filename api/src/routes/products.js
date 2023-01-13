@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const productSchema = require("../models/Product");
-const { putProduct } = require("../constrollers/productsController");
+const { putProduct, putProductCalification } = require("../constrollers/productsController");
 
 router.get("/", (req, res) => {
   productSchema
@@ -29,6 +29,13 @@ router.put("/:id", (req, res) => {
   const id = req.params.id;
   const product = req.body;
   putProduct(id, product)
+    .then((product) => res.json(product))
+    .catch((error) => res.json({ message: error }));
+});
+router.put("/rating/:id", (req, res) => {
+  const id = req.params.id;
+  const product = req.body;
+  putProductCalification(product,id)
     .then((product) => res.json(product))
     .catch((error) => res.json({ message: error }));
 });
