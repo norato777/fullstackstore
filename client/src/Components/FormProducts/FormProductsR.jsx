@@ -26,12 +26,12 @@ export default function MyForm() {
     <>
       <Container fluid="xxl">
         <Header />
-        <Form className="mb-10" onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className={stl.title}>
-            <h1>Crear Producto Nuevo</h1>
+            <h1>Crear Producto</h1>
           </div>
-          <div className={stl.container}>
-            <Form.Group className="mb-8" controlId="formBasicEmail">
+          <div>
+            <Form.Group className={stl.container} controlId="formBasicEmail">
               <div className={stl.item}>
                 <Form.Label>
                   Name:
@@ -112,14 +112,14 @@ export default function MyForm() {
                   <Form.Control type="text" {...register("description")} />
                 </Form.Label>
               </div>
+              <div>
+                <button className={stl.boton} type="submit">
+                  Submit
+                </button>
+              </div>
             </Form.Group>
           </div>
-          <div className={stl.button}>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </div>
-        </Form>
+        </form>
         <Footer />
       </Container>
     </>
