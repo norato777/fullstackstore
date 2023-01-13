@@ -34,24 +34,25 @@
 }
 .containerShopCart {
   justify-content: end;
+  color: var(--clr-7-R);
 }
 .button {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 40px;
+  height: auto;
   margin-top: 20px;
   border-radius: 10px;
   transition: 0.2s;
-  font-size: 25px;
-  color:rgb(255, 142, 67); 
-  border-color:rgb(255, 142, 67); 
+  font-size: 30px;
+  color:var(--clr-7-R);
+  border:none; 
 }
 .button:hover{
-  border: 2px solid rgb(255, 102, 0);
-  background-color: rgb(255, 142, 67);
+  border:none;
+  background-color: var(--clr-7-R);
   color: white;
   font-weight: bold;
-
 }
+
