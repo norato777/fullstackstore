@@ -2,7 +2,6 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./Components/Homepage/Homepage";
 import FormProducts from "./Components/FormProducts/FormProducts";
-import FormProductsR from "./Components/FormProducts/FormProductsR";
 import PageProducts from "./Components/PageProducts/PageProducts";
 import ProductDetail from "./Components/ProductDetail/ProductDetail";
 
@@ -13,7 +12,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/form" element={<FormProducts />} />
-          <Route path="/form2" element={<FormProductsR />} />
           <Route path="/products" element={<PageProducts />} />
           <Route path="/product/:id" element={<ProductDetail />} />
         </Routes>
