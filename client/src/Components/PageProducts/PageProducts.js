@@ -6,9 +6,13 @@ import {
   getProducts,
   filterProductsBrand,
   cleanFilter,
+  filterProductsPrice,
 } from "../../Redux/action";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import Productos from "../Products/Productos";
+
+
 
 function PageProducts() {
   const Products = useSelector((state) => state.products);
@@ -18,8 +22,13 @@ function PageProducts() {
   const [selectedCategory, setSelectedCategory] = useState("Categoria");
   const [selectedBrand, setSelectedBrand] = useState("Marca");
   const [brand, setBrand] = useState();
-  const [next, setNext] = useState(0);
-  const [prev, setPrev] = useState(20);
+//filtro por precio usando filterProductsPrice de action.js
+  const handleChangePrice = (value) => {
+    setSelectedPrice(value);
+    dispatch(filterProductsPrice(value));
+  };
+  const [selectedPrice, setSelectedPrice] = useState("Price");
+  const [price, setPrice] = useState();
 
   const getBrand = () => {
     const marcas = AllProducts.map((e) => e.brand).sort(function (a, b) {
@@ -55,77 +64,99 @@ function PageProducts() {
     setSelectedBrand(value);
     dispatch(filterProductsBrand(value));
   };
-  const handlePrev = () => {
-    if (next === 0 && prev <= 20) {
-      return next, prev;
-    } else {
-      setNext(next - 20);
-      setPrev(prev - 20);
-    }
-  };
-  const handleNext = () => {
-    const divicion = Math.trunc(filtrados.length / 20);
-    if (next >= divicion * 20) {
-      return next, prev;
-    } else {
-      setNext(next + 20);
-      setPrev(prev + 20);
-    }
-    console.log(next, prev);
-  };
-  const limpiarFiltro = () => {
-    setSelectedBrand("Marca");
+  
+  const handleCleanFilter = () => {
     setSelectedCategory("Categoria");
+    setSelectedBrand("Marca");
     dispatch(cleanFilter());
   };
+
   return (
-    <>
+    <div>
       <Header />
-      {!AllProducts.length ? (
-        <h1>Cargando...</h1>
-      ) : (
-        <div>
-          <select
-            value={selectedCategory}
-            onChange={(e) => handleChangeCategory(e.target.value)}
-          >
-            <option>Categoria</option>
-            {category?.map((e, i) => (
-              <option key={i}>{e}</option>
-            ))}
-          </select>
-          <select
-            value={selectedBrand}
-            onChange={(e) => handleChangeBrand(e.target.value)}
-          >
-            <option>Marca</option>
-            {brand?.map((e, i) => (
-              <option key={i}>{e}</option>
-            ))}
-          </select>
-          <button onClick={limpiarFiltro}>Limpiar filtro</button>
-          <button className="btn btn-primary" onClick={handlePrev}>
-            {" "}
-            prev
-          </button>
-          <button className="btn btn-primary" onClick={handleNext}>
-            {" "}
-            next
-          </button>
-          {filtrados?.slice(next, prev).map((e) => (
-            <div key={e._id}>
-              <h5>{e.name}</h5>
-              <span>{e.brand}</span>
-              <span> $ {e.price}</span>
-              <p>{e.description}</p>
-              <img src={e.image} alt="not found" />
+      <div className="container">
+        <div className="row">
+          <div className="col-3">
+            <div className="card">
+              <div className="card-header">
+                <h5>Filtros</h5>
+              </div>
+              <div className="card-body">
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlSelect1">Categoria</label>
+                  <select
+                    className="form-control"
+                    id="exampleFormControlSelect1"
+                    value={selectedCategory}
+                    onChange={(e) => handleChangeCategory(e.target.value)}
+                  >
+                    <option>Categoria</option>
+                    {category && category.map((e) => <option>{e}</option>)}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlSelect1">Marca</label>
+                  <select
+                    className="form-control"
+                    id="exampleFormControlSelect1"
+                    value={selectedBrand}
+                    onChange={(e) => handleChangeBrand(e.target.value)}
+                  >
+                    <option>Marca</option>
+                    {brand && brand.map((e) => <option>{e}</option>)}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlSelect1">Precio</label>
+                  <select
+                    className="form-control"
+                    id="exampleFormControlSelect1"
+                    value={selectedPrice}
+                    onChange={(e) => handleChangePrice(e.target.value)}
+                  >
+                    <option>Price</option>
+                    <option>Menor a mayor</option>
+                    <option>Mayor a menor</option>
+                  </select>
+                </div>
+              
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleCleanFilter()}
+                >
+                  Limpiar filtros
+                </button>
+              </div>
             </div>
-          ))}
+          </div>
+          <div className="col-9">
+            <div className="row">
+             <Productos products={filtrados} />
+            </div>
+          </div>
         </div>
-      )}
+      </div>
       <Footer />
-    </>
+    </div>
   );
+
 }
 
 export default PageProducts;
+
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+
+
+

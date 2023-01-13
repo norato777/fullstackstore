@@ -1,16 +1,16 @@
 import * as React from "react";
-import Card from "react-bootstrap/Card";
+import stl from "./CardConfigPC.module.css";
 
 export default function CardConfigPC() {
   return (
-    <Card style={{ width: "18rem", height: "210px" }}>
-      <Card.Body>
-        <Card.Title>Arma el PC Gamer de tus sueños con nuestro</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">
-          Configurador de PC
-        </Card.Subtitle>
-        <Card.Link href="#">Comenzar</Card.Link>
-      </Card.Body>
-    </Card>
+    <>
+      <div className={stl.container}>
+        <img
+          src="./image/pc-build-bd.jpg"
+          alt="PC Gamer"
+          className={stl.image}
+        />
+      </div>
+    </>
   );
 }

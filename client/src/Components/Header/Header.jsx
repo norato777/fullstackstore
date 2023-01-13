@@ -24,11 +24,13 @@ export default function Header() {
             </div>
           </div>
           <div className={stl.containerShopCart}>
-            <img
-              src="./image/shopping-cart.svg"
-              alt="Carrito de compras"
-              className={stl.carrito}
-            />
+            <Link to={"/login"}>
+              <img
+                src="./image/shopping-cart.svg"
+                alt="Carrito de compras"
+                className={stl.carrito}
+              />
+            </Link>
           </div>
         </div>
       </div>

@@ -3,10 +3,11 @@ import Card from 'react-bootstrap/Card';
 import Header from "../Header/Header";
 import { useSelector } from "react-redux";
 import s from "./ProductDetail.module.css";
+import Rating_Coments from "../Rating_Coments/Rating_Coments";
 
 const ProductDetail = () => {
     const details = useSelector(state => state.detail)
-    console.log(details)
+    console.log(details._id)
 
     return (
         <>
@@ -24,12 +25,15 @@ const ProductDetail = () => {
                     <br />
                     <Card className={s.cardbody}>
                         <Card.Body>
-                            <Card.Text>
+                       
                                 <p>{details.description}</p>
                                 <p>{details.price}</p>
-                            </Card.Text>
+                         
                         </Card.Body>
                     </Card>
+                    <div className={s.div}>
+                    <Rating_Coments id={(details._id)}/>
+                    </div>
                 </>
             }
 

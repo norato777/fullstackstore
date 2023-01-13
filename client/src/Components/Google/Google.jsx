@@ -22,7 +22,7 @@ const Google = () => {
     };
 
     const onFailure = (err) => {
-        console.log('failed:', err);
+        alert('failed:', err);
     };
 
     return (

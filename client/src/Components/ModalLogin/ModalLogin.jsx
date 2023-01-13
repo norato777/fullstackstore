@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -8,7 +8,17 @@ import { useForm } from "react-hook-form";
 import { signIn } from "../../Redux/action";
 
 const ModalLogin = ({ show, handleClose }) => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const emailChangeHandler = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const passwordChangeHandler = (e) => {
+        setPassword(e.target.value)
+    }
 
     const {
         register,
@@ -16,8 +26,14 @@ const ModalLogin = ({ show, handleClose }) => {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => {
-        dispatch(signIn(data));
+    const onSubmit = () => {
+        const sign = {
+            email: email,
+            password: password
+        }
+        dispatch(signIn(sign));
+        setEmail("")
+        setPassword("")
     };
 
     return (
@@ -34,6 +50,8 @@ const ModalLogin = ({ show, handleClose }) => {
                                 <Form.Control
                                     type="email"
                                     {...register("name", { required: true })}
+                                    onChange={emailChangeHandler}
+                                    value={email}
                                 />
                                 {errors.name?.type === "required" && <p>Email is required </p>}
                             </Form.Label>
@@ -43,6 +61,8 @@ const ModalLogin = ({ show, handleClose }) => {
                             <Form.Control
                                 type="password"
                                 {...register("password", { required: true })}
+                                onChange={passwordChangeHandler}
+                                value={password}
                             />
                             {errors.name?.type === "required" && <p>Password is required </p>}
                         </Form.Label>

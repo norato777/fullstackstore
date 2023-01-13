@@ -2,7 +2,7 @@ import React from "react";
 import Promobar from "../Promobar/Promobar";
 import Header from "../Header/Header";
 import NavbarMain from "../NavbarMain/NavbarMain";
-import PromoArea from "../PromoArea/PromoArea";
+import Carousel from "../Carousel/Carousel";
 import FeaturedProducts from "../FeaturedProducts/FeaturedProducts";
 import FeaturedCategories from "../FeaturedCategories/FeaturedCategories";
 import OurBrands from "../OurBrands/OurBrands";
@@ -23,8 +23,11 @@ export default function Homepage() {
 
   return (
     <>
+      {/* simbolo de carga mientras carga la pagina bootstrap  */}
       {!Products.length ? (
-        <h1>Cargando productos</h1>
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
       ) : (
         <>
           <div>
@@ -32,7 +35,7 @@ export default function Homepage() {
             <Header />
             <NavbarMain />
             <div className={stl.containerBody}>
-              <PromoArea />
+              <Carousel />
               <FeaturedProducts />
               <OurBrands />
               <FeaturedCategories />
