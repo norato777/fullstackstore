@@ -1,6 +1,7 @@
 .container {
   height: 112px;
-  margin: 21px;
+  margin-top: 21px;
+  margin-bottom: 21px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -10,6 +11,7 @@
   border-right: 2.1px solid var(--clr-0-025);
   border-bottom: 2.1px solid var(--clr-0-025);
   backdrop-filter: blur(1.4px);
+  aspect-ratio: auto;
 }
 .containerAux {
   width: 95%;
