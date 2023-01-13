@@ -36,6 +36,9 @@ const ProductsSchema = new Schema({
   categories: {
     type: Array,
   },
+  promedio:{
+    type:Number
+  }
 });
 
 const ProductsModel = mongoose.model("products", ProductsSchema);

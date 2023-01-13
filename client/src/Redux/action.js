@@ -148,7 +148,6 @@ export const signUp = (payload) => {
       res.data.message !== undefined
         ? alert(res.data.message)
         : alert("Usuario creado correctamente");
-      console.log(res);
     } catch (error) {
       return { error: error.message };
     }
@@ -179,3 +178,24 @@ export const logOut = () => {
     }
   };
 };
+
+//filtro por precio maximo y minimo en el front
+
+export function filterProductsPrice(payload) {
+  return {
+    type: "FILTER_PRICE",
+    payload,
+  };
+}
+export function putCalificationRating(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(`http://localhost:3001/products/rating/${payload._id}`,payload);
+      return dispatch({ type: "PUT_RATING", payload: response.data });
+    } catch (error) {
+    console.log(error.message)      
+    }
+  };
+}
+
+

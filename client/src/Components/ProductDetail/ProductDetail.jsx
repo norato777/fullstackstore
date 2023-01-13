@@ -4,6 +4,7 @@ import Header from "../Header/Header";
 import { useSelector } from "react-redux";
 import s from "./ProductDetail.module.css";
 import Paypal from "../Paypal/Papypal";
+import Rating_Coments from "../Rating_Coments/Rating_Coments"
 
 const ProductDetail = () => {
     const details = useSelector(state => state.detail)
@@ -11,7 +12,6 @@ const ProductDetail = () => {
     return (
         <>
             <Header />
-            <Paypal />
             {details &&
                 <>
                     <Card className={s.card}>
@@ -25,12 +25,14 @@ const ProductDetail = () => {
                     <br />
                     <Card className={s.cardbody}>
                         <Card.Body>
-                            <Card.Text>
-                                <p>{details.description}</p>
-                                <p>{details.price}</p>
-                            </Card.Text>
+                            <p>{details.description}</p>
+                            <p>{details.price}</p>
                         </Card.Body>
                     </Card>
+                    <div className={s.div}>
+                        <Rating_Coments id={(details._id)} />
+                    </div>
+                    <Paypal price={details.price} />
                 </>
             }
         </>

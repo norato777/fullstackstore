@@ -6,7 +6,7 @@ export default function Promobar() {
   return (
     <Link to="/form">
       <div className={stl.container}>
-        <h4>Crea un nuevo producto aqui!</h4>
+        <div className={stl.title}>!Crea un nuevo producto aqui!</div>
       </div>
     </Link>
   );

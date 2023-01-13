@@ -18,11 +18,12 @@ const Google = () => {
 
     const onSuccess = (res) => {
         user.push(res.profileObj.email)
+        console.log(res)
         alert("Sesión iniciada")
     };
 
     const onFailure = (err) => {
-        alert('failed:', err);
+        if (err.length > 0) alert('failed:', err);
     };
 
     return (

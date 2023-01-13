@@ -21,27 +21,6 @@ export default function MyForm() {
     console.log(data);
     dispatch(postProduct(data));
   };
-
-  // function handleOpenWidget(e) {
-  //   const imagen = document.querySelector("#user-photo");
-  //   var myWidget = window.cloudinary.createUploadWidget(
-  //     {
-  //       cloudName: "dwl4bqphj",
-  //       uploadPreset: "products",
-  //     },
-  //     (error, result) => {
-  //       if (!error && result && result.event === "success") {
-  //         // console.log('Done! Here is the image info: ', result.info);
-  //         imagen.src = result.info.secure_url;
-  //         setInput((prev) => ({
-  //           ...prev,
-  //           [e.target.name]: result.info.secure_url,
-  //         }));
-  //       }
-  //     }
-  //   );
-  //   myWidget.open();
-  // }
   return (
     <>
       <Header />
@@ -139,7 +118,12 @@ export default function MyForm() {
             </div>
           </Form.Group>
         </div>
-        <Button type="submit">Submit</Button>
+        <div className={stl.button}>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </div>
+        
       </Form>
       <Footer />
     </>

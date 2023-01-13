@@ -1,21 +1,38 @@
 import React from "react";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import ReactDOM from "react-dom"
 
-const Paypal = () => {
-    const initialOptions = {
-        "client-id": "AWNi-4NE7sfR8UX05nbqyTlHYA3g_mzuhwfI06Jsp0ZKoklN4UrDXF93b7GXBAHVejpEeHXwehr3tnbF",
-        currency: "USD",
-        // intent: "capture",
-        // "data-client-token": "abc123xyz==",
-    };
+const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
+
+const Paypal = ({ price }) => {
+    const createOrder = (data, actions) => {
+        return actions.order.create({
+            purchase_units: [
+                {
+                    amount: {
+                        value: price,
+                    },
+                },
+            ],
+        });
+    }
+
+    const onApprove = (data, actions) => {
+        return actions.order.capture().then((details) => {
+            alert('Transacción completada por ' + details.payer.name.given_name);
+        });
+    }
+
+    const onCancel = (data) => {
+        alert('Has cancelado la compra')
+        window.location.href = "http://localhost:3000/"
+    }
 
     return (
-        <>
-            <PayPalScriptProvider options={initialOptions}>
-                <PayPalButtons />
-            </PayPalScriptProvider>
-
-        </>
+        <PayPalButton
+            createOrder={(data, actions) => createOrder(data, actions)}
+            onApprove={(data, actions) => onApprove(data, actions)}
+            onCancel={data => onCancel(data)}
+        />
     )
 }
 
