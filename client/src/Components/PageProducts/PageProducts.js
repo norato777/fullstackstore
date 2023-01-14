@@ -92,7 +92,7 @@ function PageProducts() {
                       onChange={(e) => handleChangeCategory(e.target.value)}
                     >
                       <option>Categoria</option>
-                      {category && category.map((e) => <option>{e}</option>)}
+                      {category && category.map((e,i) => <option key={i}>{e}</option>)}
                     </select>
                   </div>
                   <div className="form-group">
@@ -104,7 +104,7 @@ function PageProducts() {
                       onChange={(e) => handleChangeBrand(e.target.value)}
                     >
                       <option>Marca</option>
-                      {brand && brand.map((e) => <option>{e}</option>)}
+                      {brand && brand.map((e, i) => <option key={i}>{e}</option>)}
                     </select>
                   </div>
                   <div className="form-group">

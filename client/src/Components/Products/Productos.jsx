@@ -86,7 +86,7 @@ export default function Productos() {
 
                 {productsToShow.map(product => {
                     return (
-                        <div className='card' key={product.id}>
+                        <div className='card' key={product._id}>
                             <div className='card-body'>
                                 <img src={product.image} alt={product.name} />
                                 <h5 className='card-title'>{product.name}</h5>

@@ -7,18 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import s from "./ProductDetail.module.css";
 import Paypal from "../Paypal/Papypal";
 import Rating_Coments from "../Rating_Coments/Rating_Coments"
-import { getDetail } from "../../Redux/action";
 import { useEffect } from "react";
 
 const ProductDetail = () => {
-  const dispatch = useDispatch()
   const details = useSelector((state) => state.detail);
-
-  useEffect(()=>{
-
-},[details])
-  console.log(details);
-
 
   return (
     <>
@@ -26,8 +18,8 @@ const ProductDetail = () => {
       <NavbarMain />
        {details && (
         <>
-
-            <Header />
+{/* 
+            <Header /> */}
             {details &&
                 <>
                     <Card className={s.card}>
