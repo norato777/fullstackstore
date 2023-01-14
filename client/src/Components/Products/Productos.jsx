@@ -55,7 +55,7 @@ export default function Productos() {
     }
     const handleDetail=(e)=>{
         dispatch(getDetail(e.target.value))
-        navigate(`/products/${e.target.value}`)
+        navigate(`/product/${e.target.value}`)
     }
     
 
