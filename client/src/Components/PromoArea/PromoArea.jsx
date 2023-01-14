@@ -10,17 +10,17 @@ export default function PromoArea() {
   return (
     <>
       <div className={stl.container}>
-        <div className={stl.left}>
+        {/* <div className={stl.left}>
           <CardBest />
           <CardAccountCheck />
-        </div>
+        </div> */}
         <div className={stl.center}>
           <Carousel />
         </div>
-        <div className={stl.right}>
+        {/* <div className={stl.right}>
           <CardConfigPC />
           <CardJobs />
-        </div>
+        </div> */}
       </div>
     </>
   );

@@ -1,74 +1,92 @@
 .gridContainer {
-  border: 0.5px solid rgb(140, 140, 140);
-  border-radius: 14px;
   display: grid;
   grid-template-columns: auto auto;
-  width: 350px;
-  height: 700px;
   margin: 7px;
   align-items: center;
   justify-items: center;
+  background: var(--clr-0);
+  border-radius: 14px;
+  box-shadow: rgb(0 0 0 / 63%) 0px 20px 30px;
+  border-right: 2.1px solid var(--clr-0-025);
+  border-bottom: 2.1px solid var(--clr-0-025);
+  aspect-ratio: 1/1.9;
 }
 .item1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
   text-align: center;
-  height: 30px;
-  width: 84px;
+  height: 35px;
+  width: 90%;
   font-size: 21px;
-  background-color: orangered;
-  margin-top: 7px;
-  color: aliceblue;
+  font-weight: 500;
+  color: var(--clr-7-R);
+  border-bottom: 0.5px dashed var(--clr-10-025);
 }
 .item2 {
   grid-column-start: 1;
   grid-column-end: 3;
-  text-align: center;
-  height: 217px;
-  width: 343px;
-  overflow: hidden;
   margin-bottom: 7px;
+}
+.prodImg {
+  width: 90%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
 }
 .item3 {
   grid-column-start: 1;
   grid-column-end: 3;
-  height: 119px;
-  width: 300px;
-  font-size: 21px;
+  height: 70px;
+  width: 90%;
+  font-size: 17px;
   font-weight: 700;
   text-align: justify;
-  color: orangered;
+  color: var(--clr-7-R);
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.item4 {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  height: 140px;
-  width: 300px;
-  font-size: 17px;
-  text-align: justify;
-  color: dimgrey;
-}
-.item5 {
-  height: 28px;
-  font-weight: 500;
-  color: dimgrey;
-}
+
 .item6 {
-  height: 28px;
+  grid-column-start: 1;
+
+  height: 21px;
+  text-decoration: line-through;
+  font-size: 14px;
 }
 .item7 {
   grid-row-start: 6;
   grid-row-end: 9;
+  font-size: 14px;
 }
 .item8 {
-  height: 28px;
+  height: 21px;
+  color: var(--clr-7-R);
+  font-size: 17px;
 }
 .item9 {
-  height: 28px;
+  height: 21px;
+  font-size: 14px;
 }
 .item10 {
-  height: 28px;
+  height: 21px;
+  font-size: 14px;
 }
 .item11 {
-  height: 28px;
+  height: 21px;
+  font-size: 14px;
+}
+.boton {
+  /* width: 140px;
+  border: none; */
+  border-radius: 0 7px 7px 0;
+  background: var(--clr-7-R);
+  /* color: var(--clr-0); */
+  transition: 0.2s;
+}
+.boton:hover{
+  border:none;
+  background:var(--clr-11-R);
+  background:var(--clr-12-R);
+  color: white;
+  font-weight: bold; 
+  box-shadow: 2px 2px 0 var(--clr-11-R);
 }

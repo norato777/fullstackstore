@@ -2,7 +2,7 @@ import React from "react";
 import Promobar from "../Promobar/Promobar";
 import Header from "../Header/Header";
 import NavbarMain from "../NavbarMain/NavbarMain";
-import PromoArea from "../PromoArea/PromoArea";
+import Carousel from "../Carousel/Carousel";
 import FeaturedProducts from "../FeaturedProducts/FeaturedProducts";
 import FeaturedCategories from "../FeaturedCategories/FeaturedCategories";
 import OurBrands from "../OurBrands/OurBrands";
@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../../Redux/action";
 import stl from "./Homepage.module.css";
+import Container from "react-bootstrap/Container";
 
 export default function Homepage() {
   const Products = useSelector((state) => state.products);
@@ -24,24 +25,24 @@ export default function Homepage() {
   return (
     <>
       {/* simbolo de carga mientras carga la pagina bootstrap  */}
-      {!Products.length ? ( 
+      {!Products.length ? (
         <div className="spinner-border text-primary" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
       ) : (
         <>
-          <div>
+          <Container fluid>
             <Promobar />
             <Header />
             <NavbarMain />
             <div className={stl.containerBody}>
-              <PromoArea />
+              <Carousel />
               <FeaturedProducts />
               <OurBrands />
               <FeaturedCategories />
             </div>
             <Footer />
-          </div>
+          </Container>
         </>
       )}
     </>
