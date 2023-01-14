@@ -198,4 +198,13 @@ export function putCalificationRating(payload) {
   };
 }
 
-
+export function getCategories() {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get("http://localhost:3001/categories");
+      return dispatch({ type: "GET_CATEGORIES", payload: response.data });
+    } catch (error) {
+      return { error: error.message };
+    }
+  };
+}

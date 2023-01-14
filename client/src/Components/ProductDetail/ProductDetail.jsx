@@ -3,13 +3,20 @@ import Card from "react-bootstrap/Card";
 import Header from "../Header/Header";
 import NavbarMain from "../NavbarMain/NavbarMain";
 import Footer from "../Footer/Footer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import s from "./ProductDetail.module.css";
 import Paypal from "../Paypal/Papypal";
 import Rating_Coments from "../Rating_Coments/Rating_Coments"
+import { getDetail } from "../../Redux/action";
+import { useEffect } from "react";
 
 const ProductDetail = () => {
+  const dispatch = useDispatch()
   const details = useSelector((state) => state.detail);
+
+  useEffect(()=>{
+
+},[details])
   console.log(details);
 
 
@@ -17,7 +24,7 @@ const ProductDetail = () => {
     <>
       <Header />
       <NavbarMain />
-      {details && (
+       {details && (
         <>
 
             <Header />
@@ -55,8 +62,8 @@ const ProductDetail = () => {
           <Card className={s.cardbody}>
             <Card.Body>
               <Card.Text>
-                <p>{details.description}</p>
-                <p>{details.price}</p>
+                {details.description}
+                {details.price}
               </Card.Text>
             </Card.Body>
           </Card>
