@@ -24,10 +24,12 @@
     font-weight: bold;
     bottom: 0px;
     font-weight: bold; 
+     color: var(--clr-10-R);
 
 }
 .img{
     background-size: cover;
     background-position: center;
     overflow: hidden;
+   
 }
