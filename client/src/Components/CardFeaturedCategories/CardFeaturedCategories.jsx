@@ -9,7 +9,7 @@ export default function CardFeaturedCategories() {
         <Card style={{ width: "18rem" }}>
           <Card.Img variant="top" src="./image/carcasas.png" />
           <Card.Body>
-            <Card.Title>Carcasas</Card.Title>
+            <Card.Title>Categoria</Card.Title>
           </Card.Body>
         </Card>
       </Link>
