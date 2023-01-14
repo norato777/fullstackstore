@@ -36,7 +36,7 @@ export default function SearchBarMain() {
               placeholder="¿Que estas buscando hoy?"
             />
             <button className={stl.boton} onClick={handleClick}>
-              Buscar
+            <i className="bi bi-search"></i>
             </button>
           </InputGroup>
         </form>

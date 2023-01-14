@@ -3,10 +3,14 @@ import Logo from "../../Image/TFSS.png";
 import SearchBarMain from "../SearchBarMain/SearchBarMain";
 import NavbarHeader from "../NavbarHeader/NavbarHeader";
 import stl from "./Header.module.css";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 
 export default function Header() {
+  const navigate = useNavigate()
+  const handleCart=()=>{
+    navigate("/cart")
+  }
   return (
     <>
       <Container fluid="xxl">
@@ -26,13 +30,11 @@ export default function Header() {
               </div>
             </div>
             <div className={stl.containerShopCart}>
-              <Link to={"/login"}>
-                <img
-                  src="./image/shopping-cart.svg"
-                  alt="Carrito de compras"
-                  className={stl.carrito}
-                />
-              </Link>
+              <button className={stl.button}onClick={handleCart}>
+              <i className="bi bi-cart2"></i>
+                {/* Cart */}
+              </button>
+              Cart
             </div>
           </div>
         </div>
