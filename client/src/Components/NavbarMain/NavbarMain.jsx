@@ -26,20 +26,20 @@ export default function NavbarHeader() {
             </Nav.Item>
             <Nav.Item>
               <Nav.Link className={stl.colors} href="/products">
-                Computadoras
+                PC Gamers
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link className={stl.colors} href="/products">
-                Impresion y copiado
+               Software
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link className={stl.colors} href="/products">
-                Audio y video
+              Home office
               </Nav.Link>
             </Nav.Item>
-            <Nav.Item>
+            {/* <Nav.Item>
               <Nav.Link className={stl.colors} href="/products">
                 Energia
               </Nav.Link>
@@ -73,7 +73,7 @@ export default function NavbarHeader() {
               <Nav.Link className={stl.colors} href="/products">
                 Home office
               </Nav.Link>
-            </Nav.Item>
+            </Nav.Item> */}
           </Nav>
         </div>
       </Container>

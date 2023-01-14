@@ -51,8 +51,10 @@
 }
 .button:hover{
   border:none;
-  background-color: var(--clr-7-R);
+  background:var(--clr-11-R);
+  background:var(--clr-12-R);
   color: white;
   font-weight: bold;
+  box-shadow: 2px 2px 0 var(--clr-11-R);
 }
 
