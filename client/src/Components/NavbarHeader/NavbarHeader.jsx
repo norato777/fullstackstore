@@ -58,6 +58,9 @@ export default function NavbarHeader() {
           ) : (
             <>
               <Nav.Item>
+                <Nav.Link className={stl.colors} href="/profile">Profile</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
                 <Nav.Link className={stl.colors}>Cart</Nav.Link>
               </Nav.Item>
               <Nav.Item>
