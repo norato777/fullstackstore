@@ -22,6 +22,7 @@ const ProductDetail = () => {
             <Header /> */}
             {details &&
                 <>
+                <Paypal price={details.price} />
                     <Card className={s.card}>
                         <Card.Img variant="top" src={details.image} className={s.img} />
                         <Card.Body>
@@ -40,26 +41,9 @@ const ProductDetail = () => {
                     <div className={s.div}>
                         <Rating_Coments id={(details._id)} />
                     </div>
-                    <Paypal price={details.price} />
+                    
                 </>
             }
-
-          <Card className={s.card}>
-            <Card.Img variant="top" src={details.image} className={s.img} />
-            <Card.Body>
-              <Card.Text>{details.name}</Card.Text>
-            </Card.Body>
-          </Card>
-          <br />
-          <Card className={s.cardbody}>
-            <Card.Body>
-              <Card.Text>
-                {details.description}
-                {details.price}
-              </Card.Text>
-            </Card.Body>
-          </Card>
-
         </>
       )}
       <Footer />
