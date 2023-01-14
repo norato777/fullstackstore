@@ -9,8 +9,6 @@ import Paypal from "../Paypal/Papypal";
 import Rating_Coments from "../Rating_Coments/Rating_Coments"
 
 const ProductDetail = () => {
-const details = useSelector(state => state.detail)
-
   const details = useSelector((state) => state.detail);
   console.log(details);
 

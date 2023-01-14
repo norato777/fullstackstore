@@ -28,11 +28,11 @@ export default function CardFeaturedProducts({ num }) {
           <div className={stl.item3}>{oneProduct.name.slice(0, 70)}...</div>
           <div className={stl.item6}>${oneProduct.price}</div>
           <div className={stl.item7}>
-            <button
+            <button className={stl.boton}
               style={{
                 width: "105px",
                 height: "35px",
-                backgroundColor: "orangered",
+                // backgroundColor: "orangered",
                 color: "white",
                 fontWeight: "500",
                 borderRadius: "7px",
