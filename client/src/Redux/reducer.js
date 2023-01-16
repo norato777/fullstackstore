@@ -77,6 +77,10 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: action.payload,
       };
+    case "PUT_USER":
+      return {
+        ...state,
+      };
     case "FILTER_CATEGORY":
       if (action.payload === "Category") {
         return {
@@ -121,17 +125,20 @@ export default function rootReducer(state = initialState, action) {
         return {
           ...state,
           user: [],
+          logged: false,
         };
       } else {
         return {
           ...state,
           user: action.payload,
+          logged: true,
         };
       }
     case "LOG_OUT":
       return {
         ...state,
         user: [],
+        logged: false,
       };
     case "SEARCH_BAR":
       let busqueda = state.allProducts.filter((e) =>

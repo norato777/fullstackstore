@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const userSchema = require("../models/Users.js");
+const signUp = require("../passport/local-auth.js");
+const { getTokenData } = require("../config/jwt.config");
 
 //create user
 router.post("/", (req, res) => {
@@ -9,6 +11,57 @@ router.post("/", (req, res) => {
     .save()
     .then((data) => res.json(data))
     .catch((error) => res.json({ mesagge: error.message }));
+});
+
+// confirmar
+router.get("/confirm/:token", async (req, res) => {
+  try {
+    // Obtener el token
+    const { token } = req.params;
+
+    // Verificar la data
+    const data = await getTokenData(token);
+
+    if (data === null) {
+      return res.json({
+        success: false,
+        msg: "Error al obtener data",
+      });
+    }
+
+    console.log(data);
+
+    const { email, code } = data.data;
+
+    // Verificar existencia del usuario
+    const user = (await userSchema.findOne({ email })) || null;
+
+    if (user === null) {
+      return res.json({
+        success: false,
+        msg: "Usuario no existe",
+      });
+    }
+
+    // Verificar el código
+    if (code !== user.code) {
+      return res.redirect("src/global/error.html");
+    }
+
+    // Actualizar usuario
+    user.status = "VERIFIED";
+    await user.save();
+
+    // Redireccionar a la confirmación
+
+    return res.redirect("http://localhost:3000");
+  } catch (error) {
+    console.log(error);
+    return res.json({
+      success: false,
+      msg: "Error al confirmar usuario",
+    });
+  }
 });
 
 //get all users
