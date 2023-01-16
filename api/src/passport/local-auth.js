@@ -50,23 +50,23 @@ passport.use(
   )
 );
 
-passport.use(
-  "local-signin",
-  new LocalStrategy(
-    {
-      usernameField: "email",
-      passwordField: "password",
-      passReqToCallback: true,
-    },
-    async (req, email, password, done) => {
-      const user = await User.findOne({ email: email });
-      if (!user) {
-        return done(null, false, console.log("No user found."));
-      }
-      if (!user.comparePassword(password)) {
-        return done(null, false, console.log("Incorrect password."));
-      }
-      done(null, user);
-    }
-  )
-);
+// passport.use(
+//   "local-signin",
+//   new LocalStrategy(
+//     {
+//       usernameField: "email",
+//       passwordField: "password",
+//       passReqToCallback: true,
+//     },
+//     async (req, email, password, done) => {
+//       const user = await User.findOne({ email: email });
+//       if (!user) {
+//         return done(null, false, console.log("No user found."));
+//       }
+//       if (!user.comparePassword(password)) {
+//         return done(null, false, console.log("Incorrect password."));
+//       }
+//       done(null, user);
+//     }
+//   )
+// );
