@@ -9,7 +9,7 @@ const initialState = {
   orders: [],
   reviews: [],
   category: [],
-  brand:[],
+  brand: [],
   loading: false,
   error: null,
   success: false,
@@ -24,18 +24,20 @@ const initialState = {
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case "GET_PRODUCTS":
-      const marcas = state.allProducts.map((e) => e.brand).sort(function (a, b) {
-        if (a < b) return -1;
-        else return 1;
-      });
+      const marcas = state.allProducts
+        .map((e) => e.brand)
+        .sort(function (a, b) {
+          if (a < b) return -1;
+          else return 1;
+        });
       const uniqueBrands = [...new Set(marcas)];
       return {
         ...state,
         products: action.payload,
         allProducts: action.payload,
-        brand:uniqueBrands,
+        brand: uniqueBrands,
       };
-        case "GET_CATEGORIES":
+    case "GET_CATEGORIES":
       return {
         ...state,
         category: action.payload,
@@ -74,6 +76,10 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         products: action.payload,
+      };
+    case "PUT_USER":
+      return {
+        ...state,
       };
     case "FILTER_CATEGORY":
       if (action.payload === "Category") {
@@ -120,17 +126,20 @@ export default function rootReducer(state = initialState, action) {
         return {
           ...state,
           user: [],
+          logged: false,
         };
       } else {
         return {
           ...state,
           user: action.payload,
+          logged: true,
         };
       }
     case "LOG_OUT":
       return {
         ...state,
         user: [],
+        logged: false,
       };
     case "SEARCH_BAR":
       let busqueda = state.allProducts.filter((e) =>
@@ -158,10 +167,10 @@ export default function rootReducer(state = initialState, action) {
           products: filtrados,
         };
       }
-      case "PUT_RATING":
-        return {
-          ...state,
-        };
+    case "PUT_RATING":
+      return {
+        ...state,
+      };
     default:
       return state;
   }
