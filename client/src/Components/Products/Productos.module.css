@@ -27,3 +27,15 @@
   object-fit: cover;
 
   }
+  .btn{
+    border: 1px solid black;
+    margin: 1px;
+    cursor: pointer;
+  }
+  .btn:hover{
+    color: white;
+    background-color: var( --clr-10-R);
+  }
+  .butonSet{
+    margin-top: 15px;
+  }

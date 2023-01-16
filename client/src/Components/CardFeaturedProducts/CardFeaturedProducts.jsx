@@ -25,7 +25,7 @@ export default function CardFeaturedProducts({ num }) {
               <img src={oneProduct.image} className={stl.prodImg} />
             </Link>
           </div>
-          <div className={stl.item3}>{oneProduct.name.slice(0, 70)}...</div>
+          <div className={stl.item3}>{oneProduct.name.slice(0, 30)}...</div>
           <div className={stl.item6}>${oneProduct.price}</div>
           <div className={stl.item7}>
             <button className={stl.boton}
