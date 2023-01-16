@@ -9,7 +9,7 @@ const initialState = {
   orders: [],
   reviews: [],
   category: [],
-  brand:[],
+  brand: [],
   loading: false,
   error: null,
   success: false,
@@ -24,18 +24,20 @@ const initialState = {
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case "GET_PRODUCTS":
-      const marcas = state.allProducts.map((e) => e.brand).sort(function (a, b) {
-        if (a < b) return -1;
-        else return 1;
-      });
+      const marcas = state.allProducts
+        .map((e) => e.brand)
+        .sort(function (a, b) {
+          if (a < b) return -1;
+          else return 1;
+        });
       const uniqueBrands = [...new Set(marcas)];
       return {
         ...state,
         products: action.payload,
         allProducts: action.payload,
-        brand:uniqueBrands,
+        brand: uniqueBrands,
       };
-        case "GET_CATEGORIES":
+    case "GET_CATEGORIES":
       return {
         ...state,
         category: action.payload,
@@ -82,11 +84,10 @@ export default function rootReducer(state = initialState, action) {
           products: state.products,
         };
       } else {
-   
         let filtrados = state.products.filter((e) =>
           e.categories.includes(action.payload)
         );
-   
+
         return {
           ...state,
           products: filtrados,
@@ -146,29 +147,33 @@ export default function rootReducer(state = initialState, action) {
         products: state.allProducts,
       };
     case "FILTER_PRICE":
-      let sorted= state.products
+      let sorted1 = state.products;
+      let sorted = sorted1;
       if (action.payload === "Price") {
         return {
           ...state,
-          products: sorted,
+          products: sorted1,
         };
       }
-      if(action.payload === "Menor a mayor") {
-     
-        sorted.sort(function (a,b) { return a.price - b.price})
-        }
-        if(action.payload === "Mayor a menor") {
-          sorted.sort(function (a,b) { return b.price - a.price})
-          }
-        return {
-          ...state,
-          products: sorted,
-        };
-      // }
-      case "PUT_RATING":
-        return {
-          ...state,
-        };
+      if (action.payload === "Menor") {
+        sorted.sort(function (a, b) {
+          return a.price - b.price;
+        });
+      }
+      if (action.payload === "Mayor") {
+        sorted.sort(function (a, b) {
+          return b.price - a.price;
+        });
+      }
+      return {
+        ...state,
+        products: sorted,
+      };
+    // }
+    case "PUT_RATING":
+      return {
+        ...state,
+      };
     default:
       return state;
   }
