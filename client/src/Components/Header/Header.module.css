@@ -34,8 +34,29 @@
 }
 .containerShopCart {
   justify-content: end;
+  color: var(--clr-7-R);
 }
-.carrito {
-  height: 56px;
-  margin-top: 25px;
+.button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  transition: 0.2s;
+  font-size: 30px;
+  color:var(--clr-7-R);
+  border:none; 
+}
+.button:hover{
+  border:none;
+  background:var(--clr-11-R);
+  background:var(--clr-12-R);
+  color: white;
+  font-weight: bold;
+  box-shadow: 2px 2px 0 var(--clr-11-R);
+}
+.buttonLogo{
+  border: none;
 }

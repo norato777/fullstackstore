@@ -3,7 +3,7 @@ import axios from "axios";
 export function getProducts() {
   return async function (dispatch) {
     try {
-      const response = await axios.get("http://localhost:3001/products");
+      const response = await axios.get("/products");
       return dispatch({ type: "GET_PRODUCTS", payload: response.data });
     } catch (error) {
       return { error: error.message };
@@ -28,7 +28,7 @@ export function orderProducts(payload) {
 export function getDetail(id) {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`http://localhost:3001/products/${id}`);
+      const response = await axios.get(`/products/${id}`);
       return dispatch({ type: "GET_DETAIL", payload: response.data });
     } catch (error) {
       return { error: error.message };
@@ -53,7 +53,7 @@ export function removeProduct(payload) {
 export function getUsers() {
   return async function (dispatch) {
     try {
-      const response = await axios.get("http://localhost:3001/users");
+      const response = await axios.get("/users");
       return dispatch({ type: "GET_USERS", payload: response.data });
     } catch (error) {
       return { error: error.message };
@@ -61,13 +61,23 @@ export function getUsers() {
   };
 }
 
+export const putUser = (id) => {
+  return async function (dispatch) {
+    try {
+      const res = await axios.put(`/users/${id}`);
+      console.log(res)
+      return dispatch({ type: "PUT_USER", payload: res.data });
+    } catch (error) {
+      console.log(error)
+      return { error: error.message };
+    }
+  };
+};
+
 export function postUser(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(
-        "http://localhost:3001/users/",
-        payload
-      );
+      const response = await axios.post("/users", payload);
       return dispatch({ type: "POST_USER", payload: response.data });
     } catch (error) {
       return { error: error.message };
@@ -78,10 +88,7 @@ export function postUser(payload) {
 export function postProduct(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(
-        "http://localhost:3001/products/",
-        payload
-      );
+      const response = await axios.post("/products", payload);
       return dispatch({ type: "POST_PRODUCT", payload: response.data });
     } catch (error) {
       return { error: error.message };
@@ -105,10 +112,7 @@ export function filterProductsBrand(payload) {
 export function postCategory(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(
-        "http://localhost:3001/category/",
-        payload
-      );
+      const response = await axios.post("/category", payload);
       return dispatch({ type: "POST_CATEGORY", payload: response.data });
     } catch (error) {
       return { error: error.message };
@@ -144,11 +148,10 @@ export function cleanFilter(payload) {
 export const signUp = (payload) => {
   return async function () {
     try {
-      const res = await axios.post("http://localhost:3001/signup", payload);
+      const res = await axios.post("/signup", payload);
       res.data.message !== undefined
         ? alert(res.data.message)
         : alert("Usuario creado correctamente");
-      console.log(res);
     } catch (error) {
       return { error: error.message };
     }
@@ -158,7 +161,7 @@ export const signUp = (payload) => {
 export const signIn = (payload) => {
   return async function (dispatch) {
     try {
-      const res = await axios.post("http://localhost:3001/signin", payload);
+      const res = await axios.post("/signin", payload);
       res.data.message !== undefined
         ? alert(res.data.message)
         : alert("Inicio de sesión correcto");
@@ -172,7 +175,7 @@ export const signIn = (payload) => {
 export const logOut = () => {
   return async function (dispatch) {
     try {
-      const res = await axios.get("http://localhost:3001/logout");
+      const res = await axios.get("/logout");
       return dispatch({ type: "LOG_OUT", payload: res.data });
     } catch (error) {
       return { error: error.message };
@@ -191,12 +194,24 @@ export function filterProductsPrice(payload) {
 export function putCalificationRating(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.put(`http://localhost:3001/products/rating/${payload._id}`,payload);
+      const response = await axios.put(
+        `/products/rating/${payload._id}`,
+        payload
+      );
       return dispatch({ type: "PUT_RATING", payload: response.data });
     } catch (error) {
-    console.log(error.message)      
+      console.log(error.message);
     }
   };
 }
 
-
+export function getCategories() {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get("/categories");
+      return dispatch({ type: "GET_CATEGORIES", payload: response.data });
+    } catch (error) {
+      return { error: error.message };
+    }
+  };
+}
