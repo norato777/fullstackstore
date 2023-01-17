@@ -9,17 +9,20 @@ import OurBrands from "../OurBrands/OurBrands";
 import Footer from "../Footer/Footer";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getProducts } from "../../Redux/action";
+import { getCategories, getProducts } from "../../Redux/action";
 import stl from "./Homepage.module.css";
 import Container from "react-bootstrap/Container";
 
 export default function Homepage() {
   const Products = useSelector((state) => state.products);
+  const category = useSelector((state)=> state.category)
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     !Products.length && dispatch(getProducts());
+    !category.length && dispatch(getCategories())
+
   }, [dispatch, Products]);
 
   return (

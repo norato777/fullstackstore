@@ -5,11 +5,18 @@ import NavbarHeader from "../NavbarHeader/NavbarHeader";
 import stl from "./Header.module.css";
 import { Link,useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
+import { useDispatch } from "react-redux";
+import { cleanFilter } from "../../Redux/action";
 
 export default function Header() {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const handleCart=()=>{
     navigate("/cart")
+  }
+  const handleHome=()=>{
+    dispatch(cleanFilter())
+    navigate("/")
   }
   return (
     <>
@@ -17,9 +24,9 @@ export default function Header() {
         <div className={stl.container}>
           <div className={stl.containerAux}>
             <div className={stl.containerLogo}>
-              <Link to={"/"}>
+              <button className={stl.buttonLogo}onClick={handleHome}>
                 <img src={Logo} alt="logo" className={stl.logo} />
-              </Link>
+              </button>
             </div>
             <div className={stl.containerBars}>
               <div className={stl.auxContainer}>

@@ -9,6 +9,9 @@ const CategoriesSchema = new Schema({
   image: {
     type: String,
   },
+  destacada:{
+    type: Boolean,
+  }
 });
 
 const CategoriesModel = mongoose.model("categories", CategoriesSchema);
