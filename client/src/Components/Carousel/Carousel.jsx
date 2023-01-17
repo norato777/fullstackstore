@@ -1,6 +1,5 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import stl from "./Carousel.module.css";
 import { Container, Image } from "react-bootstrap";
 
 export default function CarouselMain() {

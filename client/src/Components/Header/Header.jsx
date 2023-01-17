@@ -1,15 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Navbar,
-  Container,
-  Image,
-  Row,
-  Col,
-  Form,
-  Button,
-  InputGroup,
-} from "react-bootstrap";
+import { Navbar, Container, Image, Row, Col, Button } from "react-bootstrap";
 import SearchBarMain from "../SearchBarMain/SearchBarMain";
 import NavbarHeader from "../NavbarHeader/NavbarHeader";
 
