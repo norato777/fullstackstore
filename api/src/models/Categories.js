@@ -11,6 +11,9 @@ const CategoriesSchema = new Schema({
   },
   destacada:{
     type: Boolean,
+  },
+  deleted:{
+    type: Boolean, default: false,
   }
 });
 
