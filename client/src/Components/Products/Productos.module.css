@@ -1,0 +1,41 @@
+.container {
+   display: flex;
+  flex-wrap: wrap;
+
+ 
+}
+  .card{
+   /* border: 2px solid black; */
+   border-radius: 5px;
+   width: 300px;
+   height: 400px;
+   margin: 10px;
+   background-color: var(--clr-5-025);
+
+  }
+.cardbody1{
+   margin-bottom: 1px;
+}
+  .img{
+   background-size: cover;
+   background-position: center;
+   width: 280px;
+   height: 200px; 
+  overflow: hidden;
+  /* border: 2px solid black; */
+  border-radius: 5px;
+  object-fit: cover;
+
+  }
+  .btn{
+    border: 1px solid black;
+    margin: 1px;
+    cursor: pointer;
+  }
+  .btn:hover{
+    color: white;
+    background-color: var( --clr-10-R);
+  }
+  .butonSet{
+    margin-top: 15px;
+  }

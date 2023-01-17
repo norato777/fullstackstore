@@ -20,14 +20,8 @@ function PageProducts() {
   const [category, setCategory] = useState();
   const [selectedCategory, setSelectedCategory] = useState("Categoria");
   const [selectedBrand, setSelectedBrand] = useState("Marca");
+  const [selectedSort, setSelectedSort] = useState("Price");
   const [brand, setBrand] = useState();
-  //filtro por precio usando filterProductsPrice de action.js
-  const handleChangePrice = (value) => {
-    setSelectedPrice(value);
-    dispatch(filterProductsPrice(value));
-  };
-  const [selectedPrice, setSelectedPrice] = useState("Price");
-  const [price, setPrice] = useState();
 
   const getBrand = () => {
     const marcas = AllProducts.map((e) => e.brand).sort(function (a, b) {
@@ -50,7 +44,7 @@ function PageProducts() {
 
   useEffect(() => {
     if (!AllProducts.length) dispatch(getProducts());
-    setFiltrados(Products);
+    // setFiltrados(Products);
     getCategories();
     getBrand();
   }, [dispatch, Products]);
@@ -63,10 +57,15 @@ function PageProducts() {
     setSelectedBrand(value);
     dispatch(filterProductsBrand(value));
   };
-
+  //filtro por precio usando filterProductsPrice de action.js
+  const handleChangePrice = (value) => {
+    setSelectedSort(value);
+    dispatch(filterProductsPrice(value));
+  };
   const handleCleanFilter = () => {
     setSelectedCategory("Categoria");
     setSelectedBrand("Marca");
+    dispatch(filterProductsPrice("Price"));
     dispatch(cleanFilter());
   };
 
@@ -83,12 +82,49 @@ function PageProducts() {
                 <div className="col-12">
                   <h3>Filtros</h3>
                 </div>
-                <div className="col-12">
-                  <select
-                    className="form-select"
-                    aria-label="Default select example"
-                    onChange={(e) => handleChangeCategory(e.target.value)}
-                    value={selectedCategory}
+                <div className="card-body">
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlSelect1">Categoria</label>
+                    <select
+                      className="form-control"
+                      id="exampleFormControlSelect1"
+                      value={selectedCategory}
+                      onChange={(e) => handleChangeCategory(e.target.value)}
+                    >
+                      <option>Categoria</option>
+                      {category &&
+                        category.map((e, i) => <option key={i}>{e}</option>)}
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlSelect1">Marca</label>
+                    <select
+                      className="form-control"
+                      id="exampleFormControlSelect1"
+                      value={selectedBrand}
+                      onChange={(e) => handleChangeBrand(e.target.value)}
+                    >
+                      <option>Marca</option>
+                      {brand &&
+                        brand.map((e, i) => <option key={i}>{e}</option>)}
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlSelect1">Precio</label>
+                    <select
+                      className="form-control"
+                      id="exampleFormControlSelect1"
+                      onChange={(e) => handleChangePrice(e.target.value)}
+                    >
+                      <option defaultValue="Price">Price</option>
+                      <option value="Mayor">Mayor a menor</option>
+                      <option value="Menor">Menor a mayor</option>
+                    </select>
+                  </div>
+                    
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => handleCleanFilter()}
                   >
                     <option value="Categoria">Categoria</option>
                     {category && category.map((e) => <option value={e}>{e}</option>)}
@@ -124,7 +160,7 @@ function PageProducts() {
             <div className="col-1"></div>
             <div className="col-9">
               <div className="row">
-                <Productos products={filtrados} />
+                <Productos />
               </div>
             </div>
           </div>
