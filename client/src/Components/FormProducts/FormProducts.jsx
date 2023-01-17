@@ -23,7 +23,7 @@ export default function MyForm() {
   };
   return (
     <>
-      <Container fluid="lg">
+      <Container fluid="xxl">
         <Header />
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={stl.title}>
