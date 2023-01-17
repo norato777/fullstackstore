@@ -61,14 +61,14 @@ export function getUsers() {
   };
 }
 
-export const putUser = (id) => {
+export const putUser = (id, data) => {
   return async function (dispatch) {
     try {
-      const res = await axios.put(`/users/${id}`);
-      console.log(res)
+      const res = await axios.put(`/users/${id}`, data);
+      console.log(res);
       return dispatch({ type: "PUT_USER", payload: res.data });
     } catch (error) {
-      console.log(error)
+      console.log(error);
       return { error: error.message };
     }
   };

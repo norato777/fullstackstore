@@ -84,10 +84,13 @@ router.get("/:id", (req, res) => {
 // update user
 router.put("/:id", (req, res) => {
   const { id } = req.params;
-  userSchema
-    .findByIdAndUpdate(id, req.body)
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ mesagge: error }));
+  try {
+    userSchema
+      .findByIdAndUpdate(id, req.body)
+      .then((data) => res.status(200).json(data));
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
 });
 
 //delete user by id

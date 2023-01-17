@@ -7,9 +7,11 @@ import s from './UserProfile.module.css'
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers, putUser, signIn, logOut } from "../../Redux/action";
+import { getUsers, putUser, logOut } from "../../Redux/action";
+import { useNavigate } from "react-router-dom";
 
 const UserProfile = () => {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const user = useSelector(state => state.user)
     const users = useSelector(state => state.users)
@@ -36,16 +38,17 @@ const UserProfile = () => {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
         const sign = {
             email: email,
             password: password,
         };
-        dispatch(putUser(sign));
-        dispatch(logOut())
-        dispatch(signIn(sign));
+        await dispatch(putUser(theUser[0]._id, sign));
+        await dispatch(logOut())
         setEmail("");
         setPassword("");
+        alert("Se ha modificado correctamente")
+        navigate("/")
     };
 
     return (
@@ -58,7 +61,7 @@ const UserProfile = () => {
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email"
-                                placeholder={user.email}
+                                placeholder={user.length > 0 ? user[0].email : user.email}
                                 {...register("name", { required: true })}
                                 onChange={emailChangeHandler}
                                 value={email} />
@@ -72,7 +75,10 @@ const UserProfile = () => {
                                 onChange={passwordChangeHandler}
                                 value={password} />
                         </Form.Group>
-
+                        <Form.Text className="text-muted">
+                            Si modifica sus datos, deberá iniciar sesión nuevamente.
+                        </Form.Text>
+                        <div></div>
                         <Button variant="primary" type="submit">
                             Modificar
                         </Button>
