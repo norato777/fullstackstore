@@ -22,8 +22,6 @@ function PageProducts() {
   const [selectedBrand, setSelectedBrand] = useState("Marca");
   const [selectedSort, setSelectedSort] = useState("Price");
   const [brand, setBrand] = useState();
-  const sort =["Menor a mayor","Mayor a menor"]
-
 
   const getBrand = () => {
     const marcas = AllProducts.map((e) => e.brand).sort(function (a, b) {
@@ -61,12 +59,13 @@ function PageProducts() {
   };
   //filtro por precio usando filterProductsPrice de action.js
   const handleChangePrice = (value) => {
-    setSelectedSort(value)
+    setSelectedSort(value);
     dispatch(filterProductsPrice(value));
   };
   const handleCleanFilter = () => {
     setSelectedCategory("Categoria");
-    setSelectedBrand("Marca");   
+    setSelectedBrand("Marca");
+    dispatch(filterProductsPrice("Price"));
     dispatch(cleanFilter());
   };
 
@@ -92,7 +91,8 @@ function PageProducts() {
                       onChange={(e) => handleChangeCategory(e.target.value)}
                     >
                       <option>Categoria</option>
-                      {category && category.map((e,i) => <option key={i}>{e}</option>)}
+                      {category &&
+                        category.map((e, i) => <option key={i}>{e}</option>)}
                     </select>
                   </div>
                   <div className="form-group">
@@ -104,7 +104,8 @@ function PageProducts() {
                       onChange={(e) => handleChangeBrand(e.target.value)}
                     >
                       <option>Marca</option>
-                      {brand && brand.map((e, i) => <option key={i}>{e}</option>)}
+                      {brand &&
+                        brand.map((e, i) => <option key={i}>{e}</option>)}
                     </select>
                   </div>
                   <div className="form-group">
@@ -112,9 +113,11 @@ function PageProducts() {
                     <select
                       className="form-control"
                       id="exampleFormControlSelect1"
-                      onChange={(e) =>handleChangePrice(e.target.value)}
-                    ><option>Price</option>
-                      {sort && sort.map((e, i) => <option key={i}>{e}</option>)}
+                      onChange={(e) => handleChangePrice(e.target.value)}
+                    >
+                      <option defaultValue="Price">Price</option>
+                      <option value="Mayor">Mayor a menor</option>
+                      <option value="Menor">Menor a mayor</option>
                     </select>
                   </div>
 
@@ -129,9 +132,7 @@ function PageProducts() {
             </div>
             <div className="col-9">
               <div className="row">
-           
-                    <Productos/>
-           
+                <Productos />
               </div>
             </div>
           </div>
