@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 export default function OurBrands() {
   return (
     <>
-      <Container fluid="xxl">
+      <Container>
         <h1>¡En Fullstack Store encuentra las mejores marcas!</h1>
         <div className={stl.container}>
           <Link className={stl.format}>

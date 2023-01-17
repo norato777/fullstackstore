@@ -7,10 +7,9 @@ export default function FeaturedProducts() {
   const num = 1;
   return (
     <>
-      <Container fluid="xxl">
-        <h1>Productos destacados de hoy</h1>
+      <Container sm-5>
+        <h1>Productos destacados</h1>
         <div className={stl.container}>
-          {/* productos destacados de hoy */}
           <CardFeaturedProducts num={num + 7} />
           <CardFeaturedProducts num={num + 14} />
           <CardFeaturedProducts num={num + 35} />

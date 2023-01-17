@@ -1,13 +1,9 @@
-import React, { useState } from "react";
-import Nav from "react-bootstrap/Nav";
-import stl from "./NavbarHeader.module.css";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { logOut, getUsers } from "../../Redux/action";
 import ModalLogin from "../ModalLogin/ModalLogin";
 import ModalRegister from "../ModalRegister/ModalRegister";
-import { useEffect } from "react";
-import Container from "react-bootstrap/Container";
+import { Container, Nav } from "react-bootstrap";
 
 export default function NavbarHeader() {
   const dispatch = useDispatch();
@@ -30,27 +26,47 @@ export default function NavbarHeader() {
 
   return (
     <>
-      <Container fluid="xxl">
-        <Nav className="justify-content-end" activeKey="/home">
+      <Container fluid>
+        <Nav className="justify-content-end" activeKey="/">
           <Nav.Item>
-            <Nav.Link className={stl.colors} href="/favorites">
+            <Nav.Link
+              href="/favorites"
+              style={{
+                color: "#ff3c00",
+              }}
+            >
               Favoritos
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link className={stl.colors} href="/compare">
+            <Nav.Link
+              href="/compare"
+              style={{
+                color: "#ff3c00",
+              }}
+            >
               Comparar
             </Nav.Link>
           </Nav.Item>
           {user.length === 0 ? (
             <>
               <Nav.Item>
-                <Nav.Link className={stl.colors} onClick={handleShow2}>
+                <Nav.Link
+                  onClick={handleShow2}
+                  style={{
+                    color: "#ff3c00",
+                  }}
+                >
                   Registrarse
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className={stl.colors} onClick={handleShow}>
+                <Nav.Link
+                  onClick={handleShow}
+                  style={{
+                    color: "#ff3c00",
+                  }}
+                >
                   Ingresar
                 </Nav.Link>
               </Nav.Item>
@@ -58,15 +74,13 @@ export default function NavbarHeader() {
           ) : (
             <>
               <Nav.Item>
-                <Nav.Link className={stl.colors} href="/profile">Profile</Nav.Link>
+                <Nav.Link href="/profile">Profile</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className={stl.colors}>Cart</Nav.Link>
+                <Nav.Link>Cart</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className={stl.colors} onClick={signOut}>
-                  Log Out
-                </Nav.Link>
+                <Nav.Link onClick={signOut}>Log Out</Nav.Link>
               </Nav.Item>
             </>
           )}

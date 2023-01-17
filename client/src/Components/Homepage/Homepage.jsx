@@ -31,18 +31,16 @@ export default function Homepage() {
         </div>
       ) : (
         <>
-          <Container fluid>
-            <Promobar />
-            <Header />
-            <NavbarMain />
-            <div className={stl.containerBody}>
-              <Carousel />
-              <FeaturedProducts />
-              <OurBrands />
-              <FeaturedCategories />
-            </div>
-            <Footer />
-          </Container>
+          <Promobar />
+          <Header />
+          <NavbarMain />
+          {/* <div className={stl.containerBody}>
+            <Carousel />
+            <FeaturedProducts />
+            <OurBrands />
+            <FeaturedCategories />
+          </div> */}
+          <Footer />
         </>
       )}
     </>
