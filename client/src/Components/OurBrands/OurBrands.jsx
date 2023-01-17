@@ -8,7 +8,9 @@ export default function OurBrands() {
   return (
     <>
       <Container>
-        <h1>¡En Fullstack Store encuentra las mejores marcas!</h1>
+        <h1 style={{ color: "#ffc800" }}>
+          ¡En Fullstack Store encuentra las mejores marcas!
+        </h1>
         <div className={stl.container}>
           <Link className={stl.format}>
             <Card style={{ width: "10rem", border: "none" }}>

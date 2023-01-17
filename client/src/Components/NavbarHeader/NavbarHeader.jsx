@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut, getUsers } from "../../Redux/action";
+import { useNavigate } from "react-router-dom";
 import ModalLogin from "../ModalLogin/ModalLogin";
 import ModalRegister from "../ModalRegister/ModalRegister";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
-import { useEffect } from "react";
-import Container from "react-bootstrap/Container";
-import { useNavigate } from "react-router-dom";
+import {
+  Container,
+  Dropdown,
+  DropdownButton,
+  ButtonGroup,
+  Nav,
+} from "react-bootstrap";
 
 export default function NavbarHeader() {
   const navigate = useNavigate();

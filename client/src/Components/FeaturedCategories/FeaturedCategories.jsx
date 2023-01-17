@@ -5,7 +5,7 @@ import stl from "./FeaturedCategories.module.css";
 export default function FeaturedCategories() {
   return (
     <>
-      <h1>Categorias destacadas</h1>
+      <h1 style={{ color: "#ffc800" }}>Categorias destacadas</h1>
       <div className={stl.container}>
         <div className={stl.format}>
           <CardFeaturedCategories />

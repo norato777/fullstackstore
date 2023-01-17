@@ -4,7 +4,7 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 export default function NavbarHeader() {
   return (
     <>
-      <Container className="mt-3">
+      <Container className="mt-3 ">
         <Navbar
           style={{
             backgroundColor: "rgba(33, 37, 41,0.5)",
@@ -13,7 +13,7 @@ export default function NavbarHeader() {
             boxShadow: "0 0 7px #fff",
           }}
           expand="lg"
-          className="rounded-4"
+          className="rounded-4 justify-content-center"
         >
           <Nav className="justify-content-center">
             <Nav.Item>

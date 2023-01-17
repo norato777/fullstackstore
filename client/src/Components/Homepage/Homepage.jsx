@@ -10,7 +10,6 @@ import Footer from "../Footer/Footer";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../../Redux/action";
-import stl from "./Homepage.module.css";
 import Container from "react-bootstrap/Container";
 
 export default function Homepage() {
@@ -34,12 +33,12 @@ export default function Homepage() {
           <Promobar />
           <Header />
           <NavbarMain />
-          {/* <div className={stl.containerBody}>
+          <Container>
             <Carousel />
             <FeaturedProducts />
             <OurBrands />
             <FeaturedCategories />
-          </div> */}
+          </Container>
           <Footer />
         </>
       )}
