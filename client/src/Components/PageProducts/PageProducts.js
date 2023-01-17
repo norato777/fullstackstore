@@ -77,59 +77,51 @@ function PageProducts() {
         <NavbarMain />
         <div className="container">
           <div className="row">
-            <div className="col-3">
-              <div className="card">
-                <div className="card-header">
-                  <h5>Filtros</h5>
+            {/* filtors */}
+            <div className="col-2">
+              <div className="row">
+                <div className="col-12">
+                  <h3>Filtros</h3>
                 </div>
-                <div className="card-body">
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Categoria</label>
-                    <select
-                      className="form-control"
-                      id="exampleFormControlSelect1"
-                      value={selectedCategory}
-                      onChange={(e) => handleChangeCategory(e.target.value)}
-                    >
-                      <option>Categoria</option>
-                      {category && category.map((e,i) => <option key={i}>{e}</option>)}
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Marca</label>
-                    <select
-                      className="form-control"
-                      id="exampleFormControlSelect1"
-                      value={selectedBrand}
-                      onChange={(e) => handleChangeBrand(e.target.value)}
-                    >
-                      <option>Marca</option>
-                      {brand && brand.map((e, i) => <option key={i}>{e}</option>)}
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Precio</label>
-                    <select
-                      className="form-control"
-                      id="exampleFormControlSelect1"
-                      value={selectedPrice}
-                      onChange={(e) => handleChangePrice(e.target.value)}
-                    >
-                      <option>Price</option>
-                      <option>Menor a mayor</option>
-                      <option>Mayor a menor</option>
-                    </select>
-                  </div>
-
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => handleCleanFilter()}
+                <div className="col-12">
+                  <select
+                    className="form-select"
+                    aria-label="Default select example"
+                    onChange={(e) => handleChangeCategory(e.target.value)}
+                    value={selectedCategory}
                   >
+                    <option value="Categoria">Categoria</option>
+                    {category && category.map((e) => <option value={e}>{e}</option>)}
+                  </select>
+                </div>
+                <div className="col-12">
+                  <select
+                    className="form-select"
+                    aria-label="Default select example"
+                    onChange={(e) => handleChangeBrand(e.target.value)}
+                    value={selectedBrand}
+                  >
+                    <option value="Marca">Marca</option>
+                    {brand && brand.map((e) => <option value={e}>{e}</option>)}
+                  </select>
+                </div>
+                <div className="col-12">
+                  <select
+                    className="form-select"
+                    aria-label="Default select example"
+                    onChange={(e) => handleChangePrice(e.target.value)}
+                    value={selectedPrice}
+                  >
+                    </select>
+                </div>
+                <div className="col-12">
+                  <button className="btn btn-primary" onClick={handleCleanFilter}>
                     Limpiar filtros
                   </button>
                 </div>
               </div>
             </div>
+            <div className="col-1"></div>
             <div className="col-9">
               <div className="row">
                 <Productos products={filtrados} />
