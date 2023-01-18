@@ -17,7 +17,7 @@ export default function OurBrands() {
           boxShadow: "0 0 7px #fff",
         }}
         expand="lg"
-        className="rounded-4"
+        className="rounded-4 m-3"
       >
         <Row>
           <Col>
