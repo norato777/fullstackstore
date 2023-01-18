@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Container, Navbar, Row, Col, Image } from "react-bootstrap";
+import { Container, Navbar, Row, Image } from "react-bootstrap";
 
 export default function Promobar() {
   return (
@@ -8,6 +7,7 @@ export default function Promobar() {
       <Container className="mt-3">
         <Navbar
           style={{
+            backgroundColor: "rgba(173, 181, 189,0.5)",
             border: "1px solid #fff",
             boxShadow: "0 0 7px #fff",
           }}
