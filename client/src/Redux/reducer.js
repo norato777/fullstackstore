@@ -23,6 +23,7 @@ const initialState = {
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
+    // case to get all products
     case "GET_PRODUCTS":
       const marcas = state.allProducts
         .map((e) => e.brand)
@@ -36,6 +37,22 @@ export default function rootReducer(state = initialState, action) {
         products: action.payload,
         allProducts: action.payload,
         brand: uniqueBrands,
+      };
+    // case to create a new product
+    case "POST_PRODUCT":
+      return {
+        ...state,
+      };
+    // case to modify a product
+    case "PUT_PRODUCT":
+      return {
+        ...state,
+      };
+    // case to delete a product
+    case "DELETE_PRODUCT":
+      return {
+        ...state,
+        products: action.payload,
       };
     case "GET_CATEGORIES":
       return {
@@ -112,11 +129,12 @@ export default function rootReducer(state = initialState, action) {
           products: filtrados,
         };
       }
-    // case login
+    // case register
     case "SIGN_UP":
       return {
         ...state,
       };
+    // case login
     case "SIGN_IN":
       const userEmail = state.users.find(
         (u) => u.email === action.payload.email
@@ -134,6 +152,7 @@ export default function rootReducer(state = initialState, action) {
           logged: true,
         };
       }
+    // case logout
     case "LOG_OUT":
       return {
         ...state,
@@ -154,20 +173,19 @@ export default function rootReducer(state = initialState, action) {
         products: state.allProducts,
       };
     case "FILTER_PRICE":
-      let sorted1 = state.products;
-      let sorted = sorted1;
+      let sorted = state.products;
       if (action.payload === "Price") {
         return {
           ...state,
-          products: sorted1,
+          products: sorted,
         };
       }
-      if (action.payload === "Menor") {
+      if (action.payload === "Menor a mayor") {
         sorted.sort(function (a, b) {
           return a.price - b.price;
         });
       }
-      if (action.payload === "Mayor") {
+      if (action.payload === "Mayor a menor") {
         sorted.sort(function (a, b) {
           return b.price - a.price;
         });

@@ -30,6 +30,7 @@ export default function NavbarHeader() {
 
   const signOut = () => {
     dispatch(logOut());
+    navigate("/")
     window.location.reload();
   };
 
