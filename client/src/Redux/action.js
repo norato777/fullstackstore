@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// action to get all products
 export function getProducts() {
   return async function (dispatch) {
     try {
@@ -10,6 +11,54 @@ export function getProducts() {
     }
   };
 }
+
+// action to get a specific product by ID
+export function getDetail(id) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`/products/${id}`);
+      return dispatch({ type: "GET_DETAIL", payload: response.data });
+    } catch (error) {
+      return { error: error.message };
+    }
+  };
+}
+
+// action to create a new product
+export function postProduct(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post("/products", payload);
+      return dispatch({ type: "POST_PRODUCT", payload: response.data });
+    } catch (error) {
+      return { error: error.message };
+    }
+  };
+}
+
+// action to update a existing product by its ID
+export const putProduct = (id, data) => {
+  return async function (dispatch) {
+    try {
+      const res = await axios.put(`/products/${id}`, data);
+      return dispatch({ type: "PUT_PRODUCT", payload: res.data });
+    } catch (error) {
+      return { error: error.message };
+    }
+  };
+};
+
+// action to delete a existing product by its ID
+export const deleteProduct = (id) => {
+  return async function (dispatch) {
+    try {
+      const res = await axios.delete(`/products/${id}`);
+      return dispatch({ type: "DELETE_PRODUCT", payload: res.data });
+    } catch (error) {
+      return { error: error.message };
+    }
+  };
+};
 
 export function filterProducts(payload) {
   return {
@@ -22,17 +71,6 @@ export function orderProducts(payload) {
   return {
     type: "ORDER_PRODUCTS",
     payload,
-  };
-}
-
-export function getDetail(id) {
-  return async function (dispatch) {
-    try {
-      const response = await axios.get(`/products/${id}`);
-      return dispatch({ type: "GET_DETAIL", payload: response.data });
-    } catch (error) {
-      return { error: error.message };
-    }
   };
 }
 
@@ -50,6 +88,7 @@ export function removeProduct(payload) {
   };
 }
 
+// action to get all users
 export function getUsers() {
   return async function (dispatch) {
     try {
@@ -79,17 +118,6 @@ export function postUser(payload) {
     try {
       const response = await axios.post("/users", payload);
       return dispatch({ type: "POST_USER", payload: response.data });
-    } catch (error) {
-      return { error: error.message };
-    }
-  };
-}
-
-export function postProduct(payload) {
-  return async function (dispatch) {
-    try {
-      const response = await axios.post("/products", payload);
-      return dispatch({ type: "POST_PRODUCT", payload: response.data });
     } catch (error) {
       return { error: error.message };
     }
@@ -143,8 +171,7 @@ export function cleanFilter(payload) {
   };
 }
 
-// login - authentication
-
+// action to register a user
 export const signUp = (payload) => {
   return async function () {
     try {
@@ -158,6 +185,7 @@ export const signUp = (payload) => {
   };
 };
 
+// action to login a user
 export const signIn = (payload) => {
   return async function (dispatch) {
     try {
@@ -172,6 +200,7 @@ export const signIn = (payload) => {
   };
 };
 
+// action to log out a user
 export const logOut = () => {
   return async function (dispatch) {
     try {
@@ -183,14 +212,14 @@ export const logOut = () => {
   };
 };
 
-//filtro por precio maximo y minimo en el front
-
+// filter by maximum and minimun price on the front
 export function filterProductsPrice(payload) {
   return {
     type: "FILTER_PRICE",
     payload,
   };
 }
+
 export function putCalificationRating(payload) {
   return async function (dispatch) {
     try {

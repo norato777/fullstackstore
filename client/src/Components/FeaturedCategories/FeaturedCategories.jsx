@@ -1,34 +1,29 @@
 import React from "react";
 import CardFeaturedCategories from "../CardFeaturedCategories/CardFeaturedCategories";
-import { Link } from "react-router-dom";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import stl from "./FeaturedCategories.module.css";
+import { getCategories } from "../../Redux/action";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+
 
 export default function FeaturedCategories() {
+  const category = useSelector((state)=> state.category)
+  const dispatch = useDispatch()
+
+
+  useEffect(()=>{
+    !category.length && dispatch(getCategories())
+  },[])
   return (
-    <>
-      <h1 style={{ color: "#ffc800" }}>Categorias destacadas</h1>
-      <Container
-        style={{
-          backgroundColor: "rgba(173, 181, 189,0.5)",
-          backdropFilter: "blur(5px)",
-          border: "1px solid #fff",
-          boxShadow: "0 0 7px #fff",
-        }}
-        expand="lg"
-        className="rounded-4"
-      >
-        <Row>
-          <Col>
-            <Link>
-              <Card.Img
-                style={{ width: "10rem", border: "none" }}
-                variant="top"
-                src="./image/New Project.png"
-              />
-            </Link>
-          </Col>
-        </Row>
-      </Container>
+    <>    
+      <h1>Categorias destacadas</h1>
+      <div className={stl.container}>
+      {
+        category?.map((e,i)=>(  <div key={i}className={stl.format}>
+          <CardFeaturedCategories prop={e}/>
+        </div>))
+      }
+      </div>
     </>
   );
 }

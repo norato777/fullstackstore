@@ -39,6 +39,9 @@ const ProductsSchema = new Schema({
   },
   promedio:{
     type:Number
+  },
+  deleted:{
+    type: Boolean, default: false,
   }
 });
 

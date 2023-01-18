@@ -37,6 +37,9 @@ const UserSchema = new Schema({
   favoritos: {
     type: Array,
   },
+  deleted:{
+    type: Boolean, default: false,
+  }
 });
 
 UserSchema.methods.encryptPassword = (password) => {
