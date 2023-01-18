@@ -1,7 +1,6 @@
 import React from "react";
-import Card2 from "../CardFeaturedProducts/Card2";
 import CardFeaturedProducts from "../CardFeaturedProducts/CardFeaturedProducts";
-import Container from "react-bootstrap/Container";
+import { Container, Row } from "react-bootstrap";
 
 export default function FeaturedProducts() {
   const num = 1;
@@ -9,9 +8,12 @@ export default function FeaturedProducts() {
     <>
       <Container sm-5 className="m-3">
         <h1 style={{ color: "#ffc800" }}>Productos Destacados</h1>
-        <div>
-          <Card2 />
-        </div>
+        <Row>
+          <CardFeaturedProducts num={num + 7} />
+          <CardFeaturedProducts num={num + 14} />
+          <CardFeaturedProducts num={num + 21} />
+          <CardFeaturedProducts num={num + 28} />
+        </Row>
       </Container>
     </>
   );
