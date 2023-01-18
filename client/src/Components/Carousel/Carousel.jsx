@@ -2,10 +2,14 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import stl from "./Carousel.module.css";
 import Container from "react-bootstrap/Container";
+import { Link } from "react-router-dom";
+//carouser linkeado a productos
 
 export default function CarouselMain() {
   return (
     <>
+      <Link to="/products">
+
       <Container fluid="xxl">
         <div className={stl.container}>
           <Carousel fade>
@@ -52,6 +56,7 @@ export default function CarouselMain() {
           </Carousel>
         </div>
       </Container>
+      </Link>
     </>
   );
 }

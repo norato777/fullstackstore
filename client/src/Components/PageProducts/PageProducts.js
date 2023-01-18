@@ -125,41 +125,13 @@ function PageProducts() {
                     className="btn btn-primary"
                     onClick={() => handleCleanFilter()}
                   >
-                    <option value="Categoria">Categoria</option>
-                    {category && category.map((e) => <option value={e}>{e}</option>)}
-                  </select>
-
-                  
-                </div>
-                <div className="col-12">
-                  <select
-                    className="form-select"
-                    aria-label="Default select example"
-                    onChange={(e) => handleChangeBrand(e.target.value)}
-                    value={selectedBrand}
-                  >
-                    <option value="Marca">Marca</option>
-                    {brand && brand.map((e) => <option value={e}>{e}</option>)}
-                  </select>
-                </div>
-                <div className="col-12">
-                  <select
-                    className="form-select"
-                    aria-label="Default select example"
-                    onChange={(e) => handleChangePrice(e.target.value)}
-                    value={selectedPrice}
-                  >
-                    </select>
-                </div>
-                <div className="col-12">
-                  <button className="btn btn-primary" onClick={handleCleanFilter}>
                     Limpiar filtros
                   </button>
                 </div>
               </div>
             </div>
-            <div className="col-1"></div>
-            <div className="col-9">
+            {/* productos */}
+            <div className="col-10">
               <div className="row">
                 <Productos />
               </div>
@@ -171,5 +143,6 @@ function PageProducts() {
     </>
   );
 }
+
 
 export default PageProducts;
