@@ -19,7 +19,7 @@ export default function FeaturedCategories() {
       <h1>Categorias destacadas</h1>
       <div className={stl.container}>
       {
-        category?.slice(0,4).map((e,i)=>(  <div key={i}className={stl.format}>
+        category?.map((e,i)=>(  <div key={i}className={stl.format}>
           <CardFeaturedCategories prop={e}/>
         </div>))
       }
