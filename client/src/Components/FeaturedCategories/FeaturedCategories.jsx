@@ -14,12 +14,14 @@ export default function FeaturedCategories() {
   useEffect(()=>{
     !category.length && dispatch(getCategories())
   },[])
+  
   return (
     <>    
       <h1>Categorias destacadas</h1>
       <div className={stl.container}>
       {
-        category?.map((e,i)=>(  <div key={i}className={stl.format}>
+        category?.map((e,i)=>(  
+        <div key={i}className={stl.format}>
           <CardFeaturedCategories prop={e}/>
         </div>))
       }
