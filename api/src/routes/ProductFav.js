@@ -1,4 +1,3 @@
-//crear porducto favorito por id de usario y id de producto
 const FavProducts = require("../models/FavProducts");
 const express = require("express");
 const router = express.Router();
