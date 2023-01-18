@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const productSchema = require("../models/Product");
-const { putProduct, putProductCalification } = require("../constrollers/productsController");
+const { putProduct, putProductCalification, deleteDocument, recoverDocument } = require("../constrollers/productsController");
 
 router.get("/", (req, res) => {
   productSchema
@@ -43,6 +43,21 @@ router.delete("/:id", (req, res) => {
   const { id } = req.params;
   productSchema
     .remove({ _id: id })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ mesagge: error }));
+});
+router.put("/delete/:id", (req, res) => {
+  const { id } = req.params;
+
+  deleteDocument(id)
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ mesagge: error }));
+});
+router.put("/recover/:id", (req, res) => {
+  const { id } = req.params;
+  console.log(id)
+ 
+  recoverDocument(id)
     .then((data) => res.json(data))
     .catch((error) => res.json({ mesagge: error }));
 });
