@@ -121,7 +121,6 @@ function PageProducts() {
                       <option value="Menor">Menor a mayor</option>
                     </select>
                   </div>
-                    
                   <button
                     className="btn btn-primary"
                     onClick={() => handleCleanFilter()}
@@ -129,6 +128,8 @@ function PageProducts() {
                     <option value="Categoria">Categoria</option>
                     {category && category.map((e) => <option value={e}>{e}</option>)}
                   </select>
+
+                  
                 </div>
                 <div className="col-12">
                   <select
