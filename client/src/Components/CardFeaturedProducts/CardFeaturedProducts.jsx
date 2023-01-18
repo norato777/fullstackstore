@@ -1,10 +1,9 @@
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Checkbox from "../CheckBox/CheckBox";
 import { Link } from "react-router-dom";
 import { getDetail } from "../../Redux/action";
-import stl from "./CardFeaturedProducts.module.css";
-import React, { useState } from "react";
-import Checkbox from "../CheckBox/CheckBox";
-import Container from "react-bootstrap/Container";
+import { Card, ListGroup } from "react-bootstrap";
 
 export default function CardFeaturedProducts({ num }) {
   const dispatch = useDispatch();
@@ -16,42 +15,97 @@ export default function CardFeaturedProducts({ num }) {
   };
 
   return (
-    <>
-      <Container fluid="md">
-        <div className={stl.gridContainer}>
-          <div className={stl.item1}>%7</div>
-          <div className={stl.item2}>
-            <Link to={`/product/${oneProduct._id}`} onClick={handleClick}>
-              <img src={oneProduct.image} className={stl.prodImg} />
-            </Link>
-          </div>
-          <div className={stl.item3}>{oneProduct.name.slice(0, 30)}...</div>
-          <div className={stl.item6}>${oneProduct.price}</div>
-          <div className={stl.item7}>
-            <button className={stl.boton}
-              style={{
-                width: "105px",
-                height: "35px",
-                // backgroundColor: "orangered",
-                color: "white",
-                fontWeight: "500",
-                borderRadius: "7px",
-                border: "none",
-              }}
-            >
-              Añadir
-            </button>
-          </div>
-          <div className={stl.item8}>
-            ${oneProduct.price - oneProduct.price * 0.07}
-          </div>
-          <div className={stl.item9}>$ envio $500</div>
-          <div className={stl.item10}>Disponibles: {oneProduct.quantity}</div>
-          <div className={stl.item11}>
-            <Checkbox />
-          </div>
-        </div>
-      </Container>
-    </>
+    <Card
+      className="m-3"
+      style={{
+        width: "18rem",
+        backgroundColor: "rgb(33, 37, 41)",
+        backdropFilter: "blur(5px)",
+        border: "1px solid #fff",
+        boxShadow: "0 0 7px #fff",
+      }}
+    >
+      <Link to={`/product/${oneProduct._id}`} onClick={handleClick}>
+        <Card.Img
+          variant="top"
+          src={oneProduct.image}
+          style={{
+            objectFit: "contain",
+            padding: "3px",
+          }}
+        />
+      </Link>
+      <Card.Body>
+        <Card.Title
+          style={{
+            color: "#ff3c00",
+            textDecoration: "none",
+            textWeight: "bold",
+          }}
+        >
+          Descuento: %7
+        </Card.Title>
+        <Card.Text
+          style={{
+            color: "#ff3c00",
+            textDecoration: "none",
+            textWeight: "bold",
+          }}
+        >
+          {oneProduct.name.slice(0, 30)}...
+        </Card.Text>
+      </Card.Body>
+      <ListGroup className="list-group-flush">
+        <ListGroup.Item
+          style={{
+            backgroundColor: "rgb(33, 37, 41)",
+            color: "#ff3c00",
+          }}
+        >
+          $ regular: ${oneProduct.price}
+        </ListGroup.Item>
+        <ListGroup.Item
+          style={{
+            backgroundColor: "rgb(33, 37, 41)",
+            color: "#ff3c00",
+          }}
+        >
+          $ con descuento: ${oneProduct.price - oneProduct.price * 0.07}
+        </ListGroup.Item>
+        <ListGroup.Item
+          style={{
+            backgroundColor: "rgb(33, 37, 41)",
+            color: "#ff3c00",
+          }}
+        >
+          $ de envio: $500
+        </ListGroup.Item>
+        <ListGroup.Item
+          style={{
+            backgroundColor: "rgb(33, 37, 41)",
+            color: "#ff3c00",
+          }}
+        >
+          Disponibles: {oneProduct.quantity}
+        </ListGroup.Item>
+      </ListGroup>
+
+      <Card.Body
+        style={{
+          color: "#ff3c00",
+        }}
+      >
+        <Checkbox />
+        <Card.Link
+          href="#"
+          className="text-decoration-none"
+          style={{
+            color: "#ff3c00",
+          }}
+        >
+          Agregar al carrito
+        </Card.Link>
+      </Card.Body>
+    </Card>
   );
 }

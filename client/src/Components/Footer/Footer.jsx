@@ -1,62 +1,34 @@
 import React from "react";
-import Nav from "react-bootstrap/Nav";
-import stl from "./Footer.module.css";
-import Container from "react-bootstrap/Container";
+import { Container, Navbar, Nav } from "react-bootstrap";
 
 export default function Footer() {
   return (
     <>
-      <Container fluid="xxl">
-        <div className={stl.container}>
-          <Nav className="justify-content-center" activeKey="/home">
+      <Container
+        fluid
+        style={{
+          backgroundColor: "rgb(33, 37, 41)",
+          backdropFilter: "blur(5px)",
+          border: "1px solid #fff",
+          boxShadow: "0 0 7px #fff",
+        }}
+        expand="lg"
+      >
+        <Navbar className="justify-content-center">
+          <Nav>
             <Nav.Item>
-              <Nav.Link className={stl.colors} href="/">
+              <Nav.Link
+                href="/"
+                style={{
+                  color: "#ff3c00",
+                }}
+              >
                 ¿Cómo comprar?
               </Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/">
-                Historial de pedidos
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/">
-                Configurador de PC
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/">
-                Preguntas frecuentes
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/">
-                Quiénes somos
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/">
-                Condiciones generales
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/">
-                Aviso de privacidad
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/">
-                ¿Quieres ser proveedor?
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/">
-                Únete a nuestro equipo
-              </Nav.Link>
-            </Nav.Item>
           </Nav>
-          <div>2023 The Fullstack Store</div>
-        </div>
+        </Navbar>
+        <h5 style={{ color: "#ff3c00" }}>2023 The Fullstack Store</h5>
       </Container>
     </>
   );
