@@ -1,11 +1,8 @@
-import Card from "react-bootstrap/Card";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { filterProductsCategory } from "../../Redux/action";
-import stl from "./CardFeaturedCategories.module.css";
-import Container from "react-bootstrap/esm/Container";
-
-//CardFeaturedCategories es una card que se usa en la pagina principal linki al detalle del producto card title tarjetas de video card img src="./image/tdv(1).webp"
+import { Button, Image } from "react-bootstrap";
 
 export default function CardFeaturedCategories({ prop }) {
   const navigate = useNavigate();
@@ -19,18 +16,23 @@ export default function CardFeaturedCategories({ prop }) {
   };
 
   return (
-    <button onClick={handleClick} className={stl.container}>
-      <div
-        style={{
-          width: "18rem",
-          backgroundImage: `url(${prop.image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        className={stl.card + " card-bg-img"}
-      >
-        <h3 className={stl.title}>{prop.name}</h3>
-      </div>
-    </button>
+    <Button
+      onClick={handleClick}
+      variant="outline-warning"
+      style={{
+        border: "1px solid #fff",
+        backgroundImage: `url(${prop.image})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        color: "#ffffff",
+        borderRadius: "50%",
+        height: "210px",
+        width: "210px",
+        boxShadow: "0 0 7px #fff",
+      }}
+      className="m-3"
+    >
+      {prop.name}
+    </Button>
   );
 }
