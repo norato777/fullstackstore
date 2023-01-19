@@ -127,7 +127,20 @@ export default function Productos() {
               key={product._id}
             >
               <Card.Body>
-                <Image fluid rounded src={product.image} alt={product.name} />
+                <Image
+                  fluid
+                  rounded
+                  src={product.image}
+                  alt={product.name}
+                  style={{
+                    objectFit: "contain",
+                    marginTop: "14px",
+                    width: "16rem",
+                    height: "16rem",
+                    border: "1px solid #fff",
+                    background: "#fff",
+                  }}
+                />
 
                 <Card.Title
                   style={{
