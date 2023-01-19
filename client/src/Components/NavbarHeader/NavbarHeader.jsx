@@ -23,19 +23,20 @@ export default function NavbarHeader() {
   const handleClose2 = () => setShow2(false);
   const handleShow = () => setShow(true);
   const handleShow2 = () => setShow2(true);
-
+  const id = localStorage.getItem("id");
   useEffect(() => {
     dispatch(getUsers());
   }, []);
 
-  const signOut = () => {
+  const signOut = (e) => {    
+    localStorage.clear();
     dispatch(logOut());
-    navigate("/")
-    window.location.reload();
+    navigate("/");
+    // window.location.reload();
   };
 
   const onClickProfile = () => {
-    navigate("/profile");
+    navigate("/profile/"+id);
   };
 
   const onClickFavorites = () => {
@@ -66,7 +67,7 @@ export default function NavbarHeader() {
               Comparar
             </Nav.Link>
           </Nav.Item>
-          {user.length === 0 && logged === false ? (
+          {id.length === undefined || user.length===0 && logged === false ? (
             <>
               <Nav.Item>
                 <Nav.Link

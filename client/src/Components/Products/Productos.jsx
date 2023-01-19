@@ -21,7 +21,7 @@ export default function Productos() {
   useEffect(() => {
     setMaxPage(Math.ceil(products.length / 21));
     if (maxPage > 1) {
-      for (let i = 1; i < maxPage; i++) {
+      for (let i = 1; i <= maxPage; i++) {
         pages.push(i);
       }
       setPaginas(pages);

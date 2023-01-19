@@ -188,12 +188,17 @@ export const signUp = (payload) => {
 // action to login a user
 export const signIn = (payload) => {
   return async function (dispatch) {
+    const token = localStorage.getItem("id")
     try {
-      const res = await axios.post("/signin", payload);
+      if(token){return dispatch({ type: "SIGN_IN", payload })
+      }else{  const res = await axios.post("/signin", payload);
       res.data.message !== undefined
         ? alert(res.data.message)
         : alert("Inicio de sesión correcto");
-      return dispatch({ type: "SIGN_IN", payload });
+      console.log(res.data[0]._id)
+   localStorage.setItem("id", res.data[0]._id)
+  //  localStorage.setItem("id", res.data._id)
+      return dispatch({ type: "SIGN_IN", payload })};
     } catch (error) {
       alert(error.request.response);
     }
