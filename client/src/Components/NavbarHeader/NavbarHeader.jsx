@@ -42,7 +42,7 @@ export default function NavbarHeader() {
   const onClickFavorites = () => {
     navigate("/favorites");
   };
-
+console.log(id)
   return (
     <>
       <Container fluid>
@@ -67,7 +67,7 @@ export default function NavbarHeader() {
               Comparar
             </Nav.Link>
           </Nav.Item>
-          {id.length === undefined || user.length===0 && logged === false ? (
+          { user?.length===0 && logged === false ||id==null ? (
             <>
               <Nav.Item>
                 <Nav.Link

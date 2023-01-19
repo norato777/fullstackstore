@@ -18,6 +18,7 @@ const Google = () => {
 
     const onSuccess = (res) => {
         const userGoogle = { email: res.profileObj.email }
+        localStorage.setItem("id", res.tokenId)
         user.push(userGoogle)
         alert("Sesión iniciada")
     };

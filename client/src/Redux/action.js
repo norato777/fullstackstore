@@ -188,9 +188,9 @@ export const signUp = (payload) => {
 // action to login a user
 export const signIn = (payload) => {
   return async function (dispatch) {
-    const token = localStorage.getItem("id")
+    const id = localStorage.getItem("id")
     try {
-      if(token){return dispatch({ type: "SIGN_IN", payload })
+      if(id){return dispatch({ type: "SIGN_IN", payload })
       }else{  const res = await axios.post("/signin", payload);
       res.data.message !== undefined
         ? alert(res.data.message)
