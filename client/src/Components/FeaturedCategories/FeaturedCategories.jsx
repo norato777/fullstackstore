@@ -1,6 +1,5 @@
 import React from "react";
 import CardFeaturedCategories from "../CardFeaturedCategories/CardFeaturedCategories";
-import NewCard from "../CardFeaturedCategories/NewCard";
 import stl from "./FeaturedCategories.module.css";
 import { getCategories } from "../../Redux/action";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,7 +27,7 @@ export default function FeaturedCategories() {
         <div className={stl.container}>
           {category?.map((e, i) => (
             <div key={i}>
-              <NewCard prop={e} />
+              <CardFeaturedCategories prop={e} />
             </div>
           ))}
         </div>

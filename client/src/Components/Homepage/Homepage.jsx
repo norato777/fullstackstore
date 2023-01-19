@@ -12,7 +12,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { getCategories, getProducts } from "../../Redux/action";
 // import stl from "./Homepage.module.css";
 import Container from "react-bootstrap/Container";
-import NewCard from "../CardFeaturedCategories/NewCard";
 
 export default function Homepage() {
   const Products = useSelector((state) => state.products);
