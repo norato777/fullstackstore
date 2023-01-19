@@ -12,17 +12,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { getCategories, getProducts } from "../../Redux/action";
 // import stl from "./Homepage.module.css";
 import Container from "react-bootstrap/Container";
+import NewCard from "../CardFeaturedCategories/NewCard";
 
 export default function Homepage() {
   const Products = useSelector((state) => state.products);
-  const category = useSelector((state)=> state.category)
+  const category = useSelector((state) => state.category);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     !Products.length && dispatch(getProducts());
-    !category.length && dispatch(getCategories())
-
+    !category.length && dispatch(getCategories());
   }, [dispatch, Products]);
 
   return (
