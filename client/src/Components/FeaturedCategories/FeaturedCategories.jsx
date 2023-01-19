@@ -4,7 +4,7 @@ import stl from "./FeaturedCategories.module.css";
 import { getCategories } from "../../Redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 export default function FeaturedCategories() {
   const category = useSelector((state) => state.category);
@@ -23,14 +23,14 @@ export default function FeaturedCategories() {
       >
         Categorias Destacadas
       </h1>
-      <Container>
-        <div className={stl.container}>
+      <Container className="mt-3">
+        <Row>
           {category?.map((e, i) => (
-            <div key={i}>
+            <Row key={i}>
               <CardFeaturedCategories prop={e} />
-            </div>
+            </Row>
           ))}
-        </div>
+        </Row>
       </Container>
     </>
   );

@@ -6,7 +6,7 @@ export default function CarouselMain() {
   return (
     <>
       <Container
-        className="mt-3"
+        className="mt-5 p-2"
         style={{
           backgroundColor: "rgba(33, 37, 41,0.5)",
           backdropFilter: "blur(5px)",
