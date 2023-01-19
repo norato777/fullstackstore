@@ -130,6 +130,7 @@ export default function Productos() {
                 <Image
                   fluid
                   rounded
+                  className="mb-3"
                   src={product.image}
                   alt={product.name}
                   style={{
