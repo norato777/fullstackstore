@@ -23,14 +23,14 @@ export default function FeaturedCategories() {
       >
         Categorias Destacadas
       </h1>
-      <Container className="mt-3">
-        <Row>
+      <Container className="mt-3 mb-3">
+        <div className={stl.container}>
           {category?.map((e, i) => (
-            <Row key={i}>
+            <div key={i}>
               <CardFeaturedCategories prop={e} />
-            </Row>
+            </div>
           ))}
-        </Row>
+        </div>
       </Container>
     </>
   );
