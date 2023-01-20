@@ -64,6 +64,7 @@ export default function CardFeaturedProducts({ num }) {
           style={{
             backgroundColor: "rgb(33, 37, 41)",
             color: "#ff3c00",
+            textAlign: "start",
           }}
         >
           $ regular: ${oneProduct.price}
@@ -72,6 +73,8 @@ export default function CardFeaturedProducts({ num }) {
           style={{
             backgroundColor: "rgb(33, 37, 41)",
             color: "#ffc800",
+            fontSize: "17px",
+            textAlign: "start",
           }}
         >
           $ con descuento: ${oneProduct.price - oneProduct.price * 0.07}
@@ -80,6 +83,7 @@ export default function CardFeaturedProducts({ num }) {
           style={{
             backgroundColor: "rgb(33, 37, 41)",
             color: "#ff3c00",
+            textAlign: "start",
           }}
         >
           $ de envio: $500
@@ -88,6 +92,7 @@ export default function CardFeaturedProducts({ num }) {
           style={{
             backgroundColor: "rgb(33, 37, 41)",
             color: "#ff3c00",
+            textAlign: "start",
           }}
         >
           Disponibles: {oneProduct.quantity}
