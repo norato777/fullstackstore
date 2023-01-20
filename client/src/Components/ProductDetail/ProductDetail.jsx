@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import s from "./ProductDetail.module.css";
 import Paypal from "../Paypal/Papypal";
 import Rating_Coments from "../Rating_Coments/Rating_Coments"
+import MostrarComentarios from "../MostrarComentarios/MostrarComentarios"
+
 
 const ProductDetail = () => {
   const details = useSelector(state => state.detail)
@@ -36,11 +38,15 @@ const ProductDetail = () => {
             <Rating_Coments id={(details._id)} />
           </div>
           <Paypal price={details.price} />
+        
+          
         </>
       }
+      <MostrarComentarios id={(details._id)} />
       <Footer />
     </>
   );
 };
+
 
 export default ProductDetail;

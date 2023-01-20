@@ -1,10 +1,12 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { Container, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function CarouselMain() {
   return (
     <>
+      <Link to="/products">
       <Container
         className="mt-3"
         style={{
@@ -42,3 +44,4 @@ export default function CarouselMain() {
     </>
   );
 }
+

@@ -148,14 +148,7 @@ export function postCategory(payload) {
   };
 }
 
-// export function getNameProduct(payload) {
-//   return async function (dispatch) {
-//     const response = await axios.get(
-//       `http://localhost:3001/products/name/${payload}`
-//     );
-//     return dispatch({ type: "GET_NAME_PRODUCT", payload: response.data });
-//   };
-// }
+
 
 export default function searchBarName(payload) {
   return {
@@ -241,6 +234,77 @@ export function getCategories() {
       return dispatch({ type: "GET_CATEGORIES", payload: response.data });
     } catch (error) {
       return { error: error.message };
+    }
+  };
+}
+
+
+//guardar y traer el rating de un producto por id de producto
+
+export function getRating(id) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`/products/rating/${id}`);
+      return dispatch({ type: "GET_RATING", payload: response.data });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
+
+export function getReviews(id) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`/products/reviews/${id}`);
+      return dispatch({ type: "GET_REVIEWS", payload: response.data });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
+
+export function postReview(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post("/products/reviews", payload);
+      return dispatch({ type: "POST_REVIEW", payload: response.data });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
+
+//enviar rating de productor por id de producto
+
+export function putRating(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(`/products/rating/${payload._id}`, payload);
+      return dispatch({ type: "PUT_RATING", payload: response.data });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
+
+export function getComents(id) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`/products/coments/${id}`);
+      return dispatch({ type: "GET_COMENTS", payload: response.data });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
+
+export function postComent(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post("/products/coment", payload);
+      return dispatch({ type: "POST_COMENT", payload: response.data });
+    } catch (error) {
+      console.log(error.message);
     }
   };
 }

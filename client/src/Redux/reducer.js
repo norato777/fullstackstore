@@ -199,7 +199,39 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+    case "GET_REVIEWS":
+      return {
+        ...state,
+        reviews: action.payload,
+      };
+
+    case "POST_REVIEW":
+      return {
+        ...state,
+      };
+      case "GET_RATING":
+        return {
+          ...state,
+          reviews: action.payload,
+        };
+    case "GET_ORDERS":
+      return {
+        ...state,
+        orders: action.payload,
+      };
+      case "GET_COMENTS":
+        return {
+          ...state,
+          reviews: action.payload,
+        };
+    case "POST_COMENT":
+      return {
+        ...state,
+      };
+
+
     default:
       return state;
   }
 }
+

@@ -62,4 +62,17 @@ router.put("/recover/:id", (req, res) => {
     .catch((error) => res.json({ mesagge: error }));
 });
 
+
+
+
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
