@@ -12,6 +12,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Productos from "../Products/Productos";
 import NavbarMain from "../NavbarMain/NavbarMain";
+import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 
 function PageProducts() {
   const Products = useSelector((state) => state.products);
@@ -74,70 +75,98 @@ function PageProducts() {
       <div>
         <Header />
         <NavbarMain />
-        <div className="container">
-          <div className="row">
-            {/* filtors */}
-            <div className="col-2">
-              <div className="row">
-                <div className="col-12">
-                  <h3>Filtros</h3>
-                </div>
-                <div className="card-body">
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Categoria</label>
-                    <select
+        <Container className="mt-5">
+          <Row>
+            <Col>
+              <Card
+                style={{
+                  backgroundColor: "rgba(33, 37, 41,0.5)",
+                  backdropFilter: "blur(5px)",
+                  border: "1px solid #fff",
+                  boxShadow: "0 0 7px #fff",
+                }}
+              >
+                <Card.Header>
+                  <h5
+                    style={{
+                      color: "#ff3c00",
+                    }}
+                  >
+                    Filtros
+                  </h5>
+                </Card.Header>
+                <Card.Body>
+                  <Form.Group>
+                    <Form.Label
+                      style={{
+                        color: "#ffc800",
+                      }}
+                    >
+                      Categoria
+                    </Form.Label>
+                    <Form.Select
                       className="form-control"
-                      id="exampleFormControlSelect1"
                       value={selectedCategory}
                       onChange={(e) => handleChangeCategory(e.target.value)}
                     >
                       <option>Categoria</option>
                       {category &&
                         category.map((e, i) => <option key={i}>{e}</option>)}
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Marca</label>
-                    <select
+                    </Form.Select>
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label
+                      style={{
+                        color: "#ffc800",
+                      }}
+                    >
+                      Marca
+                    </Form.Label>
+                    <Form.Select
                       className="form-control"
-                      id="exampleFormControlSelect1"
                       value={selectedBrand}
                       onChange={(e) => handleChangeBrand(e.target.value)}
                     >
                       <option>Marca</option>
                       {brand &&
                         brand.map((e, i) => <option key={i}>{e}</option>)}
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Precio</label>
-                    <select
+                    </Form.Select>
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label
+                      style={{
+                        color: "#ffc800",
+                      }}
+                    >
+                      Precio
+                    </Form.Label>
+                    <Form.Select
                       className="form-control"
-                      id="exampleFormControlSelect1"
                       onChange={(e) => handleChangePrice(e.target.value)}
                     >
                       <option defaultValue="Price">Price</option>
                       <option value="Mayor">Mayor a menor</option>
                       <option value="Menor">Menor a mayor</option>
-                    </select>
-                  </div>
-                  <button
-                    className="btn btn-primary"
+                    </Form.Select>
+                  </Form.Group>
+
+                  <Button
+                    className="mt-5"
+                    variant="outline-warning"
                     onClick={() => handleCleanFilter()}
                   >
                     Limpiar filtros
-                  </button>
-                </div>
-              </div>
-            </div>
-            {/* productos */}
-            <div className="col-10">
-              <div className="row">
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col xs={9}>
+              <Row>
                 <Productos />
-              </div>
-            </div>
-          </div>
-        </div>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
         <Footer />
       </div>
     </>

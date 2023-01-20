@@ -10,6 +10,7 @@ export default function OurBrands() {
         ¡En Fullstack Store encuentra las mejores marcas!
       </h1>
       <Container
+        sm-5
         style={{
           backgroundColor: "rgba(173, 181, 189,0.5)",
           backdropFilter: "blur(5px)",
@@ -17,7 +18,7 @@ export default function OurBrands() {
           boxShadow: "0 0 7px #fff",
         }}
         expand="lg"
-        className="rounded-4 m-3"
+        className="rounded-4 mt-3 mb-3"
       >
         <Row>
           <Col>

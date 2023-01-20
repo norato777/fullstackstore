@@ -18,22 +18,122 @@ export default function NavbarHeader() {
           <Nav className="justify-content-center">
             <Nav.Item>
               <Nav.Link
-                href="/favorites"
+                href="/Monitors"
                 style={{
-                  color: "#ff3c00",
+                  color: "#ffc800",
                 }}
               >
-                link 1
+                Monitors
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link
-                href="/favorites"
+                href="/Keyboards"
                 style={{
-                  color: "#ff3c00",
+                  color: "#ffc800",
                 }}
               >
-                link 2
+                Keyboards
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                href="/Mouses"
+                style={{
+                  color: "#ffc800",
+                }}
+              >
+                Mouses
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                href="/Processor"
+                style={{
+                  color: "#ffc800",
+                }}
+              >
+                Processor
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                href="/VGA"
+                style={{
+                  color: "#ffc800",
+                }}
+              >
+                VGA
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                href="/Mother"
+                style={{
+                  color: "#ffc800",
+                }}
+              >
+                Mother
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                href="/Memory"
+                style={{
+                  color: "#ffc800",
+                }}
+              >
+                Memory
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                href="/Fuente"
+                style={{
+                  color: "#ffc800",
+                }}
+              >
+                Fuente
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                href="/Disk"
+                style={{
+                  color: "#ffc800",
+                }}
+              >
+                Disk
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                href="/Gabinete"
+                style={{
+                  color: "#ffc800",
+                }}
+              >
+                Gabinete
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                href="/Headsets"
+                style={{
+                  color: "#ffc800",
+                }}
+              >
+                Headsets
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                href="/Laptops"
+                style={{
+                  color: "#ffc800",
+                }}
+              >
+                Laptops
               </Nav.Link>
             </Nav.Item>
           </Nav>

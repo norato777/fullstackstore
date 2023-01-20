@@ -30,7 +30,7 @@ export default function NavbarHeader() {
 
   const signOut = () => {
     dispatch(logOut());
-    navigate("/")
+    navigate("/");
     window.location.reload();
   };
 
@@ -68,16 +68,6 @@ export default function NavbarHeader() {
           </Nav.Item>
           {user.length === 0 && logged === false ? (
             <>
-              <Nav.Item>
-                <Nav.Link
-                  onClick={handleShow2}
-                  style={{
-                    color: "#ff3c00",
-                  }}
-                >
-                  Registrarse
-                </Nav.Link>
-              </Nav.Item>
               <Nav.Item>
                 <Nav.Link
                   onClick={handleShow}
