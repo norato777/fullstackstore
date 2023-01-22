@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../Header/Header";
-import NavbarMain from "../NavbarMain/NavbarMain";
 import Footer from "../Footer/Footer";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +17,7 @@ const ProductDetail = () => {
   return (
     <>
       <Header />
-      <NavbarMain />
+
       {details && (
         <>
           <Container
@@ -118,7 +117,6 @@ const ProductDetail = () => {
           </div>
         </>
       )}
-      <Footer />
     </>
   );
 };

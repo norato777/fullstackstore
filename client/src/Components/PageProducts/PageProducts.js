@@ -11,7 +11,7 @@ import {
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Productos from "../Products/Productos";
-import NavbarMain from "../NavbarMain/NavbarMain";
+
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 
 function PageProducts() {
@@ -74,7 +74,7 @@ function PageProducts() {
     <>
       <div>
         <Header />
-        <NavbarMain />
+
         <Container className="mt-5">
           <Row>
             <Col>
