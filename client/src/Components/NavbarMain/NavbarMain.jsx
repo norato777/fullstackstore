@@ -1,81 +1,40 @@
-import React from "react";
-import Nav from "react-bootstrap/Nav";
-import stl from "./NavbarMain.module.css";
-import Container from "react-bootstrap/Container";
+import React, { useEffect } from "react";
+import { getCategories } from "../../Redux/action";
+import NavButton from "../NavButton/NavButton";
+import { useDispatch, useSelector } from "react-redux";
+import { Container, Navbar, Nav } from "react-bootstrap";
 
 export default function NavbarHeader() {
+  const category = useSelector((state) => state.category);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    !category.length && dispatch(getCategories());
+  }, []);
+
   return (
     <>
-      <Container fluid="xxl">
-        <div className={stl.container}>
-          <Nav className="justify-content-center" activeKey="/home">
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/products">
-                Promociones
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/products">
-                Nuevos productos
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/products">
-                Hardware
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/products">
-                PC Gamers
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/products">
-               Software
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/products">
-              Home office
-              </Nav.Link>
-            </Nav.Item>
-            {/* <Nav.Item>
-              <Nav.Link className={stl.colors} href="/products">
-                Energia
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/products">
-                Punto de venta
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/products">
-                Seguridad y vigilancia
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/products">
-                Telecomunicaciones
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/products">
-                Hogar
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/products">
-                Software
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className={stl.colors} href="/products">
-                Home office
-              </Nav.Link>
-            </Nav.Item> */}
+      <Container className="mt-3 ">
+        <Navbar
+          style={{
+            backgroundColor: "rgba(33, 37, 41,0.5)",
+            backdropFilter: "blur(5px)",
+            border: "1px solid #fff",
+            boxShadow: "0 0 7px #fff",
+          }}
+          expand="lg"
+          className="rounded-4 justify-content-center"
+        >
+          <Nav className="justify-content-center">
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              {category?.map((e, i) => (
+                <div>
+                  <NavButton prop={e} />
+                </div>
+              ))}
+            </div>
           </Nav>
-        </div>
+        </Navbar>
       </Container>
     </>
   );

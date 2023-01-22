@@ -1,12 +1,8 @@
-import React from "react";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
+import React, { useState } from "react";
+import { Container, Form, InputGroup, Button } from "react-bootstrap";
 import searchBarName from "../../Redux/action";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import stl from "./SearchBarMain.module.css";
-import Container from "react-bootstrap/Container";
 
 export default function SearchBarMain() {
   const dispatch = useDispatch();
@@ -29,17 +25,24 @@ export default function SearchBarMain() {
   return (
     <>
       <Container>
-        <form>
+        <Form>
           <InputGroup className="mb-3">
             <Form.Control
               onChange={handleChange}
               placeholder="¿Que estas buscando hoy?"
+              style={{
+                border: "1px solid #ff3c00",
+              }}
             />
-            <button className={stl.boton} onClick={handleClick}>
-            <i className="bi bi-search"></i>
-            </button>
+            <Button
+              variant="outline-warning"
+              onClick={handleClick}
+              style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+            >
+              <i className="bi bi-search "></i>
+            </Button>
           </InputGroup>
-        </form>
+        </Form>
       </Container>
     </>
   );

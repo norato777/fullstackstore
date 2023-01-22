@@ -10,19 +10,18 @@ import Footer from "../Footer/Footer";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCategories, getProducts } from "../../Redux/action";
-import stl from "./Homepage.module.css";
+// import stl from "./Homepage.module.css";
 import Container from "react-bootstrap/Container";
 
 export default function Homepage() {
   const Products = useSelector((state) => state.products);
-  const category = useSelector((state)=> state.category)
+  const category = useSelector((state) => state.category);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     !Products.length && dispatch(getProducts());
-    !category.length && dispatch(getCategories())
-
+    !category.length && dispatch(getCategories());
   }, [dispatch, Products]);
 
   return (
@@ -34,18 +33,16 @@ export default function Homepage() {
         </div>
       ) : (
         <>
-          <Container fluid>
-            <Promobar />
-            <Header />
-            <NavbarMain />
-            <div className={stl.containerBody}>
-              <Carousel />
-              <FeaturedProducts />
-              <OurBrands />
-              <FeaturedCategories />
-            </div>
-            <Footer />
+          <Promobar />
+          <Header />
+          <NavbarMain />
+          <Container>
+            <Carousel />
+            <FeaturedProducts />
+            <OurBrands />
+            <FeaturedCategories />
           </Container>
+          <Footer />
         </>
       )}
     </>

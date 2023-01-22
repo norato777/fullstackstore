@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getDetail, getProducts } from "../../Redux/action";
-import stl from "./Productos.module.css";
+import { Container, Card, Button, Row, Image } from "react-bootstrap";
 
 export default function Productos() {
   const dispatch = useDispatch();
@@ -12,105 +12,173 @@ export default function Productos() {
   const [page, setPage] = useState(1);
   const [maxPage, setMaxPage] = useState(1);
   const [num1, setNum1] = useState(0);
-  const [num2, setNum2] = useState(20);
+  const [num2, setNum2] = useState(21);
   const [paginas, setPaginas] = useState([]);
   let pages = [];
 
   useSelector((state) => state.getDetail);
 
   useEffect(() => {
-    setMaxPage(Math.ceil(products.length / 20));
+    setMaxPage(Math.ceil(products.length / 21));
     if (maxPage > 1) {
       for (let i = 1; i < maxPage; i++) {
         pages.push(i);
       }
       setPaginas(pages);
-    }else setPaginas(pages);
-  }, [products, page, maxPage,num1,num2]);
+    } else setPaginas(pages);
+  }, [products, page, maxPage, num1, num2]);
   function handleNextPage() {
-    if(num2>=maxPage*20){
-      return num1, num2
-    }else {
-      setNum1(num1+20)
-    setNum2(num2+20)
+    if (num2 >= maxPage * 21) {
+      return num1, num2;
+    } else {
+      setNum1(num1 + 21);
+      setNum2(num2 + 21);
     }
   }
 
   function handlePrevPage() {
-    if(num1==0){
-      return num1, num2
-    }else {
-      setNum1(num1-20)
-    setNum2(num2-20)
+    if (num1 == 0) {
+      return num1, num2;
+    } else {
+      setNum1(num1 - 21);
+      setNum2(num2 - 21);
     }
   }
   const handleDetail = (e) => {
     dispatch(getDetail(e.target.value));
     navigate(`/product/${e.target.value}`);
   };
-  const handleChangePagePerNum = (e)=>{
-    console.log(e.target.value)
-   let n = e.target.value *20
-   if(e.target.value == 1){ return setNum1(0), setNum2(20)}
-  else
-    setNum1(n)
-    setNum2(n+20)
-  }
+  const handleChangePagePerNum = (e) => {
+    console.log(e.target.value);
+    let n = e.target.value * 20;
+    if (e.target.value == 1) {
+      return setNum1(0), setNum2(20);
+    } else setNum1(n);
+    setNum2(n + 20);
+  };
   return (
-    <div>
-      <div className={stl.butonSet}>
+    <Container>
+      {/* paginacion */}
+
+      <Container className="m-3">
         {/* botones de paginacion bootstrap */}
 
-        <button onClick={handlePrevPage} className={`btn btn ${stl.btn}`}>
+        <Button
+          onClick={handlePrevPage}
+          variant="outline-warning"
+          style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+          className="m-1"
+        >
           Anterior
-        </button>
+        </Button>
         {paginas.length > 1 &&
-          paginas.map((e, i) => <button key={i} className={`btn ${stl.btn}`} value={e} onClick={handleChangePagePerNum}>{e}</button>)}
-        <button onClick={handleNextPage} className={`btn ${stl.btn}`}>
+          paginas.map((e, i) => (
+            <Button
+              key={i}
+              value={e}
+              onClick={handleChangePagePerNum}
+              variant="outline-warning"
+              style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+              className="m-1"
+            >
+              {e}
+            </Button>
+          ))}
+        <Button
+          onClick={handleNextPage}
+          variant="outline-warning"
+          style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+          className="m-1"
+        >
           Siguiente
-        </button>
-      </div>
+        </Button>
+      </Container>
 
-      <div className={stl.container}>
+      {/* body de cards */}
+
+      <Row>
         {/* mensaje de carga mientras se renderiza los productos */}
 
         {products.length === 0 ? (
-          <h1>No hay productos con este Filtro</h1>
+          <h1
+            style={{
+              color: "#ff3c00",
+            }}
+          >
+            No hay productos con este Filtro
+          </h1>
         ) : null}
         {/* //map para renderizar los productos */}
 
-        {products
-          ?.slice(num1,num2)
-          ?.map((product) => {
-            return (
-              <div className={stl.card} key={product._id}>
-                <div className={stl.cardbody}>
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className={stl.img}
-                  />
-                  <div className={stl.cardbody1}>
-                    <h5 className="card-title">{product.name.slice(0, 30)}</h5>
-                    {/* //descricion con caracteres limitados a 100 */}
-                    <p className="card-text">
-                      {product.description.slice(0, 30)}...
-                    </p>
-                    <p className="card-text">${product.price}</p>
-                    {/* usar getDetail para detalles del producto */}
-                    <button
-                      value={product._id}
-                      onClick={handleDetail}
-                      className="btn btn-primary"
-                    >
-                      Ver detalles
-                    </button>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-      </div>
-    </div>
+        {/* card */}
+
+        {products?.slice(num1, num2)?.map((product) => {
+          return (
+            <Card
+              style={{
+                width: "19rem",
+                backgroundColor: "rgba(33, 37, 41,0.5)",
+                backdropFilter: "blur(5px)",
+                border: "1px solid #fff",
+                boxShadow: "0 0 7px #fff",
+              }}
+              expand="lg"
+              className="rounded-4 m-2"
+              key={product._id}
+            >
+              <Card.Body>
+                <Image
+                  fluid
+                  rounded
+                  className="mb-3"
+                  src={product.image}
+                  alt={product.name}
+                  style={{
+                    objectFit: "contain",
+                    marginTop: "14px",
+                    width: "16rem",
+                    height: "16rem",
+                    border: "1px solid #fff",
+                    background: "#fff",
+                  }}
+                />
+
+                <Card.Title
+                  style={{
+                    color: "#ff3c00",
+                  }}
+                >
+                  {product.name.slice(0, 30)}
+                </Card.Title>
+                {/* //descricion con caracteres limitados a 100 */}
+                <Card.Text
+                  style={{
+                    color: "#ff3c00",
+                  }}
+                >
+                  {product.description.slice(0, 30)}...
+                </Card.Text>
+                <Card.Text
+                  style={{
+                    color: "#ffc800",
+                  }}
+                >
+                  ${product.price}
+                </Card.Text>
+                {/* usar getDetail para detalles del producto */}
+                <Button
+                  variant="outline-warning"
+                  style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+                  value={product._id}
+                  onClick={handleDetail}
+                >
+                  Ver detalles
+                </Button>
+              </Card.Body>
+            </Card>
+          );
+        })}
+      </Row>
+    </Container>
   );
 }
