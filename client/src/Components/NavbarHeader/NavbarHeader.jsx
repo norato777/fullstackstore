@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut, getUsers } from "../../Redux/action";
 import { useNavigate } from "react-router-dom";
-import ModalLogin from "../ModalLogin/ModalLogin";
-import ModalRegister from "../ModalRegister/ModalRegister";
+import ModalSign from "../ModalSign/ModalSign";
 import {
   Container,
   Dropdown,
@@ -16,13 +15,11 @@ export default function NavbarHeader() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const [show2, setShow2] = useState(false);
   const user = useSelector((state) => state.user);
   const logged = useSelector((state) => state.logged);
   const handleClose = () => setShow(false);
-  const handleClose2 = () => setShow2(false);
+
   const handleShow = () => setShow(true);
-  const handleShow2 = () => setShow2(true);
 
   useEffect(() => {
     dispatch(getUsers());
@@ -102,8 +99,7 @@ export default function NavbarHeader() {
           )}
         </Nav>
       </Container>
-      <ModalLogin show={show} handleClose={handleClose} />
-      <ModalRegister show={show2} handleClose={handleClose2} />
+      <ModalSign show={show} handleClose={handleClose} />
     </>
   );
 }
