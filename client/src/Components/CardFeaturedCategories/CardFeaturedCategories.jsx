@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { filterProductsCategory } from "../../Redux/action";
-import { Container, Button, Image } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 
 export default function CardFeaturedCategories({ prop }) {
   const navigate = useNavigate();

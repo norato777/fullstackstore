@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { getCategories } from "../../Redux/action";
+import NavButton from "../NavButton/NavButton";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Navbar, Nav, Button } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
 
 export default function NavbarHeader() {
   const category = useSelector((state) => state.category);
@@ -25,17 +26,14 @@ export default function NavbarHeader() {
           className="rounded-4 justify-content-center"
         >
           <Nav className="justify-content-center">
-            <Nav.Item>
-              <Nav.Link
-                href="/Monitors"
-                style={{
-                  color: "#ffc800",
-                }}
-              >
-                Monitors
-              </Nav.Link>
-            </Nav.Item>
-             </Nav>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              {category?.map((e, i) => (
+                <div>
+                  <NavButton prop={e} />
+                </div>
+              ))}
+            </div>
+          </Nav>
         </Navbar>
       </Container>
     </>
