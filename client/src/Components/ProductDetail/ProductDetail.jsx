@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Paypal from "../Paypal/Papypal";
