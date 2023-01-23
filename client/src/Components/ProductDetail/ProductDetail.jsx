@@ -1,8 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Header from "../Header/Header";
-import NavbarMain from "../NavbarMain/NavbarMain";
-import Footer from "../Footer/Footer";
 import { useSelector } from "react-redux";
 import s from "./ProductDetail.module.css";
 import Paypal from "../Paypal/Papypal";
@@ -14,8 +12,8 @@ const ProductDetail = () => {
   return (
     <>
       <Header />
-      <NavbarMain />
-      {details &&
+
+      {details && (
         <>
           <Card className={s.card}>
             <Card.Img variant="top" src={details.image} className={s.img} />
@@ -37,8 +35,7 @@ const ProductDetail = () => {
           </div>
           <Paypal price={details.price} />
         </>
-      }
-      <Footer />
+      )}
     </>
   );
 };

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut, getUsers } from "../../Redux/action";
 import { useNavigate } from "react-router-dom";
-import ModalLogin from "../ModalLogin/ModalLogin";
-import ModalRegister from "../ModalRegister/ModalRegister";
+import ModalSign from "../ModalSign/ModalSign";
 import {
   Container,
   Dropdown,
@@ -16,33 +15,30 @@ export default function NavbarHeader() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const [show2, setShow2] = useState(false);
   const user = useSelector((state) => state.user);
   const logged = useSelector((state) => state.logged);
   const handleClose = () => setShow(false);
-  const handleClose2 = () => setShow2(false);
+
   const handleShow = () => setShow(true);
-  const handleShow2 = () => setShow2(true);
-  const id = localStorage.getItem("id");
+
   useEffect(() => {
     dispatch(getUsers());
   }, []);
 
-  const signOut = (e) => {    
-    localStorage.clear();
+  const signOut = () => {
     dispatch(logOut());
     navigate("/");
-    // window.location.reload();
+    window.location.reload();
   };
 
   const onClickProfile = () => {
-    navigate("/profile/"+id);
+    navigate("/profile");
   };
 
   const onClickFavorites = () => {
     navigate("/favorites");
   };
-console.log(id)
+
   return (
     <>
       <Container fluid>
@@ -67,18 +63,8 @@ console.log(id)
               Comparar
             </Nav.Link>
           </Nav.Item>
-          { user?.length===0 && logged === false ||id==null ? (
+          {user.length === 0 && logged === false ? (
             <>
-              <Nav.Item>
-                <Nav.Link
-                  onClick={handleShow2}
-                  style={{
-                    color: "#ff3c00",
-                  }}
-                >
-                  Registrarse
-                </Nav.Link>
-              </Nav.Item>
               <Nav.Item>
                 <Nav.Link
                   onClick={handleShow}
@@ -113,8 +99,7 @@ console.log(id)
           )}
         </Nav>
       </Container>
-      <ModalLogin show={show} handleClose={handleClose} />
-      <ModalRegister show={show2} handleClose={handleClose2} />
+      <ModalSign show={show} handleClose={handleClose} />
     </>
   );
 }
