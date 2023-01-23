@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Paypal from "../Paypal/Papypal";
-import Rating_Coments from "../Rating_Coments/Rating_Coments";
+import RatingComents from "../RatingComents/RatingComents";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
 
 const ProductDetail = () => {
@@ -52,6 +52,7 @@ const ProductDetail = () => {
                     color: "#ff3c00",
                     fontSize: "21px",
                     height: "35px",
+                    overflow: "auto",
                   }}
                 >
                   {details.name}
@@ -71,6 +72,7 @@ const ProductDetail = () => {
                     color: "#ff3c00",
                     textAlign: "justify",
                     height: "105px",
+                    overflow: "auto",
                   }}
                 >
                   {details.description}
@@ -112,7 +114,7 @@ const ProductDetail = () => {
             </Row>
           </Container>
           <div>
-            <Rating_Coments id={details._id} />
+            <RatingComents id={details._id} />
           </div>
         </>
       )}
