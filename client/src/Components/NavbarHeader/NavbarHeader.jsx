@@ -9,6 +9,7 @@ import {
   DropdownButton,
   ButtonGroup,
   Nav,
+  Button,
 } from "react-bootstrap";
 
 export default function NavbarHeader() {
@@ -44,36 +45,39 @@ export default function NavbarHeader() {
       <Container fluid>
         <Nav className="justify-content-end" activeKey="/">
           <Nav.Item>
-            <Nav.Link
+            <Button
+              className="m-1"
               href="/favorites"
-              style={{
-                color: "#ff3c00",
-              }}
+              variant="outline-warning"
+              style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
             >
-              Favoritos
-            </Nav.Link>
+              <i className="bi bi-star "></i> Favoritos
+            </Button>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link
+            <Button
+              className="m-1"
+              variant="outline-warning"
               href="/compare"
-              style={{
-                color: "#ff3c00",
-              }}
+              style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
             >
-              Comparar
-            </Nav.Link>
+              <i className="bi bi-back "></i> Comparar
+            </Button>
           </Nav.Item>
           {user.length === 0 && logged === false ? (
             <>
               <Nav.Item>
-                <Nav.Link
+                <Button
+                  className="m-1"
+                  variant="outline-warning"
                   onClick={handleShow}
                   style={{
+                    border: "1px solid #ff3c00",
                     color: "#ff3c00",
                   }}
                 >
-                  Ingresar
-                </Nav.Link>
+                  <i className="bi bi-box-arrow-in-right "></i> Ingresar
+                </Button>
               </Nav.Item>
             </>
           ) : (

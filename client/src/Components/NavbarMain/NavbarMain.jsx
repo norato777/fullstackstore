@@ -26,7 +26,13 @@ export default function NavbarHeader() {
           className="rounded-4 justify-content-center"
         >
           <Nav className="justify-content-center">
-            <div style={{ display: "flex", flexDirection: "row" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+              }}
+            >
               {category?.map((e, i) => (
                 <div>
                   <NavButton prop={e} />

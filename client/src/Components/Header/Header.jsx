@@ -25,7 +25,7 @@ export default function Header() {
           <Container>
             <Col xs={2} className="p-3">
               <Navbar.Brand href="/">
-                <Image src="./image/TFSS.png" fluid />
+                <Image fluid alt="logo" src="/tfss.svg" width="150" />
               </Navbar.Brand>
             </Col>
             <Col xs={8}>

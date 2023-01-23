@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { filterProductsCategory } from "../../Redux/action";
-import { Container, Button, Nav } from "react-bootstrap";
+import { Container, Nav } from "react-bootstrap";
 
 export default function NavButton({ prop }) {
   const navigate = useNavigate();
@@ -17,9 +17,9 @@ export default function NavButton({ prop }) {
 
   return (
     <Container>
-      <Nav onClick={handleClick}>
-        <Nav.Link style={{ color: "#ff3c00" }}>{prop.name}</Nav.Link>
-      </Nav>
+      <Nav.Link onClick={handleClick} style={{ color: "#ff3c00" }}>
+        {prop.name}
+      </Nav.Link>
     </Container>
   );
 }
