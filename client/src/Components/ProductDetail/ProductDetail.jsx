@@ -2,18 +2,27 @@ import React from "react";
 import Header from "../Header/Header";
 import NavbarMain from "../NavbarMain/NavbarMain";
 import Footer from "../Footer/Footer";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import Paypal from "../Paypal/Papypal";
 import Rating_Coments from "../Rating_Coments/Rating_Coments";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import MostrarComentarios from "../MostrarComentarios/MostrarComentarios";
+import { useEffect} from "react";
+import { getDetail } from "../../Redux/action";
 
 const ProductDetail = () => {
   const details = useSelector((state) => state.detail);
   const navigate = useNavigate();
   const handleCart = () => {
     navigate("/cart");
-  };
+  } 
+  const { id } = useParams()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getDetail(id))
+  }, [])
 
   return (
     <>
@@ -117,15 +126,14 @@ const ProductDetail = () => {
             <Rating_Coments id={details._id} />
           </div>
           <Paypal price={details.price} />
-        
-          
+          <div>
+            <MostrarComentarios id={details._id} />
+          </div>
         </>
       )}
-      <MostrarComentarios id={(details._id)} />
       <Footer />
     </>
   );
 };
-
 
 export default ProductDetail;

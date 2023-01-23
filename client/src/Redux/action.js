@@ -308,3 +308,25 @@ export function postComent(payload) {
     }
   };
 }
+
+export function putComent(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(`/products/coment/${payload._id}`, payload);
+      return dispatch({ type: "PUT_COMENT", payload: response.data });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
+
+export function postRating (payload) {
+    return async function (dispatch) {
+        try {
+            const response = await axios.post('/products/rating', payload)
+            return dispatch({type: 'POST_RATING', payload: response.data})
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+}

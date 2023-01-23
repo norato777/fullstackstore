@@ -228,10 +228,18 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
-
+      case "PUT_COMENT":
+        return {
+          ...state,
+        };
+      case 'POST_RATING':
+        return {
+          ...state,
+        }
 
     default:
       return state;
   }
 }
+
 

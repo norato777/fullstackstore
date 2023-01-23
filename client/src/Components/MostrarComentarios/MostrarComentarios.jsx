@@ -1,46 +1,58 @@
-//mostrar los comentarios de un producto en especifico y el rating de ese producto de la base de datos por id del producto
+//tomar comentarios de la base de datos y mostrarlos en el componente MostrarComentarios por cada producto por id
 
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getComents } from '../../Redux/action'
-import s from "./MostrarComentarios.module.css"
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getRating } from "../../Redux/action";
+import { Container, Row, Col, Form, InputGroup, Button } from "react-bootstrap";
 
-const MostrarComentarios = ({ id }) => {
-    const dispatch = useDispatch()
-    const comentarios = useSelector(state => state.comentarios)
-    const [comentariosFiltrados, setComentariosFiltrados] = useState([])
-
-    useEffect(() => {
-        dispatch(getComents())
-    }, [dispatch])
-
-    useEffect(() => {
-        setComentariosFiltrados(comentarios.filter(comentario => comentario.id === id))
-    }, [comentarios, id])
-
-    return (
-        <div className={s.div}>
-            {comentariosFiltrados.length > 0 ?
-                comentariosFiltrados.map(comentario => {
-                    return (
-                        <div className={s.div1}>
-                            <div className={s.div2}>
-                                <div className={s.div3}>
-                                    <p>{comentario.description}</p>
-                                </div>
-                                <div className={s.div4}>
-                                    <p>Rating: {comentario.rating}</p>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                })
-                :
-                <h3>No hay comentarios para este producto</h3>
-            }
-        </div>
-    )
+export default function MostrarComentarios({ id }) {
+  const dispatch = useDispatch();
+  const [coments, setComents] = useState({ _id: id });
+  const coment = useSelector((state) => state.coments);
+  useEffect(() => {
+    dispatch(getRating(id));
+  }, [dispatch, id]);
+  return (
+    <Container
+      style={{
+        backgroundColor: "rgba(33, 37, 41,0.5)",
+        backdropFilter: "blur(5px)",
+        border: "1px solid #fff",
+        boxShadow: "0 0 7px #fff",
+      }}
+      expand="lg"
+      className="rounded-4"
+    >
+      <h5
+        style={{
+          color: "#ff3c00",
+        }}
+        className="mt-3"
+      >
+        Comentarios
+      </h5>
+      <Row>
+        <Col>
+          {coment &&
+            coment.map((coment) => {
+              return (
+                <Row>
+                  <Col>
+                    <Form.Text
+                      style={{
+                        color: "#ff3c00",
+                        fontSize: "21px",
+                      }}
+                    >
+                      {coment.coments}
+                    </Form.Text>
+                  </Col>
+                </Row>
+              );
+            })}
+        </Col>
+      </Row>
+    </Container>
+  );
 }
-
-export default MostrarComentarios
 
