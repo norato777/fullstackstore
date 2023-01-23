@@ -11,7 +11,7 @@ import {
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Productos from "../Products/Productos";
-import NavbarMain from "../NavbarMain/NavbarMain";
+
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 
 function PageProducts() {
@@ -74,7 +74,7 @@ function PageProducts() {
     <>
       <div>
         <Header />
-        <NavbarMain />
+
         <Container className="mt-5">
           <Row>
             <Col>
@@ -85,6 +85,7 @@ function PageProducts() {
                   border: "1px solid #fff",
                   boxShadow: "0 0 7px #fff",
                 }}
+                className="rounded-4"
               >
                 <Card.Header>
                   <h5
@@ -154,6 +155,7 @@ function PageProducts() {
                     className="mt-5"
                     variant="outline-warning"
                     onClick={() => handleCleanFilter()}
+                    style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
                   >
                     Limpiar filtros
                   </Button>

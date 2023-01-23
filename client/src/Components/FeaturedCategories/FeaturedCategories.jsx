@@ -4,7 +4,7 @@ import stl from "./FeaturedCategories.module.css";
 import { getCategories } from "../../Redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 export default function FeaturedCategories() {
   const category = useSelector((state) => state.category);

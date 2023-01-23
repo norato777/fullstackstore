@@ -2,10 +2,10 @@
 const jwt = require('jsonwebtoken');
 require("dotenv").config();
 
-const getToken = (payload) => {
+const getTokeen = (payload) => {
     return jwt.sign({
         data: payload
-    }, process.env.JWT_KEY , { expiresIn: '1h' });
+    }, process.env.JWT_KEY, { expiresIn: '10m' });
 }
 
 const getTokenData = (token) => {
@@ -22,6 +22,6 @@ const getTokenData = (token) => {
 }
 
 module.exports = {
-    getToken,
+    getTokeen,
     getTokenData
 }

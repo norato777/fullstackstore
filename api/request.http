@@ -48,3 +48,14 @@ DELETE   http://localhost:3001/favorites/63bf11b9e2a554f00d22b32e HTTP/1.1
 
 ###
 get http://localhost:3001/favorites/63c56a60accb038ca0f978c0 HTTP/1.1
+
+
+
+
+###
+POST   http://localhost:3001/forgotpassword HTTP/1.1
+
+{
+    "email":"thefullstakstore@gmail.com"
+
+}

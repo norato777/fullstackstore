@@ -27,7 +27,7 @@ const ProductDetail = () => {
   return (
     <>
       <Header />
-      <NavbarMain />
+
       {details && (
         <>
           <Container
@@ -131,7 +131,6 @@ const ProductDetail = () => {
           </div>
         </>
       )}
-      <Footer />
     </>
   );
 };
