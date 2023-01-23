@@ -198,6 +198,7 @@ export default function rootReducer(state = initialState, action) {
         return {
           ...state,
           user: action.payload,
+          cart: action.payload.cart,
           logged: true,
         };
       }
@@ -206,6 +207,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         user: [],
+        cart:[],
         logged: false,
       };
     case "SEARCH_BAR":

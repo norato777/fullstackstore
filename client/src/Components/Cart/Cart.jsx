@@ -1,12 +1,13 @@
 import React from 'react'
+import { useState } from 'react';
 
 export default function Cart() {
-  
+  const [cart, setCart] = useState([])
 
   
     return (
       <div>
-        {cart.items.length === 0 ? (
+        {cart?.items?.length === 0 ? (
           <div >Cart is empty</div>
         ) : (
           <>

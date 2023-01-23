@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { putCalificationRating } from "../../Redux/action";
 import { Container, Row, Col, Form, InputGroup, Button } from "react-bootstrap";
 
-export default function Rating_Coments({ id }) {
+export default function RatingComents({ id }) {
   const dispatch = useDispatch();
 
   const [rating, setRating] = useState({ _id: id });
