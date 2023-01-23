@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Checkbox from "../CheckBox/CheckBox";
 import { Link } from "react-router-dom";
 import { getDetail } from "../../Redux/action";
-import { Card, ListGroup } from "react-bootstrap";
+import { Card, ListGroup, Button } from "react-bootstrap";
 
 export default function CardFeaturedProducts({ num }) {
   const dispatch = useDispatch();
@@ -31,14 +31,18 @@ export default function CardFeaturedProducts({ num }) {
           src={oneProduct.image}
           style={{
             objectFit: "contain",
-            padding: "3px",
+            marginTop: "14px",
+            width: "16rem",
+            height: "16rem",
+            border: "1px solid #fff",
+            background: "#fff",
           }}
         />
       </Link>
       <Card.Body>
         <Card.Title
           style={{
-            color: "#ff3c00",
+            color: "#ffc800",
             textDecoration: "none",
             textWeight: "bold",
           }}
@@ -60,6 +64,7 @@ export default function CardFeaturedProducts({ num }) {
           style={{
             backgroundColor: "rgb(33, 37, 41)",
             color: "#ff3c00",
+            textAlign: "start",
           }}
         >
           $ regular: ${oneProduct.price}
@@ -67,7 +72,9 @@ export default function CardFeaturedProducts({ num }) {
         <ListGroup.Item
           style={{
             backgroundColor: "rgb(33, 37, 41)",
-            color: "#ff3c00",
+            color: "#ffc800",
+            fontSize: "17px",
+            textAlign: "start",
           }}
         >
           $ con descuento: ${oneProduct.price - oneProduct.price * 0.07}
@@ -76,6 +83,7 @@ export default function CardFeaturedProducts({ num }) {
           style={{
             backgroundColor: "rgb(33, 37, 41)",
             color: "#ff3c00",
+            textAlign: "start",
           }}
         >
           $ de envio: $500
@@ -84,6 +92,7 @@ export default function CardFeaturedProducts({ num }) {
           style={{
             backgroundColor: "rgb(33, 37, 41)",
             color: "#ff3c00",
+            textAlign: "start",
           }}
         >
           Disponibles: {oneProduct.quantity}
@@ -96,15 +105,12 @@ export default function CardFeaturedProducts({ num }) {
         }}
       >
         <Checkbox />
-        <Card.Link
-          href="#"
-          className="text-decoration-none"
-          style={{
-            color: "#ff3c00",
-          }}
+        <Button
+          variant="outline-warning"
+          style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
         >
           Agregar al carrito
-        </Card.Link>
+        </Button>
       </Card.Body>
     </Card>
   );

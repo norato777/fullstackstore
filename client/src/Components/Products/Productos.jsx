@@ -21,7 +21,7 @@ export default function Productos() {
   useEffect(() => {
     setMaxPage(Math.ceil(products.length / 21));
     if (maxPage > 1) {
-      for (let i = 1; i <= maxPage; i++) {
+      for (let i = 1; i < maxPage; i++) {
         pages.push(i);
       }
       setPaginas(pages);
@@ -127,7 +127,21 @@ export default function Productos() {
               key={product._id}
             >
               <Card.Body>
-                <Image fluid rounded src={product.image} alt={product.name} />
+                <Image
+                  fluid
+                  rounded
+                  className="mb-3"
+                  src={product.image}
+                  alt={product.name}
+                  style={{
+                    objectFit: "contain",
+                    marginTop: "14px",
+                    width: "16rem",
+                    height: "16rem",
+                    border: "1px solid #fff",
+                    background: "#fff",
+                  }}
+                />
 
                 <Card.Title
                   style={{
