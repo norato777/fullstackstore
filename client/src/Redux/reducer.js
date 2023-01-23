@@ -28,7 +28,8 @@ export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     // case to get all products
     case "GET_PRODUCTS":
-      const marcas = state.allProducts
+      let productsFilter = action.payload.filter(ele=>ele.deleted===false)
+      const marcas = productsFilter
         .map((e) => e.brand)
         .sort(function (a, b) {
           if (a < b) return -1;
@@ -37,8 +38,8 @@ export default function rootReducer(state = initialState, action) {
       const uniqueBrands = [...new Set(marcas)];
       return {
         ...state,
-        products: action.payload,
-        allProducts: action.payload,
+        products: productsFilter,
+        allProducts: productsFilter,
         brand: uniqueBrands,
       };
     // case to create a new product
