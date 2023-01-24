@@ -3,13 +3,22 @@ import Card from "react-bootstrap/Card";
 import Header from "../Header/Header";
 import NavbarMain from "../NavbarMain/NavbarMain";
 import Footer from "../Footer/Footer";
-import { useSelector } from "react-redux";
 import s from "./ProductDetail.module.css";
 import Paypal from "../Paypal/Papypal";
 import Rating_Coments from "../Rating_Coments/Rating_Coments"
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getDetail } from "../../Redux/action";
+import { useEffect } from "react";
 
 const ProductDetail = () => {
+  const { id } = useParams()
+  const dispatch = useDispatch()
   const details = useSelector(state => state.detail)
+
+  useEffect(() => {
+    dispatch(getDetail(id))
+  }, [])
 
   return (
     <>
