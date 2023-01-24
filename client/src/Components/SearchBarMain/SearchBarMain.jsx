@@ -31,13 +31,16 @@ export default function SearchBarMain() {
               onChange={handleChange}
               placeholder="¿Que estas buscando hoy?"
               style={{
-                border: "1px solid #ff3c00",
+                border: "var(--border)",
               }}
             />
             <Button
               variant="outline-warning"
               onClick={handleClick}
-              style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+              style={{
+                border: "var(--border)",
+                color: "var(--text-color)",
+              }}
             >
               <i className="bi bi-search "></i>
             </Button>

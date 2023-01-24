@@ -14,10 +14,10 @@ export default function Header() {
       <Container className="mt-3">
         <Navbar
           style={{
-            backgroundColor: "rgba(33, 37, 41,0.5)",
+            backgroundColor: "var(--background-color)",
             backdropFilter: "blur(5px)",
-            border: "1px solid #fff",
-            boxShadow: "0 0 7px #fff",
+            border: "var(--border)",
+            boxShadow: "var(--box-shadow)",
           }}
           expand="lg"
           className="rounded-4"
@@ -41,8 +41,8 @@ export default function Header() {
                 variant="outline-warning"
                 onClick={handleCart}
                 style={{
-                  border: "1px solid #ff3c00",
-                  color: "#ff3c00",
+                  border: "var(--border)",
+                  color: "var(--text-color)",
                   fontSize: "42px",
                   width: "84px",
                   height: "84px",

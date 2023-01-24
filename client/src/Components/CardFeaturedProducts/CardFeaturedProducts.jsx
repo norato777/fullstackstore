@@ -19,10 +19,10 @@ export default function CardFeaturedProducts({ num }) {
       className="m-3"
       style={{
         width: "18rem",
-        backgroundColor: "rgb(33, 37, 41)",
+        backgroundColor: "var(--background-color)",
         backdropFilter: "blur(5px)",
-        border: "1px solid #fff",
-        boxShadow: "0 0 7px #fff",
+        border: "var(--border)",
+        boxShadow: "var(--box-shadow)",
       }}
     >
       <Link to={`/product/${oneProduct._id}`} onClick={handleClick}>
@@ -34,7 +34,7 @@ export default function CardFeaturedProducts({ num }) {
             marginTop: "14px",
             width: "16rem",
             height: "16rem",
-            border: "1px solid #fff",
+            border: "var(--border)",
             background: "#fff",
           }}
         />
@@ -51,7 +51,7 @@ export default function CardFeaturedProducts({ num }) {
         </Card.Title>
         <Card.Text
           style={{
-            color: "#ff3c00",
+            color: "var(--text-color)",
             textDecoration: "none",
             textWeight: "bold",
           }}
@@ -62,8 +62,8 @@ export default function CardFeaturedProducts({ num }) {
       <ListGroup className="list-group-flush">
         <ListGroup.Item
           style={{
-            backgroundColor: "rgb(33, 37, 41)",
-            color: "#ff3c00",
+            backgroundColor: "var(--background-color)",
+            color: "var(--text-color)",
             textAlign: "start",
           }}
         >
@@ -71,7 +71,7 @@ export default function CardFeaturedProducts({ num }) {
         </ListGroup.Item>
         <ListGroup.Item
           style={{
-            backgroundColor: "rgb(33, 37, 41)",
+            backgroundColor: "var(--background-color)",
             color: "#ffc800",
             fontSize: "17px",
             textAlign: "start",
@@ -81,8 +81,8 @@ export default function CardFeaturedProducts({ num }) {
         </ListGroup.Item>
         <ListGroup.Item
           style={{
-            backgroundColor: "rgb(33, 37, 41)",
-            color: "#ff3c00",
+            backgroundColor: "var(--background-color)",
+            color: "var(--text-color)",
             textAlign: "start",
           }}
         >
@@ -90,8 +90,8 @@ export default function CardFeaturedProducts({ num }) {
         </ListGroup.Item>
         <ListGroup.Item
           style={{
-            backgroundColor: "rgb(33, 37, 41)",
-            color: "#ff3c00",
+            backgroundColor: "var(--background-color)",
+            color: "var(--text-color)",
             textAlign: "start",
           }}
         >
@@ -101,13 +101,13 @@ export default function CardFeaturedProducts({ num }) {
 
       <Card.Body
         style={{
-          color: "#ff3c00",
+          color: "var(--text-color)",
         }}
       >
         <Checkbox />
         <Button
           variant="outline-warning"
-          style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+          style={{ border: "var(--border)", color: "var(--text-color)" }}
         >
           Agregar al carrito
         </Button>
