@@ -9,7 +9,9 @@ import {
   DropdownButton,
   ButtonGroup,
   Nav,
+  Button,
 } from "react-bootstrap";
+import LightMode from "../LightMode/LightMode";
 
 export default function NavbarHeader() {
   const navigate = useNavigate();
@@ -44,36 +46,48 @@ export default function NavbarHeader() {
       <Container fluid>
         <Nav className="justify-content-end" activeKey="/">
           <Nav.Item>
-            <Nav.Link
-              href="/favorites"
-              style={{
-                color: "#ff3c00",
-              }}
-            >
-              Favoritos
-            </Nav.Link>
+            <LightMode />
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link
-              href="/compare"
+            <Button
+              className="m-1"
+              href="/favorites"
+              variant="outline-warning"
               style={{
-                color: "#ff3c00",
+                border: "var(--border)",
+                color: "var(--text-color)",
               }}
             >
-              Comparar
-            </Nav.Link>
+              <i className="bi bi-star "></i> Favoritos
+            </Button>
+          </Nav.Item>
+          <Nav.Item>
+            <Button
+              className="m-1"
+              variant="outline-warning"
+              href="/compare"
+              style={{
+                border: "var(--border)",
+                color: "var(--text-color)",
+              }}
+            >
+              <i className="bi bi-back "></i> Comparar
+            </Button>
           </Nav.Item>
           {user.length === 0 && logged === false ? (
             <>
               <Nav.Item>
-                <Nav.Link
+                <Button
+                  className="m-1"
+                  variant="outline-warning"
                   onClick={handleShow}
                   style={{
-                    color: "#ff3c00",
+                    border: "var(--border)",
+                    color: "var(--text-color)",
                   }}
                 >
-                  Ingresar
-                </Nav.Link>
+                  <i className="bi bi-box-arrow-in-right "></i> Ingresar
+                </Button>
               </Nav.Item>
             </>
           ) : (

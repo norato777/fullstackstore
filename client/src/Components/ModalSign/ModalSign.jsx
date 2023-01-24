@@ -11,16 +11,16 @@ export default function ModalSign({ show, handleClose }) {
       show={show}
       onHide={handleClose}
       style={{
-        backgroundColor: "rgba(33, 37, 41,0.5)",
+        backgroundColor: "var( --clr-0-025)",
         backdropFilter: "blur(5px)",
       }}
     >
       <CardGroup
         style={{
-          backgroundColor: "rgba(33, 37, 41,0.5)",
+          backgroundColor: "var(--background-color)",
           backdropFilter: "blur(5px)",
-          border: "1px solid #fff",
-          boxShadow: "0 0 7px #fff 0 0 14px #fff 0 0 21px #fff",
+          border: "var(--border)",
+          boxShadow: "var(--box-shadow)",
         }}
       >
         <Card>
@@ -30,7 +30,9 @@ export default function ModalSign({ show, handleClose }) {
           <div>
             <ModalRegister />
           </div>
-          <Google />
+          <div>
+            <Google />
+          </div>
         </Card>
       </CardGroup>
     </Modal>

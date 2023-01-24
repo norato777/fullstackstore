@@ -39,20 +39,20 @@ const ModalLogin = ({ show, handleClose }) => {
       className="mb-10"
       onSubmit={handleSubmit(onSubmit)}
       style={{
-        backgroundColor: "rgba(33, 37, 41,0.5)",
+        backgroundColor: "var(--clr-0-025)",
         backdropFilter: "blur(5px)",
-        border: "1px solid #fff",
+        border: "var(--border)",
       }}
     >
       <Modal.Header
         style={{
-          backgroundColor: "rgb(33, 37, 41)",
+          backgroundColor: "var(--background-color)",
           backdropFilter: "blur(5px)",
         }}
       >
         <Modal.Title
           style={{
-            color: "#ff3c00",
+            color: "var(--clr-7-R)",
           }}
         >
           Inicia sesión
@@ -60,7 +60,7 @@ const ModalLogin = ({ show, handleClose }) => {
       </Modal.Header>
       <Modal.Body
         style={{
-          backgroundColor: "rgb(33, 37, 41)",
+          backgroundColor: "var(--background-color)",
           backdropFilter: "blur(5px)",
         }}
       >
@@ -68,7 +68,7 @@ const ModalLogin = ({ show, handleClose }) => {
           <div>
             <Form.Label
               style={{
-                color: "#ff3c00",
+                color: "var(--text-color)",
               }}
             >
               Email
@@ -78,13 +78,13 @@ const ModalLogin = ({ show, handleClose }) => {
                 onChange={emailChangeHandler}
                 value={email}
                 style={{
-                  border: "1px solid #ff3c00",
+                  border: "var(--border)",
                 }}
               />
               {errors.name?.type === "required" && (
                 <p
                   style={{
-                    color: "#ff0000",
+                    color: "var(--text-color)",
                   }}
                 >
                   No ingresaste tu email
@@ -94,7 +94,7 @@ const ModalLogin = ({ show, handleClose }) => {
           </div>
           <Form.Label
             style={{
-              color: "#ff3c00",
+              color: "var(--text-color)",
             }}
           >
             Contraseña
@@ -104,13 +104,13 @@ const ModalLogin = ({ show, handleClose }) => {
               onChange={passwordChangeHandler}
               value={password}
               style={{
-                border: "1px solid #ff3c00",
+                border: "var(--border)",
               }}
             />
             {errors.name?.type === "required" && (
               <p
                 style={{
-                  color: "#ff0000",
+                  color: "var(--text-color)",
                 }}
               >
                 No ingresaste tu contraseña
@@ -121,7 +121,7 @@ const ModalLogin = ({ show, handleClose }) => {
       </Modal.Body>
       <Modal.Footer
         style={{
-          backgroundColor: "rgb(33, 37, 41)",
+          backgroundColor: "var(--background-color)",
           backdropFilter: "blur(5px)",
         }}
       >
@@ -142,7 +142,7 @@ const ModalLogin = ({ show, handleClose }) => {
           variant="outline-warning"
           style={{
             border: "1px solid #ff3c00",
-            color: "#ff3c00",
+            color: "var(--clr-7-R)",
             width: "170px",
           }}
           className="m-1"

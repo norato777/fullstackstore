@@ -1,10 +1,9 @@
 import React from "react";
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Paypal from "../Paypal/Papypal";
-import Rating_Coments from "../Rating_Coments/Rating_Coments";
+import RatingComents from "../RatingComents/RatingComents";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
 
 const ProductDetail = () => {
@@ -22,10 +21,10 @@ const ProductDetail = () => {
         <>
           <Container
             style={{
-              backgroundColor: "rgba(33, 37, 41,0.5)",
+              backgroundColor: "var(--background-color)",
               backdropFilter: "blur(5px)",
-              border: "1px solid #fff",
-              boxShadow: "0 0 7px #fff",
+              border: "var(--border)",
+              boxShadow: "var(--box-shadow)",
             }}
             className="rounded-4 mt-5 mb-5 p-3"
           >
@@ -40,7 +39,7 @@ const ProductDetail = () => {
                     marginTop: "14px",
                     width: "16rem",
                     height: "16rem",
-                    border: "1px solid #fff",
+                    border: "var(--border)",
                     background: "#fff",
                   }}
                   className="m-3"
@@ -50,9 +49,10 @@ const ProductDetail = () => {
                 <Row
                   className="mt-4"
                   style={{
-                    color: "#ff3c00",
+                    color: "var(--text-color)",
                     fontSize: "21px",
                     height: "35px",
+                    overflow: "auto",
                   }}
                 >
                   {details.name}
@@ -67,17 +67,18 @@ const ProductDetail = () => {
                   Marca: {details.brand}
                 </Row>
                 <Row
-                  className="mb-5 p-4"
+                  className="mb-3 p-4"
                   style={{
-                    color: "#ff3c00",
+                    color: "var(--text-color)0",
                     textAlign: "justify",
-                    height: "105px",
+                    height: "140px",
+                    overflow: "auto",
                   }}
                 >
                   {details.description}
                 </Row>
                 <Row
-                  className="mt-3"
+                  className="mt-1"
                   style={{
                     color: "#ffc800",
                     fontSize: "17px",
@@ -103,7 +104,8 @@ const ProductDetail = () => {
                   variant="outline-warning"
                   onClick={handleCart}
                   style={{
-                    border: "1px solid #ff3c00",
+                    border: "var(--border)",
+                    color: "var(--text-color)",
                   }}
                 >
                   Agregar al Carrito
@@ -113,7 +115,7 @@ const ProductDetail = () => {
             </Row>
           </Container>
           <div>
-            <Rating_Coments id={details._id} />
+            <RatingComents id={details._id} />
           </div>
         </>
       )}
