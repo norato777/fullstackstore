@@ -45,3 +45,6 @@ export default function MostrarComentarios({ id }) {
     </Container>
   );
 }
+
+
+//mostrar comentarios
