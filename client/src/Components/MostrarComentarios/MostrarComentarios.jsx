@@ -1,17 +1,19 @@
 //tomar comentarios de la base de datos y mostrarlos en el componente MostrarComentarios por cada producto por id
-
+ 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRating } from "../../Redux/action";
+import { getComents } from "../../Redux/action";
 import { Container, Row, Col, Form, InputGroup, Button } from "react-bootstrap";
 
 export default function MostrarComentarios({ id }) {
   const dispatch = useDispatch();
-  const [coments, setComents] = useState({ _id: id });
-  const coment = useSelector((state) => state.coments);
+  const coments = useSelector((state) => state.coments);
+  const [coment, setComent] = useState({ _id: id });
+
   useEffect(() => {
-    dispatch(getRating(id));
-  }, [dispatch, id]);
+    dispatch(getComents());
+  }, [dispatch]);
+
   return (
     <Container
       style={{
@@ -31,28 +33,15 @@ export default function MostrarComentarios({ id }) {
       >
         Comentarios
       </h5>
-      <Row>
+      <Row className="justify-content-md-center">
         <Col>
-          {coment &&
-            coment.map((coment) => {
-              return (
-                <Row>
-                  <Col>
-                    <Form.Text
-                      style={{
-                        color: "#ff3c00",
-                        fontSize: "21px",
-                      }}
-                    >
-                      {coment.coments}
-                    </Form.Text>
-                  </Col>
-                </Row>
-              );
-            })}
+          {coments.map((coment) => (
+            <div key={coment._id}>
+              <p>{coment.coments}</p>
+            </div>
+          ))}
         </Col>
       </Row>
     </Container>
   );
 }
-

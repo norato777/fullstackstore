@@ -1,56 +1,33 @@
-//verificar si el usuario compro el producto para dejar un comentario y guargar comentario en la base de datos
+// PODER DEJAR COMENTARIOS EN UN PRODUCTO Y DARLE UNA CALIFICACION Y QUE SE MUESTRE EN EL PRODUCTO
 
-
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getRating, postRating } from "../../Redux/action";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { putCalificationRating } from "../../Redux/action";
 import { Container, Row, Col, Form, InputGroup, Button } from "react-bootstrap";
 
-export default function Rating_Coments({ id }) {
+export default function RatingComents({ id }) {
   const dispatch = useDispatch();
-  const [coments, setComents] = useState({ _id: id });
-  const coment = useSelector((state) => state.coments);
-  const user = useSelector((state) => state.user);
-  const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(null);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
 
-  useEffect(() => {
-    dispatch(getRating(id));
-  }, [dispatch, id]);
+  const [rating, setRating] = useState({ _id: id });
 
-  const handleComent = (e) => {
-    setComents({ ...coments, coments: e.target.value });
+  const handleChangeRating = (e) => {
+    setRating({
+      ...rating,
+      calification: e.target.value,
+    });
+    console.log(rating);
   };
-
-  const handleRating = (e) => {
-    setRating(e.target.value);
+  const handleComents = (e) => {
+    setRating({
+      ...rating,
+      coments: e.target.value,
+    });
+    console.log(rating);
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (user) {
-      if (coments.coments) {
-        dispatch(postRating(coments));
-        setSuccess("Comentario enviado");
-        setTimeout(() => {
-          setSuccess("");
-        }, 2000);
-      } else {
-        setError("Debes escribir un comentario");
-        setTimeout(() => {
-          setError("");
-        }, 2000);
-      }
-    } else {
-      setError("Debes iniciar sesion para dejar un comentario");
-      setTimeout(() => {
-        setError("");
-      }, 2000);
-    }
+  const handleClick = (e) => {
+    dispatch(putCalificationRating(rating));
+    console.log(rating, id);
   };
-
   return (
     <Container
       style={{
@@ -68,125 +45,83 @@ export default function Rating_Coments({ id }) {
         }}
         className="mt-3"
       >
-        Comentarios
+        Califica este producto
       </h5>
-      <Row>
+      <Row className="justify-content-md-center">
         <Col>
-          {coment &&
-            coment.map((coment) => {
-              return (
-                <Row>
-                  <Col>
-                    <Form.Text
-                      style={{
-                        color: "#ff3c00",
-                        fontSize: "21px",
-                      }}
-                    >
-                      {coment.coments}
-                    </Form.Text>
-                  </Col>
-                </Row>
-              );
-            })}
+          <Form.Check type="radio" value="1" onChange={handleChangeRating} />
+          <Form.Text
+            style={{
+              color: "#ff3c00",
+              fontSize: "21px",
+            }}
+          >
+            1
+          </Form.Text>
         </Col>
-      </Row>
-      <Row>
         <Col>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group>
-              <Form.Label
-                style={{
-                  color: "#ff3c00",
-                }}
-              >
-                Deja tu comentario
-              </Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                onChange={handleComent}
-                value={coments.coments}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label
-                style={{
-                  color: "#ff3c00",
-                }}
-              >
-                Califica el producto
-              </Form.Label>
-              <InputGroup>
-                <InputGroup.Prepend>
-                  <InputGroup.Text
-                    style={{
-                      color: "#ff3c00",
-                    }}
-                  >
-                    {rating}
-                  </InputGroup.Text>
-                </InputGroup.Prepend>
-                <Form.Control
-                  type="range"
-                  min="0"
-                  max="5"
-                  value={rating}
-                  onChange={handleRating}
-                  onMouseEnter={() => setHover(rating)}
-                  onMouseLeave={() => setHover(null)}
-                />
-              </InputGroup>
-              <div className="text-center">
-                {[...Array(5)].map((star, i) => {
-                  const ratingValue = i + 1;
-                  return (
-                    <label>
-                      <input
-                        type="radio"
-                        name="rating"
-                        value={ratingValue}
-                        onClick={handleRating}
-                      />
-                      <i
-                        className="fas fa-star"
-                        style={{
-                          color: ratingValue <= (hover || rating) ? "#ff3c00" : "#e4e5e9",
-                        }}
-                      ></i>
-                    </label>
-                  );
-                })}
-              </div>
-            </Form.Group>
-            <Button
+          <Form.Check type="radio" value="2" onChange={handleChangeRating} />
+          <Form.Text
+            style={{
+              color: "#ff3c00",
+              fontSize: "21px",
+            }}
+          >
+            2
+          </Form.Text>
+        </Col>
+        <Col>
+          <Form.Check type="radio" value="3" onChange={handleChangeRating} />
+          <Form.Text
+            style={{
+              color: "#ff3c00",
+              fontSize: "21px",
+            }}
+          >
+            3
+          </Form.Text>
+        </Col>
+        <Col>
+          <Form.Check type="radio" value="4" onChange={handleChangeRating} />
+          <Form.Text
+            style={{
+              color: "#ff3c00",
+              fontSize: "21px",
+            }}
+          >
+            4
+          </Form.Text>
+        </Col>
+        <Col>
+          <Form.Check type="radio" value="5" onChange={handleChangeRating} />
+          <Form.Text
+            style={{
+              color: "#ff3c00",
+              fontSize: "21px",
+            }}
+          >
+            5
+          </Form.Text>
+        </Col>
+        <Col xs={8}>
+          <InputGroup>
+            <Form.Control
+              placeholder="Deja tus comentarios"
               style={{
-                backgroundColor: "#ff3c00",
-                border: "none",
+                border: "1px solid #ff3c00",
               }}
-              type="submit"
-            >
-              Enviar
-            </Button>
-          </Form>
+              onChange={handleComents}
+            ></Form.Control>
+          </InputGroup>
         </Col>
-      </Row>
-      <Row>
         <Col>
-          <p
-            style={{
-              color: "red",
-            }}
+          <Button
+            variant="outline-warning"
+            style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+            onClick={handleClick}
           >
-            {error}
-          </p>
-          <p
-            style={{
-              color: "green",
-            }}
-          >
-            {success}
-          </p>
+            Puntuar
+          </Button>
         </Col>
       </Row>
     </Container>

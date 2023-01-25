@@ -62,6 +62,25 @@ router.put("/recover/:id", (req, res) => {
     .catch((error) => res.json({ mesagge: error }));
 });
 
+//get rating por id
+router.get("/rating/:id", (req, res) => { 
+  const { id } = req.params;
+  productSchema
+    .findById(id)
+    .then((product) => res.json(product.rating))
+    .catch((error) => res.json({ message: error }));
+});
+
+//get coment por id de producto
+
+router.get("/coments/:id", (req, res) => {
+  const { id } = req.params;
+  productSchema
+    .findById(id)
+    .then((product) => res.json(product.coments))
+    .catch((error) => res.json({ message: error }));
+});
+
 
 
 

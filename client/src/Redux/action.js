@@ -213,19 +213,6 @@ export function filterProductsPrice(payload) {
   };
 }
 
-export function putCalificationRating(payload) {
-  return async function (dispatch) {
-    try {
-      const response = await axios.put(
-        `/products/rating/${payload._id}`,
-        payload
-      );
-      return dispatch({ type: "PUT_RATING", payload: response.data });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-}
 
 export function getCategories() {
   return async function (dispatch) {
@@ -287,18 +274,9 @@ export function putRating(payload) {
   };
 }
 
-export function getComents(id) {
-  return async function (dispatch) {
-    try {
-      const response = await axios.get(`/products/coments/${id}`);
-      return dispatch({ type: "GET_COMENTS", payload: response.data });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-}
 
-export function postComent(payload) {
+
+export function postComment(payload) {
   return async function (dispatch) {
     try {
       const response = await axios.post("/products/coment", payload);
@@ -329,4 +307,43 @@ export function postRating (payload) {
             console.log(error.message)
         }
     }
+}
+
+export function getCalificationRating (_id) {
+    return async function (dispatch) {
+        try {
+            const response = await axios.get(`/products/rating/${_id}`)
+            return dispatch({type: 'GET_RATING', payload: response.data})
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+}
+
+export function putCalificationRating(payload) {
+    return async function (dispatch) {
+      try {
+        const response = await axios.put(
+          `/products/rating/${payload._id}`,
+          payload
+        );
+        return dispatch({ type: "PUT_RATING", payload: response.data });
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+  }
+
+
+  //get coments por id de producto
+
+export function getComents(id) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`/products/coment/${id}`);
+      return dispatch({ type: "GET_COMENTS", payload: response.data });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 }
