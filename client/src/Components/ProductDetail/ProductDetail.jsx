@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import Header from "../Header/Header";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import RatingComents from "../RatingComents/RatingComents";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import { getDetail } from "../../Redux/action";
