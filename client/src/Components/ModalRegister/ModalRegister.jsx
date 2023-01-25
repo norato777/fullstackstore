@@ -142,6 +142,7 @@ const ModalRegister = ({ show, handleClose }) => {
       >
         <Button
           onClick={handleClose}
+          type="submit"
           variant="outline-warning"
           style={{
             border: "1px solid #198754",

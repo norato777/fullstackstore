@@ -100,7 +100,7 @@ function PageProducts() {
                   <Form.Group>
                     <Form.Label
                       style={{
-                        color: "#ffc800",
+                        color: "#fff",
                       }}
                     >
                       Categoria
@@ -118,7 +118,7 @@ function PageProducts() {
                   <Form.Group>
                     <Form.Label
                       style={{
-                        color: "#ffc800",
+                        color: "#fff",
                       }}
                     >
                       Marca
@@ -136,7 +136,7 @@ function PageProducts() {
                   <Form.Group>
                     <Form.Label
                       style={{
-                        color: "#ffc800",
+                        color: "#fff",
                       }}
                     >
                       Precio
