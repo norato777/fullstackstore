@@ -34,7 +34,7 @@ export default function NavbarHeader() {
               }}
             >
               {category?.map((e, i) => (
-                <div key={i}>
+                <div>
                   <NavButton prop={e} />
                 </div>
               ))}

@@ -3,7 +3,7 @@ import Google from "../Google/Google";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { signUp } from "../../Redux/action";
-import { Form, Modal, Button } from "react-bootstrap";
+import { Form, Modal, Nav, Button } from "react-bootstrap";
 
 const ModalRegister = ({ show, handleClose }) => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const ModalRegister = ({ show, handleClose }) => {
   const [password, setPassword] = useState("");
 
   const nameChangeHandler = (e) => {
-    setName(e.target.value);
+    setEmail(e.target.value);
   };
 
   const emailChangeHandler = (e) => {

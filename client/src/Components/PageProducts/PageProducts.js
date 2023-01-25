@@ -107,7 +107,6 @@ function PageProducts() {
                     </Form.Label>
                     <Form.Select
                       className="form-control"
-                      id="exampleFormControlSelect1"
                       value={selectedCategory}
                       onChange={(e) => handleChangeCategory(e.target.value)}
                     >
@@ -116,34 +115,45 @@ function PageProducts() {
                         category.map((e, i) => <option key={i}>{e}</option>)}
                     </Form.Select>
                   </Form.Group>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Marca</label>
-                    <select
+                  <Form.Group>
+                    <Form.Label
+                      style={{
+                        color: "#ffc800",
+                      }}
+                    >
+                      Marca
+                    </Form.Label>
+                    <Form.Select
                       className="form-control"
-                      id="exampleFormControlSelect1"
                       value={selectedBrand}
                       onChange={(e) => handleChangeBrand(e.target.value)}
                     >
                       <option>Marca</option>
                       {brand &&
                         brand.map((e, i) => <option key={i}>{e}</option>)}
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Precio</label>
-                    <select
+                    </Form.Select>
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label
+                      style={{
+                        color: "#ffc800",
+                      }}
+                    >
+                      Precio
+                    </Form.Label>
+                    <Form.Select
                       className="form-control"
-                      id="exampleFormControlSelect1"
                       onChange={(e) => handleChangePrice(e.target.value)}
                     >
                       <option defaultValue="Price">Price</option>
                       <option value="Mayor">Mayor a menor</option>
                       <option value="Menor">Menor a mayor</option>
-                    </select>
-                  </div>
+                    </Form.Select>
+                  </Form.Group>
 
-                  <button
-                    className="btn btn-primary"
+                  <Button
+                    className="mt-5"
+                    variant="outline-warning"
                     onClick={() => handleCleanFilter()}
                     style={{
                       border: "var(--border)",
@@ -151,16 +161,15 @@ function PageProducts() {
                     }}
                   >
                     Limpiar filtros
-                  </button>
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
-
-            <div className="col-9">
-              <div className="row">
+            <Col xs={9}>
+              <Row>
                 <Productos />
-              </div>
-            </div>
+              </Row>
+            </Col>
           </Row>
         </Container>
         <Footer />
