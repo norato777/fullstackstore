@@ -1,24 +1,23 @@
 import React, { useEffect } from "react";
 import Header from "../Header/Header";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams  } from "react-router-dom";
-import Paypal from "../Paypal/Papypal";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import RatingComents from "../RatingComents/RatingComents";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import { getDetail } from "../../Redux/action";
 
 const ProductDetail = () => {
-  const { id } = useParams()
-  const dispatch = useDispatch()
-  const details = useSelector(state => state.detail)
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const details = useSelector((state) => state.detail);
   const navigate = useNavigate();
   const handleCart = () => {
     navigate("/cart");
   };
 
   useEffect(() => {
-    dispatch(getDetail(id))
-  }, [])
+    dispatch(getDetail(id));
+  }, []);
 
   return (
     <>
@@ -117,7 +116,6 @@ const ProductDetail = () => {
                 >
                   Agregar al Carrito
                 </Button>
-                <Paypal price={details.price} />
               </Col>
             </Row>
           </Container>
