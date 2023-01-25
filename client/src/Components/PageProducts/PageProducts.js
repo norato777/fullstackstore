@@ -143,7 +143,7 @@ function PageProducts() {
                   </div>
 
                   <button
-                    className="btn btn-primary"
+                    className="btn btn"
                     onClick={() => handleCleanFilter()}
                     style={{
                       border: "var(--border)",
