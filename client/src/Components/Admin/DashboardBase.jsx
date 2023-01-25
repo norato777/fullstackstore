@@ -2,7 +2,8 @@ import { Title, Text, TabList, Tab, ColGrid, Card, Block } from "@tremor/react";
 import React, { useState } from "react";
 import CardGridMap from "./CardGridMap";
 import ChartDonut from "./ChartDonut";
-import TableBase from "./TableBase";
+import TableUser from "./TableUser"
+import TableProduct from "./TableProduct";
 
 const DashboardBase = () => {
     const [selectedView, setSelectedView] = useState(1)
@@ -14,7 +15,8 @@ const DashboardBase = () => {
 
             <TabList defaultValue={selectedView} handleSelect={value => setSelectedView(value)} marginTop="mt-6">
                 <Tab value={1} text="Principal" />
-                <Tab value={2} text="Productos" />
+                <Tab value={2} text="Usuarios" />
+                <Tab value={3} text="Productos" />
             </TabList>
 
             {selectedView === 1 ? (
@@ -27,9 +29,26 @@ const DashboardBase = () => {
                 </>
             ) : (
                 <>
-                    <Block marginTop='mt-6'>
-                        <TableBase />
-                    </Block>
+                </>
+            )
+            }
+
+            {selectedView === 2 ? (
+                <Block marginTop='mt-6'>
+                    <TableUser />
+                </Block>
+            ) : (
+                <>
+                </>
+            )
+            }
+
+            {selectedView === 3 ? (
+                <Block marginTop='mt-6'>
+                    <TableProduct />
+                </Block>
+            ) : (
+                <>
                 </>
             )
             }

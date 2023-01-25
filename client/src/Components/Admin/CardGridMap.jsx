@@ -37,8 +37,8 @@ const CardGridMap = () => {
             gapX="gap-x-6"
             gapY="gap-y-6"
         >
-            {data.map((item) => (
-                <Card key={item.title}>
+            {data.map((item, id) => (
+                <Card key={id}>
                     <Flex alignItems="items-start">
                         <Block>
                             <Text>{item.title}</Text>

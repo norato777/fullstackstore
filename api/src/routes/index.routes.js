@@ -10,6 +10,8 @@ const categories = require("./categories.js");
 const users = require("./users");
 const router = express.Router();
 const FavProducts = require("./ProductFav");
+const passport = require("../passport/local-auth");
+require("dotenv").config();
 
 router.get("/", controller.index);
 router.use("/cart", auth, cart);
@@ -20,5 +22,7 @@ router.use("/signup", signUp);
 router.use("/signin", signIn);
 router.use("/logout", logOut);
 router.use("/favorites", FavProducts);
+router.use("/forgotpassword", passport.forgotPassword);
+router.use(process.env.URL1, passport.resetPassword);
 
 module.exports = router;

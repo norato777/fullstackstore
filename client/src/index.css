@@ -6,7 +6,7 @@ body {
   margin: 0;
   font-family: Consolas;
   background-color: var(--clr-9);
-  /* background-image: url(../public/GR8-II-banner-2000x720.jpg); */
+  background-image: url(../public/GR8-II-banner-2000x720.jpg);
 }
 
 code {

@@ -2,35 +2,33 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut, getUsers } from "../../Redux/action";
 import { useNavigate } from "react-router-dom";
-import ModalLogin from "../ModalLogin/ModalLogin";
-import ModalRegister from "../ModalRegister/ModalRegister";
+import ModalSign from "../ModalSign/ModalSign";
 import {
   Container,
   Dropdown,
   DropdownButton,
   ButtonGroup,
   Nav,
+  Button,
 } from "react-bootstrap";
 
 export default function NavbarHeader() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const [show2, setShow2] = useState(false);
   const user = useSelector((state) => state.user);
   const logged = useSelector((state) => state.logged);
   const handleClose = () => setShow(false);
-  const handleClose2 = () => setShow2(false);
-  const handleShow = () => setShow(true);
-  const handleShow2 = () => setShow2(true);
 
-  useEffect(() => {
-    dispatch(getUsers());
-  }, []);
+  const handleShow = () => setShow(true);
+
+  // useEffect(() => {
+  //   dispatch(getUsers());
+  // }, []);
 
   const signOut = () => {
     dispatch(logOut());
-    navigate("/")
+    navigate("/");
     window.location.reload();
   };
 
@@ -47,46 +45,39 @@ export default function NavbarHeader() {
       <Container fluid>
         <Nav className="justify-content-end" activeKey="/">
           <Nav.Item>
-            <Nav.Link
+            <Button
+              className="m-1"
               href="/favorites"
-              style={{
-                color: "#ff3c00",
-              }}
+              variant="outline-warning"
+              style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
             >
-              Favoritos
-            </Nav.Link>
+              <i className="bi bi-star "></i> Favoritos
+            </Button>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link
+            <Button
+              className="m-1"
+              variant="outline-warning"
               href="/compare"
-              style={{
-                color: "#ff3c00",
-              }}
+              style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
             >
-              Comparar
-            </Nav.Link>
+              <i className="bi bi-back "></i> Comparar
+            </Button>
           </Nav.Item>
           {user.length === 0 && logged === false ? (
             <>
               <Nav.Item>
-                <Nav.Link
-                  onClick={handleShow2}
-                  style={{
-                    color: "#ff3c00",
-                  }}
-                >
-                  Registrarse
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link
+                <Button
+                  className="m-1"
+                  variant="outline-warning"
                   onClick={handleShow}
                   style={{
+                    border: "1px solid #ff3c00",
                     color: "#ff3c00",
                   }}
                 >
-                  Ingresar
-                </Nav.Link>
+                  <i className="bi bi-box-arrow-in-right "></i> Ingresar
+                </Button>
               </Nav.Item>
             </>
           ) : (
@@ -112,8 +103,7 @@ export default function NavbarHeader() {
           )}
         </Nav>
       </Container>
-      <ModalLogin show={show} handleClose={handleClose} />
-      <ModalRegister show={show2} handleClose={handleClose2} />
+      <ModalSign show={show} handleClose={handleClose} />
     </>
   );
 }

@@ -1,8 +1,9 @@
 const nodemailer = require('nodemailer');
+require("dotenv").config();
 const name = require('../models/Users.js');
 const mail = {
-    user: 'thefullstackstoree@gmail.com',
-    pass: 'crpujzwivvakhcqh'
+    user: process.env.AUTH_EMAIL,
+    pass: process.env.AUTH_PASS
 }
 
 let transporter = nodemailer.createTransport({
@@ -11,10 +12,10 @@ let transporter = nodemailer.createTransport({
     tls: {
         rejectUnauthorized: false
     },
-    secure: true, // true for 465, false for other ports
+    secure: true, 
     auth: {
-      user: mail.user, // generated ethereal user
-      pass: mail.pass, // generated ethereal password
+      user: mail.user, 
+      pass: mail.pass, 
     },
   });
 
@@ -134,7 +135,7 @@ let transporter = nodemailer.createTransport({
                       <p style="margin-bottom: 50px;"><i>Atentamente:</i><br>Equipo FullStackSotore</p>
       
                       <!-- Botón -->
-                      <a class="claseBoton" href="http://localhost:3001/users/confirm/${token}">Confirmar</a>
+                      <a class="claseBoton" href="${process.env.VERIFICATION_URL}${token}">Confirmar</a>
                   </div>
                   <!-- Contenido principal -->
       
