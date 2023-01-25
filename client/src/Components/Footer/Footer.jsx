@@ -7,10 +7,10 @@ export default function Footer() {
       <Container
         fluid
         style={{
-          backgroundColor: "rgb(33, 37, 41)",
+          backgroundColor: "var(--background-color)",
           backdropFilter: "blur(5px)",
-          border: "1px solid #fff",
-          boxShadow: "0 0 7px #fff",
+          border: "var(--border)",
+          boxShadow: "var(--box-shadow)",
         }}
         expand="lg"
       >
@@ -20,7 +20,7 @@ export default function Footer() {
               <Nav.Link
                 href="/"
                 style={{
-                  color: "#ff3c00",
+                  color: "var(--text-color)",
                 }}
               >
                 ¿Cómo comprar?
@@ -28,7 +28,7 @@ export default function Footer() {
             </Nav.Item>
           </Nav>
         </Navbar>
-        <h5 style={{ color: "#ff3c00" }}>2023 The Fullstack Store</h5>
+        <h5 style={{ color: "var(--text-color)" }}>2023 The Fullstack Store</h5>
       </Container>
     </>
   );

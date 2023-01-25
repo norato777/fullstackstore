@@ -10,7 +10,6 @@ import Footer from "../Footer/Footer";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCategories, getProducts } from "../../Redux/action";
-// import stl from "./Homepage.module.css";
 import Container from "react-bootstrap/Container";
 
 export default function Homepage() {

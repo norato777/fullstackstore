@@ -11,8 +11,8 @@ export default function Promobar() {
           style={{
             backgroundColor: "rgba(33, 37, 41,0.5)",
             backdropFilter: "blur(5px)",
-            border: "1px solid #fff",
-            boxShadow: "0 0 7px #fff",
+            border: "var(--border)",
+            boxShadow: "var(--box-shadow)",
           }}
           className="rounded-4"
         />

@@ -66,7 +66,7 @@ export default function Productos() {
         <Button
           onClick={handlePrevPage}
           variant="outline-warning"
-          style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+          style={{ border: "var(--border)", color: "var(--text-color)" }}
           className="m-1"
         >
           Anterior
@@ -78,7 +78,7 @@ export default function Productos() {
               value={e}
               onClick={handleChangePagePerNum}
               variant="outline-warning"
-              style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+              style={{ border: "var(--border)", color: "var(--text-color)" }}
               className="m-1"
             >
               {e}
@@ -87,7 +87,7 @@ export default function Productos() {
         <Button
           onClick={handleNextPage}
           variant="outline-warning"
-          style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+          style={{ border: "var(--border)", color: "var(--text-color)" }}
           className="m-1"
         >
           Siguiente
@@ -117,10 +117,10 @@ export default function Productos() {
             <Card
               style={{
                 width: "19rem",
-                backgroundColor: "rgba(33, 37, 41,0.5)",
+                backgroundColor: "var(--background-color)",
                 backdropFilter: "blur(5px)",
-                border: "1px solid #fff",
-                boxShadow: "0 0 7px #fff",
+                border: "var(--border)",
+                boxShadow: "var(--box-shadow)",
               }}
               expand="lg"
               className="rounded-4 m-2"
@@ -138,14 +138,15 @@ export default function Productos() {
                     marginTop: "14px",
                     width: "16rem",
                     height: "16rem",
-                    border: "1px solid #fff",
+                    border: "var(--border)",
                     background: "#fff",
+                    padding: "7px",
                   }}
                 />
 
                 <Card.Title
                   style={{
-                    color: "#ff3c00",
+                    color: "var(--text-color)",
                   }}
                 >
                   {product.name.slice(0, 30)}
@@ -153,7 +154,7 @@ export default function Productos() {
                 {/* //descricion con caracteres limitados a 100 */}
                 <Card.Text
                   style={{
-                    color: "#ff3c00",
+                    color: "var(--text-color)",
                   }}
                 >
                   {product.description.slice(0, 30)}...
@@ -168,7 +169,10 @@ export default function Productos() {
                 {/* usar getDetail para detalles del producto */}
                 <Button
                   variant="outline-warning"
-                  style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+                  style={{
+                    border: "var(--border)",
+                    color: "var(--text-color)",
+                  }}
                   value={product._id}
                   onClick={handleDetail}
                 >

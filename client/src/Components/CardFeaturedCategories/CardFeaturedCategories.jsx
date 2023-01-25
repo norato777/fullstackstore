@@ -21,18 +21,20 @@ export default function CardFeaturedCategories({ prop }) {
         onClick={handleClick}
         variant="outline-warning"
         style={{
-          border: "1px solid #fff",
+          border: "var(--border)",
           backgroundImage: `url(${prop.image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          color: "#ffffff",
+          color: "var(--text-color)",
           borderRadius: "50%",
           height: "210px",
           width: "210px",
-          boxShadow: "0 0 7px #fff",
+          boxShadow: "var(--box-shadow)",
         }}
       >
-        <div style={{ backgroundColor: "#ff3c00" }}>{prop.name}</div>
+        <div style={{ backgroundColor: "var(--background-color)" }}>
+          {prop.name}
+        </div>
       </Button>
     </Container>
   );

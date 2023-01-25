@@ -11,6 +11,7 @@ import {
   Nav,
   Button,
 } from "react-bootstrap";
+import LightMode from "../LightMode/LightMode";
 
 export default function NavbarHeader() {
   const navigate = useNavigate();
@@ -45,11 +46,17 @@ export default function NavbarHeader() {
       <Container fluid>
         <Nav className="justify-content-end" activeKey="/">
           <Nav.Item>
+            <LightMode />
+          </Nav.Item>
+          <Nav.Item>
             <Button
               className="m-1"
               href="/favorites"
               variant="outline-warning"
-              style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+              style={{
+                border: "var(--border)",
+                color: "var(--text-color)",
+              }}
             >
               <i className="bi bi-star "></i> Favoritos
             </Button>
@@ -59,7 +66,10 @@ export default function NavbarHeader() {
               className="m-1"
               variant="outline-warning"
               href="/compare"
-              style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+              style={{
+                border: "var(--border)",
+                color: "var(--text-color)",
+              }}
             >
               <i className="bi bi-back "></i> Comparar
             </Button>
@@ -72,8 +82,8 @@ export default function NavbarHeader() {
                   variant="outline-warning"
                   onClick={handleShow}
                   style={{
-                    border: "1px solid #ff3c00",
-                    color: "#ff3c00",
+                    border: "var(--border)",
+                    color: "var(--text-color)",
                   }}
                 >
                   <i className="bi bi-box-arrow-in-right "></i> Ingresar
