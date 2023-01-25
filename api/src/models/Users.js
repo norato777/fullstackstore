@@ -32,14 +32,16 @@ const UserSchema = new Schema({
     type: Array,
   },
   admin: {
-    type: Boolean, default: false,
+    type: Boolean,
+    default: false,
   },
   favoritos: {
     type: Array,
   },
-  deleted:{
-    type: Boolean, default: false,
-  }
+  deleted: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 UserSchema.methods.encryptPassword = (password) => {
@@ -47,7 +49,11 @@ UserSchema.methods.encryptPassword = (password) => {
 };
 
 UserSchema.methods.comparePassword = function (password) {
-  return bcrypt.compareSync(password, this.password);
+  try {
+    return bcrypt.compareSync(password, this.password);
+  } catch (error) {
+    return { error: error.message };
+  }
 };
 
 UserSchema.plugin(findOrCreate);

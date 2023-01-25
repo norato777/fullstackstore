@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const userSchema = require("../models/Users.js");
-const signUp = require("../passport/local-auth.js");
 const { getTokenData } = require("../config/jwt.config");
 const { deleteDocument, recoverDocument } = require("../constrollers/user.controllers");
 

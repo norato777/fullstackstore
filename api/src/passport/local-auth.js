@@ -4,8 +4,8 @@ const User = require("../models/Users");
 const { v4: uuidv4 } = require("uuid");
 const { getToken, getTokenData } = require("../config/jwt.config");
 const { getTemplate, sendEmail } = require("../config/mail.config");
-const { getTokeen } = require('../config/jwt.forgot');
-const { getTemplatee, sendEemail } = require('../config/mail.forgot');
+const { getTokeen } = require("../config/jwt.forgot");
+const { getTemplatee, sendEemail } = require("../config/mail.forgot");
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -73,42 +73,34 @@ passport.use(
   )
 );
 
-
-
 exports.forgotPassword = async (req, res) => {
   const { email } = req.body;
-  const user = await User.findOne({ email:email});
-  if (!user){
-      return res.status(404).send('El email no existe');
+  const user = await User.findOne({ email: email });
+  if (!user) {
+    return res.status(404).send("El email no existe");
+  } else {
+    const code = uuidv4();
+    user.code = code;
+    const token = getTokeen({ email, code });
+    const template = getTemplatee(email, token);
+    await user.save();
+    await sendEemail(email, "Recuperar contraseña", template);
+    res.status(200).send("Email enviado");
   }
-  else {
-      const code = uuidv4();
-          user.code = code;
-          const token = getTokeen({ email, code });
-          const template = getTemplatee(email, token);
-          await user.save();
-          await sendEemail(email, 'Recuperar contraseña', template);
-          res.status(200).send('Email enviado');
-  }
-}
-
-
+};
 
 exports.resetPassword = async (req, res) => {
   const { email, code, password } = req.body;
-  const user = await User.findOne({ email: email});
+  const user = await User.findOne({ email: email });
   if (!user) {
-      return res.status(404).send('El email no existe ');
+    return res.status(404).send("El email no existe ");
+  } else {
+    if (user.code === code) {
+      user.password = user.encryptPassword(password);
+      await user.save();
+      res.status(200).send("contraseña cambiada");
+    } else {
+      res.status(404).send("El codigo no es valido");
+    }
   }
-  else {
-      if (user.code === code) {
-          user.password = user.encryptPassword(password);
-          await user.save();
-          res.status(200).send('contraseña cambiada');
-      }
-      else {
-          res.status(404).send('El codigo no es valido');
-      }
-  }
-}     
-
+};
