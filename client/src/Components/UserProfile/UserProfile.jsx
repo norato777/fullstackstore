@@ -8,7 +8,7 @@ import NavbarMain from "../NavbarMain/NavbarMain";
 import s from "./UserProfile.module.css";
 import { Button, Form } from "react-bootstrap";
 
-const UserProfile = () => {
+export default function UserProfile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -89,6 +89,4 @@ const UserProfile = () => {
       </div>
     </>
   );
-};
-
-export default UserProfile;
+}
