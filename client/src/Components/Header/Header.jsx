@@ -7,6 +7,7 @@ import NavbarHeader from "../NavbarHeader/NavbarHeader";
 export default function Header() {
   const navigate = useNavigate();
   const handleCart = () => {
+    localStorage.getItem("cart")
     navigate("/cart");
   };
   return (
