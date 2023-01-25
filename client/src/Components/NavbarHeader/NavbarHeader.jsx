@@ -21,10 +21,11 @@ export default function NavbarHeader() {
   const logged = useSelector((state) => state.logged);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  console.log(user)
 
-  // useEffect(() => {
-  //   dispatch(getUsers());
-  // }, []);
+  useEffect(() => {
+    dispatch(getUsers());
+  }, []);
 
   const signOut = () => {
     dispatch(logOut());
