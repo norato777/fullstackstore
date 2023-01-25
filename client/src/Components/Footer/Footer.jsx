@@ -13,6 +13,7 @@ export default function Footer() {
           boxShadow: "var(--box-shadow)",
         }}
         expand="lg"
+        className="mt-5"
       >
         <Navbar className="justify-content-center">
           <Nav>
