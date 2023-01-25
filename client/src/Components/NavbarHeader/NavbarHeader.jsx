@@ -22,9 +22,9 @@ export default function NavbarHeader() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  useEffect(() => {
-    dispatch(getUsers());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getUsers());
+  // }, []);
 
   const signOut = () => {
     dispatch(logOut());

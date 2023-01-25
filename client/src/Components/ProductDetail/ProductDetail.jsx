@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../Header/Header";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import RatingComents from "../RatingComents/RatingComents";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import { getDetail } from "../../Redux/action";
 
 const ProductDetail = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
   const details = useSelector((state) => state.detail);
   const navigate = useNavigate();
   const handleCart = () => {
     navigate("/cart");
   };
+
+  useEffect(() => {
+    dispatch(getDetail(id));
+  }, []);
 
   return (
     <>
