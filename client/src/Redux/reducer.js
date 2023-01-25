@@ -18,14 +18,18 @@ const initialState = {
   logged: false,
   admin: false,
   search: "",
-  filter: "",
+  fil:[],
+  fol:[],
+  filterCat: "",
+  filterBra: "",
 };
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     // case to get all products
     case "GET_PRODUCTS":
-      const marcas = state.allProducts
+      let productsFilter = action.payload.filter(ele=>ele.deleted===false)
+      const marcas = productsFilter
         .map((e) => e.brand)
         .sort(function (a, b) {
           if (a < b) return -1;
@@ -34,8 +38,8 @@ export default function rootReducer(state = initialState, action) {
       const uniqueBrands = [...new Set(marcas)];
       return {
         ...state,
-        products: action.payload,
-        allProducts: action.payload,
+        products: productsFilter,
+        allProducts: productsFilter,
         brand: uniqueBrands,
       };
     // case to create a new product
@@ -105,34 +109,79 @@ export default function rootReducer(state = initialState, action) {
         ...state,
       };
     case "FILTER_CATEGORY":
-      if (action.payload === "Category") {
+      let filtrados = []
+      state.filterCat= action.payload
+      if(state.filterBra!==0 && state.fol.length!==0){
+        filtrados = state.fol.filter((e) =>
+          e.categories.includes(action.payload)
+        );
+          return {
+          ...state,
+          products: filtrados,
+          fil:filtrados
+        };
+      }else if(state.filterCat.length!== 0 && state.filterBra.length===0){
+        filtrados = state.allProducts.filter((e) =>
+          e.categories.includes(action.payload)
+        );
+          return {
+          ...state,
+          products: filtrados,
+          fil:filtrados
+        };
+      }else if (action.payload === "Category") {
         return {
           ...state,
           products: state.products,
+          fil:filtrados
         };
       } else {
-        let filtrados = state.products.filter((e) =>
+        
+       filtrados = state.products.filter((e) =>
           e.categories.includes(action.payload)
         );
 
         return {
           ...state,
           products: filtrados,
+          fil:filtrados
         };
       }
     case "FILTER_BRAND":
-      if (action.payload === "Brand") {
+      let filtrado= []
+      state.filterBra = action.payload
+      state.fol= state.allProducts.filter(
+        (e) => e.brand === action.payload
+      );
+      if(state.filterBra.length!==0 && state.filterBra !== "Brand"){
+        if(state.fil.length==0){
+          filtrado = state.allProducts.filter(
+            (e) => e.brand === action.payload
+          );
+        }else{
+          filtrado = state.fil.filter(
+            (e) => e.brand === action.payload
+          );
+        }
+          return {
+            ...state,
+            products: filtrado,
+          
+          }
+      }else if (action.payload === "Brand") {
         return {
           ...state,
           products: state.products,
+ 
         };
       } else {
-        let filtrados = state.products.filter(
+        filtrado = state.products.filter(
           (e) => e.brand === action.payload
         );
         return {
           ...state,
-          products: filtrados,
+          products: filtrado,
+  
         };
       }
     // case register
@@ -163,6 +212,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         user: [],
+        cart:[],
         logged: false,
       };
     case "SEARCH_BAR":
@@ -179,6 +229,7 @@ export default function rootReducer(state = initialState, action) {
         products: state.allProducts,
       };
     case "FILTER_PRICE":
+      console.log(action.payload)
       let sorted = state.products;
       if (action.payload === "Price") {
         return {
@@ -186,12 +237,12 @@ export default function rootReducer(state = initialState, action) {
           products: sorted,
         };
       }
-      if (action.payload === "Menor a mayor") {
+      if (action.payload === "Menor") {
         sorted.sort(function (a, b) {
           return a.price - b.price;
         });
       }
-      if (action.payload === "Mayor a menor") {
+      if (action.payload === "Mayor") {
         sorted.sort(function (a, b) {
           return b.price - a.price;
         });

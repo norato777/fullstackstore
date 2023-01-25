@@ -7,13 +7,14 @@ import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 
 export default function FeaturedCategories() {
-  const category = useSelector((state) => state.category);
-  const dispatch = useDispatch();
+  const category = useSelector((state)=> state.category)
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    !category.length && dispatch(getCategories());
-  }, []);
 
+  useEffect(()=>{
+    !category.length && dispatch(getCategories())
+  },[])
+  
   return (
     <>
       <h1

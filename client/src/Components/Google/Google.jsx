@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { GoogleLogin } from "react-google-login";
-import { gapi } from "gapi-script";
-import { useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { GoogleLogin } from 'react-google-login';
+import { gapi } from 'gapi-script';
+import { useSelector } from 'react-redux';
 
-const Google = ({ handleClose }) => {
+const Google = ({handleClose}) => {
   const user = useSelector((state) => state.user);
 
   // useEffect(() => {
@@ -20,12 +20,12 @@ const Google = ({ handleClose }) => {
     const userGoogle = { email: res.profileObj.email };
     user.push(userGoogle);
     alert("Sesión iniciada");
-    handleClose();
+    handleClose()
   };
 
-  const onFailure = (err) => {
-    if (err.length > 0) alert("failed:", err);
-  };
+    const onFailure = (err) => {
+        if (err.length > 0) alert('failed:', err);
+    };
 
   return (
     <>
@@ -35,7 +35,7 @@ const Google = ({ handleClose }) => {
         onSuccess={onSuccess}
         onFailure={onFailure}
         cookiePolicy={"single_host_origin"}
-        // isSignedIn={true}
+        isSignedIn={true}
       />
     </>
   );

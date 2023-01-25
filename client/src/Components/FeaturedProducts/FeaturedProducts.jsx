@@ -7,7 +7,7 @@ export default function FeaturedProducts() {
 
   return (
     <>
-      <Container sm-5 className="mt-3">
+      <Container className="mt-3">
         <h1 style={{ color: "#fff" }}>Productos Destacados</h1>
 
         <Row>
