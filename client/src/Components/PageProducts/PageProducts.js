@@ -80,17 +80,17 @@ function PageProducts() {
             <Col>
               <Card
                 style={{
-                  backgroundColor: "rgba(33, 37, 41,0.5)",
+                  backgroundColor: "var(--background-color)",
                   backdropFilter: "blur(5px)",
-                  border: "1px solid #fff",
-                  boxShadow: "0 0 7px #fff",
+                  border: "var(--border)",
+                  boxShadow: "var(--box-shadow)",
                 }}
                 className="rounded-4"
               >
                 <Card.Header>
                   <h5
                     style={{
-                      color: "#ff3c00",
+                      color: "var(--text-color)",
                     }}
                   >
                     Filtros
@@ -100,7 +100,7 @@ function PageProducts() {
                   <Form.Group>
                     <Form.Label
                       style={{
-                        color: "#ffc800",
+                        color: "#fff",
                       }}
                     >
                       Categoria
@@ -118,7 +118,7 @@ function PageProducts() {
                   <Form.Group>
                     <Form.Label
                       style={{
-                        color: "#ffc800",
+                        color: "#fff",
                       }}
                     >
                       Marca
@@ -136,7 +136,7 @@ function PageProducts() {
                   <Form.Group>
                     <Form.Label
                       style={{
-                        color: "#ffc800",
+                        color: "#fff",
                       }}
                     >
                       Precio
@@ -155,7 +155,10 @@ function PageProducts() {
                     className="mt-5"
                     variant="outline-warning"
                     onClick={() => handleCleanFilter()}
-                    style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+                    style={{
+                      border: "var(--border)",
+                      color: "var(--text-color)",
+                    }}
                   >
                     Limpiar filtros
                   </Button>

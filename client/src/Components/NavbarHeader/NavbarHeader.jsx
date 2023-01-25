@@ -9,7 +9,9 @@ import {
   DropdownButton,
   ButtonGroup,
   Nav,
+  Button,
 } from "react-bootstrap";
+import LightMode from "../LightMode/LightMode";
 
 export default function NavbarHeader() {
   const navigate = useNavigate();
@@ -18,12 +20,11 @@ export default function NavbarHeader() {
   const user = useSelector((state) => state.user);
   const logged = useSelector((state) => state.logged);
   const handleClose = () => setShow(false);
-
   const handleShow = () => setShow(true);
 
-  useEffect(() => {
-    dispatch(getUsers());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getUsers());
+  // }, []);
 
   const signOut = () => {
     dispatch(logOut());
@@ -44,53 +45,98 @@ export default function NavbarHeader() {
       <Container fluid>
         <Nav className="justify-content-end" activeKey="/">
           <Nav.Item>
-            <Nav.Link
-              href="/favorites"
-              style={{
-                color: "#ff3c00",
-              }}
-            >
-              Favoritos
-            </Nav.Link>
+            <LightMode />
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link
-              href="/compare"
+            <Button
+              className="m-1"
+              href="/favorites"
+              variant="outline-warning"
               style={{
-                color: "#ff3c00",
+                border: "var(--border)",
+                color: "var(--text-color)",
               }}
             >
-              Comparar
-            </Nav.Link>
+              <i className="bi bi-star "></i> Favoritos
+            </Button>
+          </Nav.Item>
+          <Nav.Item>
+            <Button
+              className="m-1"
+              variant="outline-warning"
+              href="/compare"
+              style={{
+                border: "var(--border)",
+                color: "var(--text-color)",
+              }}
+            >
+              <i className="bi bi-back "></i> Comparar
+            </Button>
           </Nav.Item>
           {user.length === 0 && logged === false ? (
             <>
               <Nav.Item>
-                <Nav.Link
+                <Button
+                  className="m-1"
+                  variant="outline-warning"
                   onClick={handleShow}
                   style={{
-                    color: "#ff3c00",
+                    border: "var(--border)",
+                    color: "var(--text-color)",
                   }}
                 >
-                  Ingresar
-                </Nav.Link>
+                  <i className="bi bi-box-arrow-in-right "></i> Ingresar
+                </Button>
               </Nav.Item>
             </>
           ) : (
             <>
               <ButtonGroup>
                 <DropdownButton
+                  className="m-1"
                   as={ButtonGroup}
-                  title="Usuario"
+                  title="Mi cuenta"
                   id="bg-nested-dropdown"
+                  variant="outline-warning"
+                  style={{
+                    backgroundColor: "var(--background-color)",
+                    backdropFilter: "blur(5px)",
+                    border: "var(--border)",
+                    color: "var(--text-color)",
+                    height: "38px",
+                  }}
                 >
-                  <Dropdown.Item eventKey="1" onClick={onClickFavorites}>
+                  <Dropdown.Item
+                    eventKey="1"
+                    onClick={onClickFavorites}
+                    style={{
+                      backgroundColor: "var(--background-color)",
+                      border: "var(--border)",
+                      color: "var(--text-color)",
+                    }}
+                  >
                     Favoritos
                   </Dropdown.Item>
-                  <Dropdown.Item eventKey="2" onClick={onClickProfile}>
+                  <Dropdown.Item
+                    eventKey="2"
+                    onClick={onClickProfile}
+                    style={{
+                      backgroundColor: "var(--background-color)",
+                      border: "var(--border)",
+                      color: "var(--text-color)",
+                    }}
+                  >
                     Mi perfil
                   </Dropdown.Item>
-                  <Dropdown.Item eventKey="3" onClick={signOut}>
+                  <Dropdown.Item
+                    eventKey="3"
+                    onClick={signOut}
+                    style={{
+                      backgroundColor: "var(--background-color)",
+                      border: "var(--border)",
+                      color: "var(--text-color)",
+                    }}
+                  >
                     Cerrar sesión
                   </Dropdown.Item>
                 </DropdownButton>

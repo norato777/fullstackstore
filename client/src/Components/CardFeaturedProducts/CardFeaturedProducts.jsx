@@ -6,26 +6,21 @@ import { getDetail } from "../../Redux/action";
 import { Card, ListGroup, Button } from "react-bootstrap";
 
 export default function CardFeaturedProducts({ num }) {
-  const dispatch = useDispatch();
   const Products = useSelector((state) => state.allProducts);
   const [oneProduct, setOneProduct] = useState(Products[num]);
-
-  const handleClick = () => {
-    dispatch(getDetail(oneProduct._id));
-  };
 
   return (
     <Card
       className="m-3"
       style={{
         width: "18rem",
-        backgroundColor: "rgb(33, 37, 41)",
+        backgroundColor: "var(--background-color)",
         backdropFilter: "blur(5px)",
-        border: "1px solid #fff",
-        boxShadow: "0 0 7px #fff",
+        border: "var(--border)",
+        boxShadow: "var(--box-shadow)",
       }}
     >
-      <Link to={`/product/${oneProduct._id}`} onClick={handleClick}>
+      <Link to={`/product/${oneProduct._id}`}>
         <Card.Img
           variant="top"
           src={oneProduct.image}
@@ -34,7 +29,7 @@ export default function CardFeaturedProducts({ num }) {
             marginTop: "14px",
             width: "16rem",
             height: "16rem",
-            border: "1px solid #fff",
+            border: "var(--border)",
             background: "#fff",
           }}
         />
@@ -42,7 +37,7 @@ export default function CardFeaturedProducts({ num }) {
       <Card.Body>
         <Card.Title
           style={{
-            color: "#ffc800",
+            color: "#fff",
             textDecoration: "none",
             textWeight: "bold",
           }}
@@ -51,7 +46,7 @@ export default function CardFeaturedProducts({ num }) {
         </Card.Title>
         <Card.Text
           style={{
-            color: "#ff3c00",
+            color: "var(--text-color)",
             textDecoration: "none",
             textWeight: "bold",
           }}
@@ -62,8 +57,8 @@ export default function CardFeaturedProducts({ num }) {
       <ListGroup className="list-group-flush">
         <ListGroup.Item
           style={{
-            backgroundColor: "rgb(33, 37, 41)",
-            color: "#ff3c00",
+            backgroundColor: "var(--background-color)",
+            color: "var(--text-color)",
             textAlign: "start",
           }}
         >
@@ -71,8 +66,8 @@ export default function CardFeaturedProducts({ num }) {
         </ListGroup.Item>
         <ListGroup.Item
           style={{
-            backgroundColor: "rgb(33, 37, 41)",
-            color: "#ffc800",
+            backgroundColor: "var(--background-color)",
+            color: "#fff",
             fontSize: "17px",
             textAlign: "start",
           }}
@@ -81,8 +76,8 @@ export default function CardFeaturedProducts({ num }) {
         </ListGroup.Item>
         <ListGroup.Item
           style={{
-            backgroundColor: "rgb(33, 37, 41)",
-            color: "#ff3c00",
+            backgroundColor: "var(--background-color)",
+            color: "var(--text-color)",
             textAlign: "start",
           }}
         >
@@ -90,8 +85,8 @@ export default function CardFeaturedProducts({ num }) {
         </ListGroup.Item>
         <ListGroup.Item
           style={{
-            backgroundColor: "rgb(33, 37, 41)",
-            color: "#ff3c00",
+            backgroundColor: "var(--background-color)",
+            color: "var(--text-color)",
             textAlign: "start",
           }}
         >
@@ -101,13 +96,13 @@ export default function CardFeaturedProducts({ num }) {
 
       <Card.Body
         style={{
-          color: "#ff3c00",
+          color: "var(--text-color)",
         }}
       >
         <Checkbox />
         <Button
           variant="outline-warning"
-          style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+          style={{ border: "var(--border)", color: "var(--text-color)" }}
         >
           Agregar al carrito
         </Button>
