@@ -10,17 +10,10 @@ const Google = ({ handleClose }) => {
   //   const initClient = () => {
   //     gapi.client.init({
   //       clientId: process.env.REACT_APP_GOOGLE_ID,
-<<<<<<< HEAD
   //       scope: ''
   //     });
   //   };
   //   gapi.load('client:auth2', initClient);
-=======
-  //       scope: "",
-  //     });
-  //   };
-  //   gapi.load("client:auth2", initClient);
->>>>>>> b1ba453ec1005b011dee482744721e1a22121d73
   // });
 
   const onSuccess = (res) => {

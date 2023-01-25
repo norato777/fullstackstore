@@ -104,7 +104,7 @@ export default function CardFeaturedProducts({ num }) {
           variant="outline-warning"
           style={{ border: "var(--border)", color: "var(--text-color)" }}
         >
-          Agregar al carrito
+          Ver detalles
         </Button>
       </Card.Body>
     </Card>
