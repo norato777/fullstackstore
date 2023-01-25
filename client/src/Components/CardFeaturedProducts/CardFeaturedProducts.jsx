@@ -6,13 +6,8 @@ import { getDetail } from "../../Redux/action";
 import { Card, ListGroup, Button } from "react-bootstrap";
 
 export default function CardFeaturedProducts({ num }) {
-  const dispatch = useDispatch();
   const Products = useSelector((state) => state.allProducts);
   const [oneProduct, setOneProduct] = useState(Products[num]);
-
-  const handleClick = () => {
-    dispatch(getDetail(oneProduct._id));
-  };
 
   return (
     <Card
@@ -25,7 +20,7 @@ export default function CardFeaturedProducts({ num }) {
         boxShadow: "var(--box-shadow)",
       }}
     >
-      <Link to={`/product/${oneProduct._id}`} onClick={handleClick}>
+      <Link to={`/product/${oneProduct._id}`}>
         <Card.Img
           variant="top"
           src={oneProduct.image}
@@ -42,7 +37,7 @@ export default function CardFeaturedProducts({ num }) {
       <Card.Body>
         <Card.Title
           style={{
-            color: "#ffc800",
+            color: "#fff",
             textDecoration: "none",
             textWeight: "bold",
           }}
@@ -72,7 +67,7 @@ export default function CardFeaturedProducts({ num }) {
         <ListGroup.Item
           style={{
             backgroundColor: "var(--background-color)",
-            color: "#ffc800",
+            color: "#fff",
             fontSize: "17px",
             textAlign: "start",
           }}

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Google from "../Google/Google";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { signUp } from "../../Redux/action";
@@ -43,11 +42,12 @@ const ModalRegister = ({ show, handleClose }) => {
 
   return (
     <Form
-      className="mb-10"
+      className="m-1"
       onSubmit={handleSubmit(onSubmit)}
       style={{
         backdropFilter: "blur(5px)",
         border: "var(--border)",
+        width: "490px",
       }}
     >
       <Modal.Header
@@ -142,6 +142,7 @@ const ModalRegister = ({ show, handleClose }) => {
       >
         <Button
           onClick={handleClose}
+          type="submit"
           variant="outline-warning"
           style={{
             border: "1px solid #198754",

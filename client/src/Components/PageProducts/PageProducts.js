@@ -100,7 +100,7 @@ function PageProducts() {
                   <Form.Group>
                     <Form.Label
                       style={{
-                        color: "#ffc800",
+                        color: "#fff",
                       }}
                     >
                       Categoria
@@ -116,9 +116,15 @@ function PageProducts() {
                         category.map((e, i) => <option key={i}>{e}</option>)}
                     </Form.Select>
                   </Form.Group>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Marca</label>
-                    <select
+                  <Form.Group>
+                    <Form.Label
+                      style={{
+                        color: "#fff",
+                      }}
+                    >
+                      Marca
+                    </Form.Label>
+                    <Form.Select
                       className="form-control"
                       id="exampleFormControlSelect1"
                       value={selectedBrand}
@@ -127,11 +133,17 @@ function PageProducts() {
                       <option>Marca</option>
                       {brand &&
                         brand.map((e, i) => <option key={i}>{e}</option>)}
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Precio</label>
-                    <select
+                    </Form.Select>
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label
+                      style={{
+                        color: "#fff",
+                      }}
+                    >
+                      Precio
+                    </Form.Label>
+                    <Form.Select
                       className="form-control"
                       id="exampleFormControlSelect1"
                       onChange={(e) => handleChangePrice(e.target.value)}
@@ -139,8 +151,8 @@ function PageProducts() {
                       <option defaultValue="Price">Price</option>
                       <option value="Mayor">Mayor a menor</option>
                       <option value="Menor">Menor a mayor</option>
-                    </select>
-                  </div>
+                    </Form.Select>
+                  </Form.Group>
 
                   <button
                     className="btn btn"

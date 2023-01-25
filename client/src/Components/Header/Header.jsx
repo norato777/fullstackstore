@@ -19,6 +19,7 @@ export default function Header() {
             backdropFilter: "blur(5px)",
             border: "var(--border)",
             boxShadow: "var(--box-shadow)",
+            zIndex: "1",
           }}
           expand="lg"
           className="rounded-4"

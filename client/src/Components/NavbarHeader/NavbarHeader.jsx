@@ -20,8 +20,8 @@ export default function NavbarHeader() {
   const user = useSelector((state) => state.user);
   const logged = useSelector((state) => state.logged);
   const handleClose = () => setShow(false);
-
   const handleShow = () => setShow(true);
+  console.log(user)
 
   useEffect(() => {
     dispatch(getUsers());
@@ -94,17 +94,50 @@ export default function NavbarHeader() {
             <>
               <ButtonGroup>
                 <DropdownButton
+                  className="m-1"
                   as={ButtonGroup}
-                  title="Usuario"
+                  title="Mi cuenta"
                   id="bg-nested-dropdown"
+                  variant="outline-warning"
+                  style={{
+                    backgroundColor: "var(--background-color)",
+                    backdropFilter: "blur(5px)",
+                    border: "var(--border)",
+                    color: "var(--text-color)",
+                    height: "38px",
+                  }}
                 >
-                  <Dropdown.Item eventKey="1" onClick={onClickFavorites}>
+                  <Dropdown.Item
+                    eventKey="1"
+                    onClick={onClickFavorites}
+                    style={{
+                      backgroundColor: "var(--background-color)",
+                      border: "var(--border)",
+                      color: "var(--text-color)",
+                    }}
+                  >
                     Favoritos
                   </Dropdown.Item>
-                  <Dropdown.Item eventKey="2" onClick={onClickProfile}>
+                  <Dropdown.Item
+                    eventKey="2"
+                    onClick={onClickProfile}
+                    style={{
+                      backgroundColor: "var(--background-color)",
+                      border: "var(--border)",
+                      color: "var(--text-color)",
+                    }}
+                  >
                     Mi perfil
                   </Dropdown.Item>
-                  <Dropdown.Item eventKey="3" onClick={signOut}>
+                  <Dropdown.Item
+                    eventKey="3"
+                    onClick={signOut}
+                    style={{
+                      backgroundColor: "var(--background-color)",
+                      border: "var(--border)",
+                      color: "var(--text-color)",
+                    }}
+                  >
                     Cerrar sesión
                   </Dropdown.Item>
                 </DropdownButton>

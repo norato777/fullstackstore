@@ -6,7 +6,7 @@ import { Col, Container, Row } from "react-bootstrap";
 export default function OurBrands() {
   return (
     <>
-      <h1 style={{ color: "#ffc800" }}>
+      <h1 style={{ color: "#fff" }}>
         ¡En Fullstack Store encuentra las mejores marcas!
       </h1>
       <Container

@@ -11,7 +11,7 @@
 
 #darkMode:hover {
   filter: none;
-  background-color: #ff3c00;
+  background-color: #fff;
   cursor: pointer;
 }
 #darkMode.clicked {

@@ -17,7 +17,7 @@ export default function NavButton({ prop }) {
 
   return (
     <Container>
-      <Nav.Link onClick={handleClick} style={{ color: "#ffc800" }}>
+      <Nav.Link onClick={handleClick} style={{ color: "#fff" }}>
         {prop.name}
       </Nav.Link>
     </Container>

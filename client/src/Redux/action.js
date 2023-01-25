@@ -104,10 +104,8 @@ export const putUser = (id, data) => {
   return async function (dispatch) {
     try {
       const res = await axios.put(`/users/${id}`, data);
-      console.log(res);
       return dispatch({ type: "PUT_USER", payload: res.data });
     } catch (error) {
-      console.log(error);
       return { error: error.message };
     }
   };
@@ -124,12 +122,24 @@ export function postUser(payload) {
   };
 }
 
+export const deleteUser = (id) => {
+  return async function (dispatch) {
+    try {
+      const res = await axios.delete(`/users/${id}`);
+      return dispatch({ type: "USER_PRODUCT", payload: res.data });
+    } catch (error) {
+      return { error: error.message };
+    }
+  };
+};
+
 export function filterProductsCategory(payload) {
   return {
     type: "FILTER_CATEGORY",
     payload,
   };
 }
+
 export function filterProductsBrand(payload) {
   return {
     type: "FILTER_BRAND",

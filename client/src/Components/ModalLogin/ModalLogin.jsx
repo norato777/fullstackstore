@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Google from "../Google/Google";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { signIn } from "../../Redux/action";
@@ -36,12 +35,13 @@ const ModalLogin = ({ show, handleClose }) => {
 
   return (
     <Form
-      className="mb-10"
+      fluid
+      className="m-1"
       onSubmit={handleSubmit(onSubmit)}
       style={{
-        backgroundColor: "var(--clr-0-025)",
         backdropFilter: "blur(5px)",
         border: "var(--border)",
+        width: "490px",
       }}
     >
       <Modal.Header

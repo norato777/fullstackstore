@@ -26,12 +26,16 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  const id = req.params.id;
-  const product = req.body;
-  putProduct(id, product)
-    .then((product) => res.json(product))
-    .catch((error) => res.json({ message: error }));
+  const { id } = req.params;
+  try {
+    productSchema
+    .findByIdAndUpdate(id, req.body)
+    .then((data) => res.status(200).json(data));
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
 });
+
 router.put("/rating/:id", (req, res) => {
   const id = req.params.id;
   const product = req.body;

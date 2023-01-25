@@ -16,16 +16,23 @@ export default function FeaturedCategories() {
   },[])
   
   return (
-    <>    
-      <h1>Categorias destacadas</h1>
-      <div className={stl.container}>
-      {
-        category?.map((e,i)=>(  
-        <div key={i}className={stl.format}>
-          <CardFeaturedCategories prop={e}/>
-        </div>))
-      }
-      </div>
+    <>
+      <h1
+        style={{
+          color: "#fff",
+        }}
+      >
+        Categorias Destacadas
+      </h1>
+      <Container className="mt-3 mb-3">
+        <div className={stl.container}>
+          {category?.map((e, i) => (
+            <div key={i}>
+              <CardFeaturedCategories prop={e} />
+            </div>
+          ))}
+        </div>
+      </Container>
     </>
   );
 }

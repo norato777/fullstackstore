@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../Header/Header";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import Paypal from "../Paypal/Papypal";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import RatingComents from "../RatingComents/RatingComents";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import { getDetail } from "../../Redux/action";
 
 const ProductDetail = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
   const details = useSelector((state) => state.detail);
   const navigate = useNavigate();
   const handleCart = () => {
     navigate("/cart");
   };
+
+  useEffect(() => {
+    dispatch(getDetail(id));
+  }, []);
 
   return (
     <>
@@ -45,7 +51,7 @@ const ProductDetail = () => {
                   className="m-3"
                 />
               </Col>
-              <Col xs={7}>
+              <Col xs lg="7">
                 <Row
                   className="mt-4"
                   style={{
@@ -59,7 +65,7 @@ const ProductDetail = () => {
                 </Row>
                 <Row
                   style={{
-                    color: "#ffc800",
+                    color: "#fff",
                     fontSize: "21px",
                     height: "35px",
                     overflow:"auto"
@@ -81,7 +87,7 @@ const ProductDetail = () => {
                 <Row
                   className="mt-1"
                   style={{
-                    color: "#ffc800",
+                    color: "#fff",
                     fontSize: "17px",
                     overflow:"auto"
                   }}
@@ -94,7 +100,7 @@ const ProductDetail = () => {
                 xs={2}
                 className="mt-3"
                 style={{
-                  color: "#ffc800",
+                  color: "#fff",
                   fontSize: "28px",
                   height: "49px",
                   textAlign: "end",
@@ -112,7 +118,6 @@ const ProductDetail = () => {
                 >
                   Agregar al Carrito
                 </Button>
-                <Paypal price={details.price} />
               </Col>
             </Row>
           </Container>

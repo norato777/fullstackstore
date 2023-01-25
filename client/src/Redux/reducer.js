@@ -58,6 +58,12 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: action.payload,
       };
+    // case to delete a user
+    case "DELETE_USER":
+      return {
+        ...state,
+        users: action.payload,
+      };
     case "GET_CATEGORIES":
       return {
         ...state,
@@ -197,8 +203,7 @@ export default function rootReducer(state = initialState, action) {
       } else {
         return {
           ...state,
-          user: action.payload,
-          cart: action.payload.cart,
+          user: userEmail,
           logged: true,
         };
       }
