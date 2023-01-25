@@ -1,6 +1,6 @@
 import Form from "react-bootstrap/Form";
 
-export default function CheckBox() {
+function CheckBox() {
   return (
     <Form>
       {["checkbox"].map((type) => (
@@ -18,3 +18,5 @@ export default function CheckBox() {
     </Form>
   );
 }
+
+export default CheckBox;
