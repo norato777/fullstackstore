@@ -25,13 +25,13 @@ export default function ModalSign({ show, handleClose }) {
       >
         <Card>
           <div>
-            <ModalLogin />
+            <ModalLogin handleClose={handleClose} />
           </div>
           <div>
-            <ModalRegister />
+            <ModalRegister handleClose={handleClose} />
           </div>
           <div>
-            <Google />
+            <Google handleClose={handleClose} />
           </div>
         </Card>
       </CardGroup>

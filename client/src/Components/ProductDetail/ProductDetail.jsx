@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../Header/Header";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Paypal from "../Paypal/Papypal";
+
 import RatingComents from "../RatingComents/RatingComents";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
 
@@ -110,7 +110,6 @@ const ProductDetail = () => {
                 >
                   Agregar al Carrito
                 </Button>
-                <Paypal price={details.price} />
               </Col>
             </Row>
           </Container>
