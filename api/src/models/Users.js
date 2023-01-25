@@ -32,7 +32,7 @@ const UserSchema = new Schema({
     type: Array,
   },
   admin: {
-    type: Boolean,
+    type: Boolean, default: false,
   },
   favoritos: {
     type: Array,
