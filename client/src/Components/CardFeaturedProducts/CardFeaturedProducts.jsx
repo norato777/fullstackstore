@@ -42,7 +42,7 @@ export default function CardFeaturedProducts({ num }) {
       <Card.Body>
         <Card.Title
           style={{
-            color: "#ffc800",
+            color: "#fff",
             textDecoration: "none",
             textWeight: "bold",
           }}
@@ -72,7 +72,7 @@ export default function CardFeaturedProducts({ num }) {
         <ListGroup.Item
           style={{
             backgroundColor: "var(--background-color)",
-            color: "#ffc800",
+            color: "#fff",
             fontSize: "17px",
             textAlign: "start",
           }}

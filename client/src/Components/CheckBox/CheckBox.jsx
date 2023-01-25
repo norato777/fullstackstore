@@ -7,7 +7,7 @@ export default function CheckBox() {
         <div key={`default-${type}`} className="mb-3">
           <Form.Check
             style={{
-              color: "#ffc800",
+              color: "#fff",
             }}
             type={type}
             id={`default-${type}`}

@@ -45,7 +45,7 @@ const ProductDetail = () => {
                   className="m-3"
                 />
               </Col>
-              <Col xs={7}>
+              <Col xs lg="7">
                 <Row
                   className="mt-4"
                   style={{
@@ -59,7 +59,7 @@ const ProductDetail = () => {
                 </Row>
                 <Row
                   style={{
-                    color: "#ffc800",
+                    color: "#fff",
                     fontSize: "21px",
                     height: "35px",
                   }}
@@ -80,7 +80,7 @@ const ProductDetail = () => {
                 <Row
                   className="mt-1"
                   style={{
-                    color: "#ffc800",
+                    color: "#fff",
                     fontSize: "17px",
                   }}
                 >
@@ -92,7 +92,7 @@ const ProductDetail = () => {
                 xs={2}
                 className="mt-3"
                 style={{
-                  color: "#ffc800",
+                  color: "#fff",
                   fontSize: "28px",
                   height: "49px",
                   textAlign: "end",

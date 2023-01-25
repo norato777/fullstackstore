@@ -161,7 +161,7 @@ export default function Productos() {
                 </Card.Text>
                 <Card.Text
                   style={{
-                    color: "#ffc800",
+                    color: "#fff",
                   }}
                 >
                   ${product.price}

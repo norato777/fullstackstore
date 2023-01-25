@@ -18,7 +18,7 @@ export default function FeaturedCategories() {
     <>
       <h1
         style={{
-          color: "#ffc800",
+          color: "#fff",
         }}
       >
         Categorias Destacadas
