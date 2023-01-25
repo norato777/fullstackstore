@@ -11,6 +11,7 @@ import {
   Nav,
   Button,
 } from "react-bootstrap";
+import LightMode from "../LightMode/LightMode";
 
 export default function NavbarHeader() {
   const navigate = useNavigate();
@@ -19,7 +20,6 @@ export default function NavbarHeader() {
   const user = useSelector((state) => state.user);
   const logged = useSelector((state) => state.logged);
   const handleClose = () => setShow(false);
-
   const handleShow = () => setShow(true);
 
   // useEffect(() => {
@@ -45,11 +45,17 @@ export default function NavbarHeader() {
       <Container fluid>
         <Nav className="justify-content-end" activeKey="/">
           <Nav.Item>
+            <LightMode />
+          </Nav.Item>
+          <Nav.Item>
             <Button
               className="m-1"
               href="/favorites"
               variant="outline-warning"
-              style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+              style={{
+                border: "var(--border)",
+                color: "var(--text-color)",
+              }}
             >
               <i className="bi bi-star "></i> Favoritos
             </Button>
@@ -59,7 +65,10 @@ export default function NavbarHeader() {
               className="m-1"
               variant="outline-warning"
               href="/compare"
-              style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+              style={{
+                border: "var(--border)",
+                color: "var(--text-color)",
+              }}
             >
               <i className="bi bi-back "></i> Comparar
             </Button>
@@ -72,8 +81,8 @@ export default function NavbarHeader() {
                   variant="outline-warning"
                   onClick={handleShow}
                   style={{
-                    border: "1px solid #ff3c00",
-                    color: "#ff3c00",
+                    border: "var(--border)",
+                    color: "var(--text-color)",
                   }}
                 >
                   <i className="bi bi-box-arrow-in-right "></i> Ingresar
@@ -84,17 +93,50 @@ export default function NavbarHeader() {
             <>
               <ButtonGroup>
                 <DropdownButton
+                  className="m-1"
                   as={ButtonGroup}
-                  title="Usuario"
+                  title="Mi cuenta"
                   id="bg-nested-dropdown"
+                  variant="outline-warning"
+                  style={{
+                    backgroundColor: "var(--background-color)",
+                    backdropFilter: "blur(5px)",
+                    border: "var(--border)",
+                    color: "var(--text-color)",
+                    height: "38px",
+                  }}
                 >
-                  <Dropdown.Item eventKey="1" onClick={onClickFavorites}>
+                  <Dropdown.Item
+                    eventKey="1"
+                    onClick={onClickFavorites}
+                    style={{
+                      backgroundColor: "var(--background-color)",
+                      border: "var(--border)",
+                      color: "var(--text-color)",
+                    }}
+                  >
                     Favoritos
                   </Dropdown.Item>
-                  <Dropdown.Item eventKey="2" onClick={onClickProfile}>
+                  <Dropdown.Item
+                    eventKey="2"
+                    onClick={onClickProfile}
+                    style={{
+                      backgroundColor: "var(--background-color)",
+                      border: "var(--border)",
+                      color: "var(--text-color)",
+                    }}
+                  >
                     Mi perfil
                   </Dropdown.Item>
-                  <Dropdown.Item eventKey="3" onClick={signOut}>
+                  <Dropdown.Item
+                    eventKey="3"
+                    onClick={signOut}
+                    style={{
+                      backgroundColor: "var(--background-color)",
+                      border: "var(--border)",
+                      color: "var(--text-color)",
+                    }}
+                  >
                     Cerrar sesión
                   </Dropdown.Item>
                 </DropdownButton>

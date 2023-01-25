@@ -3,7 +3,7 @@ import Google from "../Google/Google";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { signUp } from "../../Redux/action";
-import { Form, Modal, Nav, Button } from "react-bootstrap";
+import { Form, Modal, Button } from "react-bootstrap";
 
 const ModalRegister = ({ show, handleClose }) => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const ModalRegister = ({ show, handleClose }) => {
   const [password, setPassword] = useState("");
 
   const nameChangeHandler = (e) => {
-    setEmail(e.target.value);
+    setName(e.target.value);
   };
 
   const emailChangeHandler = (e) => {
@@ -46,20 +46,19 @@ const ModalRegister = ({ show, handleClose }) => {
       className="mb-10"
       onSubmit={handleSubmit(onSubmit)}
       style={{
-        backgroundColor: "rgba(33, 37, 41,0.5)",
         backdropFilter: "blur(5px)",
-        border: "1px solid #fff",
+        border: "var(--border)",
       }}
     >
       <Modal.Header
         style={{
-          backgroundColor: "rgb(33, 37, 41)",
+          backgroundColor: "var(--background-color)",
           backdropFilter: "blur(5px)",
         }}
       >
         <Modal.Title
           style={{
-            color: "#ffc800",
+            color: "#198754",
           }}
         >
           Registrate
@@ -67,7 +66,7 @@ const ModalRegister = ({ show, handleClose }) => {
       </Modal.Header>
       <Modal.Body
         style={{
-          backgroundColor: "rgb(33, 37, 41)",
+          backgroundColor: "var(--background-color)",
           backdropFilter: "blur(5px)",
         }}
       >
@@ -75,7 +74,7 @@ const ModalRegister = ({ show, handleClose }) => {
           <div>
             <Form.Label
               style={{
-                color: "#ff3c00",
+                color: "var(--text-color)",
               }}
             >
               Nombre
@@ -85,7 +84,7 @@ const ModalRegister = ({ show, handleClose }) => {
                 onChange={nameChangeHandler}
                 value={name}
                 style={{
-                  border: "1px solid #ff3c00",
+                  border: "var(--border)",
                 }}
               />
               {errors.name?.type === "required" && (
@@ -96,7 +95,7 @@ const ModalRegister = ({ show, handleClose }) => {
           <div>
             <Form.Label
               style={{
-                color: "#ff3c00",
+                color: "var(--text-color)",
               }}
             >
               Email
@@ -106,7 +105,7 @@ const ModalRegister = ({ show, handleClose }) => {
                 onChange={emailChangeHandler}
                 value={email}
                 style={{
-                  border: "1px solid #ff3c00",
+                  border: "var(--border)",
                 }}
               />
               {errors.name?.type === "required" && (
@@ -116,7 +115,7 @@ const ModalRegister = ({ show, handleClose }) => {
           </div>
           <Form.Label
             style={{
-              color: "#ff3c00",
+              color: "var(--text-color)",
             }}
           >
             Contraseña
@@ -126,7 +125,7 @@ const ModalRegister = ({ show, handleClose }) => {
               onChange={passwordChangeHandler}
               value={password}
               style={{
-                border: "1px solid #ff3c00",
+                border: "var(--border)0",
               }}
             />
             {errors.name?.type === "required" && (
@@ -137,13 +136,13 @@ const ModalRegister = ({ show, handleClose }) => {
       </Modal.Body>
       <Modal.Footer
         style={{
-          backgroundColor: "rgb(33, 37, 41)",
+          backgroundColor: "var(--background-color)",
           backdropFilter: "blur(5px)",
         }}
       >
         <Button
           onClick={handleClose}
-          type='submit'
+          type="submit"
           variant="outline-warning"
           style={{
             border: "1px solid #198754",

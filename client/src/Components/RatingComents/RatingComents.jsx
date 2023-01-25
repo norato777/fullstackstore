@@ -29,17 +29,17 @@ export default function RatingComents({ id }) {
   return (
     <Container
       style={{
-        backgroundColor: "rgba(33, 37, 41,0.5)",
+        backgroundColor: "var(--background-color)",
         backdropFilter: "blur(5px)",
-        border: "1px solid #fff",
-        boxShadow: "0 0 7px #fff",
+        border: "var(--border)",
+        boxShadow: "var(--box-shadow)",
       }}
       expand="lg"
-      className="rounded-4"
+      className="rounded-4 mb-xxl-5 mt-xxl-5 "
     >
       <h5
         style={{
-          color: "#ff3c00",
+          color: "var(--text-color)",
         }}
         className="mt-3"
       >
@@ -50,7 +50,7 @@ export default function RatingComents({ id }) {
           <Form.Check type="radio" value="1" onChange={handleChangeRating} />
           <Form.Text
             style={{
-              color: "#ff3c00",
+              color: "var(--text-color)",
               fontSize: "21px",
             }}
           >
@@ -61,7 +61,7 @@ export default function RatingComents({ id }) {
           <Form.Check type="radio" value="2" onChange={handleChangeRating} />
           <Form.Text
             style={{
-              color: "#ff3c00",
+              color: "var(--text-color)",
               fontSize: "21px",
             }}
           >
@@ -72,7 +72,7 @@ export default function RatingComents({ id }) {
           <Form.Check type="radio" value="3" onChange={handleChangeRating} />
           <Form.Text
             style={{
-              color: "#ff3c00",
+              color: "var(--text-color)",
               fontSize: "21px",
             }}
           >
@@ -83,7 +83,7 @@ export default function RatingComents({ id }) {
           <Form.Check type="radio" value="4" onChange={handleChangeRating} />
           <Form.Text
             style={{
-              color: "#ff3c00",
+              color: "var(--text-color)",
               fontSize: "21px",
             }}
           >
@@ -94,7 +94,7 @@ export default function RatingComents({ id }) {
           <Form.Check type="radio" value="5" onChange={handleChangeRating} />
           <Form.Text
             style={{
-              color: "#ff3c00",
+              color: "var(--text-color)",
               fontSize: "21px",
             }}
           >
@@ -106,7 +106,7 @@ export default function RatingComents({ id }) {
             <Form.Control
               placeholder="Deja tus comentarios"
               style={{
-                border: "1px solid #ff3c00",
+                border: "var(--border)",
               }}
               onChange={handleComents}
             ></Form.Control>
@@ -115,7 +115,7 @@ export default function RatingComents({ id }) {
         <Col>
           <Button
             variant="outline-warning"
-            style={{ border: "1px solid #ff3c00", color: "#ff3c00" }}
+            style={{ border: "var(--border)", color: "var(--text-color)" }}
             onClick={handleClick}
           >
             Puntuar
