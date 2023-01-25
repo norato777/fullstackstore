@@ -7,8 +7,7 @@ import NavbarHeader from "../NavbarHeader/NavbarHeader";
 export default function Header() {
   const navigate = useNavigate();
   const handleCart = () => {
-    localStorage.getItem("cart")
-    navigate("/cart");
+       navigate("/cart");
   };
   return (
     <>
@@ -19,7 +18,7 @@ export default function Header() {
             backdropFilter: "blur(5px)",
             border: "var(--border)",
             boxShadow: "var(--box-shadow)",
-            zIndex: "1",
+            zIndex:"1",
           }}
           expand="lg"
           className="rounded-4"

@@ -19,6 +19,7 @@ export default function NavbarHeader() {
   const [show, setShow] = useState(false);
   const user = useSelector((state) => state.user);
   const logged = useSelector((state) => state.logged);
+  const idLocalStorge = localStorage.getItem("id")
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   console.log(user)
@@ -74,7 +75,7 @@ export default function NavbarHeader() {
               <i className="bi bi-back "></i> Comparar
             </Button>
           </Nav.Item>
-          {user.length === 0 && logged === false ? (
+          {!idLocalStorge ? (
             <>
               <Nav.Item>
                 <Button
