@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Google from "../Google/Google";
 import ModalLogin from "../ModalLogin/ModalLogin";
 import ModalRegister from "../ModalRegister/ModalRegister";
@@ -10,8 +10,9 @@ export default function ModalSign({ show, handleClose }) {
       centered
       show={show}
       onHide={handleClose}
+      //este estilo difumina el fondo detras del modal
       style={{
-        backgroundColor: "var( --clr-0-025)",
+        backgroundColor: "var( --clr-7-025)",
         backdropFilter: "blur(5px)",
       }}
     >
@@ -23,15 +24,20 @@ export default function ModalSign({ show, handleClose }) {
           boxShadow: "var(--box-shadow)",
         }}
       >
-        <Card>
+        <Card
+          style={{
+            backgroundColor: "var(--background-color)",
+            alignItems: "center",
+          }}
+        >
           <div>
-            <ModalLogin />
+            <ModalLogin handleClose={handleClose} />
           </div>
           <div>
-            <ModalRegister />
+            <ModalRegister handleClose={handleClose} />
           </div>
           <div>
-            <Google />
+            <Google handleClose={handleClose} />
           </div>
         </Card>
       </CardGroup>

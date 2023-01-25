@@ -45,7 +45,11 @@ const UserSchema = new Schema({
 });
 
 UserSchema.methods.encryptPassword = (password) => {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+  try {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+  } catch (error) {
+    return { error: error.message };
+  }
 };
 
 UserSchema.methods.comparePassword = function (password) {

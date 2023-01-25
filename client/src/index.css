@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind componentes;
-@tailwind utilities;
-
 body {
   margin: 0;
   font-family: Consolas;
@@ -21,7 +17,7 @@ body.light {
   --image: url(../public/image/lightBack2.jpg);
 }
 body.dark {
-  --background-color: var(--clr-9);
+  --background-color: var(--clr-9-05);
   --text-color: var(--clr-7-R);
   --box-shadow: 0 0 7px var(--clr-0);
   --border: 1px solid #ff3c00;
