@@ -14,14 +14,14 @@ body.light {
   --text-color: var(--clr-0);
   --box-shadow: 0 0 7px var(--clr-9);
   --border: 1px solid #fff;
-  --image: url(../public/image/lightBack.jpg);
+  --image: url(../public/image/lightBack2.jpg);
 }
 body.dark {
   --background-color: var(--clr-9);
   --text-color: var(--clr-7-R);
   --box-shadow: 0 0 7px var(--clr-0);
   --border: 1px solid #ff3c00;
-  --image: url(../public/image/darkBack.jpg);
+  --image: url(../public/image/darkBack2.jpg);
 }
 
 /* #h1 {
