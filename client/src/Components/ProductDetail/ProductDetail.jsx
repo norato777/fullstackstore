@@ -17,8 +17,8 @@ const ProductDetail = () => {
   };
 
   useEffect(() => {
-    dispatch(getDetail(id));
-  }, []);
+    details._id === undefined && dispatch(getDetail(id));
+  }, [details._id]);
 
   return (
     <>
@@ -123,7 +123,7 @@ const ProductDetail = () => {
             </Row>
           </Container>
           <div>
-            <RatingComents id={details._id} />
+            <RatingComents props={details} />
           </div>
         </>
       )}
