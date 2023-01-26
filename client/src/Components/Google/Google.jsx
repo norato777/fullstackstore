@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { GoogleLogin } from 'react-google-login';
 import { useSelector } from 'react-redux';
 
-const Google = ({handleClose}) => {
+const Google = ({ handleClose }) => {
   const user = useSelector((state) => state.user);
 
   const onSuccess = (res) => {
@@ -12,9 +12,9 @@ const Google = ({handleClose}) => {
     localStorage.setItem("user", JSON.stringify(res))
   };
 
-    const onFailure = (err) => {
-        if (err.length > 0) alert('failed:', err);
-    };
+  const onFailure = (err) => {
+    if (err.length > 0) alert("failed:", err);
+  };
 
   return (
     <>

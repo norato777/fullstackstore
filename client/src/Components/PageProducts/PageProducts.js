@@ -9,12 +9,13 @@ import {
   filterProductsPrice,
 } from "../../Redux/action";
 import Header from "../Header/Header";
+import NavbarMain from "../NavbarMain/NavbarMain";
 import Footer from "../Footer/Footer";
 import Productos from "../Products/Productos";
 
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 
-function PageProducts() {
+export default function PageProducts() {
   const Products = useSelector((state) => state.products);
   const AllProducts = useSelector((state) => state.allProducts);
   const [filtrados, setFiltrados] = useState();
@@ -74,7 +75,7 @@ function PageProducts() {
     <>
       <div>
         <Header />
-
+        <NavbarMain />
         <Container className="mt-5">
           <Row>
             <Col>
@@ -88,13 +89,14 @@ function PageProducts() {
                 className="rounded-4"
               >
                 <Card.Header>
-                  <h5
+                  <h4
+                    className="mt-3"
                     style={{
                       color: "var(--text-color)",
                     }}
                   >
                     Filtros
-                  </h5>
+                  </h4>
                 </Card.Header>
                 <Card.Body>
                   <Form.Group>
@@ -102,6 +104,7 @@ function PageProducts() {
                       style={{
                         color: "#fff",
                       }}
+                      className="mb-3"
                     >
                       Categoria
                     </Form.Label>
@@ -110,6 +113,9 @@ function PageProducts() {
                       id="exampleFormControlSelect1"
                       value={selectedCategory}
                       onChange={(e) => handleChangeCategory(e.target.value)}
+                      style={{
+                        border: "var(--border)",
+                      }}
                     >
                       <option>Categoria</option>
                       {category &&
@@ -121,6 +127,7 @@ function PageProducts() {
                       style={{
                         color: "#fff",
                       }}
+                      className="mt-3 mb-3"
                     >
                       Marca
                     </Form.Label>
@@ -129,6 +136,9 @@ function PageProducts() {
                       id="exampleFormControlSelect1"
                       value={selectedBrand}
                       onChange={(e) => handleChangeBrand(e.target.value)}
+                      style={{
+                        border: "var(--border)",
+                      }}
                     >
                       <option>Marca</option>
                       {brand &&
@@ -140,6 +150,7 @@ function PageProducts() {
                       style={{
                         color: "#fff",
                       }}
+                      className="mt-3 mb-3"
                     >
                       Precio
                     </Form.Label>
@@ -147,6 +158,9 @@ function PageProducts() {
                       className="form-control"
                       id="exampleFormControlSelect1"
                       onChange={(e) => handleChangePrice(e.target.value)}
+                      style={{
+                        border: "var(--border)",
+                      }}
                     >
                       <option defaultValue="Price">Price</option>
                       <option value="Mayor">Mayor a menor</option>
@@ -154,8 +168,9 @@ function PageProducts() {
                     </Form.Select>
                   </Form.Group>
 
-                  <button
-                    className="btn btn"
+                  <Button
+                    className="mt-5"
+                    variant="outline-warning"
                     onClick={() => handleCleanFilter()}
                     style={{
                       border: "var(--border)",
@@ -163,7 +178,7 @@ function PageProducts() {
                     }}
                   >
                     Limpiar filtros
-                  </button>
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
@@ -180,5 +195,3 @@ function PageProducts() {
     </>
   );
 }
-
-export default PageProducts;

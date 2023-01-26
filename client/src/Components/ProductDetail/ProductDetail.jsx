@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Header from "../Header/Header";
+import NavbarMain from "../NavbarMain/NavbarMain";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import RatingComents from "../RatingComents/RatingComents";
@@ -23,7 +24,7 @@ const ProductDetail = () => {
   return (
     <>
       <Header />
-
+      <NavbarMain />
       {details && (
         <>
           <Container
@@ -69,7 +70,7 @@ const ProductDetail = () => {
                     color: "#fff",
                     fontSize: "21px",
                     height: "35px",
-                    overflow: "auto"
+                    overflow: "auto",
                   }}
                 >
                   Marca: {details.brand}
@@ -90,7 +91,7 @@ const ProductDetail = () => {
                   style={{
                     color: "#fff",
                     fontSize: "17px",
-                    overflow: "auto"
+                    overflow: "auto",
                   }}
                 >
                   Unidades disponibles: {details.quantity}

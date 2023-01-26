@@ -15,7 +15,7 @@ export default function Productos() {
   const [num2, setNum2] = useState(21);
   const [paginas, setPaginas] = useState([]);
   const cart = localStorage.getItem("cart");
-  const [cartNew, setCartNew] = useState([])
+  const [cartNew, setCartNew] = useState([]);
   let pages = [];
 
   useSelector((state) => state.getDetail);
@@ -47,8 +47,8 @@ export default function Productos() {
     }
   }
   const handleDetail = (e) => {
-    dispatch(getDetail(e.target.value));
-    navigate(`/product/${e.target.value}`);
+    dispatch(getDetail(e));
+    navigate(`/product/${e}`);
   };
   const handleChangePagePerNum = (e) => {
     let n = e.target.value * 20;
@@ -72,7 +72,7 @@ export default function Productos() {
       setCartNew(pepe)
       localStorage.setItem("cart", JSON.stringify(pepe))
     }
-  }
+  };
   return (
     <Container>
       {/* paginacion */}
@@ -190,12 +190,13 @@ export default function Productos() {
                     border: "var(--border)",
                     color: "var(--text-color)",
                   }}
-                  value={product._id}
-                  onClick={handleDetail}
+                  // value={product._id}
+                  onClick={() => handleDetail(product._id)}
                 >
                   Ver detalles
                 </Button>
                 <Button
+                  className="mt-3"
                   variant="outline-warning"
                   style={{
                     border: "var(--border)",
