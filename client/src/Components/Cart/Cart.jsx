@@ -1,16 +1,24 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { putUser } from "../../Redux/action";
+import Paypal from "../Paypal/Papypal";
+import s from "./Cart.module.css";
+import Header from "../Header/Header";
+import { Container, Button, Card, Row, Col } from "react-bootstrap";
+import NavbarMain from "../NavbarMain/NavbarMain";
 
 export default function Cart() {
   const cart1 = useSelector((state) => state.cart);
   const newCart = localStorage.getItem("cart");
   const [cart, setCart] = useState(JSON.parse(newCart));
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [count, setCount] = useState(1);
   const [total, setTotal] = useState(0);
+  const idLocal = localStorage.getItem("id");
 
   const addOneProduct = (product) => {
     setCount(count + 1);
@@ -38,8 +46,9 @@ export default function Cart() {
 
   const deleteProduct = (product) => {
     let pepe = cart.filter((ele) => ele._id !== product._id);
+    if (pepe.length === 0) setTotal(0);
     setCart(pepe);
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(pepe));
   };
 
   const cleanCart = () => {
@@ -59,53 +68,240 @@ export default function Cart() {
     });
     setTotal(prod);
   };
+  const HandleBack = () => {
+    if (!idLocal) {
+      return alert("Debes loguearte");
+    } else {
+      dispatch(putUser(idLocal, cart));
+    }
+  };
   useEffect(() => {
+    cart.length < cart1.length && setCart(cart1);
     cart?.length && totalApagar();
   }, [cart, newCart, count, total]);
 
   return (
     <div>
+      <Header />
+      <NavbarMain />
       {cart?.items?.length === 0 ? (
-        <div>Cart is empty</div>
+        <div>
+          <h1 className="mt-3" style={{ color: "#fff" }}>
+            El carrito esta vacio
+          </h1>
+        </div>
       ) : (
-        <>
-          <h3>Your Products</h3>
-          {cart?.map((e, i) => (
-            <div key={i}>
-              <h5>{e.name}</h5>
-              <button onClick={() => restOneProduct(e)}>-</button>
-              <span>{e.qty}</span>
-              <button onClick={() => addOneProduct(e)}>+</button>
-              <p>
-                {e.price} x {e.qty}
-              </p>
-              <button onClick={() => deleteProduct(e)}>X</button>
-            </div>
-          ))}
-          <div></div>
-          <div>Total: ${total}</div>
-        </>
+        <div>
+          <h1 className="mt-3" style={{ color: "#fff" }}>
+            Tus productos
+          </h1>
+
+          <Container>
+            <Card
+              style={{
+                backgroundColor: "var(--background-color)",
+                backdropFilter: "blur(5px)",
+                border: "var(--border)",
+                boxShadow: "var(--box-shadow)",
+              }}
+              className="rounded-4  mt-3 mb-3 p-5"
+            >
+              {cart?.map((e, i) => (
+                <Card.Body
+                  key={i}
+                  style={{ border: "var(--border)" }}
+                  className="rounded-4 mb-5"
+                >
+                  <Row>
+                    <Col>
+                      <Card.Img
+                        src={e.image}
+                        style={{
+                          objectFit: "contain",
+                          margin: "14px",
+                          width: "17rem",
+                          height: "17rem",
+                          border: "var(--border)",
+                          background: "#fff",
+                          padding: "7px",
+                        }}
+                      />
+                    </Col>
+                    <Col xs lg="6">
+                      <Row
+                        className="mt-4"
+                        style={{
+                          color: "var(--text-color)",
+                          fontSize: "21px",
+                          height: "35px",
+                          overflow: "auto",
+                        }}
+                      >
+                        {e.name}
+                      </Row>
+                      <Row
+                        style={{
+                          color: "#fff",
+                          fontSize: "21px",
+                          height: "35px",
+                          overflow: "auto",
+                        }}
+                      >
+                        Marca: {e.brand}
+                      </Row>
+                      <Row
+                        className="mb-3 p-4"
+                        style={{
+                          color: "var(--text-color)0",
+                          textAlign: "justify",
+                          height: "140px",
+                          overflow: "auto",
+                        }}
+                      >
+                        {e.description}
+                      </Row>
+                    </Col>
+                    <Col xs={2} className="m-3">
+                      <Row
+                        className="mt-3"
+                        style={{
+                          height: "70px",
+                        }}
+                      >
+                        <Card.Text
+                          style={{
+                            color: "#fff",
+                            fontSize: "35px",
+                          }}
+                        >
+                          Cant: {e.qty}
+                        </Card.Text>
+                      </Row>
+                      <Row>
+                        <Col>
+                          <Button
+                            variant="outline-warning"
+                            style={{
+                              border: "var(--border)",
+                              color: "var(--text-color)",
+                              fontSize: "14px",
+                              textWeight: "bold",
+                            }}
+                            onClick={() => restOneProduct(e)}
+                          >
+                            -
+                          </Button>
+                        </Col>
+                        <Col>
+                          <Button
+                            variant="outline-warning"
+                            style={{
+                              border: "var(--border)",
+                              color: "var(--text-color)",
+                              fontSize: "14px",
+                              textWeight: "bold",
+                            }}
+                            onClick={() => addOneProduct(e)}
+                          >
+                            +
+                          </Button>
+                        </Col>
+                      </Row>
+                      <Row className="mt-3">
+                        <Card.Text
+                          style={{
+                            color: "#fff",
+                            fontSize: "35px",
+                            height: "70px",
+                          }}
+                        >
+                          $ {e.price}
+                        </Card.Text>
+                      </Row>
+                      <Row
+                        className="mt-3"
+                        style={{
+                          height: "35px",
+                        }}
+                      >
+                        <Button
+                          variant="outline-warning"
+                          style={{
+                            border: "var(--border)",
+                            color: "var(--text-color)",
+                          }}
+                          onClick={() => deleteProduct(e)}
+                        >
+                          Eliminar
+                        </Button>
+                      </Row>
+                    </Col>
+                  </Row>
+                </Card.Body>
+              ))}
+              <h2
+                style={{
+                  color: "#fff",
+                }}
+              >
+                Total: ${total}
+              </h2>
+            </Card>
+          </Container>
+        </div>
       )}
-      <button
-        onClick={handlePageProducts}
-        variant="outline-warning"
+      <Container
         style={{
+          backgroundColor: "var(--background-color)",
+          backdropFilter: "blur(5px)",
           border: "var(--border)",
-          color: "var(--text-color)",
+          boxShadow: "var(--box-shadow)",
         }}
+        className="rounded-4  mt-5 mb-5"
       >
-        volver a productos
-      </button>
-      <button
-        onClick={cleanCart}
-        variant="outline-warning"
-        style={{
-          border: "var(--border)",
-          color: "var(--text-color)",
-        }}
-      >
-        Limpiar carrito
-      </button>
+        <Button
+          onClick={handlePageProducts}
+          variant="outline-warning"
+          style={{
+            height: "40px",
+            border: "var(--border)",
+            color: "var(--text-color)",
+            backdropFilter: "blur(5px)",
+          }}
+          className="m-3"
+        >
+          Volver a productos
+        </Button>
+        <Button
+          onClick={cleanCart}
+          variant="outline-warning"
+          style={{
+            height: "40px",
+            border: "var(--border)",
+            color: "var(--text-color)",
+            backdropFilter: "blur(5px)",
+          }}
+          className="m-3"
+        >
+          Limpiar carrito
+        </Button>
+        {!idLocal ? (
+          <Button
+            onClick={HandleBack}
+            variant="outline-warning"
+            style={{
+              border: "var(--border)",
+              color: "var(--text-color)",
+              backdropFilter: "blur(5px)",
+            }}
+            className="m-3"
+          >
+            COMPRAR
+          </Button>
+        ) : (
+          <Paypal className={s.paypal} price={total} />
+        )}
+      </Container>
     </div>
   );
 }
