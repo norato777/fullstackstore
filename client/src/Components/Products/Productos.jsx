@@ -14,6 +14,8 @@ export default function Productos() {
   const [num1, setNum1] = useState(0);
   const [num2, setNum2] = useState(21);
   const [paginas, setPaginas] = useState([]);
+  const cart = localStorage.getItem("cart");
+  const [cartNew, setCartNew] = useState([]);
   let pages = [];
 
   useSelector((state) => state.getDetail);
@@ -26,7 +28,7 @@ export default function Productos() {
       }
       setPaginas(pages);
     } else setPaginas(pages);
-  }, [products, page, maxPage, num1, num2]);
+  }, [products, page, maxPage, num1, num2, JSON.stringify(cart), cartNew]);
   function handleNextPage() {
     if (num2 >= maxPage * 21) {
       return num1, num2;
@@ -55,6 +57,23 @@ export default function Productos() {
       return setNum1(0), setNum2(20);
     } else setNum1(n);
     setNum2(n + 20);
+  };
+  const handleAddCart = (product) => {
+    let itemInCart = cartNew.find((ele) => ele._id === product._id);
+    let pepe = cartNew;
+    if (itemInCart) {
+      pepe?.map((item) =>
+        item._id === product._id ? { ...item, qty: (item.qty += 1) } : item
+      );
+      setCartNew(pepe);
+      console.log(pepe);
+      localStorage.setItem("cart", JSON.stringify(pepe));
+    } else {
+      product.qty = 1;
+      pepe = [...pepe, product];
+      setCartNew(pepe);
+      localStorage.setItem("cart", JSON.stringify(pepe));
+    }
   };
   return (
     <Container>
@@ -177,6 +196,18 @@ export default function Productos() {
                   onClick={handleDetail}
                 >
                   Ver detalles
+                </Button>
+                <Button
+                  className="mt-3"
+                  variant="outline-warning"
+                  style={{
+                    border: "var(--border)",
+                    color: "var(--text-color)",
+                  }}
+                  value={product._id}
+                  onClick={() => handleAddCart(product)}
+                >
+                  Agregar al carrito
                 </Button>
               </Card.Body>
             </Card>
