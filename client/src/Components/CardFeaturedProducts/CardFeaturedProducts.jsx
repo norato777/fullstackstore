@@ -4,6 +4,7 @@ import Checkbox from "../CheckBox/CheckBox";
 import { Link } from "react-router-dom";
 import { getDetail } from "../../Redux/action";
 import { Card, ListGroup, Button } from "react-bootstrap";
+import ButtomFavorites from "../ButtomFavorites/ButtomFavorites";
 
 export default function CardFeaturedProducts({ num }) {
   const Products = useSelector((state) => state.allProducts);
@@ -35,6 +36,7 @@ export default function CardFeaturedProducts({ num }) {
         />
       </Link>
       <Card.Body>
+        <ButtomFavorites id={oneProduct._id} />
         <Card.Title
           style={{
             color: "#fff",
@@ -100,12 +102,14 @@ export default function CardFeaturedProducts({ num }) {
         }}
       >
         <Checkbox />
-        <Button
-          variant="outline-warning"
-          style={{ border: "var(--border)", color: "var(--text-color)" }}
-        >
-          Agregar al carrito
-        </Button>
+        <Link to={`/product/${oneProduct._id}`}>
+          <Button
+            variant="outline-warning"
+            style={{ border: "var(--border)", color: "var(--text-color)" }}
+          >
+            Ver detalles
+          </Button>
+        </Link>
       </Card.Body>
     </Card>
   );

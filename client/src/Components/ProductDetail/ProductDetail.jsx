@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
+import NavbarMain from "../NavbarMain/NavbarMain";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import RatingComents from "../RatingComents/RatingComents";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import MostrarComentarios from "../MostrarComentarios/MostrarComentarios";
 import { getDetail } from "../../Redux/action";
 
 const ProductDetail = () => {
@@ -19,9 +21,9 @@ const ProductDetail = () => {
   // };
 
   useEffect(() => {
-    details._id===undefined && dispatch(getDetail(id));
+    details._id === undefined && details._id===undefined && dispatch(getDetail(id));
 
-  }, [details._id]);
+  }, [details._iddetails._id]);
 
   const handleAddCart= (product)=>{   
 
@@ -42,7 +44,7 @@ const ProductDetail = () => {
   return (
     <>
       <Header />
-
+      <NavbarMain />
       {details && (
         <>
           <Container
@@ -88,7 +90,7 @@ const ProductDetail = () => {
                     color: "#fff",
                     fontSize: "21px",
                     height: "35px",
-                    overflow:"auto"
+                    overflow: "auto",
                   }}
                 >
                   Marca: {details.brand}
@@ -109,7 +111,7 @@ const ProductDetail = () => {
                   style={{
                     color: "#fff",
                     fontSize: "17px",
-                    overflow:"auto"
+                    overflow: "auto",
                   }}
                 >
                   Unidades disponibles: {details.quantity}
@@ -143,6 +145,9 @@ const ProductDetail = () => {
           </Container>
           <div>
             <RatingComents props={details} />
+          </div>
+          <div>
+            <MostrarComentarios props={details} />
           </div>
         </>
       )}

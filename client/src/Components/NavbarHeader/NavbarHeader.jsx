@@ -18,21 +18,25 @@ export default function NavbarHeader() {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const user = useSelector((state) => state.user);
-  const logged = useSelector((state) => state.logged);
   const idLocalStorge = localStorage.getItem("id")
+  const userLocalStorage = localStorage.getItem("admin")
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  console.log(user)
-
+  
   useEffect(() => {
     dispatch(getUsers());
   }, []);
 
   const signOut = () => {
     dispatch(logOut());
+    localStorage.removeItem("user")
     navigate("/");
     window.location.reload();
   };
+
+  const onClickAdmin = () => {
+    navigate("/admin");
+  }
 
   const onClickProfile = () => {
     navigate("/profile");
@@ -75,7 +79,7 @@ export default function NavbarHeader() {
               <i className="bi bi-back "></i> Comparar
             </Button>
           </Nav.Item>
-          {!idLocalStorge ? (
+          {user.length === 0 && logged === false ? (
             <>
               <Nav.Item>
                 <Button

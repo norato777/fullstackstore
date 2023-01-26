@@ -8,6 +8,7 @@ import UserProfile from "./Components/UserProfile/UserProfile";
 import Admin from "./Components/Admin/Admin";
 import EditProduct from "./Components/Admin/EditProduct";
 import Cart from "./Components/Cart/Cart";
+import Favorites from "./Components/Favorites/Favorites";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/admin/*" element={<Admin />} />
           <Route path="/cart/*" element={<Cart />} />
           <Route path="/admin/editproduct/:id" element={<EditProduct />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </Router>
     </div>
