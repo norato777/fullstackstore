@@ -10,10 +10,10 @@ const Google = ({ handleClose }) => {
   //   const initClient = () => {
   //     gapi.client.init({
   //       clientId: process.env.REACT_APP_GOOGLE_ID,
-  //       scope: ''
+  //       scope: "",
   //     });
   //   };
-  //   gapi.load('client:auth2', initClient);
+  //   gapi.load("client:auth2", initClient);
   // });
 
   const onSuccess = (res) => {
@@ -35,7 +35,7 @@ const Google = ({ handleClose }) => {
         onSuccess={onSuccess}
         onFailure={onFailure}
         cookiePolicy={"single_host_origin"}
-        // isSignedIn={true}
+        isSignedIn={true}
       />
     </>
   );

@@ -1,8 +1,8 @@
 //componente de productos que se renderisa en pageProducts solo 20 productos por pagina
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { getDetail, getProducts } from "../../Redux/action";
+import {  useNavigate } from "react-router-dom";
+import { getDetail } from "../../Redux/action";
 import { Container, Card, Button, Row, Image } from "react-bootstrap";
 
 export default function Productos() {
@@ -15,7 +15,11 @@ export default function Productos() {
   const [num2, setNum2] = useState(21);
   const [paginas, setPaginas] = useState([]);
   const cart = localStorage.getItem("cart");
+<<<<<<< HEAD
   const [cartNew, setCartNew] = useState([]);
+=======
+  const [cartNew, setCartNew]= useState([])
+>>>>>>> 83f3fd973662c91cfeeb8988194b3a30480da8fa
   let pages = [];
 
   useSelector((state) => state.getDetail);
@@ -28,7 +32,11 @@ export default function Productos() {
       }
       setPaginas(pages);
     } else setPaginas(pages);
+<<<<<<< HEAD
   }, [products, page, maxPage, num1, num2, JSON.stringify(cart), cartNew]);
+=======
+  }, [products, page, maxPage, num1, num2,JSON.stringify(cart), cartNew]);
+>>>>>>> 83f3fd973662c91cfeeb8988194b3a30480da8fa
   function handleNextPage() {
     if (num2 >= maxPage * 21) {
       return num1, num2;
@@ -58,6 +66,7 @@ export default function Productos() {
     } else setNum1(n);
     setNum2(n + 20);
   };
+<<<<<<< HEAD
   const handleAddCart = (product) => {
     let itemInCart = cartNew.find((ele) => ele._id === product._id);
     let pepe = cartNew;
@@ -75,6 +84,24 @@ export default function Productos() {
       localStorage.setItem("cart", JSON.stringify(pepe));
     }
   };
+=======
+  const handleAddCart= (product)=>{   
+
+    let itemInCart = cartNew.find(ele=>ele._id===product._id)
+    let pepe = cartNew   
+    if(itemInCart){     
+      pepe?.map(item =>item._id===product._id? {...item,qty:item.qty+=1}:item)
+       setCartNew(pepe)
+       console.log(pepe)
+     localStorage.setItem("cart",JSON.stringify(pepe))
+    }else {
+      product.qty=1
+      pepe= [...pepe, product]
+       setCartNew(pepe)
+       localStorage.setItem("cart",JSON.stringify(pepe))
+    }
+  }
+>>>>>>> 83f3fd973662c91cfeeb8988194b3a30480da8fa
   return (
     <Container>
       {/* paginacion */}
@@ -198,14 +225,21 @@ export default function Productos() {
                   Ver detalles
                 </Button>
                 <Button
+<<<<<<< HEAD
                   className="mt-3"
+=======
+>>>>>>> 83f3fd973662c91cfeeb8988194b3a30480da8fa
                   variant="outline-warning"
                   style={{
                     border: "var(--border)",
                     color: "var(--text-color)",
                   }}
                   value={product._id}
+<<<<<<< HEAD
                   onClick={() => handleAddCart(product)}
+=======
+                  onClick={()=>handleAddCart(product)}
+>>>>>>> 83f3fd973662c91cfeeb8988194b3a30480da8fa
                 >
                   Agregar al carrito
                 </Button>

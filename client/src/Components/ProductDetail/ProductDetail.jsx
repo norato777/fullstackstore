@@ -69,6 +69,7 @@ const ProductDetail = () => {
                     color: "#fff",
                     fontSize: "21px",
                     height: "35px",
+                    overflow:"auto"
                   }}
                 >
                   Marca: {details.brand}
@@ -89,6 +90,7 @@ const ProductDetail = () => {
                   style={{
                     color: "#fff",
                     fontSize: "17px",
+                    overflow:"auto"
                   }}
                 >
                   Unidades disponibles: {details.quantity}
