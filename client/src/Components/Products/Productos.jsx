@@ -15,7 +15,7 @@ export default function Productos() {
   const [num2, setNum2] = useState(21);
   const [paginas, setPaginas] = useState([]);
   const cart = localStorage.getItem("cart");
-  const [cartNew, setCartNew] = useState(JSON.parse(cart));
+  const [cartNew, setCartNew] = useState([]);
   let pages = [];
 
   useSelector((state) => state.getDetail);
@@ -47,8 +47,8 @@ export default function Productos() {
     }
   }
   const handleDetail = (e) => {
-    dispatch(getDetail(e.target.value));
-    navigate(`/product/${e.target.value}`);
+    dispatch(getDetail(e));
+    navigate(`/product/${e}`);
   };
   const handleChangePagePerNum = (e) => {
     console.log(e.target.value);
@@ -192,8 +192,8 @@ export default function Productos() {
                     border: "var(--border)",
                     color: "var(--text-color)",
                   }}
-                  value={product._id}
-                  onClick={handleDetail}
+                  // value={product._id}
+                  onClick={() => handleDetail(product._id)}
                 >
                   Ver detalles
                 </Button>
