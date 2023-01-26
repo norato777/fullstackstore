@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -11,15 +11,34 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const details = useSelector((state) => state.detail);
   const navigate = useNavigate();
-  const handleCart = () => {
-    navigate("/cart");
-  };
+  const cart = localStorage.getItem("cart");
+  const [cartNew, setCartNew]= useState(JSON.parse(cart))
+
+  // const handleCart = () => {
+  //   navigate("/cart");
+  // };
 
   useEffect(() => {
     details._id===undefined && dispatch(getDetail(id));
 
   }, [details._id]);
 
+  const handleAddCart= (product)=>{   
+
+    let itemInCart = cartNew.find(ele=>ele._id===product._id)
+    let pepe = cartNew   
+    if(itemInCart){     
+      pepe?.map(item =>item._id===product._id? {...item,qty:item.qty+=1}:item)
+       setCartNew(pepe)
+       console.log(pepe)
+     localStorage.setItem("cart",JSON.stringify(pepe))
+    }else {
+      product.qty=1
+      pepe= [...pepe, product]
+       setCartNew(pepe)
+       localStorage.setItem("cart",JSON.stringify(pepe))
+    }
+  }
   return (
     <>
       <Header />
@@ -111,7 +130,7 @@ const ProductDetail = () => {
                 <Button
                   className="mb-3"
                   variant="outline-warning"
-                  onClick={handleCart}
+                  onClick={()=>handleAddCart(details)}
                   style={{
                     border: "var(--border)",
                     color: "var(--text-color)",

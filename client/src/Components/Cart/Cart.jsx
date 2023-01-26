@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { putUser } from "../../Redux/action";
 import Paypal from "../Paypal/Papypal";
 import s from "./Cart.module.css";
+import swal from "sweetalert"
 
 export default function Cart() {
   const cart1 = useSelector((state) => state.cart);
@@ -25,7 +26,6 @@ export default function Cart() {
       item._id === product._id ? { ...item, qty: (item.qty += 1) } : item
     );
     setCart(pepe);
-    console.log(cart);
     localStorage.setItem("cart", JSON.stringify(cart));
   };
 
@@ -43,16 +43,38 @@ export default function Cart() {
   };
 
   const deleteProduct = (product) => {
-    let pepe = cart.filter((ele) => ele._id !== product._id);
-    if(pepe.length===0)setTotal(0)
-    setCart(pepe);
-    localStorage.setItem("cart", JSON.stringify(pepe));
+   swal({
+      title:"Eliminaras",
+      text:"Seguro que quieres eliminar el producto?",
+      icon:"warning",
+      buttons:["No", "Si"]
+    }).then(respuesta=>{
+      if(respuesta){
+        let pepe = cart.filter((ele) => ele._id !== product._id);
+        if(pepe.length===0)setTotal(0)
+        setCart(pepe);
+        localStorage.setItem("cart", JSON.stringify(pepe));
+        swal({text:"Producto eliminado", icon:"success", timer:800})
+      }else return
+    })
+    
   };
 
   const cleanCart = () => {
-    localStorage.setItem("cart", JSON.stringify([]));
-    setCart([]);
-    setTotal(0);
+    swal({
+      title:"Eliminaras todo de tu carrito",
+      text:"Seguro que quieres eliminar TODO?",
+      icon:"warning",
+      buttons:["No", "Si"]
+    }).then(respuesta=>{
+      if(respuesta){
+        localStorage.setItem("cart", JSON.stringify([]));
+        setCart([]);
+        setTotal(0);
+        swal({text:"Carrito limpio", icon:"success", timer:800})
+      }else return
+    })
+
   };
 
   const handlePageProducts = () => {
@@ -68,7 +90,12 @@ export default function Cart() {
   };
   const HandleBack = () => {
     if(!idLocal){
-      return alert("Debes loguearte")
+      return swal({
+        title:"Oooh!",
+        text:"Debes loguearte",
+        icon:"warning",
+        button:"ok"
+      })
     }else{
       dispatch(putUser(idLocal,cart))
     }

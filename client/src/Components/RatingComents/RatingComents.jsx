@@ -34,9 +34,12 @@ const pepe = props
   };
   const handleClick = (e) => {
     console.log(rating)
-    dispatch(putCalificationRating(rating));
-    setRating({})
-    alert("Gracias por dejar tu valoracion")
+    if(rating.coments===""){
+    alert("necesitas poner un comentario")
+    }else
+      dispatch(putCalificationRating(rating));
+      setRating({})
+      alert("Gracias por dejar tu valoracion")
   };
   return (
     <Container
