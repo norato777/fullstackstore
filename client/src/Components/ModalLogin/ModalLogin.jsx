@@ -32,7 +32,7 @@ const ModalLogin = ({ show, handleClose }) => {
     setEmail("");
     setPassword("");
   };
-
+  
   return (
     <Form
       fluid

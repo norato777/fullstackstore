@@ -18,20 +18,25 @@ export default function NavbarHeader() {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const user = useSelector((state) => state.user);
-  const logged = useSelector((state) => state.logged);
+  const idLocalStorge = localStorage.getItem("id")
+  const userLocalStorage = localStorage.getItem("admin")
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  console.log(user)
-
+  
   useEffect(() => {
     dispatch(getUsers());
   }, []);
 
   const signOut = () => {
     dispatch(logOut());
+    localStorage.removeItem("user")
     navigate("/");
     window.location.reload();
   };
+
+  const onClickAdmin = () => {
+    navigate("/admin");
+  }
 
   const onClickProfile = () => {
     navigate("/profile");
@@ -48,33 +53,22 @@ export default function NavbarHeader() {
           <Nav.Item>
             <LightMode />
           </Nav.Item>
-          <Nav.Item>
-            <Button
-              className="m-1"
-              href="/favorites"
-              variant="outline-warning"
-              style={{
-                border: "var(--border)",
-                color: "var(--text-color)",
-              }}
-            >
-              <i className="bi bi-star "></i> Favoritos
-            </Button>
-          </Nav.Item>
-          <Nav.Item>
-            <Button
-              className="m-1"
-              variant="outline-warning"
-              href="/compare"
-              style={{
-                border: "var(--border)",
-                color: "var(--text-color)",
-              }}
-            >
-              <i className="bi bi-back "></i> Comparar
-            </Button>
-          </Nav.Item>
-          {user.length === 0 && logged === false ? (
+          {userLocalStorage?.length === 4 ? (
+            <Nav.Item>
+              <Button
+                className="m-1"
+                href="/admin"
+                variant="outline-warning"
+                style={{
+                  border: "var(--border)",
+                  color: "var(--text-color)",
+                }}
+              >
+                <i className="bi bi-star "></i> Admin
+              </Button>
+            </Nav.Item>
+          ) : (<></>)}
+          {!idLocalStorge ? (
             <>
               <Nav.Item>
                 <Button

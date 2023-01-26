@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import RatingComents from "../RatingComents/RatingComents";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import MostrarComentarios from "../MostrarComentarios/MostrarComentarios";
 import { getDetail } from "../../Redux/action";
 
 const ProductDetail = () => {
@@ -124,6 +125,9 @@ const ProductDetail = () => {
           </Container>
           <div>
             <RatingComents props={details} />
+          </div>
+          <div>
+            <MostrarComentarios id={details._id} />
           </div>
         </>
       )}

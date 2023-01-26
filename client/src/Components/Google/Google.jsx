@@ -1,16 +1,15 @@
-import React, { useEffect } from "react";
-import { GoogleLogin } from "react-google-login";
-import { gapi } from "gapi-script";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { GoogleLogin } from 'react-google-login';
+import { useSelector } from 'react-redux';
 
 const Google = ({ handleClose }) => {
   const user = useSelector((state) => state.user);
 
   const onSuccess = (res) => {
-    const userGoogle = { email: res.profileObj.email };
-    user.push(userGoogle);
+    user.push(res);
     alert("Sesión iniciada");
-    handleClose();
+    handleClose()
+    localStorage.setItem("user", JSON.stringify(res))
   };
 
   const onFailure = (err) => {
