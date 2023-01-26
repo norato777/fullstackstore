@@ -1,14 +1,13 @@
 import { useForm } from "react-hook-form";
 import { postProduct } from "../../Redux/action";
 import { useDispatch } from "react-redux";
-import Form from "react-bootstrap/Form";
 import stl from "./FormProducts.module.css";
 import UploadImages from "../UploadImages/UploadImages";
-import Container from "react-bootstrap/Container";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import { Container, Form, Button } from "react-bootstrap";
 
 export default function MyForm() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const {
@@ -19,16 +18,15 @@ export default function MyForm() {
 
   const onSubmit = (data) => {
     dispatch(postProduct(data));
-    alert("Se ha creado el producto correctamente")
-    navigate('/admin')
+    alert("Se ha creado el producto correctamente");
+    navigate("/admin");
   };
 
   return (
     <>
       <Container fluid="xxl">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className={stl.title}>
-          </div>
+          <div className={stl.title}></div>
           <div>
             <Form.Group className={stl.container} controlId="formBasicEmail">
               <div className={stl.item}>
@@ -38,7 +36,9 @@ export default function MyForm() {
                     type="text"
                     {...register("name", { required: true })}
                   />
-                  {errors.name?.type === "required" && <p>se requiere nombre </p>}
+                  {errors.name?.type === "required" && (
+                    <p>se requiere nombre </p>
+                  )}
                 </Form.Label>
               </div>
               <div className={stl.item}>
@@ -112,9 +112,9 @@ export default function MyForm() {
                 </Form.Label>
               </div>
               <div>
-                <button className={stl.boton} type="submit">
+                <Button className="mt-3" variant="outline-danger" type="submit">
                   Crear
-                </button>
+                </Button>
               </div>
             </Form.Group>
           </div>
