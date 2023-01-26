@@ -89,13 +89,14 @@ export default function PageProducts() {
                 className="rounded-4"
               >
                 <Card.Header>
-                  <h5
+                  <h4
+                    className="mt-3"
                     style={{
                       color: "var(--text-color)",
                     }}
                   >
                     Filtros
-                  </h5>
+                  </h4>
                 </Card.Header>
                 <Card.Body>
                   <Form.Group>
@@ -103,6 +104,7 @@ export default function PageProducts() {
                       style={{
                         color: "#fff",
                       }}
+                      className="mb-3"
                     >
                       Categoria
                     </Form.Label>
@@ -111,6 +113,9 @@ export default function PageProducts() {
                       id="exampleFormControlSelect1"
                       value={selectedCategory}
                       onChange={(e) => handleChangeCategory(e.target.value)}
+                      style={{
+                        border: "var(--border)",
+                      }}
                     >
                       <option>Categoria</option>
                       {category &&
@@ -122,6 +127,7 @@ export default function PageProducts() {
                       style={{
                         color: "#fff",
                       }}
+                      className="mt-3 mb-3"
                     >
                       Marca
                     </Form.Label>
@@ -130,6 +136,9 @@ export default function PageProducts() {
                       id="exampleFormControlSelect1"
                       value={selectedBrand}
                       onChange={(e) => handleChangeBrand(e.target.value)}
+                      style={{
+                        border: "var(--border)",
+                      }}
                     >
                       <option>Marca</option>
                       {brand &&
@@ -141,6 +150,7 @@ export default function PageProducts() {
                       style={{
                         color: "#fff",
                       }}
+                      className="mt-3 mb-3"
                     >
                       Precio
                     </Form.Label>
@@ -148,6 +158,9 @@ export default function PageProducts() {
                       className="form-control"
                       id="exampleFormControlSelect1"
                       onChange={(e) => handleChangePrice(e.target.value)}
+                      style={{
+                        border: "var(--border)",
+                      }}
                     >
                       <option defaultValue="Price">Price</option>
                       <option value="Mayor">Mayor a menor</option>
@@ -155,8 +168,9 @@ export default function PageProducts() {
                     </Form.Select>
                   </Form.Group>
 
-                  <button
-                    className="btn btn"
+                  <Button
+                    className="mt-5"
+                    variant="outline-warning"
                     onClick={() => handleCleanFilter()}
                     style={{
                       border: "var(--border)",
@@ -164,7 +178,7 @@ export default function PageProducts() {
                     }}
                   >
                     Limpiar filtros
-                  </button>
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>

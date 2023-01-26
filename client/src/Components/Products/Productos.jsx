@@ -15,7 +15,7 @@ export default function Productos() {
   const [num2, setNum2] = useState(21);
   const [paginas, setPaginas] = useState([]);
   const cart = localStorage.getItem("cart");
-  const [cartNew, setCartNew] = useState([]);
+  const [cartNew, setCartNew] = useState(JSON.parse(cart));
   let pages = [];
 
   useSelector((state) => state.getDetail);
