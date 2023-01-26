@@ -70,7 +70,7 @@ export default function Cart() {
     if(!idLocal){
       return alert("Debes loguearte")
     }else{
-      dispatch(putUser(id,cart))
+      dispatch(putUser(idLocal,cart))
     }
   }
   useEffect(() => {

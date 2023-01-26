@@ -1,30 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { putCalificationRating } from "../../Redux/action";
 import { Container, Row, Col, Form, InputGroup, Button } from "react-bootstrap";
 
-export default function RatingComents({ id }) {
+export default function RatingComents({props}) {
+  
+
+const pepe = props
   const dispatch = useDispatch();
 
-  const [rating, setRating] = useState({ _id: id });
+  const [rating, setRating] = useState();
+  useEffect(() => {
+   if(props._id){
+    setRating(pepe)
+   }
+
+  }, [props._id]);
+
 
   const handleChangeRating = (e) => {
+    console.log(rating)
     setRating({
       ...rating,
-      calification: e.target.value,
+      calification: parseInt(e.target.value),
     });
-    console.log(rating);
   };
   const handleComents = (e) => {
+    console.log(rating)
     setRating({
       ...rating,
       coments: e.target.value,
     });
-    console.log(rating);
   };
   const handleClick = (e) => {
+    console.log(rating)
     dispatch(putCalificationRating(rating));
-    console.log(rating, id);
+    setRating({})
+    alert("Gracias por dejar tu valoracion")
   };
   return (
     <Container

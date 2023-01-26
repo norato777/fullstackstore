@@ -7,7 +7,7 @@ import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import { getDetail } from "../../Redux/action";
 
 const ProductDetail = () => {
-  const { id } = useParams();
+  const id = useParams()
   const dispatch = useDispatch();
   const details = useSelector((state) => state.detail);
   const navigate = useNavigate();
@@ -16,8 +16,9 @@ const ProductDetail = () => {
   };
 
   useEffect(() => {
-    dispatch(getDetail(id));
-  }, []);
+    details._id===undefined && dispatch(getDetail(id));
+
+  }, [details._id]);
 
   return (
     <>
@@ -122,7 +123,7 @@ const ProductDetail = () => {
             </Row>
           </Container>
           <div>
-            <RatingComents id={details._id} />
+            <RatingComents props={details} />
           </div>
         </>
       )}

@@ -20,7 +20,7 @@ module.exports = {
     try {
       const oldProduct = await ProductsModel.findByIdAndUpdate(product._id);
       if (oldProduct) {
-        oldProduct.calification.push(product.calification)
+        oldProduct.calification=[...oldProduct.calification,product.calification]
         let promedio = oldProduct.calification.reduce((a,b)=> a+b, 0)/oldProduct.calification.length
         console.log(oldProduct);
         oldProduct.promedio= promedio

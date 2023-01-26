@@ -48,8 +48,8 @@ export default function Productos() {
     }
   }
   const handleDetail = (e) => {
-    dispatch(getDetail(e.target.value));
-    navigate(`/product/${e.target.value}`);
+    dispatch(getDetail(e));
+    navigate(`/product/${e}`);
   };
   const handleChangePagePerNum = (e) => {
     console.log(e.target.value);
@@ -192,8 +192,8 @@ export default function Productos() {
                     border: "var(--border)",
                     color: "var(--text-color)",
                   }}
-                  value={product._id}
-                  onClick={handleDetail}
+                  // value={product._id}
+                  onClick={()=>handleDetail(product._id)}
                 >
                   Ver detalles
                 </Button>
