@@ -50,6 +50,7 @@ export default function Cart() {
     const handlePageProducts=()=>{
       navigate("/products")
     }
+    
     const totalApagar = ()=>{
       let prod = cart.map(ele=>ele.price*ele.qty)
       prod= prod.reduce((acc,curr)=>{

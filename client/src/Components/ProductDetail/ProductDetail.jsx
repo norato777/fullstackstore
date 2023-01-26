@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import RatingComents from "../RatingComents/RatingComents";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import MostrarComentarios from "../MostrarComentarios/MostrarComentarios";
 import { getDetail } from "../../Redux/action";
 
 const ProductDetail = () => {
@@ -68,7 +69,7 @@ const ProductDetail = () => {
                     color: "#fff",
                     fontSize: "21px",
                     height: "35px",
-                    overflow:"auto"
+                    overflow: "auto"
                   }}
                 >
                   Marca: {details.brand}
@@ -89,7 +90,7 @@ const ProductDetail = () => {
                   style={{
                     color: "#fff",
                     fontSize: "17px",
-                    overflow:"auto"
+                    overflow: "auto"
                   }}
                 >
                   Unidades disponibles: {details.quantity}
@@ -123,6 +124,9 @@ const ProductDetail = () => {
           </Container>
           <div>
             <RatingComents id={details._id} />
+          </div>
+          <div>
+            <MostrarComentarios id={details._id} />
           </div>
         </>
       )}

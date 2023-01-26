@@ -1,7 +1,7 @@
 //componente de productos que se renderisa en pageProducts solo 20 productos por pagina
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getDetail } from "../../Redux/action";
 import { Container, Card, Button, Row, Image } from "react-bootstrap";
 
@@ -15,7 +15,7 @@ export default function Productos() {
   const [num2, setNum2] = useState(21);
   const [paginas, setPaginas] = useState([]);
   const cart = localStorage.getItem("cart");
-  const [cartNew, setCartNew]= useState([])
+  const [cartNew, setCartNew] = useState([])
   let pages = [];
 
   useSelector((state) => state.getDetail);
@@ -28,7 +28,7 @@ export default function Productos() {
       }
       setPaginas(pages);
     } else setPaginas(pages);
-  }, [products, page, maxPage, num1, num2,JSON.stringify(cart), cartNew]);
+  }, [products, page, maxPage, num1, num2, JSON.stringify(cart), cartNew]);
   function handleNextPage() {
     if (num2 >= maxPage * 21) {
       return num1, num2;
@@ -51,27 +51,26 @@ export default function Productos() {
     navigate(`/product/${e.target.value}`);
   };
   const handleChangePagePerNum = (e) => {
-    console.log(e.target.value);
     let n = e.target.value * 20;
     if (e.target.value == 1) {
       return setNum1(0), setNum2(20);
     } else setNum1(n);
     setNum2(n + 20);
   };
-  const handleAddCart= (product)=>{   
+  const handleAddCart = (product) => {
 
-    let itemInCart = cartNew.find(ele=>ele._id===product._id)
-    let pepe = cartNew   
-    if(itemInCart){     
-      pepe?.map(item =>item._id===product._id? {...item,qty:item.qty+=1}:item)
-       setCartNew(pepe)
-       console.log(pepe)
-     localStorage.setItem("cart",JSON.stringify(pepe))
-    }else {
-      product.qty=1
-      pepe= [...pepe, product]
-       setCartNew(pepe)
-       localStorage.setItem("cart",JSON.stringify(pepe))
+    let itemInCart = cartNew.find(ele => ele._id === product._id)
+    let pepe = cartNew
+    if (itemInCart) {
+      pepe?.map(item => item._id === product._id ? { ...item, qty: item.qty += 1 } : item)
+      setCartNew(pepe)
+      console.log(pepe)
+      localStorage.setItem("cart", JSON.stringify(pepe))
+    } else {
+      product.qty = 1
+      pepe = [...pepe, product]
+      setCartNew(pepe)
+      localStorage.setItem("cart", JSON.stringify(pepe))
     }
   }
   return (
@@ -203,7 +202,7 @@ export default function Productos() {
                     color: "var(--text-color)",
                   }}
                   value={product._id}
-                  onClick={()=>handleAddCart(product)}
+                  onClick={() => handleAddCart(product)}
                 >
                   Agregar al carrito
                 </Button>
