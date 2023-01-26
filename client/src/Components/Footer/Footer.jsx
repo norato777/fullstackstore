@@ -5,7 +5,6 @@ export default function Footer() {
   return (
     <>
       <Container
-        fluid
         style={{
           backgroundColor: "var(--background-color)",
           backdropFilter: "blur(5px)",

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Header from "../Header/Header";
+import NavbarMain from "../NavbarMain/NavbarMain";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import RatingComents from "../RatingComents/RatingComents";
@@ -22,7 +23,7 @@ const ProductDetail = () => {
   return (
     <>
       <Header />
-
+      <NavbarMain />
       {details && (
         <>
           <Container

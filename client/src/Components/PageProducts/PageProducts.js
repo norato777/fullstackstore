@@ -9,12 +9,13 @@ import {
   filterProductsPrice,
 } from "../../Redux/action";
 import Header from "../Header/Header";
+import NavbarMain from "../NavbarMain/NavbarMain";
 import Footer from "../Footer/Footer";
 import Productos from "../Products/Productos";
 
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 
-function PageProducts() {
+export default function PageProducts() {
   const Products = useSelector((state) => state.products);
   const AllProducts = useSelector((state) => state.allProducts);
   const [filtrados, setFiltrados] = useState();
@@ -74,7 +75,7 @@ function PageProducts() {
     <>
       <div>
         <Header />
-
+        <NavbarMain />
         <Container className="mt-5">
           <Row>
             <Col>
@@ -177,5 +178,3 @@ function PageProducts() {
     </>
   );
 }
-
-export default PageProducts;

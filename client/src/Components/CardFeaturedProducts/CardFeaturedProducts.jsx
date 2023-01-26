@@ -100,12 +100,14 @@ export default function CardFeaturedProducts({ num }) {
         }}
       >
         <Checkbox />
-        <Button
-          variant="outline-warning"
-          style={{ border: "var(--border)", color: "var(--text-color)" }}
-        >
-          Ver detalles
-        </Button>
+        <Link to={`/product/${oneProduct._id}`}>
+          <Button
+            variant="outline-warning"
+            style={{ border: "var(--border)", color: "var(--text-color)" }}
+          >
+            Ver detalles
+          </Button>
+        </Link>
       </Card.Body>
     </Card>
   );
