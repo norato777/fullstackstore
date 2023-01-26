@@ -259,48 +259,56 @@ export default function Cart() {
         }}
         className="rounded-4  mt-5 mb-5"
       >
-        <Button
-          onClick={handlePageProducts}
-          variant="outline-warning"
-          style={{
-            height: "40px",
-            border: "var(--border)",
-            color: "var(--text-color)",
-            backdropFilter: "blur(5px)",
-          }}
-          className="m-3"
-        >
-          Volver a productos
-        </Button>
-        <Button
-          onClick={cleanCart}
-          variant="outline-warning"
-          style={{
-            height: "40px",
-            border: "var(--border)",
-            color: "var(--text-color)",
-            backdropFilter: "blur(5px)",
-          }}
-          className="m-3"
-        >
-          Limpiar carrito
-        </Button>
-        {!idLocal ? (
-          <Button
-            onClick={HandleBack}
-            variant="outline-warning"
-            style={{
-              border: "var(--border)",
-              color: "var(--text-color)",
-              backdropFilter: "blur(5px)",
-            }}
-            className="m-3"
-          >
-            COMPRAR
-          </Button>
-        ) : (
-          <Paypal className={s.paypal} price={total} />
-        )}
+        <Row>
+          <Col>
+            <Button
+              onClick={handlePageProducts}
+              variant="outline-warning"
+              style={{
+                height: "40px",
+                border: "var(--border)",
+                color: "var(--text-color)",
+                backdropFilter: "blur(5px)",
+              }}
+              className="m-3"
+            >
+              Volver a productos
+            </Button>
+          </Col>
+          <Col>
+            <Button
+              onClick={cleanCart}
+              variant="outline-warning"
+              style={{
+                height: "40px",
+                border: "var(--border)",
+                color: "var(--text-color)",
+                backdropFilter: "blur(5px)",
+              }}
+              className="m-3"
+            >
+              Limpiar carrito
+            </Button>
+          </Col>
+          <Col>
+            {!idLocal ? (
+              <Button
+                onClick={HandleBack}
+                variant="outline-warning"
+                style={{
+                  border: "var(--border)",
+                  color: "var(--text-color)",
+                  backdropFilter: "blur(5px)",
+                }}
+                className="m-3"
+              >
+                COMPRAR
+              </Button>
+            ) : (
+              <Paypal className={s.paypal} price={total} />
+            )}
+          </Col>
+        </Row>
       </Container>
     </div>
   );
