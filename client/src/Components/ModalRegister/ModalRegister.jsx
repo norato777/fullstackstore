@@ -47,6 +47,7 @@ const ModalRegister = ({ show, handleClose }) => {
       style={{
         backdropFilter: "blur(5px)",
         border: "var(--border)",
+        borderRadius: "5px",
         width: "490px",
       }}
     >
