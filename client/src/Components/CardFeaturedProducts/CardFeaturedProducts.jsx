@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Checkbox from "../CheckBox/CheckBox";
+// import Checkbox from "../CheckBox/CheckBox";
 import { Link, useNavigate } from "react-router-dom";
 import { getDetail } from "../../Redux/action";
 import { Card, ListGroup, Button } from "react-bootstrap";
-import ButtomFavorites from "../ButtomFavorites/ButtomFavorites";
+
 
 export default function CardFeaturedProducts({ num }) {
   const Products = useSelector((state) => state.allProducts);
@@ -110,7 +110,6 @@ return (
           color: "var(--text-color)",
         }}
       >
-        <Checkbox />
         <Link to={`/product/${oneProduct._id}`}>
           <Button
             variant="outline-warning"
