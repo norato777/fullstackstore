@@ -48,10 +48,10 @@ export default function Productos() {
     }
   }
   const handleDetail = (e) => {
-    dispatch(getDetail(e));
-    navigate(`/product/${e}`);
-    dispatch(getDetail(e));
-    navigate(`/product/${e}`);
+        if(e){
+      dispatch(getDetail(e));
+      navigate(`/product/${e}`);
+    }
   };
   const handleChangePagePerNum = (e) => {
     let n = e.target.value * 20;

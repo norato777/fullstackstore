@@ -5,6 +5,7 @@ import stl from "./FormProducts.module.css";
 import UploadImages from "../UploadImages/UploadImages";
 import { useNavigate } from "react-router-dom";
 import { Container, Form, Button } from "react-bootstrap";
+import swal from "sweetalert";
 
 export default function MyForm() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export default function MyForm() {
 
   const onSubmit = (data) => {
     dispatch(postProduct(data));
-    alert("Se ha creado el producto correctamente");
+    swal("Se ha creado el producto correctamente");
     navigate("/admin");
   };
 

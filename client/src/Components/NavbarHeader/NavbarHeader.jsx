@@ -79,7 +79,7 @@ export default function NavbarHeader() {
               <i className="bi bi-back "></i> Comparar
             </Button>
           </Nav.Item>
-          {user.length === 0 && logged === false ? (
+          {!idLocalStorge ? (
             <>
               <Nav.Item>
                 <Button

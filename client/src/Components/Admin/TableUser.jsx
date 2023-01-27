@@ -15,6 +15,7 @@ import {
   Toggle,
   ToggleItem,
 } from "@tremor/react";
+import swal from "sweetalert";
 
 const TableUser = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const TableUser = () => {
       admin: true,
     };
     dispatch(putUser(id, admin));
-    alert("Se ha realizado el cambio a administrador correctamente");
+    swal("Se ha realizado el cambio a administrador correctamente");
     window.location.reload();
   };
 
@@ -38,13 +39,13 @@ const TableUser = () => {
       admin: false,
     };
     dispatch(putUser(id, admin));
-    alert("Se ha deshabilitado como administrador correctamente");
+    swal("Se ha deshabilitado como administrador correctamente");
     window.location.reload();
   };
 
   const deleteClick = (id) => {
     dispatch(deleteUser(id));
-    alert("User eliminado");
+    swal("User eliminado");
     window.location.reload();
   };
 

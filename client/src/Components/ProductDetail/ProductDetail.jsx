@@ -21,9 +21,9 @@ const ProductDetail = () => {
   // };
 
   useEffect(() => {
-    details._id === undefined && details._id===undefined && dispatch(getDetail(id));
+    // details._id===undefined && dispatch(getDetail(id));
 
-  }, [details._iddetails._id]);
+  }, [details,id]);
 
   const handleAddCart= (product)=>{   
 

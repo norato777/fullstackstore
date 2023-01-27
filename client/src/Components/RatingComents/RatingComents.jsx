@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { putCalificationRating } from "../../Redux/action";
 import { Container, Row, Col, Form, InputGroup, Button } from "react-bootstrap";
+import swal from "sweetalert";
 
 export default function RatingComents({props}) {
   
@@ -35,11 +36,11 @@ const pepe = props
   const handleClick = (e) => {
     console.log(rating)
     if(rating.coments===""){
-    alert("necesitas poner un comentario")
+      swal("necesitas poner un comentario")
     }else
       dispatch(putCalificationRating(rating));
       setRating({})
-      alert("Gracias por dejar tu valoracion")
+      swal("Gracias por dejar tu valoracion")
   };
   return (
     <Container

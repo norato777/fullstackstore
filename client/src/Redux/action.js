@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from "sweetalert";
 
 // action to get all products
 export function getProducts() {
@@ -187,8 +188,8 @@ export const signUp = (payload) => {
     try {
       const res = await axios.post("/signup", payload);
       res.data.message !== undefined
-        ? alert(res.data.message)
-        : alert("Usuario creado correctamente");
+        ? swal(res.data.message)
+        : swal("Usuario creado correctamente");
     } catch (error) {
       return { error: error.message };
     }
@@ -205,8 +206,8 @@ export const signIn = (payload) => {
       } else {
         const res = await axios.post("/signin", payload);
         res.data.message !== undefined
-          ? alert(res.data.message)
-          : alert("Inicio de sesión correcto");
+          ? swal(res.data.message)
+          : swal("Inicio de sesión correcto");
         const result = res.data.filter((item) => item.email === payload.email);
         localStorage.setItem("id", JSON.stringify(result[0]._id));
         localStorage.setItem("user", JSON.stringify(result));
@@ -215,7 +216,7 @@ export const signIn = (payload) => {
         return dispatch({ type: "SIGN_IN", payload });
       }
     } catch (error) {
-      alert(error.request.response);
+      swal(error.request.response);
     }
   };
 };

@@ -121,7 +121,7 @@ export default function Cart() {
               <div key={i} className={s.divCard}>
                 <img src={e.image} className={s.img} />
                 <div className={s.title}>
-                  <h5>{e.name.split(",",1)}</h5>
+                  <h5>{e.name}</h5>
                 </div>
                 <div className={s.price}>
                   <div>

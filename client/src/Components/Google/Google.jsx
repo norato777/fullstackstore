@@ -1,19 +1,20 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
 import { useSelector } from 'react-redux';
+import swal from 'sweetalert';
 
 const Google = ({ handleClose }) => {
   const user = useSelector((state) => state.user);
 
   const onSuccess = (res) => {
     user.push(res);
-    alert("Sesión iniciada");
+    swal("Sesión iniciada");
     handleClose()
     localStorage.setItem("user", JSON.stringify(res))
   };
 
   const onFailure = (err) => {
-    if (err.length > 0) alert("failed:", err);
+    if (err.length > 0) swal("failed:", err);
   };
 
   return (

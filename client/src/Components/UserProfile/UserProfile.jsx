@@ -7,6 +7,7 @@ import Header from "../Header/Header";
 import NavbarMain from "../NavbarMain/NavbarMain";
 import Footer from "../Footer/Footer";
 import { Container, Button, Form } from "react-bootstrap";
+import swal from "sweetalert";
 
 export default function UserProfile() {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ export default function UserProfile() {
     await dispatch(logOut());
     setEmail("");
     setPassword("");
-    alert("Se ha modificado correctamente");
+    swal("Se ha modificado correctamente");
     navigate("/");
   };
 
