@@ -18,9 +18,9 @@ export default function FeaturedCategories() {
   return (
     <>
       <h1
-        style={{
-          color: "#fff",
-        }}
+        // style={{
+        //   color: "#fff",
+        // }}
       >
         Categorias Destacadas
       </h1>

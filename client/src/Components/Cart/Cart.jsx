@@ -8,6 +8,8 @@ import { putUser } from "../../Redux/action";
 import Paypal from "../Paypal/Papypal";
 import s from "./Cart.module.css";
 import swal from "sweetalert"
+import Header from "../Header/Header";
+import NavbarMain from "../NavbarMain/NavbarMain";
 
 export default function Cart() {
   const cart1 = useSelector((state) => state.cart);
@@ -107,21 +109,20 @@ export default function Cart() {
 
   return (
     <div>
+               <Header />
+          <NavbarMain />
       {cart?.items?.length === 0 ? (
         <div className={s.divTitle}>
         <h1 className={s.h1}>El carrito esta vacio</h1>
         </div>
       ) : (
         <div>
-          <div className={s.divTitle}>
-          <h1 className={s.h1}>Tus productos</h1>
-          </div>
           <div className={s.divContainer}>
             {cart?.map((e, i) => (
               <div key={i} className={s.divCard}>
                 <img src={e.image} className={s.img} />
                 <div className={s.title}>
-                  <h5>{e.name}</h5>
+                  <h5>{e.name.split(",", 2)}</h5>
                 </div>
                 <div className={s.price}>
                   <div>
@@ -131,7 +132,7 @@ export default function Cart() {
                     >
                       -
                     </button>
-                    <span>  {e.qty}  </span>
+                    <span className={s.span}>  {e.qty}  </span>
                     <button
                       className={s.buton1}
                       onClick={() => addOneProduct(e)}
@@ -139,7 +140,7 @@ export default function Cart() {
                       +
                     </button>
                   </div>
-                  <h5>$ {e.price}</h5>
+                  <h5 className={s.h5}>$ {e.price}</h5>
                 </div>
                 <button className={s.buton3} onClick={() => deleteProduct(e)}>
                   X

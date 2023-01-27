@@ -8,7 +8,7 @@ export default function FeaturedProducts() {
   return (
     <>
       <Container className="mt-3">
-        <h1 style={{ color: "#fff" }}>Productos Destacados</h1>
+        <h1 /* style={{ color: "#fff" }} */>Productos Destacados</h1>
 
         <Row>
           <CardFeaturedProducts num={num + 7} />

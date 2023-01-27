@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Checkbox from "../CheckBox/CheckBox";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getDetail } from "../../Redux/action";
 import { Card, ListGroup, Button } from "react-bootstrap";
 import ButtomFavorites from "../ButtomFavorites/ButtomFavorites";
@@ -9,8 +9,18 @@ import ButtomFavorites from "../ButtomFavorites/ButtomFavorites";
 export default function CardFeaturedProducts({ num }) {
   const Products = useSelector((state) => state.allProducts);
   const [oneProduct, setOneProduct] = useState(Products[num]);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  return (
+console.log(Products)
+ 
+const handleDetail = (e) => {
+  if(e){
+dispatch(getDetail(e));
+navigate(`/product/${e}`);
+}
+};
+return (
     <Card
       className="m-3"
       style={{
@@ -36,7 +46,6 @@ export default function CardFeaturedProducts({ num }) {
         />
       </Link>
       <Card.Body>
-        <ButtomFavorites id={oneProduct._id} />
         <Card.Title
           style={{
             color: "#fff",
@@ -106,6 +115,7 @@ export default function CardFeaturedProducts({ num }) {
           <Button
             variant="outline-warning"
             style={{ border: "var(--border)", color: "var(--text-color)" }}
+            onClick={()=>handleDetail(oneProduct._id)}
           >
             Ver detalles
           </Button>

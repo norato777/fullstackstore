@@ -7,22 +7,25 @@ body {
   box-shadow: var(--box-shadow);
   border: var(--border);
   transition: background 0.3s ease-in-out, color 0.6s ease-in-out;
-  background-image: var(--image);
+  background: var(--background);
 }
 
 body.light {
-  --background-color: var(--clr-7-05);
-  --text-color: var(--clr-4-G);
+ --background: rgb(255,255,255);
+  --background: linear-gradient(185deg, rgba(255,255,255,1) 0%, rgba(255,206,176,1) 22%, rgba(255,171,126,1) 48%, rgba(255,206,176,1) 69%, rgba(255,255,255,1) 100%); --background-color: var(--clr-7-05);
+  --text-color: black;
   --box-shadow: 0 0 7px var(--clr-9);
-  --border: 1px solid var(--clr-0-G);
-  --image: url(../public/image/lightBack2.jpg);
+  --border: 1px solid black;
+  /* --image: url(../public/image/lightBack2.jpg); */
 }
 body.dark {
+  --background: rgb(42,15,0);
+--background: linear-gradient(185deg, rgba(42,15,0,1) 0%, rgba(59,20,0,1) 33%, rgba(255,88,0,1) 48%, rgba(59,20,0,1) 65%, rgba(42,15,0,1) 100%);
   --background-color: var(--clr-9-05);
-  --text-color: var(--clr-7-R);
+  --text-color: var(--clr-0);
   --box-shadow: 0 0 7px var(--clr-0);
-  --border: 1px solid #ff3c00;
-  --image: url(../public/image/darkBack2.jpg);
+  --border: 1px solid var(--clr-0);
+  /* --image: url(../public/image/darkBack2.jpg); */
 }
 
 /* #h1 {
@@ -30,7 +33,7 @@ body.dark {
 }
 
 #h1.light {
-  --text-color: var(--clr-10-R);
+  --text-color: black;
 }
 
 #h1.dark {

@@ -32,7 +32,8 @@
 .buton1{
      border: 2px solid var(--clr-9-R);  
     color: var(--text-color);
-    background-color: aliceblue;
+    background-color: transparent;
+    font-weight: bolder;
     width: 30px;
     height: 30px;
       border-radius: 5px;
@@ -46,7 +47,7 @@
 }
 .buton3{
      color: rgb(255, 0, 0);
-  margin-bottom: 22%;
+  margin-bottom: 120px;
     margin-right: 0px;
     border-radius: 5px;
     border: none;
@@ -56,14 +57,17 @@
 }
 .title{
     width: 40%;
-    
+    overflow: hidden;
+     color: white;
+     background-color: rgba(0, 0, 0, 0.5);
+     border-radius: 5px;
 }
 .price{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 30%;
+    width: 30%; 
 
 }
 .h2{
@@ -95,4 +99,17 @@
 }
 .paypal{
     border: 2px solid black;
+}
+.span{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+.h5{
+    padding: 2px;
+    margin-top: 40px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    font-weight: bolder;
 }
