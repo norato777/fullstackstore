@@ -6,7 +6,7 @@ export default function Footer() {
     <>
       <Container
         style={{
-          backgroundColor: "var(--background-color)",
+          backgroundColor: "var(--clr-1-R)",
           backdropFilter: "blur(5px)",
           border: "var(--border)",
           boxShadow: "var(--box-shadow)",

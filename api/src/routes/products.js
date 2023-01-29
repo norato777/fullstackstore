@@ -66,7 +66,6 @@ router.put("/delete/:id", (req, res) => {
 
 router.put("/recover/:id", (req, res) => {
   const { id } = req.params;
-  console.log(id);
   recoverDocument(id)
     .then((data) => res.json(data))
     .catch((error) => res.json({ mesagge: error }));

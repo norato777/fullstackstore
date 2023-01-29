@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Navbar, Container, Image, Row, Col, Button } from "react-bootstrap";
 import SearchBarMain from "../SearchBarMain/SearchBarMain";
 import NavbarHeader from "../NavbarHeader/NavbarHeader";
+import LightMode from "../LightMode/LightMode";
+import s from "./Header.module.css"
+import { getProducts } from "../../Redux/action";
+import { useDispatch } from "react-redux";
 
 export default function Header() {
+
   const navigate = useNavigate();
+
   const handleCart = () => {
        navigate("/cart");
   };
+  const handleHome = () => {
+    navigate("/");
+};
+
   return (
     <>
       <Container className="mt-3">
         <Navbar
           style={{
-            backgroundColor: "var(--background-color)",
+            backgroundColor: "var(--clr-1-R)",
             backdropFilter: "blur(5px)",
             border: "var(--border)",
             boxShadow: "var(--box-shadow)",
@@ -25,7 +35,9 @@ export default function Header() {
         >
           <Container>
             <Col xs={2} className="p-3">
-              <Navbar.Brand href="/">
+              <Navbar.Brand onClick={handleHome} style={{
+           cursor:"pointer"
+          }}>
                 <Image fluid alt="logo" src="/tfss.svg" width="150" />
               </Navbar.Brand>
             </Col>
@@ -38,19 +50,22 @@ export default function Header() {
               </Row>
             </Col>
             <Col xs={2}>
+              <div className={s.lightmodeAndCart}>
               <Button
+             
                 variant="outline-warning"
                 onClick={handleCart}
                 style={{
-                  border: "var(--border)",
+                  width:"auto",
+                  height:"auto",
+                  border: "none",
                   color: "var(--text-color)",
-                  fontSize: "42px",
-                  width: "84px",
-                  height: "84px",
+                  fontSize: "27px",          
                 }}
-              >
-                <i className="bi bi-cart2"></i>
+                ><i className="bi bi-cart2"></i>
               </Button>
+              <LightMode />
+                </div>
             </Col>
           </Container>
         </Navbar>

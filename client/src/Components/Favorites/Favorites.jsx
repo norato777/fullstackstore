@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 
 const Favorites = () => {
     const user = useSelector(state=>state.user)
-    console.log(user)
+
     return (
         <>
         <Header />

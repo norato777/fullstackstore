@@ -11,8 +11,6 @@ export default function CardFeaturedProducts({ num }) {
   const [oneProduct, setOneProduct] = useState(Products[num]);
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
-console.log(Products)
  
 const handleDetail = (e) => {
   if(e){

@@ -40,7 +40,6 @@ router.delete("/:id/:productId", async (req, res) => {
     // Obtén los valores de user_id y product_id de los parámetros de la ruta
     const cart = req.params;
     // // Llamar a la función deleteProductCart y proporcionar los argumentos en cart
-    console.log(cart);
     await deleteProductCart(cart);
     res.json({ message: "Producto eliminado del carrito con éxito" });
   } catch (error) {

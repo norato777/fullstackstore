@@ -19,22 +19,19 @@ const pepe = props
   }, [props._id]);
 
 
-  const handleChangeRating = (e) => {
-    console.log(rating)
+  const handleChangeRating = (e) => {   
     setRating({
       ...rating,
       calification: parseInt(e.target.value),
     });
   };
   const handleComents = (e) => {
-    console.log(rating)
     setRating({
       ...rating,
       coments: e.target.value,
     });
   };
-  const handleClick = (e) => {
-    console.log(rating)
+  const handleClick = (e) => {  
     if(rating.coments===""){
       swal("necesitas poner un comentario")
     }else

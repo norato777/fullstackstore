@@ -375,3 +375,22 @@ export function getComents(id) {
     }
   };
 }
+// export function addToCart(product,cart){
+//   return async function(dispatch){  
+//     let itemInCart = cart.find((ele) => ele._id === product._id);   
+//     if (itemInCart) {
+//       cart?.map((item) =>
+//         item._id === product._id ? { ...item, qty: (item.qty += 1) } : item
+//       );
+//       // localStorage.setItem("cart", JSON.stringify(pepe));
+//     } else {
+//       product.qty = 1;
+//       cart.push(product)
+//     }
+//     localStorage.setItem("cart", JSON.stringify(cart));
+//     return dispatch({
+//       type:"ADD_TO_CART",
+//       payload:cart
+//     })
+//   }
+// }

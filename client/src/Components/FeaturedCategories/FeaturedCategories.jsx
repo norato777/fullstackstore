@@ -16,14 +16,16 @@ export default function FeaturedCategories() {
   },[])
   
   return (
-    <>
-      <h1
-        // style={{
-        //   color: "#fff",
-        // }}
-      >
-        Categorias Destacadas
-      </h1>
+    <><div>
+<p /* style={{ color: "#fff" }} */      style={{
+  // border: "var(--border)",
+  color: "var(--text-color)",
+  fontSize:"40px",
+  borderRadius:"15px",
+  backdropFilter: "blur(125px)",
+}}>Categorias Destacadas</p>
+
+</div>
       <Container className="mt-3 mb-3">
         <div className={stl.container}>
           {category?.map((e, i) => (

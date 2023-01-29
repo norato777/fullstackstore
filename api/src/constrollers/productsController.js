@@ -16,13 +16,12 @@ module.exports = {
     }
   },
   putProductCalification: async function (product) {
-    console.log(product)
+
     try {
       const oldProduct = await ProductsModel.findByIdAndUpdate(product._id);
       if (oldProduct) {
         oldProduct.calification=[...oldProduct.calification,product.calification]
         let promedio = oldProduct.calification.reduce((a,b)=> a+b, 0)/oldProduct.calification.length
-        console.log(oldProduct);
         oldProduct.promedio= promedio
       if(product.coments){
         oldProduct.coments.push(product.coments)

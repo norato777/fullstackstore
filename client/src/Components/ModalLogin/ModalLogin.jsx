@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { signIn } from "../../Redux/action";
 import { Form, Modal, Nav, Button } from "react-bootstrap";
+import s from "./ModalLogin.module.css"
+
 
 const ModalLogin = ({ show, handleClose }) => {
   const dispatch = useDispatch();
@@ -36,40 +38,24 @@ const ModalLogin = ({ show, handleClose }) => {
   return (
     <Form
       fluid
-      className="m-1"
+      className={s.container}
       onSubmit={handleSubmit(onSubmit)}
-      style={{
-        backdropFilter: "blur(5px)",
-        border: "var(--border)",
-        width: "490px",
-      }}
     >
-      <Modal.Header
-        style={{
-          backgroundColor: "var(--background-color)",
-          backdropFilter: "blur(5px)",
-        }}
-      >
+      <Modal.Header >
         <Modal.Title
           style={{
-            color: "var(--clr-7-R)",
+            color: "var( --clr-10-G)",
           }}
         >
-          Inicia sesión
+          <b>Inicia sesión</b>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body
-        style={{
-          backgroundColor: "var(--background-color)",
-          backdropFilter: "blur(5px)",
-        }}
       >
         <Form.Group className="mb-8" controlId="formBasicEmail">
           <div>
             <Form.Label
-              style={{
-                color: "var(--text-color)",
-              }}
+           className={s.title}
             >
               Email
               <Form.Control
@@ -77,15 +63,11 @@ const ModalLogin = ({ show, handleClose }) => {
                 {...register("name", { required: true })}
                 onChange={emailChangeHandler}
                 value={email}
-                style={{
-                  border: "var(--border)",
-                }}
+                className={s.title}
               />
               {errors.name?.type === "required" && (
                 <p
-                  style={{
-                    color: "var(--text-color)",
-                  }}
+                className={s.title}
                 >
                   No ingresaste tu email
                 </p>
@@ -93,9 +75,7 @@ const ModalLogin = ({ show, handleClose }) => {
             </Form.Label>
           </div>
           <Form.Label
-            style={{
-              color: "var(--text-color)",
-            }}
+         className={s.title}
           >
             Contraseña
             <Form.Control
@@ -103,15 +83,11 @@ const ModalLogin = ({ show, handleClose }) => {
               {...register("password", { required: true })}
               onChange={passwordChangeHandler}
               value={password}
-              style={{
-                border: "var(--border)",
-              }}
+              className={s.title}
             />
             {errors.name?.type === "required" && (
               <p
-                style={{
-                  color: "var(--text-color)",
-                }}
+              className={s.title}
               >
                 No ingresaste tu contraseña
               </p>
@@ -120,31 +96,30 @@ const ModalLogin = ({ show, handleClose }) => {
         </Form.Group>
       </Modal.Body>
       <Modal.Footer
-        style={{
-          backgroundColor: "var(--background-color)",
-          backdropFilter: "blur(5px)",
-        }}
+        // style={{
+        //   backgroundColor: "var(--background-color)",
+        //   backdropFilter: "blur(5px)",
+        // }}
       >
         <Nav.Item>
-          <Nav.Link
-            href="/home"
-            style={{
-              color: "#ffc800",
-            }}
-            className="m-2"
+          <Button
+       
+            variant="outline-warning"
+            // className={s.title}
+          
           >
             Olvidé mi contraseña
-          </Nav.Link>
+          </Button>
         </Nav.Item>
         <Button
           onClick={handleClose}
           type="submit"
-          variant="outline-warning"
-          style={{
-            border: "1px solid #ff3c00",
-            color: "var(--clr-7-R)",
-            width: "170px",
-          }}
+          variant="btn btn-primary"
+          // style={{
+          //   border: "1px solid #ff3c00",
+          //   color: "var(--clr-7-R)",
+          //   width: "170px",
+          // }}
           className="m-1"
         >
           Iniciar sesión

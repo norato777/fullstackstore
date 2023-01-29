@@ -49,7 +49,7 @@
   color:var(--clr-7-R);
   border:none; 
 }
-.button:hover{
+.luna:hover{
   border:none;
   background:var(--clr-11-R);
   background:var(--clr-12-R);
@@ -59,4 +59,9 @@
 }
 .buttonLogo{
   border: none;
+}
+.lightmodeAndCart{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

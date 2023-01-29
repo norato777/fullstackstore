@@ -7,16 +7,17 @@ import { useNavigate } from "react-router-dom";
 import { putUser } from "../../Redux/action";
 import Paypal from "../Paypal/Papypal";
 import s from "./Cart.module.css";
-import swal from "sweetalert"
+import swal from "sweetalert";
 import Header from "../Header/Header";
 import NavbarMain from "../NavbarMain/NavbarMain";
+import Promobar from "../Promobar/Promobar";
 
 export default function Cart() {
   const cart1 = useSelector((state) => state.cart);
   const newCart = localStorage.getItem("cart");
   const [cart, setCart] = useState(JSON.parse(newCart));
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [count, setCount] = useState(1);
   const [total, setTotal] = useState(0);
   const idLocal = localStorage.getItem("id");
@@ -45,38 +46,36 @@ export default function Cart() {
   };
 
   const deleteProduct = (product) => {
-   swal({
-      title:"Eliminaras",
-      text:"Seguro que quieres eliminar el producto?",
-      icon:"warning",
-      buttons:["No", "Si"]
-    }).then(respuesta=>{
-      if(respuesta){
+    swal({
+      title: "Eliminaras",
+      text: "Seguro que quieres eliminar el producto?",
+      icon: "warning",
+      buttons: ["No", "Si"],
+    }).then((respuesta) => {
+      if (respuesta) {
         let pepe = cart.filter((ele) => ele._id !== product._id);
-        if(pepe.length===0)setTotal(0)
+        if (pepe?.length === 0) setTotal(0);
         setCart(pepe);
         localStorage.setItem("cart", JSON.stringify(pepe));
-        swal({text:"Producto eliminado", icon:"success", timer:800})
-      }else return
-    })
-    
+        swal({ text: "Producto eliminado", icon: "success", timer: 800 });
+      } else return;
+    });
   };
 
   const cleanCart = () => {
     swal({
-      title:"Eliminaras todo de tu carrito",
-      text:"Seguro que quieres eliminar TODO?",
-      icon:"warning",
-      buttons:["No", "Si"]
-    }).then(respuesta=>{
-      if(respuesta){
+      title: "Eliminaras todo de tu carrito",
+      text: "Seguro que quieres eliminar TODO?",
+      icon: "warning",
+      buttons: ["No", "Si"],
+    }).then((respuesta) => {
+      if (respuesta) {
         localStorage.setItem("cart", JSON.stringify([]));
         setCart([]);
         setTotal(0);
-        swal({text:"Carrito limpio", icon:"success", timer:800})
-      }else return
-    })
-
+        swal({ text: "Carrito limpio", icon: "success", timer: 800 });
+      } else return;
+    });
   };
 
   const handlePageProducts = () => {
@@ -91,90 +90,174 @@ export default function Cart() {
     setTotal(prod);
   };
   const HandleBack = () => {
-    if(!idLocal){
+    if (!idLocal) {
       return swal({
-        title:"Oooh!",
-        text:"Debes loguearte",
-        icon:"warning",
-        button:"ok"
-      })
-    }else{
-      dispatch(putUser(idLocal,cart))
+        title: "Oooh!",
+        text: "Debes loguearte",
+        icon: "warning",
+        button: "ok",
+      });
+    } else {
+      dispatch(putUser(idLocal, cart));
     }
-  }
+  };
   useEffect(() => {
-    cart.length<cart1.length && setCart(cart1)
+    cart?.length < cart1.length && setCart(cart1);
     cart?.length && totalApagar();
   }, [cart, newCart, count, total]);
 
   return (
     <div>
-               <Header />
-          <NavbarMain />
+      <Promobar />
+      <Header />
+      <NavbarMain />
       {cart?.items?.length === 0 ? (
         <div className={s.divTitle}>
-        <h1 className={s.h1}>El carrito esta vacio</h1>
+          <h1 className={s.h1}>El carrito esta vacio</h1>
         </div>
       ) : (
         <div>
           <div className={s.divContainer}>
             {cart?.map((e, i) => (
-              <div key={i} className={s.divCard}>
-                <img src={e.image} className={s.img} />
-                <div className={s.title}>
-                  <h5>{e.name.split(",", 2)}</h5>
+              <div
+                key={i}
+                className={s.divCard}
+                style={{
+                  border: "var(--border)",
+                  color: "var(--text-color)",
+                }}
+              >
+                <img
+                  src={e.image}
+                  className={s.img}
+                  style={{
+                    border: "var(--border)",
+                    color: "var(--text-color)",
+                  }}
+                />
+                <div
+                  className={s.title}
+                  style={{
+             
+                    color: "var(--text-color)",
+                  }}
+                >
+                  <h5
+                    style={{
+               
+                      color: "var(--text-color)",
+                    }}
+                  >
+                    {e.name.split(",", 2)}
+                  </h5>
                 </div>
                 <div className={s.price}>
                   <div>
                     <button
+                      style={{
+                        border: "var(--border)",
+                        color: "var(--text-color)",
+                      }}
                       className={s.buton1}
                       onClick={() => restOneProduct(e)}
                     >
                       -
                     </button>
-                    <span className={s.span}>  {e.qty}  </span>
+                    <span
+                      style={{
+                        border: "var(--border)",
+                        color: "var(--text-color)",
+                      }}
+                      className={s.span}
+                    > {e.qty} </span>
                     <button
+                      style={{
+                        border: "var(--border)",
+                        color: "var(--text-color)",
+                      }}
                       className={s.buton1}
                       onClick={() => addOneProduct(e)}
                     >
                       +
                     </button>
                   </div>
-                  <h5 className={s.h5}>$ {e.price}</h5>
+                  <h5
+                    style={{
+                      color: "var(--text-color)",
+                    }}
+                    className={s.h5}
+                  >
+                    $ {e.price}
+                  </h5>
                 </div>
-                <button className={s.buton3} onClick={() => deleteProduct(e)}>
+                <button
+                  style={{
+                    border: "var(--border)",
+                    color: "var(--text-color)",
+                  }}
+                  className={s.buton3}
+                  onClick={() => deleteProduct(e)}
+                >
                   X
                 </button>
               </div>
             ))}
-            <h2 className={s.h2}>Total: ${total}</h2>
+            <h2
+              style={{
+                border: "var(--border)",
+                color: "var(--text-color)",
+              }}
+              className={s.h2}
+            >
+              Total: ${total}
+            </h2>
           </div>
         </div>
       )}
       <div className={s.backbuton}>
-      <Button
+        <Button
           onClick={handlePageProducts}
           variant="outline-warning"
-          style={{ height:"40px", border: "var(--border)", color: "var(--text-color)",backdropFilter: "blur(5px)" }}
+          style={{
+            height: "40px",
+            border: "var(--border)",
+            color: "var(--text-color)",
+            backdropFilter: "blur(205px)",
+          }}
           className="m-1"
-        >Volver a productos</Button>
-      <Button
+        >
+          Volver a productos
+        </Button>
+        <Button
           onClick={cleanCart}
           variant="outline-warning"
-          style={{ height:"40px", border: "var(--border)", color: "var(--text-color)",backdropFilter: "blur(5px)"}}
+          style={{
+            height: "40px",
+            border: "var(--border)",
+            color: "var(--text-color)",
+            backdropFilter: "blur(205px)",
+          }}
           className="m-1"
-        >Limpiar carrito</Button>
-        {
-          !idLocal?
-        <Button
-        onClick={HandleBack}
-         variant="outline-warning"
-         style={{ border: "var(--border)", color: "var(--text-color)",backdropFilter: "blur(5px)"}}
-         className="m-1">
-          COMPRAR
-        </Button>:
-           <Paypal className={s.paypal} price={total}/>
-        }
+        >
+          Limpiar carrito
+        </Button>
+        {!idLocal ? (
+          <Button
+            onClick={HandleBack}
+            variant="outline-warning"
+            style={{
+              height: "40px",
+              border: "var(--border)",
+              color: "var(--text-color)",
+              backdropFilter: "blur(205px)",
+            }}
+            className="m-1"
+          >
+            COMPRAR
+          </Button>
+        ) : (
+          <Paypal className={s.paypal} price={total} />
+        )}
       </div>
     </div>
   );

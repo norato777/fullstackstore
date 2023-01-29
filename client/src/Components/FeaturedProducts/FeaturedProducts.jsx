@@ -8,8 +8,17 @@ export default function FeaturedProducts() {
   return (
     <>
       <Container className="mt-3">
-        <h1 /* style={{ color: "#fff" }} */>Productos Destacados</h1>
+        <div>
 
+        <p /* style={{ color: "#fff" }} */      style={{
+          // border: "var(--border)",
+          color: "var(--text-color)",
+          fontSize:"40px",
+          borderRadius:"15px",
+          backdropFilter: "blur(125px)",
+        }}>Productos Destacados</p>
+
+        </div>
         <Row>
           <CardFeaturedProducts num={num + 7} />
           <CardFeaturedProducts num={num + 14} />

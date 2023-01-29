@@ -12,7 +12,6 @@ export default function CardFeaturedCategories({ prop }) {
     e.preventDefault();
     dispatch(filterProductsCategory(prop.name));
     navigate("/products");
-    console.log(prop.name);
   };
 
   return (

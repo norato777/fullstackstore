@@ -34,9 +34,21 @@ export default function LightMode() {
 
   return (
     <button
+   
       className={theme === "dark" ? clickedClass : ""}
       id="darkMode"
       onClick={(e) => switchTheme(e)}
-    ></button>
+    >
+      <b>
+        <i
+         variant="outline-warning"
+          className="bi bi-brightness-low"
+          id="icon"
+          style={{
+            color: "var(--text-color)",
+          }}
+        ></i>
+      </b>
+    </button>
   );
 }

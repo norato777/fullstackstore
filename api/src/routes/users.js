@@ -29,7 +29,7 @@ router.get("/confirm/:token", async (req, res) => {
       });
     }
 
-    console.log(data);
+    
 
     const { email, code } = data.data;
 
@@ -105,15 +105,13 @@ router.delete("/:id", (req, res) => {
 //borrado logico
 router.put("/delete/:id", (req, res) => {
   const { id } = req.params;
-  console.log(id)
+
   deleteDocument(id)
     .then((data) => res.json(data))
     .catch((error) => res.json({ mesagge: error }));
 });
 router.put("/recover/:id", (req, res) => {
-  const { id } = req.params;
-  console.log(id)
- 
+  const { id } = req.params; 
   recoverDocument(id)
     .then((data) => res.json(data))
     .catch((error) => res.json({ mesagge: error }));

@@ -12,9 +12,6 @@ export default function SearchBarMain() {
   const handleChange = (e) => {
     e.preventDefault();
     setBuscados(e.target.value);
-    // console.log(buscados)
-
-    // console.log(Filtrados)
   };
   const handleClick = (e) => {
     e.preventDefault();

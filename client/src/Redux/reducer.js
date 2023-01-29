@@ -43,6 +43,7 @@ export default function rootReducer(state = initialState, action) {
         products: productsFilter,
         allProducts: productsFilter,
         brand: uniqueBrands,
+       
       };
     // case to create a new product
     case "POST_PRODUCT":
@@ -221,7 +222,6 @@ export default function rootReducer(state = initialState, action) {
         products: state.allProducts,
       };
     case "FILTER_PRICE":
-      console.log(action.payload);
       let sorted = state.products;
       if (action.payload === "Price") {
         return {

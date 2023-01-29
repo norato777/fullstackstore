@@ -3,6 +3,7 @@ import Google from "../Google/Google";
 import ModalLogin from "../ModalLogin/ModalLogin";
 import ModalRegister from "../ModalRegister/ModalRegister";
 import { Card, CardGroup, Modal } from "react-bootstrap";
+import s from "./ModalSign.module.css"
 
 export default function ModalSign({ show, handleClose }) {
   return (
@@ -12,21 +13,17 @@ export default function ModalSign({ show, handleClose }) {
       onHide={handleClose}
       //este estilo difumina el fondo detras del modal
       style={{
-        backgroundColor: "var( --clr-7-025)",
+        backgroundColor: "var(--clr-9-025)",
         backdropFilter: "blur(5px)",
       }}
     >
       <CardGroup
-        style={{
-          backgroundColor: "var(--background-color)",
-          backdropFilter: "blur(5px)",
-          border: "var(--border)",
-          boxShadow: "var(--box-shadow)",
-        }}
+         className={s.modal}
       >
         <Card
           style={{
-            backgroundColor: "var(--background-color)",
+            // backgroundColor: "var(--background-color)",
+            backgroundColor: "var(--clr-9-025)",
             alignItems: "center",
           }}
         >

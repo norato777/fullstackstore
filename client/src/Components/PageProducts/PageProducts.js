@@ -12,6 +12,7 @@ import Header from "../Header/Header";
 import NavbarMain from "../NavbarMain/NavbarMain";
 import Footer from "../Footer/Footer";
 import Productos from "../Products/Productos";
+import Promobar from "../Promobar/Promobar"
 
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 
@@ -74,6 +75,7 @@ export default function PageProducts() {
   return (
     <>
       <div>
+      <Promobar/>
         <Header />
         <NavbarMain />
         <Container className="mt-5">
@@ -102,7 +104,7 @@ export default function PageProducts() {
                   <Form.Group>
                     <Form.Label
                       style={{
-                        color: "#fff",
+                        color: "var(--text-color)",
                       }}
                       className="mb-3"
                     >
@@ -119,13 +121,13 @@ export default function PageProducts() {
                     >
                       <option>Categoria</option>
                       {category &&
-                        category.map((e, i) => <option key={i}>{e}</option>)}
+                        category.filter(e=>e.length>2).map((e, i) => <option key={i}>{e}</option>)}
                     </Form.Select>
                   </Form.Group>
                   <Form.Group>
                     <Form.Label
                       style={{
-                        color: "#fff",
+                        color: "var(--text-color)",
                       }}
                       className="mt-3 mb-3"
                     >
@@ -148,7 +150,7 @@ export default function PageProducts() {
                   <Form.Group>
                     <Form.Label
                       style={{
-                        color: "#fff",
+                        color: "var(--text-color)",
                       }}
                       className="mt-3 mb-3"
                     >
@@ -162,7 +164,6 @@ export default function PageProducts() {
                         border: "var(--border)",
                       }}
                     >
-                      <option defaultValue="Price">Price</option>
                       <option value="Mayor">Mayor a menor</option>
                       <option value="Menor">Menor a mayor</option>
                     </Form.Select>

@@ -51,7 +51,6 @@ export default function NavbarHeader() {
       <Container fluid>
         <Nav className="justify-content-end" activeKey="/">
           <Nav.Item>
-            <LightMode />
           </Nav.Item>
           <Nav.Item>
             <Button
@@ -63,7 +62,7 @@ export default function NavbarHeader() {
                 color: "var(--text-color)",
               }}
             >
-              <i className="bi bi-star "></i> Favoritos
+              <i className="bi bi-star "></i> <b> Favoritos</b>
             </Button>
           </Nav.Item>
           <Nav.Item>
@@ -76,7 +75,7 @@ export default function NavbarHeader() {
                 color: "var(--text-color)",
               }}
             >
-              <i className="bi bi-back "></i> Comparar
+              <i className="bi bi-back "></i><b> Comparar</b>
             </Button>
           </Nav.Item>
           {!idLocalStorge ? (
@@ -91,7 +90,7 @@ export default function NavbarHeader() {
                     color: "var(--text-color)",
                   }}
                 >
-                  <i className="bi bi-box-arrow-in-right "></i> Ingresar
+                  <i className="bi bi-box-arrow-in-right "></i><b> Ingresar</b>
                 </Button>
               </Nav.Item>
             </>
@@ -120,8 +119,7 @@ export default function NavbarHeader() {
                       border: "var(--border)",
                       color: "var(--text-color)",
                     }}
-                  >
-                    Favoritos
+                  ><b> Favoritos</b>
                   </Dropdown.Item>
                   <Dropdown.Item
                     eventKey="2"
@@ -131,8 +129,7 @@ export default function NavbarHeader() {
                       border: "var(--border)",
                       color: "var(--text-color)",
                     }}
-                  >
-                    Mi perfil
+                  ><b> Mi perfil</b>
                   </Dropdown.Item>
                   <Dropdown.Item
                     eventKey="3"
@@ -143,7 +140,7 @@ export default function NavbarHeader() {
                       color: "var(--text-color)",
                     }}
                   >
-                    Cerrar sesión
+                    <b> Cerrar sesión</b>
                   </Dropdown.Item>
                 </DropdownButton>
               </ButtonGroup>

@@ -22,6 +22,7 @@ export default function Productos() {
   useSelector((state) => state.getDetail);
 
   useEffect(() => {
+    if(cart===null)setCartNew([])
     setMaxPage(Math.ceil(products.length / 21));
     if (maxPage > 1) {
       for (let i = 1; i < maxPage; i++) {
@@ -61,6 +62,7 @@ export default function Productos() {
     setNum2(n + 20);
   };
   const handleAddCart = (product) => {
+    console.log(cartNew)
     let itemInCart = cartNew.find((ele) => ele._id === product._id);
     let pepe = cartNew;
     if (itemInCart) {
@@ -68,14 +70,14 @@ export default function Productos() {
         item._id === product._id ? { ...item, qty: (item.qty += 1) } : item
       );
       setCartNew(pepe);
-      console.log(pepe);
-      localStorage.setItem("cart", JSON.stringify(pepe));
+
+      // localStorage.setItem("cart", JSON.stringify(pepe));
     } else {
       product.qty = 1;
       pepe = [...pepe, product];
       setCartNew(pepe);
-      localStorage.setItem("cart", JSON.stringify(pepe));
     }
+    localStorage.setItem("cart", JSON.stringify(pepe));
   };
   return (
     <Container>
