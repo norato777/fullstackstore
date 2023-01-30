@@ -15,7 +15,7 @@ export default function FeaturedProducts() {
           color: "var(--text-color)",
           fontSize:"40px",
           borderRadius:"15px",
-          backdropFilter: "blur(125px)",
+          backdropFilter: "blur(825px)",
         }}>Productos Destacados</p>
 
         </div>
