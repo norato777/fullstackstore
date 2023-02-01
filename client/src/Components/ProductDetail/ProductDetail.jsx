@@ -18,8 +18,8 @@ const ProductDetail = () => {
   };
 
   useEffect(() => {
-    details._id === undefined && dispatch(getDetail(id));
-  }, [details._id]);
+    dispatch(getDetail(id));
+  }, []);
 
   return (
     <>
@@ -124,7 +124,7 @@ const ProductDetail = () => {
             </Row>
           </Container>
           <div>
-            <RatingComents props={details} />
+            <RatingComents id={details._id} />
           </div>
           <div>
             <MostrarComentarios id={details._id} />
