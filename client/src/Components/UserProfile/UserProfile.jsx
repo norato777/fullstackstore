@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUsers, putUser, logOut } from "../../Redux/action";
 import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import Header from "../Header/Header";
-import NavbarMain from "../NavbarMain/NavbarMain";
-import Footer from "../Footer/Footer";
+import HeaderAlt from "../Header/HeaderAlt";
+import NavbarMainAlt from "../NavbarMain/NavbarMainAlt";
+import Promobar from "../Promobar/Promobar";
 import { Container, Button, Form } from "react-bootstrap";
 import swal from "sweetalert";
 
@@ -17,8 +17,7 @@ export default function UserProfile() {
   const theUser = users.filter((u) => u.email === user.email);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(theUser[0]._id);
-  console.log(user);
+
   useEffect(() => {
     dispatch(getUsers());
   }, []);
@@ -52,8 +51,9 @@ export default function UserProfile() {
 
   return (
     <>
-      <Header />
-      <NavbarMain />
+    <Promobar/>
+      <HeaderAlt />
+      <NavbarMainAlt />
       <Container
         style={{
           backgroundColor: "var(--background-color)",

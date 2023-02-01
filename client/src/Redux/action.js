@@ -208,9 +208,10 @@ export const signIn = (payload) => {
         res.data.message !== undefined
           ? swal(res.data.message)
           : swal("Inicio de sesión correcto");
-        const result = res.data.filter((item) => item.email === payload.email);
+          const result = res.data.filter((item) => item.email === payload.email);
+          console.log( result[0])
         localStorage.setItem("id", JSON.stringify(result[0]._id));
-        localStorage.setItem("user", JSON.stringify(result));
+        localStorage.setItem("user", JSON.stringify(result[0]));
         localStorage.setItem("cart", JSON.stringify(result[0].cart));
         localStorage.setItem("admin", JSON.stringify(result[0].admin))
         return dispatch({ type: "SIGN_IN", payload });

@@ -2,18 +2,19 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { Container, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import s from "./carrusel.module.css"
 
 export default function CarouselMain() {
   return (
-    <>
+    <div className={s.carrusel}>
       <Link to="/products">
         <Container
           className="mt-5 p-2"
           style={{
-            backgroundColor: "var(--background-color)",
-            backdropFilter: "blur(5px)",
-            border: "var(--border)",
-            boxShadow: "var(--box-shadow)",
+            // backgroundColor: "var(--background-color)",
+            // backdropFilter: "blur(5px)",
+            // border: "var(--border)",
+            // boxShadow: "var(--box-shadow)",
           }}
         >
           <Carousel fade>
@@ -41,6 +42,6 @@ export default function CarouselMain() {
           </Carousel>
         </Container>
       </Link>
-    </>
+    </div>
   );
 }

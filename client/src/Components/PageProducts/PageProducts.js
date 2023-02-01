@@ -15,6 +15,8 @@ import Productos from "../Products/Productos";
 import Promobar from "../Promobar/Promobar"
 
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+import HeaderAlt from "../Header/HeaderAlt";
+import NavbarMainAlt from "../NavbarMain/NavbarMainAlt";
 
 export default function PageProducts() {
   const Products = useSelector((state) => state.products);
@@ -76,8 +78,8 @@ export default function PageProducts() {
     <>
       <div>
       <Promobar/>
-        <Header />
-        <NavbarMain />
+        <HeaderAlt />
+        <NavbarMainAlt />
         <Container className="mt-5">
           <Row>
             <Col>

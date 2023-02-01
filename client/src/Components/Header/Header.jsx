@@ -7,6 +7,7 @@ import LightMode from "../LightMode/LightMode";
 import s from "./Header.module.css"
 import { getProducts } from "../../Redux/action";
 import { useDispatch } from "react-redux";
+import SearchBarAlt from "../SearchBarMain/SerchBarAlt";
 
 export default function Header() {
 
@@ -38,12 +39,12 @@ export default function Header() {
               <Navbar.Brand onClick={handleHome} style={{
            cursor:"pointer"
           }}>
-                <Image fluid alt="logo" src="/tfss.svg" width="150" />
+                <Image fluid alt="logo" src="/Full_Stack__2_-removebg-preview.png" width="150" />
               </Navbar.Brand>
             </Col>
             <Col xs={8}>
               <Row className="mt-1">
-                <SearchBarMain />
+                <SearchBarAlt />
               </Row>
               <Row>
                 <NavbarHeader />

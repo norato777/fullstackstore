@@ -10,6 +10,7 @@ export default function Productos() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const products = useSelector((state) => state.products);
+  const [product, setProduct] = useState(products)
   const [page, setPage] = useState(1);
   const [maxPage, setMaxPage] = useState(1);
   const [num1, setNum1] = useState(0);
@@ -23,7 +24,10 @@ export default function Productos() {
   useSelector((state) => state.getDetail);
 
   useEffect(() => {
-    if(cart===null)setCartNew([])
+    if(cart===null){
+      setCartNew([])
+    localStorage.setItem("cart","[]")
+    }
     setMaxPage(Math.ceil(products.length / 21));
     if (maxPage > 1) {
       for (let i = 1; i < maxPage; i++) {
@@ -31,7 +35,9 @@ export default function Productos() {
       }
       setPaginas(pages);
     } else setPaginas(pages);
-  }, [products, page, maxPage, num1, num2, JSON.stringify(cart), cartNew]);
+    setProduct(products)
+  }, [product, page, maxPage, num1, num2]);
+
   function handleNextPage() {
     if (num2 >= maxPage * 21) {
       return num1, num2;
@@ -49,37 +55,16 @@ export default function Productos() {
       setNum2(num2 - 21);
     }
   }
-  const handleDetail = (e) => {
-        if(e){
-      dispatch(getDetail(e));
-      navigate(`/product/${e}`);
-    }
-  };
-  const handleChangePagePerNum = (e) => {
-    let n = e.target.value * 20;
-    if (e.target.value == 1) {
-      return setNum1(0), setNum2(20);
-    } else setNum1(n);
-    setNum2(n + 20);
-  };
-  const handleAddCart = (product) => {
-    console.log(cartNew)
-    let itemInCart = cartNew.find((ele) => ele._id === product._id);
-    let pepe = cartNew;
-    if (itemInCart) {
-      pepe?.map((item) =>
-        item._id === product._id ? { ...item, qty: (item.qty += 1) } : item
-      );
-      setCartNew(pepe);
 
-      // localStorage.setItem("cart", JSON.stringify(pepe));
-    } else {
-      product.qty = 1;
-      pepe = [...pepe, product];
-      setCartNew(pepe);
-    }
-    localStorage.setItem("cart", JSON.stringify(pepe));
+  const handleChangePagePerNum = (e) => {
+    let n = e.target.value * 21;
+    if (e.target.value == 1) {
+      return setNum1(0), setNum2(21);
+    } else setNum1(n);
+    setNum2(n + 21);
   };
+
+  console.log(product.slice(num1, num2))
   return (
     <Container>
       {/* paginacion */}
@@ -123,7 +108,7 @@ export default function Productos() {
       <Row>
         {/* mensaje de carga mientras se renderiza los productos */}
 
-        {products.length === 0 ? (
+        {product?.length === 0 ? (
           <h1
             style={{
               color: "#ff3c00",
@@ -136,7 +121,7 @@ export default function Productos() {
 
         {/* card */}
 
-        {products?.slice(num1, num2)?.map((product, i) => {
+        {product?.slice(num1, num2)?.map((product, i) => {
           return (
             <CardAlt key={i} prop={product} />
           );

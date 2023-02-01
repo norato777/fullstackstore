@@ -46,7 +46,7 @@ return (
       <Card.Body>
         <Card.Title
           style={{
-            color: "#fff",
+            color: "var(--text-color)",
             textDecoration: "none",
             textWeight: "bold",
           }}
@@ -76,7 +76,7 @@ return (
         <ListGroup.Item
           style={{
             backgroundColor: "var(--background-color)",
-            color: "#fff",
+            color: "var(--text-color)",
             fontSize: "17px",
             textAlign: "start",
           }}

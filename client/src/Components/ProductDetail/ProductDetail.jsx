@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Header from "../Header/Header";
-import NavbarMain from "../NavbarMain/NavbarMain";
+import HeaderAlt from "../Header/HeaderAlt";
+import NavbarMainAlt from "../NavbarMain/NavbarMainAlt";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import RatingComents from "../RatingComents/RatingComents";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import MostrarComentarios from "../MostrarComentarios/MostrarComentarios";
 import { getDetail } from "../../Redux/action";
+import Promobar from "../Promobar/Promobar";
 
 const ProductDetail = () => {
   const id = useParams()
@@ -43,8 +44,9 @@ const ProductDetail = () => {
   }
   return (
     <>
-      <Header />
-      <NavbarMain />
+     <Promobar />
+      <HeaderAlt />
+      <NavbarMainAlt />
       {details && (
         <>
           <Container

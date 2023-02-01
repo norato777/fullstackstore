@@ -11,6 +11,8 @@ import swal from "sweetalert";
 import Header from "../Header/Header";
 import NavbarMain from "../NavbarMain/NavbarMain";
 import Promobar from "../Promobar/Promobar";
+import HeaderAlt from "../Header/HeaderAlt";
+import NavbarMainAlt from "../NavbarMain/NavbarMainAlt";
 
 export default function Cart() {
   const cart1 = useSelector((state) => state.cart);
@@ -109,8 +111,8 @@ export default function Cart() {
   return (
     <div>
       <Promobar />
-      <Header />
-      <NavbarMain />
+      <HeaderAlt />
+      <NavbarMainAlt />
       {cart?.items?.length === 0 ? (
         <div className={s.divTitle}>
           <h1 className={s.h1}>El carrito esta vacio</h1>

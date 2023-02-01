@@ -1,11 +1,11 @@
-import React from "react";
-import "./LightMode.css";
+import React, { useState } from "react";
+import s from "./LightMode.module.css";
 
 export default function LightMode() {
-  let clickedClass = "clicked";
   const body = document.body;
   const lightTheme = "light";
   const darkTheme = "dark";
+  const [dark, setDark] = useState(true)
   let theme;
 
   if (localStorage) {
@@ -21,34 +21,25 @@ export default function LightMode() {
   const switchTheme = (e) => {
     if (theme === darkTheme) {
       body.classList.replace(darkTheme, lightTheme);
-      e.target.classList.remove(clickedClass);
       localStorage.setItem("theme", "light");
+      setDark(false)
       theme = lightTheme;
     } else {
       body.classList.replace(lightTheme, darkTheme);
-      e.target.classList.remove(clickedClass);
+      setDark(true)
       localStorage.setItem("theme", "dark");
       theme = darkTheme;
     }
   };
 
   return (
-    <button
-   
-      className={theme === "dark" ? clickedClass : ""}
-      id="darkMode"
+    <button  
+      className={dark ? s.negro : s.blanco}  
       onClick={(e) => switchTheme(e)}
     >
-      <b>
-        <i
-         variant="outline-warning"
-          className="bi bi-brightness-low"
-          id="icon"
-          style={{
-            color: "var(--text-color)",
-          }}
-        ></i>
-      </b>
+      {dark?<i className="bi bi-sun-fill"></i>:<i className="bi bi-moon-fill"></i>}
+      {/* <i className="bi bi-brightness-low"></i> */}
+
     </button>
   );
 }

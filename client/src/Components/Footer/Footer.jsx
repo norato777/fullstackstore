@@ -10,6 +10,7 @@ export default function Footer() {
           backdropFilter: "blur(5px)",
           border: "var(--border)",
           boxShadow: "var(--box-shadow)",
+          borderRadius:"15px"
         }}
         expand="lg"
       >

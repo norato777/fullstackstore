@@ -15,26 +15,31 @@ export default function FeaturedCategories() {
     !category.length && dispatch(getCategories())
   },[])
   
-  return (
-    <><div>
-<p /* style={{ color: "#fff" }} */      style={{
-  // border: "var(--border)",
-  color: "var(--text-color)",
-  fontSize:"40px",
-  borderRadius:"15px",
-  backdropFilter: "blur(125px)",
-}}>Categorias Destacadas</p>
-
-</div>
-      <Container className="mt-3 mb-3">
+  return (      
         <div className={stl.container}>
-          {category?.map((e, i) => (
+          <section className={stl.section}>
+          {category?.slice(0,4).map((e, i) => (
             <div key={i}>
               <CardFeaturedCategories prop={e} />
             </div>
           ))}
+          </section>
+          <section className={stl.section}>
+
+          {category?.slice(4,8).map((e, i) => (
+            <div key={i}>
+              <CardFeaturedCategories prop={e} />
+            </div>
+          ))}
+          </section>
+          <section className={stl.section}>
+
+          {category?.slice(8,12).map((e, i) => (
+            <div key={i}>
+              <CardFeaturedCategories prop={e} />
+            </div>
+          ))}
+          </section>
         </div>
-      </Container>
-    </>
   );
 }

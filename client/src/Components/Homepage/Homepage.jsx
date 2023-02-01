@@ -1,7 +1,7 @@
 import React from "react";
 import Promobar from "../Promobar/Promobar";
-import Header from "../Header/Header";
-import NavbarMain from "../NavbarMain/NavbarMain";
+import HeaderAlt from "../Header/HeaderAlt";
+import NavbarMainAlt from "../NavbarMain/NavbarMainAlt";
 import Carousel from "../Carousel/Carousel";
 import FeaturedProducts from "../FeaturedProducts/FeaturedProducts";
 import FeaturedCategories from "../FeaturedCategories/FeaturedCategories";
@@ -11,6 +11,9 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCategories, getProducts } from "../../Redux/action";
 import Container from "react-bootstrap/Container";
+import CardPubli from "../CardPubli/CardPubli";
+import FooterAlt from "../Footer/FooterAlt";
+import OurBrandsAlt from "../OurBrands/OurBrandAlt";
 
 export default function Homepage() {
   const Products = useSelector((state) => state.products);
@@ -34,15 +37,16 @@ export default function Homepage() {
       ) : (
         <>
           <Promobar />
-          <Header />
-          <NavbarMain />
+          <HeaderAlt />
+          <NavbarMainAlt />
           <Container>
             <Carousel />
             <FeaturedProducts />
-            <OurBrands />
+            <CardPubli/>
+            <OurBrandsAlt />
             <FeaturedCategories />
           </Container>
-          <Footer />
+          <FooterAlt />
         </>
       )}
     </>

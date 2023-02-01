@@ -19,10 +19,10 @@ const DashboardBase = () => {
 
   return (
     <Card>
+      <Metric color="teal" marginTop="mt-10" text style >
       <Title marginTop="mt-10">
-        <img alt="logo" src="/tfss2.svg" width="300" />
+        <img alt="logo" src="/Full_Stack__2_-removebg-preview.png" style={{ position:"absolute", top:"0px", right:"0px", width:"180px" }} />
       </Title>
-      <Metric color="teal" marginTop="mt-10" text>
         Perfil de Administrador
       </Metric>
 
