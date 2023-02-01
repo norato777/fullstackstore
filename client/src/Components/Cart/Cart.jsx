@@ -27,7 +27,6 @@ export default function Cart() {
       item._id === product._id ? { ...item, qty: (item.qty += 1) } : item
     );
     setCart(pepe);
-    console.log(cart);
     localStorage.setItem("cart", JSON.stringify(cart));
   };
 
@@ -259,56 +258,48 @@ export default function Cart() {
         }}
         className="rounded-4  mt-5 mb-5"
       >
-        <Row>
-          <Col>
-            <Button
-              onClick={handlePageProducts}
-              variant="outline-warning"
-              style={{
-                height: "40px",
-                border: "var(--border)",
-                color: "var(--text-color)",
-                backdropFilter: "blur(5px)",
-              }}
-              className="m-3"
-            >
-              Volver a productos
-            </Button>
-          </Col>
-          <Col>
-            <Button
-              onClick={cleanCart}
-              variant="outline-warning"
-              style={{
-                height: "40px",
-                border: "var(--border)",
-                color: "var(--text-color)",
-                backdropFilter: "blur(5px)",
-              }}
-              className="m-3"
-            >
-              Limpiar carrito
-            </Button>
-          </Col>
-          <Col>
-            {!idLocal ? (
-              <Button
-                onClick={HandleBack}
-                variant="outline-warning"
-                style={{
-                  border: "var(--border)",
-                  color: "var(--text-color)",
-                  backdropFilter: "blur(5px)",
-                }}
-                className="m-3"
-              >
-                COMPRAR
-              </Button>
-            ) : (
-              <Paypal className={s.paypal} price={total} />
-            )}
-          </Col>
-        </Row>
+        <Button
+          onClick={handlePageProducts}
+          variant="outline-warning"
+          style={{
+            height: "40px",
+            border: "var(--border)",
+            color: "var(--text-color)",
+            backdropFilter: "blur(5px)",
+          }}
+          className="m-3"
+        >
+          Volver a productos
+        </Button>
+        <Button
+          onClick={cleanCart}
+          variant="outline-warning"
+          style={{
+            height: "40px",
+            border: "var(--border)",
+            color: "var(--text-color)",
+            backdropFilter: "blur(5px)",
+          }}
+          className="m-3"
+        >
+          Limpiar carrito
+        </Button>
+        {!idLocal ? (
+          <Button
+            onClick={HandleBack}
+            variant="outline-warning"
+            style={{
+              border: "var(--border)",
+              color: "var(--text-color)",
+              backdropFilter: "blur(5px)",
+            }}
+            className="m-3"
+          >
+            COMPRAR
+          </Button>
+        ) : (
+          <Paypal className={s.paypal} price={total} />
+        )}
       </Container>
     </div>
   );

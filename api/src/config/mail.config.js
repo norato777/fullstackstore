@@ -2,14 +2,15 @@ const nodemailer = require('nodemailer');
 require("dotenv").config();
 const name = require('../models/Users.js');
 const mail = {
-    user: process.env.AUTH_EMAIL,
-    pass: process.env.AUTH_PASS
+    user: 'thefullstackstoree@gmail.com',
+    pass: 'crpujzwivvakhcqh'
 }
 
 let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
     tls: {
+        minVersion: 'TLSv1',
         rejectUnauthorized: false
     },
     secure: true, 
@@ -135,7 +136,7 @@ let transporter = nodemailer.createTransport({
                       <p style="margin-bottom: 50px;"><i>Atentamente:</i><br>Equipo FullStackSotore</p>
       
                       <!-- Botón -->
-                      <a class="claseBoton" href="${process.env.VERIFICATION_URL}${token}">Confirmar</a>
+                      <a class="claseBoton" href='https://fullstackstore.vercel.app/'>Confirmar</a>
                   </div>
                   <!-- Contenido principal -->
       
