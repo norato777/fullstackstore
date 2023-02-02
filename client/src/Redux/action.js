@@ -395,3 +395,13 @@ export function getComents(id) {
 //     })
 //   }
 // }
+export function add(num){
+  return async function (dispatch) {
+  return await dispatch({type:"ADD", payload:num+1})
+}
+}
+export function remove(num){
+  return async function (dispatch) {
+  return await dispatch({type:"REMOVE", payload:num-1})
+}
+}

@@ -63,8 +63,6 @@ export default function Productos() {
     } else setNum1(n);
     setNum2(n + 21);
   };
-
-  console.log(product.slice(num1, num2))
   return (
     <Container>
       {/* paginacion */}

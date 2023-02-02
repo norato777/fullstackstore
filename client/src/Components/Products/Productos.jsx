@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getDetail } from "../../Redux/action";
+import { add, getDetail } from "../../Redux/action";
 import { Container, Card, Button, Row, Image } from "react-bootstrap";
 import CardAlt from "../CardProducts/CardAlt";
 
@@ -63,7 +63,7 @@ export default function Productos() {
     setNum2(n + 20);
   };
   const handleAddCart = (product) => {
-    console.log(cartNew)
+    dispatch(add(cartNew.length))
     let itemInCart = cartNew.find((ele) => ele._id === product._id);
     let pepe = cartNew;
     if (itemInCart) {
@@ -138,7 +138,7 @@ export default function Productos() {
 
         {products?.slice(num1, num2)?.map((product, i) => {
           return (
-            <CardAlt key={i} prop={product} />
+            <CardAlt key={i} prop={product} handleAddCart={()=>handleAddCart(product)} />
           );
         })}
       </Row>

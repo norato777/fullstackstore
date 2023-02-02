@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Navbar, Container, Image, Row, Col, Button } from "react-bootstrap";
-import SearchBarMain from "../SearchBarMain/SearchBarMain";
-import NavbarHeader from "../NavbarHeader/NavbarHeader";
 import LightMode from "../LightMode/LightMode";
 import s from "./HeaderAlt.module.css";
-import { getProducts } from "../../Redux/action";
-import { useDispatch } from "react-redux";
 import SearchBarAlt from "../SearchBarMain/SerchBarAlt";
 import NavbarHeaderAlt from "../NavbarHeader/NavbarHeaderAlt";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function HeaderAlt() {
-  const navigate = useNavigate();
+  const navigate = useNavigate();  
+  const dispatch = useDispatch()
 
+  let num = useSelector((state)=>state.num)
+
+  useEffect(()=>{
+},[num])
   const handleCart = () => {
     navigate("/cart");
   };
@@ -20,20 +21,22 @@ export default function HeaderAlt() {
     navigate("/");
   };
 
+
   return (
     <>
     <div className={s.contenedor}>
       <img src="/Full_Stack__2_-removebg-preview.png" onClick={handleHome} className={s.logo}/>
       <SearchBarAlt />
    <div className={s.contSerch}> 
-
+ 
       <NavbarHeaderAlt />
 
     <div className={s.line} onClick={handleCart}></div>
 
       <button  onClick={handleCart} className={s.buton}>
-        <i className="bi bi-cart-check-fill"></i>
+        <i className="bi bi-cart-check-fill"><span className={s.num}>{num?num:""}</span></i>
       </button>
+    
     <div className={s.line} onClick={handleCart}></div>
 
       <LightMode />

@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Navbar, Container, Image, Row, Col, Button } from "react-bootstrap";
-import SearchBarMain from "../SearchBarMain/SearchBarMain";
 import NavbarHeader from "../NavbarHeader/NavbarHeader";
 import LightMode from "../LightMode/LightMode";
 import s from "./Header.module.css"
-import { getProducts } from "../../Redux/action";
-import { useDispatch } from "react-redux";
 import SearchBarAlt from "../SearchBarMain/SerchBarAlt";
 
 export default function Header() {

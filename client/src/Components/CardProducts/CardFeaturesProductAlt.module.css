@@ -9,7 +9,7 @@
     border: 1px solid grey ;
     border-radius: 3px;
     transition: 0.2s ease;
-    margin: 3px;
+    margin: 8px;
     position: relative;
 }
 .card:hover{
@@ -25,6 +25,7 @@
     position: absolute;
     top: 0;
     overflow: hidden;
+    padding: 10px;
 }
 .title{
     position: absolute;
@@ -52,3 +53,17 @@
    background-color: grey;
 }
 
+.addCart{
+    font-size: 20px;
+    color: red;
+    margin-left: 25px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+}
+.addCart:hover{
+    color: white;
+    border-radius: 50%;
+    background-color: red;
+    transform: scale(1.05);
+}

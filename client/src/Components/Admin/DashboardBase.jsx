@@ -13,14 +13,19 @@ import CardGridMap from "./CardGridMap";
 import ChartDonut from "./ChartDonut";
 import TableUser from "./TableUser";
 import TableProduct from "./TableProduct";
+import { useNavigate } from "react-router-dom";
 
 const DashboardBase = () => {
   const [selectedView, setSelectedView] = useState(1);
-
+  const navigate = useNavigate()
+const handleHome =()=>{
+  navigate("/")
+}
   return (
     <Card>
       <Metric color="teal" marginTop="mt-10" text style >
       <Title marginTop="mt-10">
+        <button onClick={handleHome}>Volver al Home</button>
         <img alt="logo" src="/Full_Stack__2_-removebg-preview.png" style={{ position:"absolute", top:"0px", right:"0px", width:"180px" }} />
       </Title>
         Perfil de Administrador

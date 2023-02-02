@@ -33,7 +33,7 @@ export default function LightMode() {
   };
 
   return (
-    <button  
+    <button  defaultValue={dark}
       className={dark ? s.negro : s.blanco}  
       onClick={(e) => switchTheme(e)}
     >

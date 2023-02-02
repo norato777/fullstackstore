@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import RatingComents from "../RatingComents/RatingComents";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import MostrarComentarios from "../MostrarComentarios/MostrarComentarios";
-import { getDetail } from "../../Redux/action";
+import { add, getDetail } from "../../Redux/action";
 import Promobar from "../Promobar/Promobar";
 
 const ProductDetail = () => {
@@ -14,20 +14,18 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const details = useSelector((state) => state.detail);
   const navigate = useNavigate();
-  const cart = localStorage.getItem("cart");
+  const cart = localStorage.getItem("cart")|| "[]"
   const [cartNew, setCartNew]= useState(JSON.parse(cart))
 
-  // const handleCart = () => {
-  //   navigate("/cart");
-  // };
+  const cart1 = useSelector((state) => state.cart);
 
   useEffect(() => {
     // details._id===undefined && dispatch(getDetail(id));
-
+  
   }, [details,id]);
 
   const handleAddCart= (product)=>{   
-
+    dispatch(add(cartNew.length))
     let itemInCart = cartNew.find(ele=>ele._id===product._id)
     let pepe = cartNew   
     if(itemInCart){     

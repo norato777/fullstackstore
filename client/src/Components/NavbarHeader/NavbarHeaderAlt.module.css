@@ -12,3 +12,11 @@
 .contButon{
 display: flex;
 }
+.butonA{
+
+    border: none;
+    font-size: 17px;
+    color: rgb(255, 33, 33);
+    /* margin-left: 10px; */
+    margin-right: 10px;
+}

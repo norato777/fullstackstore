@@ -22,6 +22,7 @@ const initialState = {
   fol: [],
   filterCat: "",
   filterBra: "",
+  num:0,
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -285,6 +286,22 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+      case "ADD":
+        return {
+          ...state,
+          num:action.payload
+        };
+      case "REMOVE":
+        if(state.num!==0){
+          return {
+            ...state,
+            num:action.payload
+          };
+        }else{
+          return{
+            ...state
+          }
+        }
     default:
       return state;
   }

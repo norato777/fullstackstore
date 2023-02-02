@@ -83,7 +83,10 @@
     border-radius: 5px;
 }
 .backbuton{
- display: flex;
+
+    margin-bottom: 0;
+
+    display: flex;
  justify-content: space-around;
 }
 .h1{    
