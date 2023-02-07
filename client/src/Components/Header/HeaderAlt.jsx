@@ -28,8 +28,8 @@ export default function HeaderAlt() {
           onClick={handleHome}
           className={s.logo}
         />
-        <SearchBarAlt />
         <div className={s.contSerch}>
+        <SearchBarAlt />
           <NavbarHeaderAlt />
 
           <div className={s.line} onClick={handleCart}></div>
