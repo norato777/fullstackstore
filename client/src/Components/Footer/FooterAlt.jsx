@@ -24,7 +24,7 @@ export default function FooterAlt() {
         <li className={s.li}>Se parte de la evolucion</li>
        </ul>
         </div>   
-        <img src="/Full_Stack__2_-removebg-preview.png" className={s.logo}/>
+        <img src="/Full_Stack__9_-removebg-preview.png" className={s.logo}/>
     </div>
   );
 }

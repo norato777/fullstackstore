@@ -26,14 +26,14 @@ const handleHome =()=>{
       <Metric color="teal" marginTop="mt-10" text style >
       <Title marginTop="mt-10">
         <button onClick={handleHome}>Volver al Home</button>
-        <img alt="logo" src="/Full_Stack__2_-removebg-preview.png" style={{ position:"absolute", top:"0px", right:"0px", width:"180px" }} />
+        <img alt="logo" src="/Full_Stack__9_-removebg-preview.png" style={{ position:"absolute", top:"0px", right:"15px", width:"250px" }} />
       </Title>
         Perfil de Administrador
       </Metric>
 
       <TabList
         defaultValue={selectedView}
-        handleSelect={(value) => setSelectedView(value)}
+        onValueChange={(value) => setSelectedView(value)}
         marginTop="mt-6"
         color="orange"
       >

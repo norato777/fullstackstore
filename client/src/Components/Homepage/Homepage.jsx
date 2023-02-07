@@ -14,6 +14,7 @@ import Container from "react-bootstrap/Container";
 import CardPubli from "../CardPubli/CardPubli";
 import FooterAlt from "../Footer/FooterAlt";
 import OurBrandsAlt from "../OurBrands/OurBrandAlt";
+import Descuento from "../Descuentos/Descuentos";
 
 export default function Homepage() {
   const Products = useSelector((state) => state.products);
@@ -43,6 +44,7 @@ export default function Homepage() {
             <Carousel />
             <FeaturedProducts />
             <CardPubli/>
+            <Descuento/>
             <OurBrandsAlt />
             <FeaturedCategories />
           </Container>

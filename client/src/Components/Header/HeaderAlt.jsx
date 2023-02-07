@@ -7,13 +7,12 @@ import NavbarHeaderAlt from "../NavbarHeader/NavbarHeaderAlt";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function HeaderAlt() {
-  const navigate = useNavigate();  
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  let num = useSelector((state)=>state.num)
+  let num = useSelector((state) => state.num);
 
-  useEffect(()=>{
-},[num])
+  useEffect(() => {}, [num]);
   const handleCart = () => {
     navigate("/cart");
   };
@@ -21,27 +20,31 @@ export default function HeaderAlt() {
     navigate("/");
   };
 
-
   return (
     <>
-    <div className={s.contenedor}>
-      <img src="/Full_Stack__2_-removebg-preview.png" onClick={handleHome} className={s.logo}/>
-      <SearchBarAlt />
-   <div className={s.contSerch}> 
- 
-      <NavbarHeaderAlt />
+      <div className={s.contenedor}>
+        <img
+          src="/Full_Stack__9_-removebg-preview.png"
+          onClick={handleHome}
+          className={s.logo}
+        />
+        <SearchBarAlt />
+        <div className={s.contSerch}>
+          <NavbarHeaderAlt />
 
-    <div className={s.line} onClick={handleCart}></div>
+          <div className={s.line} onClick={handleCart}></div>
 
-      <button  onClick={handleCart} className={s.buton}>
-        <i className="bi bi-cart-check-fill"><span className={s.num}>{num?num:""}</span></i>
-      </button>
-    
-    <div className={s.line} onClick={handleCart}></div>
+          <button onClick={handleCart} className={s.buton}>
+            <i className="bi bi-cart-check-fill">
+            {num ? <span className={s.num}>{num}</span> : null}
+            </i>
+          </button>
 
-      <LightMode />
- </div> 
-    </div>
+          <div className={s.line} onClick={handleCart}></div>
+
+          <LightMode />
+        </div>
+      </div>
     </>
   );
 }

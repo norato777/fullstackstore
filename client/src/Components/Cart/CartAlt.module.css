@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 30px;
 }
 .table{
     width: 80%;
@@ -30,15 +31,14 @@
     max-width: 200px;
     max-height: 150px;
     border-radius: 10px;
+
 }
 .table td:nth-child(1){
     width:70px;
    
  
 }
-.table td:nth-child(2){
-    
-}
+
 
 .buton1{
     border: none;

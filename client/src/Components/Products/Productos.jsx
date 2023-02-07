@@ -23,7 +23,10 @@ export default function Productos() {
   useSelector((state) => state.getDetail);
 
   useEffect(() => {
-    if(cart===null)setCartNew([])
+     if(cart===null){
+      localStorage.setItem("cart", "[]")
+      setCartNew([])
+  }
     setMaxPage(Math.ceil(products.length / 21));
     if (maxPage > 1) {
       for (let i = 1; i < maxPage; i++) {
@@ -31,7 +34,12 @@ export default function Productos() {
       }
       setPaginas(pages);
     } else setPaginas(pages);
+
   }, [products, page, maxPage, num1, num2, JSON.stringify(cart), cartNew]);
+  useEffect(() => {
+   setNum1(0)
+   setNum2(21)
+ }, [products]);
   function handleNextPage() {
     if (num2 >= maxPage * 21) {
       return num1, num2;

@@ -1,6 +1,7 @@
 const initialState = {
   products: [],
   allProducts: [],
+  productDeleted:[],
   detail: {},
   cart: [],
   user: [],
@@ -29,6 +30,9 @@ export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     // case to get all products
     case "GET_PRODUCTS":
+      let productsDeleted = action.payload.filter(
+        (ele) => ele.deleted !== false
+      );
       let productsFilter = action.payload.filter(
         (ele) => ele.deleted === false
       );
@@ -41,8 +45,9 @@ export default function rootReducer(state = initialState, action) {
       const uniqueBrands = [...new Set(marcas)];
       return {
         ...state,
-        products: productsFilter,
-        allProducts: productsFilter,
+        products: [...productsFilter],
+        allProducts: [...productsFilter],
+        productDeleted:[...productsDeleted],
         brand: uniqueBrands,
        
       };
@@ -50,9 +55,11 @@ export default function rootReducer(state = initialState, action) {
     case "POST_PRODUCT":
       return {
         ...state,
+
       };
     // case to modify a product
-    case "PUT_PRODUCT":
+    case "PUT_PRODUCT":   
+
       return {
         ...state,
       };
@@ -114,70 +121,85 @@ export default function rootReducer(state = initialState, action) {
       };
     case "FILTER_CATEGORY":
       let filtrados = [];
-      state.filterCat = action.payload;
-      if (state.filterBra !== 0 && state.fol.length !== 0) {
-        filtrados = state.fol.filter((e) =>
-          e.categories.includes(action.payload)
-        );
-        return {
-          ...state,
-          products: filtrados,
-          fil: filtrados,
-        };
-      } else if (state.filterCat.length !== 0 && state.filterBra.length === 0) {
-        filtrados = state.allProducts.filter((e) =>
-          e.categories.includes(action.payload)
-        );
-        return {
-          ...state,
-          products: filtrados,
-          fil: filtrados,
-        };
-      } else if (action.payload === "Category") {
-        return {
-          ...state,
-          products: state.products,
-          fil: filtrados,
-        };
-      } else {
-        filtrados = state.products.filter((e) =>
-          e.categories.includes(action.payload)
-        );
-
-        return {
-          ...state,
-          products: filtrados,
-          fil: filtrados,
-        };
+      // state.filterCat = action.payload;
+      // if (state.filterBra !== 0 && state.fol.length !== 0) {
+      //   filtrados = state.fol.filter((e) =>
+      //     e.categories.includes(action.payload)
+      //   );
+      //   return {
+      //     ...state,
+      //     products: filtrados,
+      //     fil: filtrados,
+      //   };
+      // } else if (state.filterCat.length !== 0 && state.filterBra.length === 0) {
+      //   filtrados = state.allProducts.filter((e) =>
+      //     e.categories.includes(action.payload)
+      //   );
+      //   return {
+      //     ...state,
+      //     products: filtrados,
+      //     fil: filtrados,
+      //   };
+      // } else if (action.payload === "Category") {
+      //   return {
+      //     ...state,
+      //     products: state.products,
+      //     fil: filtrados,
+      //   };
+      // } else {
+      //   filtrados = state.products.filter((e) =>
+      //     e.categories.includes(action.payload)
+      //   );
+      console.log(action.payload)
+      if(!state.fil.length){
+        filtrados = state.allProducts.filter(e=>e.categories.includes(action.payload))
+      }else{
+        filtrados = state.fil.filter(e=>e.categories.includes(action.payload))     
+      if(filtrados.length===0) filtrados = state.allProducts.filter(e=>e.categories.includes(action.payload))
       }
+      
+        return {
+          ...state,
+          products: [...filtrados],
+          fil: [...filtrados],
+        };
+      // }
     case "FILTER_BRAND":
       let filtrado = [];
-      state.filterBra = action.payload;
-      state.fol = state.allProducts.filter((e) => e.brand === action.payload);
-      if (state.filterBra.length !== 0 && state.filterBra !== "Brand") {
-        if (state.fil.length == 0) {
-          filtrado = state.allProducts.filter(
-            (e) => e.brand === action.payload
-          );
-        } else {
-          filtrado = state.fil.filter((e) => e.brand === action.payload);
+ 
+      // state.filterBra = action.payload;
+      // state.fol = state.allProducts.filter((e) => e.brand === action.payload);
+      // if (state.filterBra.length !== 0 && state.filterBra !== "Brand") {
+      //   if (state.fil.length == 0) {
+      //     filtrado = state.allProducts.filter(
+      //       (e) => e.brand === action.payload
+      //     );
+      //   } else {
+      //     filtrado = state.fil.filter((e) => e.brand === action.payload);
+      //   }
+      //   return {
+      //     ...state,
+      //     products: filtrado,
+      //   };
+      // } else if (action.payload === "Brand") {
+      //   return {
+      //     ...state,
+      //     products: state.products,
+      //   };
+      // } else {
+        if(!state.fil.length){
+          filtrado = state.allProducts.filter((e) => e.brand === action.payload)
+        }else{
+          filtrado = state.fil.filter((e) => e.brand === action.payload)
+          if(filtrado.length===0) filtrado = state.allProducts.filter((e) => e.brand === action.payload)
         }
+     
         return {
           ...state,
-          products: filtrado,
+          products: [...filtrado],
+          fil:[...filtrado]
         };
-      } else if (action.payload === "Brand") {
-        return {
-          ...state,
-          products: state.products,
-        };
-      } else {
-        filtrado = state.products.filter((e) => e.brand === action.payload);
-        return {
-          ...state,
-          products: filtrado,
-        };
-      }
+      // }
     // case register
     case "SIGN_UP":
       return {
@@ -221,6 +243,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         products: state.allProducts,
+        fil:[]
       };
     case "FILTER_PRICE":
       let sorted = state.products;

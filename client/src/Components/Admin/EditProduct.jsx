@@ -100,6 +100,17 @@ const EditProduct = () => {
                   </div>
                   <div className={stl.item}>
                     <Form.Label>
+                      Descuento:
+                      <Form.Control
+                        type="number"
+                        placeholder={item.discount}
+                        {...register("discount")}
+                      />
+                     
+                    </Form.Label>
+                  </div>
+                  <div className={stl.item}>
+                    <Form.Label>
                       Compatible:
                       <Form.Control
                         type="text"

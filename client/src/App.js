@@ -9,6 +9,7 @@ import Admin from "./Components/Admin/Admin";
 import EditProduct from "./Components/Admin/EditProduct";
 import CartAlt from "./Components/Cart/CartAlt";
 import Favorites from "./Components/Favorites/Favorites";
+import ProductDetailAlt from "./Components/ProductDetail/ProductDetailsAlt";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/form" element={<FormProducts />} />
           <Route path="/products" element={<PageProducts />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/product/:id" element={<ProductDetailAlt />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/admin/*" element={<Admin />} />
           <Route path="/cart/*" element={<CartAlt />} />

@@ -23,20 +23,22 @@ export default function Productos() {
 
   useSelector((state) => state.getDetail);
 
-  useEffect(() => {
-    if(cart===null){
-      setCartNew([])
-    localStorage.setItem("cart","[]")
-    }
-    setMaxPage(Math.ceil(products.length / 21));
-    if (maxPage > 1) {
-      for (let i = 1; i < maxPage; i++) {
-        pages.push(i);
-      }
-      setPaginas(pages);
-    } else setPaginas(pages);
-    setProduct(products)
-  }, [product, page, maxPage, num1, num2]);
+  // useEffect(() => {
+  //   // if(cart===null){
+  //   //   setCartNew([])
+  //   // localStorage.setItem("cart","[]")
+  //   // }
+  //   // setMaxPage(Math.ceil(products.length / 21));
+  //   // if (maxPage > 1) {
+  //   //   for (let i = 1; i < maxPage; i++) {
+  //   //     pages.push(i);
+  //   //   }
+  //   //   setPaginas(pages);
+  //   // } else setPaginas(pages);
+  //   // setProduct(products)
+  //   // setNum1(0)
+  //   // setNum2(21)
+  // }, [product, page, maxPage, num1, num2]);
 
   function handleNextPage() {
     if (num2 >= maxPage * 21) {

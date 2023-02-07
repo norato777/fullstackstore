@@ -13,7 +13,7 @@ export default function CardAlt({ prop, handleAddCart }) {
   const [oneProduct, setOneProduct] = useState(prop);
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
+  const discount = prop.price-(prop.price*prop.discount/100)
 
  
 const handleDetail = (e) => {
@@ -29,8 +29,17 @@ return (
    <div className={s.cardPrice}>
 
    <hr className={s.hr}></hr>
-   <span className={s.price}>$ {prop.price}, 00</span>
-   <i onClick={()=>handleAddCart()}className={`bi bi-cart-plus-fill ${s.addCart}`}></i>
+   {
+    prop.discount>0?
+    <div className={s.divDisc}>
+      <span className={s.discount}>${prop.price}</span>
+      <span className={s.price}>$ {Math.ceil(discount)}</span>
+    </div>:
+    <span className={s.price}>$ {prop.price}</span>
+   }
+   {
+     handleAddCart?<i onClick={()=>handleAddCart()}className={`bi bi-cart-plus-fill ${s.addCart}`}></i>: <span className={s.desc}>%{prop.discount}</span>
+   }
    </div>
 
    </div>

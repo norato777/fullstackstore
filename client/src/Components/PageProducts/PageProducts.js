@@ -84,10 +84,12 @@ export default function PageProducts() {
                 style={{
                   backgroundColor: "var(--background-color)",
                   backdropFilter: "blur(5px)",
-                  border: "var(--border)",
+                  // border: "var(--border)",
                   boxShadow: "var(--box-shadow)",
+                  // borderRadius:"none",
+                 marginTop:"88px"
                 }}
-                className="rounded-4"
+                // className="rounded-4"
               >
                 <Card.Header>
                   <h4

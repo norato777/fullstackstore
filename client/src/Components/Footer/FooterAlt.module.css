@@ -5,14 +5,14 @@
     align-items: center;
     height: 250px;
     border: 0.3px solid grey;
-    color: rgb(73, 73, 73);
-    background-color: rgb(218, 218, 218);
+    color: rgb(247, 247, 247);
+    background-color: rgb(161, 0, 0);
     width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
 .h3{
-    color:rgb(255, 33, 33);
+    color:rgb(255, 255, 255);
 }
 .li{
     margin-top: 20px;

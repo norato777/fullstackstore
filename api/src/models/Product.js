@@ -12,6 +12,10 @@ const ProductsSchema = new Schema({
   description: {
     type: String,
   },
+   discount: {
+    type: Number,
+    default:0,
+  },
   brand: {
     type: String,
   },
@@ -22,7 +26,7 @@ const ProductsSchema = new Schema({
     type: Number,
   },
   compatible: {
-    type: Number,
+    type: String,
   },
   favorites: {
     type: Array,

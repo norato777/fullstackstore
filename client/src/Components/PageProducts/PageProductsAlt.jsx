@@ -55,9 +55,10 @@ export default function PageProducts() {
     setSelectedCategory(value);
     dispatch(filterProductsCategory(value));
   };
-  const handleChangeBrand = (value) => {
-    setSelectedBrand(value);
-    dispatch(filterProductsBrand(value));
+  const handleChangeBrand = (e) => {
+    console.log(e.target.value)
+    setSelectedBrand(e.target.value);
+    dispatch(filterProductsBrand(e.target.value));
   };
   //filtro por precio usando filterProductsPrice de action.js
   const handleChangePrice = (value) => {
@@ -86,6 +87,7 @@ export default function PageProducts() {
                   backdropFilter: "blur(5px)",
                   border: "var(--border)",
                   boxShadow: "var(--box-shadow)",
+                  borderRadius:"1px"
                 }}
                 className="rounded-4"
               >
@@ -136,7 +138,7 @@ export default function PageProducts() {
                       className="form-control"
                       id="exampleFormControlSelect1"
                       value={selectedBrand}
-                      onChange={(e) => handleChangeBrand(e.target.value)}
+                      onChange={handleChangeBrand}
                       style={{
                         border: "var(--border)",
                       }}

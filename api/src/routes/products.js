@@ -34,7 +34,7 @@ router.put("/:id", (req, res) => {
   const { id } = req.params;
   try {
     productSchema
-      .findByIdAndUpdate(id, req.body)
+      .findByIdAndUpdate(id, req.body, {returnNewDocument: true, returnDocument:"after"})
       .then((data) => res.status(200).json(data));
   } catch (error) {
     res.status(400).json({ message: error });

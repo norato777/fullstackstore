@@ -8,6 +8,7 @@ import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import MostrarComentarios from "../MostrarComentarios/MostrarComentarios";
 import { add, getDetail } from "../../Redux/action";
 import Promobar from "../Promobar/Promobar";
+import s from "./ProductDetails.module.css"
 
 const ProductDetail = () => {
   const id = useParams()
@@ -15,6 +16,7 @@ const ProductDetail = () => {
   const details = useSelector((state) => state.detail);
   const navigate = useNavigate();
   const cart = localStorage.getItem("cart")|| "[]"
+
   const [cartNew, setCartNew]= useState(JSON.parse(cart))
 
   const cart1 = useSelector((state) => state.cart);
@@ -49,10 +51,11 @@ const ProductDetail = () => {
         <>
           <Container
             style={{
-              backgroundColor: "var(--background-color)",
-              backdropFilter: "blur(5px)",
-              border: "var(--border)",
-              boxShadow: "var(--box-shadow)",
+              // backgroundColor: "var(--background-color)",
+              // backdropFilter: "blur(5px)",
+              // border: "var(--border)",
+              // boxShadow: "var(--box-shadow)",
+              justifyContent:"center"
             }}
             className="rounded-4 mt-5 mb-5 p-3"
           >
@@ -67,7 +70,7 @@ const ProductDetail = () => {
                     marginTop: "14px",
                     width: "16rem",
                     height: "16rem",
-                    border: "var(--border)",
+                    // border: "var(--border)",
                     background: "#fff",
                   }}
                   className="m-3"
@@ -85,9 +88,24 @@ const ProductDetail = () => {
                 >
                   {details.name}
                 </Row>
+                {
+                  details.promedio &&
                 <Row
                   style={{
-                    color: "#fff",
+                    color: "var(--text-color)",
+                    fontSize: "21px",
+                    height: "35px",
+                
+                  }}
+                ><p>
+
+                Rating <span className={s.rating}> {Math.ceil(details.promedio)}</span>
+                </p>
+                </Row>
+                }
+                <Row
+                  style={{
+                    color: "var(--text-color)",
                     fontSize: "21px",
                     height: "35px",
                     overflow: "auto",
@@ -109,7 +127,7 @@ const ProductDetail = () => {
                 <Row
                   className="mt-1"
                   style={{
-                    color: "#fff",
+                    color: "var(--text-color)",
                     fontSize: "17px",
                     overflow: "auto",
                   }}
@@ -122,24 +140,24 @@ const ProductDetail = () => {
                 xs={2}
                 className="mt-3"
                 style={{
-                  color: "#fff",
+                  color: "var(--text-color)",
                   fontSize: "28px",
                   height: "49px",
                   textAlign: "end",
                 }}
               >
-                $ {details.price}
-                <Button
-                  className="mb-3"
+                $ {details.discount>0?details.price-(details.price*details.discount/100):details.price}
+                <button
+                  className={s.buton}
                   variant="outline-warning"
                   onClick={()=>handleAddCart(details)}
-                  style={{
-                    border: "var(--border)",
-                    color: "var(--text-color)",
-                  }}
+                  // style={{
+                  //   border: "var(--border)",
+                  //   color: "var(--text-color)",
+                  // }}
                 >
                   Agregar al Carrito
-                </Button>
+                </button>
               </Col>
             </Row>
           </Container>

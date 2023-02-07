@@ -26,23 +26,39 @@ const TableUser = () => {
   }, []);
 
   const handleAdmin = (id) => {
-    const admin = {
-      admin: true,
-    };
-    dispatch(putUser(id, admin));
-    swal("Se ha realizado el cambio a administrador correctamente");
-    window.location.reload();
+    swal({
+      title: "Deshabilitaras",
+      text: "Seguro que quieres habilitar al usuario?",
+      icon: "warning",
+      buttons: ["No", "Si"],
+    }).then((respuesta) => {
+      if (respuesta) {
+        const admin = {
+          admin: true,
+        };
+        dispatch(putUser(id, admin));
+      swal({ text: "Se ha habilitado como administrador correctamente", icon: "success", timer: 800 })
+      // window.location.reload()
+    }
+      else return})
   };
-
   const disabledHandleAdmin = (id) => {
-    const admin = {
-      admin: false,
-    };
-    dispatch(putUser(id, admin));
-    swal("Se ha deshabilitado como administrador correctamente");
-    window.location.reload();
+    swal({
+      title: "Deshabilitaras",
+      text: "Seguro que quieres deshabilitar al usuario?",
+      icon: "warning",
+      buttons: ["No", "Si"],
+    }).then((respuesta) => {
+      if (respuesta) {
+        const admin = {
+          admin: false,
+        };
+        dispatch(putUser(id, admin));
+      swal({ text: "Se ha deshabilitado como administrador correctamente", icon: "success", timer: 800 })
+      // window.location.reload()
+    }
+      else return})
   };
-
   const deleteClick = (id) => {
     dispatch(deleteUser(id));
     swal("User eliminado");
@@ -68,7 +84,7 @@ const TableUser = () => {
                 <TableCell>{item.status}</TableCell>
                 <Toggle
                   defaultValue={item.admin === true || item.admin === false}
-                  handleSelect={() =>
+                  onValueChange={() =>
                     item.admin === false
                       ? handleAdmin(item._id)
                       : disabledHandleAdmin(item._id)
@@ -86,7 +102,7 @@ const TableUser = () => {
                   <Button
                     size="xs"
                     onClick={() => deleteClick(item._id)}
-                    importance="secondary"
+                    variant="secondary"
                     color="orange"
                   >
                     Eliminar

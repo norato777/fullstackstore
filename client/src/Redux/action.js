@@ -42,11 +42,15 @@ export const putProduct = (id, data) => {
   return async function (dispatch) {
     try {
       const res = await axios.put(`/products/${id}`, data);
-      return dispatch({ type: "PUT_PRODUCT", payload: res.data });
+       dispatch({ type: "PUT_PRODUCT", payload: res.data});
+       const response = await axios.get("/products");
+      return dispatch({ type: "GET_PRODUCTS", payload: response.data });
+
     } catch (error) {
       return { error: error.message };
     }
-  };
+  }
+  
 };
 
 // action to delete a existing product by its ID
@@ -369,7 +373,7 @@ export function putCalificationRating(payload) {
 export function getComents(id) {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`/products/coment/${id}`);
+      const response = await axios.get(`/products/coments/${id}`);
       return dispatch({ type: "GET_COMENTS", payload: response.data });
     } catch (error) {
       console.log(error.message);
