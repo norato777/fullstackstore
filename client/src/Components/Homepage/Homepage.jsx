@@ -15,6 +15,7 @@ import CardPubli from "../CardPubli/CardPubli";
 import FooterAlt from "../Footer/FooterAlt";
 import OurBrandsAlt from "../OurBrands/OurBrandAlt";
 import Descuento from "../Descuentos/Descuentos";
+import s from "./Homepage.module.css";
 
 export default function Homepage() {
   const Products = useSelector((state) => state.products);
@@ -32,9 +33,10 @@ export default function Homepage() {
     <>
       {/* simbolo de carga mientras carga la pagina bootstrap  */}
       {!Products.length ? (
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
+        // <div className="spinner-border text-primary" role="status">
+        //   <span className="visually-hidden">Loading...</span>
+        // </div>
+        <span className={s.loader}></span>
       ) : (
         <>
           <Promobar />
