@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import swal from "sweetalert";
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
@@ -18,12 +19,12 @@ const Paypal = ({ price }) => {
 
   const onApprove = (data, actions) => {
     return actions.order.capture().then((details) => {
-      alert("Transacción completada por " + details.payer.name.given_name);
+      swal("Transacción completada por " + details.payer.name.given_name);
     });
   };
 
   const onCancel = (data) => {
-    alert("Has cancelado la compra");
+    swal("Has cancelado la compra");
     window.location.href = "http://localhost:3000/";
   };
 

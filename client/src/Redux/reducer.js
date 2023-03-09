@@ -1,6 +1,7 @@
 const initialState = {
   products: [],
   allProducts: [],
+  productDeleted:[],
   detail: {},
   cart: [],
   user: [],
@@ -18,14 +19,24 @@ const initialState = {
   logged: false,
   admin: false,
   search: "",
-  filter: "",
+  fil: [],
+  fol: [],
+  filterCat: "",
+  filterBra: "",
+  num:0,
 };
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     // case to get all products
     case "GET_PRODUCTS":
-      const marcas = state.allProducts
+      let productsDeleted = action.payload.filter(
+        (ele) => ele.deleted !== false
+      );
+      let productsFilter = action.payload.filter(
+        (ele) => ele.deleted === false
+      );
+      const marcas = productsFilter
         .map((e) => e.brand)
         .sort(function (a, b) {
           if (a < b) return -1;
@@ -34,17 +45,21 @@ export default function rootReducer(state = initialState, action) {
       const uniqueBrands = [...new Set(marcas)];
       return {
         ...state,
-        products: action.payload,
-        allProducts: action.payload,
+        products: [...productsFilter],
+        allProducts: [...productsFilter],
+        productDeleted:[...productsDeleted],
         brand: uniqueBrands,
+       
       };
     // case to create a new product
     case "POST_PRODUCT":
       return {
         ...state,
+
       };
     // case to modify a product
-    case "PUT_PRODUCT":
+    case "PUT_PRODUCT":   
+
       return {
         ...state,
       };
@@ -53,6 +68,12 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         products: action.payload,
+      };
+    // case to delete a user
+    case "DELETE_USER":
+      return {
+        ...state,
+        users: action.payload,
       };
     case "GET_CATEGORIES":
       return {
@@ -99,36 +120,86 @@ export default function rootReducer(state = initialState, action) {
         ...state,
       };
     case "FILTER_CATEGORY":
-      if (action.payload === "Category") {
-        return {
-          ...state,
-          products: state.products,
-        };
-      } else {
-        let filtrados = state.products.filter((e) =>
-          e.categories.includes(action.payload)
-        );
-
-        return {
-          ...state,
-          products: filtrados,
-        };
+      let filtrados = [];
+      // state.filterCat = action.payload;
+      // if (state.filterBra !== 0 && state.fol.length !== 0) {
+      //   filtrados = state.fol.filter((e) =>
+      //     e.categories.includes(action.payload)
+      //   );
+      //   return {
+      //     ...state,
+      //     products: filtrados,
+      //     fil: filtrados,
+      //   };
+      // } else if (state.filterCat.length !== 0 && state.filterBra.length === 0) {
+      //   filtrados = state.allProducts.filter((e) =>
+      //     e.categories.includes(action.payload)
+      //   );
+      //   return {
+      //     ...state,
+      //     products: filtrados,
+      //     fil: filtrados,
+      //   };
+      // } else if (action.payload === "Category") {
+      //   return {
+      //     ...state,
+      //     products: state.products,
+      //     fil: filtrados,
+      //   };
+      // } else {
+      //   filtrados = state.products.filter((e) =>
+      //     e.categories.includes(action.payload)
+      //   );
+      console.log(action.payload)
+      if(!state.fil.length){
+        filtrados = state.allProducts.filter(e=>e.categories.includes(action.payload))
+      }else{
+        filtrados = state.fil.filter(e=>e.categories.includes(action.payload))     
+      if(filtrados.length===0) filtrados = state.allProducts.filter(e=>e.categories.includes(action.payload))
       }
+      
+        return {
+          ...state,
+          products: [...filtrados],
+          fil: [...filtrados],
+        };
+      // }
     case "FILTER_BRAND":
-      if (action.payload === "Brand") {
+      let filtrado = [];
+ 
+      // state.filterBra = action.payload;
+      // state.fol = state.allProducts.filter((e) => e.brand === action.payload);
+      // if (state.filterBra.length !== 0 && state.filterBra !== "Brand") {
+      //   if (state.fil.length == 0) {
+      //     filtrado = state.allProducts.filter(
+      //       (e) => e.brand === action.payload
+      //     );
+      //   } else {
+      //     filtrado = state.fil.filter((e) => e.brand === action.payload);
+      //   }
+      //   return {
+      //     ...state,
+      //     products: filtrado,
+      //   };
+      // } else if (action.payload === "Brand") {
+      //   return {
+      //     ...state,
+      //     products: state.products,
+      //   };
+      // } else {
+        if(!state.fil.length){
+          filtrado = state.allProducts.filter((e) => e.brand === action.payload)
+        }else{
+          filtrado = state.fil.filter((e) => e.brand === action.payload)
+          if(filtrado.length===0) filtrado = state.allProducts.filter((e) => e.brand === action.payload)
+        }
+     
         return {
           ...state,
-          products: state.products,
+          products: [...filtrado],
+          fil:[...filtrado]
         };
-      } else {
-        let filtrados = state.products.filter(
-          (e) => e.brand === action.payload
-        );
-        return {
-          ...state,
-          products: filtrados,
-        };
-      }
+      // }
     // case register
     case "SIGN_UP":
       return {
@@ -148,7 +219,7 @@ export default function rootReducer(state = initialState, action) {
       } else {
         return {
           ...state,
-          user: action.payload,
+          user: userEmail,
           logged: true,
         };
       }
@@ -157,6 +228,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         user: [],
+        cart: [],
         logged: false,
       };
     case "SEARCH_BAR":
@@ -171,6 +243,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         products: state.allProducts,
+        fil:[]
       };
     case "FILTER_PRICE":
       let sorted = state.products;
@@ -180,12 +253,12 @@ export default function rootReducer(state = initialState, action) {
           products: sorted,
         };
       }
-      if (action.payload === "Menor a mayor") {
+      if (action.payload === "Menor") {
         sorted.sort(function (a, b) {
           return a.price - b.price;
         });
       }
-      if (action.payload === "Mayor a menor") {
+      if (action.payload === "Mayor") {
         sorted.sort(function (a, b) {
           return b.price - a.price;
         });
@@ -199,6 +272,59 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+    case "GET_REVIEWS":
+      return {
+        ...state,
+        reviews: action.payload,
+      };
+
+    case "POST_REVIEW":
+      return {
+        ...state,
+      };
+    case "GET_RATING":
+      return {
+        ...state,
+        reviews: action.payload,
+      };
+    case "GET_ORDERS":
+      return {
+        ...state,
+        orders: action.payload,
+      };
+    case "GET_COMENTS":
+      return {
+        ...state,
+        reviews: action.payload,
+      };
+    case "POST_COMENT":
+      return {
+        ...state,
+      };
+    case "PUT_COMENT":
+      return {
+        ...state,
+      };
+    case "POST_RATING":
+      return {
+        ...state,
+      };
+      case "ADD":
+        return {
+          ...state,
+          num:action.payload
+        };
+      case "REMOVE":
+        if(state.num!==0){
+          return {
+            ...state,
+            num:action.payload
+          };
+        }else{
+          return{
+            ...state
+          }
+        }
     default:
       return state;
   }

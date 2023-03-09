@@ -1,21 +1,15 @@
+
 import React from "react";
-import { Container, Card, Figure, Navbar, Row, Image } from "react-bootstrap";
+import s from "./Promobar.module.css"
 
 export default function Promobar() {
   return (
     <>
-      <Container className="mt-3 ">
-        <Figure.Image
-          src="./image/promo1.png"
-          style={{
-            backgroundColor: "rgba(33, 37, 41,0.5)",
-            backdropFilter: "blur(5px)",
-            border: "var(--border)",
-            boxShadow: "var(--box-shadow)",
-          }}
-          className="rounded-4"
-        />
-      </Container>
+      <div className={s.container} >
+      <i className={`bi bi-bag-check-fill ${s.icon}`}></i>
+        <h3 className={s.h3}> Black Friday</h3>
+        <span className={s.span}> 10% DESCUENTO</span>
+      </div>
     </>
   );
 }

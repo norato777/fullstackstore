@@ -1,7 +1,12 @@
 const { Router } = require("express");
 const router = Router();
 const productSchema = require("../models/Product");
-const { putProduct, putProductCalification, deleteDocument, recoverDocument } = require("../constrollers/productsController");
+const {
+  putProduct,
+  putProductCalification,
+  deleteDocument,
+  recoverDocument,
+} = require("../constrollers/productsController");
 
 router.get("/", (req, res) => {
   productSchema
@@ -26,19 +31,24 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  const id = req.params.id;
-  const product = req.body;
-  putProduct(id, product)
-    .then((product) => res.json(product))
-    .catch((error) => res.json({ message: error }));
+  const { id } = req.params;
+  try {
+    productSchema
+      .findByIdAndUpdate(id, req.body, {returnNewDocument: true, returnDocument:"after"})
+      .then((data) => res.status(200).json(data));
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
 });
+
 router.put("/rating/:id", (req, res) => {
   const id = req.params.id;
   const product = req.body;
-  putProductCalification(product,id)
+  putProductCalification(product, id)
     .then((product) => res.json(product))
     .catch((error) => res.json({ message: error }));
 });
+
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
   productSchema
@@ -46,20 +56,38 @@ router.delete("/:id", (req, res) => {
     .then((data) => res.json(data))
     .catch((error) => res.json({ mesagge: error }));
 });
+
 router.put("/delete/:id", (req, res) => {
   const { id } = req.params;
-
   deleteDocument(id)
     .then((data) => res.json(data))
     .catch((error) => res.json({ mesagge: error }));
 });
+
 router.put("/recover/:id", (req, res) => {
   const { id } = req.params;
-  console.log(id)
- 
   recoverDocument(id)
     .then((data) => res.json(data))
     .catch((error) => res.json({ mesagge: error }));
+});
+
+//get rating por id
+router.get("/rating/:id", (req, res) => {
+  const { id } = req.params;
+  productSchema
+    .findById(id)
+    .then((product) => res.json(product.rating))
+    .catch((error) => res.json({ message: error }));
+});
+
+//get coment por id de producto
+
+router.get("/coments/:id", (req, res) => {
+  const { id } = req.params;
+  productSchema
+    .findById(id)
+    .then((product) => res.json(product.coments))
+    .catch((error) => res.json({ message: error }));
 });
 
 module.exports = router;

@@ -18,20 +18,25 @@ export default function NavbarHeader() {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const user = useSelector((state) => state.user);
-  const logged = useSelector((state) => state.logged);
+  const idLocalStorge = localStorage.getItem("id")
+  const userLocalStorage = localStorage.getItem("admin")
   const handleClose = () => setShow(false);
-
   const handleShow = () => setShow(true);
-
+  
   useEffect(() => {
     dispatch(getUsers());
   }, []);
 
   const signOut = () => {
     dispatch(logOut());
+    localStorage.removeItem("user")
     navigate("/");
     window.location.reload();
   };
+
+  const onClickAdmin = () => {
+    navigate("/admin");
+  }
 
   const onClickProfile = () => {
     navigate("/profile");
@@ -46,7 +51,6 @@ export default function NavbarHeader() {
       <Container fluid>
         <Nav className="justify-content-end" activeKey="/">
           <Nav.Item>
-            <LightMode />
           </Nav.Item>
           <Nav.Item>
             <Button
@@ -58,7 +62,7 @@ export default function NavbarHeader() {
                 color: "var(--text-color)",
               }}
             >
-              <i className="bi bi-star "></i> Favoritos
+              <i className="bi bi-star "></i> <b> Favoritos</b>
             </Button>
           </Nav.Item>
           <Nav.Item>
@@ -71,10 +75,10 @@ export default function NavbarHeader() {
                 color: "var(--text-color)",
               }}
             >
-              <i className="bi bi-back "></i> Comparar
+              <i className="bi bi-back "></i><b> Comparar</b>
             </Button>
           </Nav.Item>
-          {user.length === 0 && logged === false ? (
+          {!idLocalStorge ? (
             <>
               <Nav.Item>
                 <Button
@@ -86,7 +90,7 @@ export default function NavbarHeader() {
                     color: "var(--text-color)",
                   }}
                 >
-                  <i className="bi bi-box-arrow-in-right "></i> Ingresar
+                  <i className="bi bi-box-arrow-in-right "></i><b> Ingresar</b>
                 </Button>
               </Nav.Item>
             </>
@@ -94,18 +98,49 @@ export default function NavbarHeader() {
             <>
               <ButtonGroup>
                 <DropdownButton
+                  className="m-1"
                   as={ButtonGroup}
-                  title="Usuario"
+                  title="Mi cuenta"
                   id="bg-nested-dropdown"
+                  variant="outline-warning"
+                  style={{
+                    backgroundColor: "var(--background-color)",
+                    backdropFilter: "blur(5px)",
+                    border: "var(--border)",
+                    color: "var(--text-color)",
+                    height: "38px",
+                  }}
                 >
-                  <Dropdown.Item eventKey="1" onClick={onClickFavorites}>
-                    Favoritos
+                  <Dropdown.Item
+                    eventKey="1"
+                    onClick={onClickFavorites}
+                    style={{
+                      backgroundColor: "var(--background-color)",
+                      border: "var(--border)",
+                      color: "var(--text-color)",
+                    }}
+                  ><b> Favoritos</b>
                   </Dropdown.Item>
-                  <Dropdown.Item eventKey="2" onClick={onClickProfile}>
-                    Mi perfil
+                  <Dropdown.Item
+                    eventKey="2"
+                    onClick={onClickProfile}
+                    style={{
+                      backgroundColor: "var(--background-color)",
+                      border: "var(--border)",
+                      color: "var(--text-color)",
+                    }}
+                  ><b> Mi perfil</b>
                   </Dropdown.Item>
-                  <Dropdown.Item eventKey="3" onClick={signOut}>
-                    Cerrar sesión
+                  <Dropdown.Item
+                    eventKey="3"
+                    onClick={signOut}
+                    style={{
+                      backgroundColor: "var(--background-color)",
+                      border: "var(--border)",
+                      color: "var(--text-color)",
+                    }}
+                  >
+                    <b> Cerrar sesión</b>
                   </Dropdown.Item>
                 </DropdownButton>
               </ButtonGroup>

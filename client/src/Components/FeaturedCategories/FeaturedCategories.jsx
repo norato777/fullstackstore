@@ -7,31 +7,39 @@ import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 
 export default function FeaturedCategories() {
-  const category = useSelector((state) => state.category);
-  const dispatch = useDispatch();
+  const category = useSelector((state)=> state.category)
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    !category.length && dispatch(getCategories());
-  }, []);
 
-  return (
-    <>
-      <h1
-        style={{
-          color: "#ffc800",
-        }}
-      >
-        Categorias Destacadas
-      </h1>
-      <Container className="mt-3 mb-3">
+  useEffect(()=>{
+    !category.length && dispatch(getCategories())
+  },[])
+  
+  return (      
         <div className={stl.container}>
-          {category?.map((e, i) => (
+          <section className={stl.section}>
+          {category?.slice(0,4).map((e, i) => (
             <div key={i}>
               <CardFeaturedCategories prop={e} />
             </div>
           ))}
+          </section>
+          <section className={stl.section}>
+
+          {category?.slice(4,8).map((e, i) => (
+            <div key={i}>
+              <CardFeaturedCategories prop={e} />
+            </div>
+          ))}
+          </section>
+          <section className={stl.section}>
+
+          {category?.slice(8,12).map((e, i) => (
+            <div key={i}>
+              <CardFeaturedCategories prop={e} />
+            </div>
+          ))}
+          </section>
         </div>
-      </Container>
-    </>
   );
 }

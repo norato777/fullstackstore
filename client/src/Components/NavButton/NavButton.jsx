@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { filterProductsCategory } from "../../Redux/action";
-import { Container, Nav } from "react-bootstrap";
-
+import { Container, FormText, Nav } from "react-bootstrap";
+import { Button} from "react-bootstrap";
 export default function NavButton({ prop }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -12,14 +12,18 @@ export default function NavButton({ prop }) {
     e.preventDefault();
     dispatch(filterProductsCategory(prop.name));
     navigate("/products");
-    console.log(prop.name);
   };
 
   return (
     <Container>
-      <Nav.Link onClick={handleClick} style={{ color: "#ffc800" }}>
+      <Button onClick={handleClick} variant="outline-warning"    
+      style={{
+                    border: "none",
+                    color: "var(--text-color)",
+
+                  }}>
         {prop.name}
-      </Nav.Link>
+      </Button>
     </Container>
   );
 }

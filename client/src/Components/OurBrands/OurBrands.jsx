@@ -6,19 +6,16 @@ import { Col, Container, Row } from "react-bootstrap";
 export default function OurBrands() {
   return (
     <>
-      <h1 style={{ color: "#ffc800" }}>
-        ¡En Fullstack Store encuentra las mejores marcas!
-      </h1>
       <Container
-        sm-5
         style={{
           backgroundColor: "var(--background-color)",
           backdropFilter: "blur(5px)",
           border: "var(--border)",
           boxShadow: "var(--box-shadow)",
+  
         }}
         expand="lg"
-        className="rounded-4 mt-3 mb-3"
+        className="rounded-4 m-3"
       >
         <Row>
           <Col>

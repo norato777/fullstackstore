@@ -4,7 +4,7 @@ import NavButton from "../NavButton/NavButton";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Navbar, Nav } from "react-bootstrap";
 
-export default function NavbarHeader() {
+export default function NavbarMain() {
   const category = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ export default function NavbarHeader() {
               }}
             >
               {category?.map((e, i) => (
-                <div>
+                <div key={i}>
                   <NavButton prop={e} />
                 </div>
               ))}

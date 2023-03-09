@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Google from "../Google/Google";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { signUp } from "../../Redux/action";
-import { Form, Modal, Nav, Button } from "react-bootstrap";
+import { Form, Modal, Button } from "react-bootstrap";
+import s from "../ModalLogin/ModalLogin.module.css"
 
 const ModalRegister = ({ show, handleClose }) => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const ModalRegister = ({ show, handleClose }) => {
   const [password, setPassword] = useState("");
 
   const nameChangeHandler = (e) => {
-    setEmail(e.target.value);
+    setName(e.target.value);
   };
 
   const emailChangeHandler = (e) => {
@@ -43,16 +43,13 @@ const ModalRegister = ({ show, handleClose }) => {
 
   return (
     <Form
-      className="mb-10"
+    className={s.container}
       onSubmit={handleSubmit(onSubmit)}
-      style={{
-        backdropFilter: "blur(5px)",
-        border: "var(--border)",
-      }}
+
     >
       <Modal.Header
         style={{
-          backgroundColor: "var(--background-color)",
+      
           backdropFilter: "blur(5px)",
         }}
       >
@@ -61,21 +58,19 @@ const ModalRegister = ({ show, handleClose }) => {
             color: "#198754",
           }}
         >
-          Registrate
+          <b>Registrate</b>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body
         style={{
-          backgroundColor: "var(--background-color)",
+          // backgroundColor: "var(--background-color)",
           backdropFilter: "blur(5px)",
         }}
       >
         <Form.Group className="mb-8" controlId="formBasicEmail">
           <div>
             <Form.Label
-              style={{
-                color: "var(--text-color)",
-              }}
+          className={s.title}
             >
               Nombre
               <Form.Control
@@ -83,9 +78,7 @@ const ModalRegister = ({ show, handleClose }) => {
                 {...register("name", { required: true })}
                 onChange={nameChangeHandler}
                 value={name}
-                style={{
-                  border: "var(--border)",
-                }}
+                className={s.title}
               />
               {errors.name?.type === "required" && (
                 <p>No ingresaste tu nombre</p>
@@ -94,9 +87,7 @@ const ModalRegister = ({ show, handleClose }) => {
           </div>
           <div>
             <Form.Label
-              style={{
-                color: "var(--text-color)",
-              }}
+        className={s.title}
             >
               Email
               <Form.Control
@@ -104,9 +95,7 @@ const ModalRegister = ({ show, handleClose }) => {
                 {...register("name", { required: true })}
                 onChange={emailChangeHandler}
                 value={email}
-                style={{
-                  border: "var(--border)",
-                }}
+                className={s.title}
               />
               {errors.name?.type === "required" && (
                 <p>No ingresaste tu email </p>
@@ -114,9 +103,7 @@ const ModalRegister = ({ show, handleClose }) => {
             </Form.Label>
           </div>
           <Form.Label
-            style={{
-              color: "var(--text-color)",
-            }}
+      className={s.title}
           >
             Contraseña
             <Form.Control
@@ -124,9 +111,7 @@ const ModalRegister = ({ show, handleClose }) => {
               {...register("password", { required: true })}
               onChange={passwordChangeHandler}
               value={password}
-              style={{
-                border: "var(--border)0",
-              }}
+              className={s.title}
             />
             {errors.name?.type === "required" && (
               <p>No ingresaste tu contraseña </p>
@@ -136,18 +121,19 @@ const ModalRegister = ({ show, handleClose }) => {
       </Modal.Body>
       <Modal.Footer
         style={{
-          backgroundColor: "var(--background-color)",
+          // backgroundColor: "var(--background-color)",
           backdropFilter: "blur(5px)",
         }}
       >
         <Button
           onClick={handleClose}
-          variant="outline-warning"
-          style={{
-            border: "1px solid #198754",
-            color: "#198754",
-            width: "170px",
-          }}
+          type="submit"
+          variant="btn btn-success"
+          // style={{
+          //   border: "1px solid #198754",
+          //   color: "#198754",
+          //   width: "170px",
+          // }}
           className="m-1"
         >
           Registrarse

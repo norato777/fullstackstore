@@ -5,21 +5,17 @@ module.exports = {
   getCategories: async function () {
     try {
       const category = await CategoriesModel.find();
-      const numCategory = category.map((e) => e.name);
+      const numCategory = category.map((e) => e.name).filter(e=>e.length>2)
       const products = await ProductsModel.find();
       const categories = products.reduce((acc, product) => {
         acc[product.categories] = true;
         return acc;
       }, {});
-      const uniqueCategories = Object.keys(categories);
-      console.log(uniqueCategories);
-      console.log(numCategory);
-
+      const uniqueCategories = Object.keys(categories)
       if (uniqueCategories.length !== category.length) {
         uniqueCategories.forEach((cat) => {
           const obj = Object({ name: cat });
-          console.log(obj);
-          CategoriesModel(obj).save();
+            CategoriesModel(obj).save();
         });
         return uniqueCategories;
       } else return category;

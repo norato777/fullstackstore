@@ -1,39 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { putCalificationRating } from "../../Redux/action";
 import { Container, Row, Col, Form, InputGroup, Button } from "react-bootstrap";
+import swal from "sweetalert";
+import s from "./RatingComents.module.css";
 
-export default function RatingComents({ id }) {
+export default function RatingComents({ props }) {
+  const pepe = props;
   const dispatch = useDispatch();
 
-  const [rating, setRating] = useState({ _id: id });
+  const [rating, setRating] = useState();
+  useEffect(() => {
+    if (props._id) {
+      setRating(pepe);
+    }
+  }, [props._id]);
 
   const handleChangeRating = (e) => {
     setRating({
       ...rating,
-      calification: e.target.value,
+      calification: parseInt(e.target.value),
     });
-    console.log(rating);
   };
   const handleComents = (e) => {
     setRating({
       ...rating,
       coments: e.target.value,
     });
-    console.log(rating);
   };
   const handleClick = (e) => {
-    dispatch(putCalificationRating(rating));
-    console.log(rating, id);
+    if (rating.coments === "") {
+      swal("necesitas poner un comentario");
+    } else dispatch(putCalificationRating(rating));
+    setRating({});
+    swal("Gracias por dejar tu valoracion");
   };
   return (
-    <Container
-      style={{
-        backgroundColor: "var(--background-color)",
-        backdropFilter: "blur(5px)",
-        border: "var(--border)",
-        boxShadow: "var(--box-shadow)",
-      }}
+    <Container 
+      style={
+        {
+          // backgroundColor: "var(--background-color)",
+          // backdropFilter: "blur(5px)",
+          // border: "var(--border)",
+          // boxShadow: "var(--box-shadow)",
+        }
+      }
       expand="lg"
       className="rounded-4 mb-xxl-5 mt-xxl-5 "
     >
@@ -47,6 +58,70 @@ export default function RatingComents({ id }) {
       </h5>
       <Row className="justify-content-md-center">
         <Col>
+          <div className={s.container}>
+            <div className={s.starWidget}>
+              <input
+                type="radio"
+                onClick={() =>
+                  setRating({
+                    ...rating,
+                    calification: 1,
+                  })
+                }
+                className={s.input}
+                name="rate"
+              />1
+
+              <input
+                type="radio"
+                onClick={() =>
+                  setRating({
+                    ...rating,
+                    calification: 2,
+                  })
+                }
+                className={s.input}
+                name="rate"
+              />2
+
+              <input
+                type="radio"
+                onClick={() =>
+                  setRating({
+                    ...rating,
+                    calification: 3,
+                  })
+                }
+                className={s.input}
+                name="rate"
+              />3
+
+              <input
+                type="radio"
+                onClick={() =>
+                  setRating({
+                    ...rating,
+                    calification: 4,
+                  })
+                }
+                className={s.input}
+                name="rate"
+              />4
+
+              <input
+                type="radio"
+                onClick={() =>
+                  setRating({
+                    ...rating,
+                    calification: 5,
+                  })
+                }
+                name="rate"
+                className={s.input}
+              />5
+            </div>
+          </div>
+          {/* 
           <Form.Check type="radio" value="1" onChange={handleChangeRating} />
           <Form.Text
             style={{
@@ -99,27 +174,24 @@ export default function RatingComents({ id }) {
             }}
           >
             5
-          </Form.Text>
+          </Form.Text> */}
         </Col>
-        <Col xs={8}>
+        <Col xs={6}>
           <InputGroup>
             <Form.Control
               placeholder="Deja tus comentarios"
               style={{
-                border: "var(--border)",
+                // border: "var(--border)",
+                borderRadius: "1px",
               }}
               onChange={handleComents}
             ></Form.Control>
           </InputGroup>
         </Col>
         <Col>
-          <Button
-            variant="outline-warning"
-            style={{ border: "var(--border)", color: "var(--text-color)" }}
-            onClick={handleClick}
-          >
+          <button className={s.buton} onClick={handleClick}>
             Puntuar
-          </Button>
+          </button>
         </Col>
       </Row>
     </Container>

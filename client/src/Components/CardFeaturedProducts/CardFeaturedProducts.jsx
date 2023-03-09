@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Checkbox from "../CheckBox/CheckBox";
-import { Link } from "react-router-dom";
+// import Checkbox from "../CheckBox/CheckBox";
+import { Link, useNavigate } from "react-router-dom";
 import { getDetail } from "../../Redux/action";
 import { Card, ListGroup, Button } from "react-bootstrap";
 
+
 export default function CardFeaturedProducts({ num }) {
-  const dispatch = useDispatch();
   const Products = useSelector((state) => state.allProducts);
   const [oneProduct, setOneProduct] = useState(Products[num]);
-
-  const handleClick = () => {
-    dispatch(getDetail(oneProduct._id));
-  };
-
-  return (
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+ 
+const handleDetail = (e) => {
+  if(e){
+dispatch(getDetail(e));
+navigate(`/product/${e}`);
+}
+};
+return (
     <Card
       className="m-3"
       style={{
@@ -25,7 +29,7 @@ export default function CardFeaturedProducts({ num }) {
         boxShadow: "var(--box-shadow)",
       }}
     >
-      <Link to={`/product/${oneProduct._id}`} onClick={handleClick}>
+      <Link to={`/product/${oneProduct._id}`}>
         <Card.Img
           variant="top"
           src={oneProduct.image}
@@ -42,7 +46,7 @@ export default function CardFeaturedProducts({ num }) {
       <Card.Body>
         <Card.Title
           style={{
-            color: "#ffc800",
+            color: "var(--text-color)",
             textDecoration: "none",
             textWeight: "bold",
           }}
@@ -72,7 +76,7 @@ export default function CardFeaturedProducts({ num }) {
         <ListGroup.Item
           style={{
             backgroundColor: "var(--background-color)",
-            color: "#ffc800",
+            color: "var(--text-color)",
             fontSize: "17px",
             textAlign: "start",
           }}
@@ -104,13 +108,15 @@ export default function CardFeaturedProducts({ num }) {
           color: "var(--text-color)",
         }}
       >
-        <Checkbox />
-        <Button
-          variant="outline-warning"
-          style={{ border: "var(--border)", color: "var(--text-color)" }}
-        >
-          Agregar al carrito
-        </Button>
+        <Link to={`/product/${oneProduct._id}`}>
+          <Button
+            variant="outline-warning"
+            style={{ border: "var(--border)", color: "var(--text-color)" }}
+            onClick={()=>handleDetail(oneProduct._id)}
+          >
+            Ver detalles
+          </Button>
+        </Link>
       </Card.Body>
     </Card>
   );

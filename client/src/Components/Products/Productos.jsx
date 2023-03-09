@@ -1,9 +1,10 @@
 //componente de productos que se renderisa en pageProducts solo 20 productos por pagina
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { getDetail, getProducts } from "../../Redux/action";
+import { useNavigate } from "react-router-dom";
+import { add, getDetail } from "../../Redux/action";
 import { Container, Card, Button, Row, Image } from "react-bootstrap";
+import CardAlt from "../CardProducts/CardAlt";
 
 export default function Productos() {
   const dispatch = useDispatch();
@@ -14,11 +15,18 @@ export default function Productos() {
   const [num1, setNum1] = useState(0);
   const [num2, setNum2] = useState(21);
   const [paginas, setPaginas] = useState([]);
+  const cart = localStorage.getItem("cart");
+
+  const [cartNew, setCartNew] = useState(JSON.parse(cart));
   let pages = [];
 
   useSelector((state) => state.getDetail);
 
   useEffect(() => {
+     if(cart===null){
+      localStorage.setItem("cart", "[]")
+      setCartNew([])
+  }
     setMaxPage(Math.ceil(products.length / 21));
     if (maxPage > 1) {
       for (let i = 1; i < maxPage; i++) {
@@ -26,7 +34,12 @@ export default function Productos() {
       }
       setPaginas(pages);
     } else setPaginas(pages);
-  }, [products, page, maxPage, num1, num2]);
+
+  }, [products, page, maxPage, num1, num2, JSON.stringify(cart), cartNew]);
+  useEffect(() => {
+   setNum1(0)
+   setNum2(21)
+ }, [products]);
   function handleNextPage() {
     if (num2 >= maxPage * 21) {
       return num1, num2;
@@ -45,16 +58,35 @@ export default function Productos() {
     }
   }
   const handleDetail = (e) => {
-    dispatch(getDetail(e.target.value));
-    navigate(`/product/${e.target.value}`);
+        if(e){
+      dispatch(getDetail(e));
+      navigate(`/product/${e}`);
+    }
   };
   const handleChangePagePerNum = (e) => {
-    console.log(e.target.value);
     let n = e.target.value * 20;
     if (e.target.value == 1) {
       return setNum1(0), setNum2(20);
     } else setNum1(n);
     setNum2(n + 20);
+  };
+  const handleAddCart = (product) => {
+    dispatch(add(cartNew.length))
+    let itemInCart = cartNew.find((ele) => ele._id === product._id);
+    let pepe = cartNew;
+    if (itemInCart) {
+      pepe?.map((item) =>
+        item._id === product._id ? { ...item, qty: (item.qty += 1) } : item
+      );
+      setCartNew(pepe);
+
+      // localStorage.setItem("cart", JSON.stringify(pepe));
+    } else {
+      product.qty = 1;
+      pepe = [...pepe, product];
+      setCartNew(pepe);
+    }
+    localStorage.setItem("cart", JSON.stringify(pepe));
   };
   return (
     <Container>
@@ -66,7 +98,7 @@ export default function Productos() {
         <Button
           onClick={handlePrevPage}
           variant="outline-warning"
-          style={{ border: "var(--border)", color: "var(--text-color)" }}
+          style={{ border: "var(--border)", color: "var(--text-color)", backdropFilter: "blur(825px)" }}
           className="m-1"
         >
           Anterior
@@ -78,7 +110,7 @@ export default function Productos() {
               value={e}
               onClick={handleChangePagePerNum}
               variant="outline-warning"
-              style={{ border: "var(--border)", color: "var(--text-color)" }}
+              style={{ border: "var(--border)", color: "var(--text-color)",backdropFilter: "blur(825px)" }}
               className="m-1"
             >
               {e}
@@ -87,7 +119,7 @@ export default function Productos() {
         <Button
           onClick={handleNextPage}
           variant="outline-warning"
-          style={{ border: "var(--border)", color: "var(--text-color)" }}
+          style={{ border: "var(--border)", color: "var(--text-color)",backdropFilter: "blur(825px)" }}
           className="m-1"
         >
           Siguiente
@@ -112,74 +144,9 @@ export default function Productos() {
 
         {/* card */}
 
-        {products?.slice(num1, num2)?.map((product) => {
+        {products?.slice(num1, num2)?.map((product, i) => {
           return (
-            <Card
-              style={{
-                width: "19rem",
-                backgroundColor: "var(--background-color)",
-                backdropFilter: "blur(5px)",
-                border: "var(--border)",
-                boxShadow: "var(--box-shadow)",
-              }}
-              expand="lg"
-              className="rounded-4 m-2"
-              key={product._id}
-            >
-              <Card.Body>
-                <Image
-                  fluid
-                  rounded
-                  className="mb-3"
-                  src={product.image}
-                  alt={product.name}
-                  style={{
-                    objectFit: "contain",
-                    marginTop: "14px",
-                    width: "16rem",
-                    height: "16rem",
-                    border: "var(--border)",
-                    background: "#fff",
-                    padding: "7px",
-                  }}
-                />
-
-                <Card.Title
-                  style={{
-                    color: "var(--text-color)",
-                  }}
-                >
-                  {product.name.slice(0, 30)}
-                </Card.Title>
-                {/* //descricion con caracteres limitados a 100 */}
-                <Card.Text
-                  style={{
-                    color: "var(--text-color)",
-                  }}
-                >
-                  {product.description.slice(0, 30)}...
-                </Card.Text>
-                <Card.Text
-                  style={{
-                    color: "#ffc800",
-                  }}
-                >
-                  ${product.price}
-                </Card.Text>
-                {/* usar getDetail para detalles del producto */}
-                <Button
-                  variant="outline-warning"
-                  style={{
-                    border: "var(--border)",
-                    color: "var(--text-color)",
-                  }}
-                  value={product._id}
-                  onClick={handleDetail}
-                >
-                  Ver detalles
-                </Button>
-              </Card.Body>
-            </Card>
+            <CardAlt key={i} prop={product} handleAddCart={()=>handleAddCart(product)} />
           );
         })}
       </Row>

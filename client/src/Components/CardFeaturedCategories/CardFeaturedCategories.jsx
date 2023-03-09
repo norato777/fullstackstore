@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { filterProductsCategory } from "../../Redux/action";
-import { Container, Button } from "react-bootstrap";
+import { Container, Button, Image } from "react-bootstrap";
 
 export default function CardFeaturedCategories({ prop }) {
   const navigate = useNavigate();
@@ -12,7 +12,6 @@ export default function CardFeaturedCategories({ prop }) {
     e.preventDefault();
     dispatch(filterProductsCategory(prop.name));
     navigate("/products");
-    console.log(prop.name);
   };
 
   return (

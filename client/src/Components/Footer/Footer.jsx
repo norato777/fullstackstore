@@ -5,15 +5,14 @@ export default function Footer() {
   return (
     <>
       <Container
-        fluid
         style={{
-          backgroundColor: "var(--background-color)",
+          backgroundColor: "var(--clr-1-R)",
           backdropFilter: "blur(5px)",
           border: "var(--border)",
           boxShadow: "var(--box-shadow)",
+          borderRadius:"15px"
         }}
         expand="lg"
-        className="mt-5"
       >
         <Navbar className="justify-content-center">
           <Nav>

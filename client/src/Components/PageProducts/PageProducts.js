@@ -8,13 +8,15 @@ import {
   cleanFilter,
   filterProductsPrice,
 } from "../../Redux/action";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import FooterAlt from "../Footer/FooterAlt";
 import Productos from "../Products/Productos";
+import Promobar from "../Promobar/Promobar"
 
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+import HeaderAlt from "../Header/HeaderAlt";
+import NavbarMainAlt from "../NavbarMain/NavbarMainAlt";
 
-function PageProducts() {
+export default function PageProducts() {
   const Products = useSelector((state) => state.products);
   const AllProducts = useSelector((state) => state.allProducts);
   const [filtrados, setFiltrados] = useState();
@@ -45,7 +47,6 @@ function PageProducts() {
 
   useEffect(() => {
     if (!AllProducts.length) dispatch(getProducts());
-    // setFiltrados(Products);
     getCategories();
     getBrand();
   }, [dispatch, Products]);
@@ -73,8 +74,9 @@ function PageProducts() {
   return (
     <>
       <div>
-        <Header />
-
+      <Promobar/>
+        <HeaderAlt />
+        <NavbarMainAlt />
         <Container className="mt-5">
           <Row>
             <Col>
@@ -82,51 +84,64 @@ function PageProducts() {
                 style={{
                   backgroundColor: "var(--background-color)",
                   backdropFilter: "blur(5px)",
-                  border: "var(--border)",
+                  // border: "var(--border)",
                   boxShadow: "var(--box-shadow)",
+                  // borderRadius:"none",
+                 marginTop:"88px"
                 }}
-                className="rounded-4"
+                // className="rounded-4"
               >
                 <Card.Header>
-                  <h5
+                  <h4
+                    className="mt-3"
                     style={{
                       color: "var(--text-color)",
                     }}
                   >
                     Filtros
-                  </h5>
+                  </h4>
                 </Card.Header>
                 <Card.Body>
                   <Form.Group>
                     <Form.Label
                       style={{
-                        color: "#ffc800",
+                        color: "var(--text-color)",
                       }}
+                      className="mb-3"
                     >
                       Categoria
                     </Form.Label>
                     <Form.Select
                       className="form-control"
+                      id="exampleFormControlSelect1"
                       value={selectedCategory}
                       onChange={(e) => handleChangeCategory(e.target.value)}
+                      style={{
+                        border: "var(--border)",
+                      }}
                     >
                       <option>Categoria</option>
                       {category &&
-                        category.map((e, i) => <option key={i}>{e}</option>)}
+                        category.filter(e=>e.length>2).map((e, i) => <option key={i}>{e}</option>)}
                     </Form.Select>
                   </Form.Group>
                   <Form.Group>
                     <Form.Label
                       style={{
-                        color: "#ffc800",
+                        color: "var(--text-color)",
                       }}
+                      className="mt-3 mb-3"
                     >
                       Marca
                     </Form.Label>
                     <Form.Select
                       className="form-control"
+                      id="exampleFormControlSelect1"
                       value={selectedBrand}
                       onChange={(e) => handleChangeBrand(e.target.value)}
+                      style={{
+                        border: "var(--border)",
+                      }}
                     >
                       <option>Marca</option>
                       {brand &&
@@ -136,16 +151,20 @@ function PageProducts() {
                   <Form.Group>
                     <Form.Label
                       style={{
-                        color: "#ffc800",
+                        color: "var(--text-color)",
                       }}
+                      className="mt-3 mb-3"
                     >
                       Precio
                     </Form.Label>
                     <Form.Select
                       className="form-control"
+                      id="exampleFormControlSelect1"
                       onChange={(e) => handleChangePrice(e.target.value)}
+                      style={{
+                        border: "var(--border)",
+                      }}
                     >
-                      <option defaultValue="Price">Price</option>
                       <option value="Mayor">Mayor a menor</option>
                       <option value="Menor">Menor a mayor</option>
                     </Form.Select>
@@ -165,17 +184,16 @@ function PageProducts() {
                 </Card.Body>
               </Card>
             </Col>
-            <Col xs={9}>
-              <Row>
+
+            <div className="col-9">
+              <div className="row">
                 <Productos />
-              </Row>
-            </Col>
+              </div>
+            </div>
           </Row>
         </Container>
-        <Footer />
+        <FooterAlt />
       </div>
     </>
   );
 }
-
-export default PageProducts;
