@@ -12,14 +12,16 @@ body {
 body.light {
   --background-color: var(--clr-7-05);
   --text-color: var(--clr-4-G);
-  --border: 2px solid var(--clr-0-G);
-  /* --image: url(../public/image/lightBack2.jpg); */
+  --box-shadow: 0 0 7px var(--clr-9);
+  --border: 1px solid var(--clr-0-G);
+  --image: url(../public/image/lightBack3.png);
 }
 body.dark {
-  --background-color: var(--bck-black);
+  --background-color: var(--clr-9-05);
   --text-color: var(--clr-7-R);
-  --border: 2px solid var(--brd-yellow);
-  /* --image: url(../public/image/darkBack2.jpg); */
+  --box-shadow: 0 0 7px var(--clr-0);
+  --border: 1px solid #ff3c00;
+  --image: url(../public/image/darkBack3.png);
 }
 
 /* #h1 {
@@ -137,10 +139,4 @@ code {
   --clr-8-G-025: rgba(37, 186, 237, 0.25);
   --clr-9-G-025: rgba(39, 178, 242, 0.25);
   --clr-10-G-025: rgba(42, 169, 247, 0.25);
-
-  /* new model */
-
-  --bck-black: rgba(45, 45, 45, 1);
-  --brd-yellow: rgba(236, 186, 53, 1);
-  --brd-orange: rgba(235, 91, 12, 1);
 }
